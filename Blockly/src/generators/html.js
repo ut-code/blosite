@@ -1,4 +1,5 @@
 import * as Blockly from 'blockly';
+import DOMPurify from 'dompurify';
 
 export const htmlGenerator = new Blockly.Generator('HTML');
 
@@ -65,7 +66,8 @@ htmlGenerator.forBlock['html_color'] = function(block, generator) {
 
 htmlGenerator.forBlock['html_text'] = function(block, generator) {
     const content = block.getFieldValue('CONTENT');
-    const code = `${content}\n`;
+    const sanitizedContent = DOMPurify.sanitize(content);
+    const code = `${sanitizedContent}\n`;
     const indentedCode = generator.prefixLines(code, generator.INDENT);
     return indentedCode;
 };
