@@ -13,8 +13,42 @@ listed here.
 */
 
 export const toolbox = {
-  kind: 'categoryToolbox',
-  contents: [
+  'kind': 'categoryToolbox',
+  'contents': [
+    {
+      'kind': 'CATEGORY',
+      'name': 'html elements',
+      'contents': [
+        {
+          'kind': 'block',
+          "type": "html_html-head-body"
+        },
+        {
+          'kind': 'block',
+          'type': 'html_comment'
+        },
+        {
+          'kind': 'block',
+          'type': 'html_div'
+        },
+        {
+          'kind': 'block',
+          'type': 'html_script'
+        },
+        {
+          'kind': 'block',
+          'type': 'html_id'
+        },
+        {
+          'kind': 'block',
+          'type': 'html_color'
+        },
+        {
+          'kind': 'block',
+          'type': 'html_text'
+        },
+      ]
+    },
     {
       kind: 'category',
       name: 'Logic',
@@ -625,5 +659,5 @@ export const toolbox = {
       categorystyle: 'procedure_category',
       custom: 'PROCEDURE',
     },
-  ],
-};
+  ]
+}

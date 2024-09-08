@@ -6,14 +6,16 @@
 
 import * as Blockly from 'blockly';
 import {blocks} from './blocks/text';
+import {htmlBlocks} from './blocks/html';
 import {forBlock} from './generators/javascript';
 import {javascriptGenerator} from 'blockly/javascript';
+import {htmlGenerator} from './generators/html';
 import {save, load} from './serialization';
 import {toolbox} from './toolbox';
 import './index.css';
 
 // Register the blocks and generator with Blockly
-Blockly.common.defineBlocks(blocks);
+Blockly.common.defineBlocks(htmlBlocks);
 Object.assign(javascriptGenerator.forBlock, forBlock);
 
 // Set up UI elements and inject Blockly
@@ -29,9 +31,9 @@ const runCode = () => {
   const code = javascriptGenerator.workspaceToCode(ws);
   codeDiv.innerText = code;
 
-  outputDiv.innerHTML = '';
+  outputDiv.innerHTML = code;
 
-  eval(code);
+  // eval(code);
 };
 
 // Load the initial state from storage and run the code.
