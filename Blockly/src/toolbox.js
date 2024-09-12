@@ -12,6 +12,7 @@ your toolbox from scratch, or carefully choosing whether you need each block
 listed here.
 */
 
+// ツールボックスの構成
 export const toolbox = {
   'kind': 'categoryToolbox',
   'contents': [
@@ -29,7 +30,15 @@ export const toolbox = {
         },
         {
           'kind': 'block',
+          'type': 'html_title'
+        },
+        {
+          'kind': 'block',
           'type': 'html_div'
+        },
+        {
+          'kind': 'block',
+          'type': 'html_button'
         },
         {
           'kind': 'block',
@@ -46,6 +55,24 @@ export const toolbox = {
         {
           'kind': 'block',
           'type': 'html_text'
+        },
+      ]
+    },
+    {
+      kind: 'category',
+      name: 'JavaScript',
+      contents: [
+        {
+          kind: 'block',
+          type: 'js_getElementById'
+        },
+        {
+          kind: 'block',
+          type: 'js_addEventListener'
+        },
+        {
+          kind: 'block',
+          type: 'js_alert'
         },
       ]
     },

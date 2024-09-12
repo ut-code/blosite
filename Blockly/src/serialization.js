@@ -6,6 +6,7 @@
 
 import * as Blockly from 'blockly/core';
 
+// キャッシュの保存先を決定
 const storageKey = 'htmlGeneratorWorkspace';
 
 /**
