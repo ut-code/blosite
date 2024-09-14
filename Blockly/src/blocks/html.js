@@ -72,6 +72,38 @@ export const htmlBlocks = Blockly.common.createBlockDefinitionsFromJsonArray([{
     'nextStatement': null,
 },
 {
+    'type': 'html_ul',
+    'message0': '<ul> %1 %2 </ul>',
+    'args0': [
+        {
+            'type': 'input_value',
+            'name': 'ATTRIBUTE'
+        },
+        {
+            'type': 'input_statement',
+            'name': 'CONTENT'
+        }
+    ],
+    'previousStatement': null,
+    'nextStatement': null,
+},
+{
+    'type': 'html_li',
+    'message0': '<li> %1 </li> %2',
+    'args0': [
+        {
+            'type': 'field_input',
+            'name': 'CONTENT'
+        },
+        {
+            'type': 'input_value',
+            'name': 'ATTRIBUTE'
+        },
+    ],
+    'previousStatement': null,
+    'nextStatement': null,
+},
+{
     'type': 'html_button',
     'message0': '<button> %1 %2 </button>',
     'args0': [
