@@ -148,7 +148,7 @@ export const htmlBlocks = Blockly.common.createBlockDefinitionsFromJsonArray([{
 },
 {
     'type': 'js_getElementById',
-    'message0': 'id="%1"の要素を取得し変数"%2"に代入',
+    'message0': '要素 %1 を取得し変数 %2 に代入',
     'args0': [
         {
             'type': 'field_input',
@@ -191,6 +191,64 @@ export const htmlBlocks = Blockly.common.createBlockDefinitionsFromJsonArray([{
             'type': 'input_statement',
             'name': 'CONTENT',
             'check': 'Javascript',
+        },
+    ],
+    'previousStatement': null,
+    'nextStatement': null,
+},
+{
+    'type': 'js_createElement',
+    'message0': '%1 の要素を作成し変数 %2 に代入',
+    'args0': [
+        {
+            'type': 'field_dropdown',
+            'name': 'ELEMENT',
+            'options': [
+                ['div', 'div'],
+                ['button', 'button'],
+                ['span', 'span'],
+                ['input', 'input'],
+                ['textarea', 'textarea'],
+                ['select', 'select'],
+                ['option', 'option'],
+                ['form', 'form'],
+            ],
+        },
+        {
+            'type': 'field_input',
+            'name': 'NAME',
+        },
+    ],
+    'previousStatement': null,
+    'nextStatement': null,
+},
+{
+    'type': 'js_textContent',
+    'message0': '要素 %1 内の文章を"%2"に変更',
+    'args0': [
+        {
+            'type': 'field_input',
+            'name': 'ID',
+        },
+        {
+            'type': 'field_input',
+            'name': 'CONTENT',
+        },
+    ],
+    'previousStatement': null,
+    'nextStatement': null,
+},
+{
+    'type': 'js_appendChild',
+    'message0': '要素 %1 を要素 %2 内の末尾に追加',
+    'args0': [
+        {
+            'type': 'field_input',
+            'name': 'CHILD_NAME',
+        },
+        {
+            'type': 'field_input',
+            'name': 'PARENT_NAME',
         },
     ],
     'previousStatement': null,

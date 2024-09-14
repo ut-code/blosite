@@ -74,14 +74,16 @@ htmlGenerator.forBlock['html_id'] = function(block, generator) {
     const field = block.getFieldValue('FIELD');
     const value = generator.valueToCode(block, 'VALUE', Order.ATOMIC);
     const code = value ? `id="${field}" ${value}` : `id="${field}"`;
-    return [code, Order.ATOMIC]; // valueは配列で返す
+    const sanitizedCode = DOMPurify.sanitize(code);
+    return [sanitizedCode, Order.ATOMIC]; // valueは配列で返す
 };
 
 htmlGenerator.forBlock['html_color'] = function(block, generator) {
     const field = block.getFieldValue('FIELD');
     const value = generator.valueToCode(block, 'VALUE', Order.ATOMIC);
     const code = value ? `color=${field} ${value}` : `color=${field}`;
-    return [code, Order.ATOMIC];
+    const sanitizedCode = DOMPurify.sanitize(code);
+    return [sanitizedCode, Order.ATOMIC];
 };
 
 htmlGenerator.forBlock['html_text'] = function(block, generator) {
@@ -108,6 +110,35 @@ htmlGenerator.forBlock['js_addEventListener'] = function(block, generator) {
     const content = generator.statementToCode(block, 'CONTENT');
     const sanitizedId = DOMPurify.sanitize(id);
     const code = `${sanitizedId}.addEventListener("${event}", () => {\n${content}});\n`;
+    const indentedCode = generator.prefixLines(code, generator.INDENT);
+    return indentedCode;
+};
+
+htmlGenerator.forBlock['js_createElement'] = function(block, generator) {
+    const element = block.getFieldValue('ELEMENT');
+    const name = block.getFieldValue('NAME');
+    const sanitizedName = DOMPurify.sanitize(name);
+    const code = (sanitizedName && element) ? `const ${sanitizedName} = document.createElement("${element}");\n` : "\n";
+    const indentedCode = generator.prefixLines(code, generator.INDENT);
+    return indentedCode;
+};
+
+htmlGenerator.forBlock['js_textContent'] = function(block, generator) {
+    const id = block.getFieldValue('ID');
+    const content = block.getFieldValue('CONTENT');
+    const sanitizedId = DOMPurify.sanitize(id);
+    const sanitizedContent = DOMPurify.sanitize(content);
+    const code = (sanitizedId && sanitizedContent) ? `${sanitizedId}.textContent = "${sanitizedContent}";\n` : "\n";
+    const indentedCode = generator.prefixLines(code, generator.INDENT);
+    return indentedCode;
+};
+
+htmlGenerator.forBlock['js_appendChild'] = function(block, generator) {
+    const childName = block.getFieldValue('CHILD_NAME');
+    const parentName = block.getFieldValue('PARENT_NAME');
+    const sanitizedChildName = DOMPurify.sanitize(childName);
+    const sanitizedParentName = DOMPurify.sanitize(parentName);
+    const code = (sanitizedChildName && sanitizedParentName) ? `${sanitizedParentName}.appendChild(${sanitizedChildName});\n` : "\n";
     const indentedCode = generator.prefixLines(code, generator.INDENT);
     return indentedCode;
 };
