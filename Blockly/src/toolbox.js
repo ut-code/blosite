@@ -12,9 +12,78 @@ your toolbox from scratch, or carefully choosing whether you need each block
 listed here.
 */
 
+// ツールボックスの構成
 export const toolbox = {
-  kind: 'categoryToolbox',
-  contents: [
+  'kind': 'categoryToolbox',
+  'contents': [
+    {
+      'kind': 'CATEGORY',
+      'name': 'html elements',
+      'contents': [
+        {
+          'kind': 'block',
+          "type": "html_html-head-body"
+        },
+        {
+          'kind': 'block',
+          'type': 'html_comment'
+        },
+        {
+          'kind': 'block',
+          'type': 'html_title'
+        },
+        {
+          'kind': 'block',
+          'type': 'html_div'
+        },
+        {
+          'kind': 'block',
+          'type': 'html_ul'
+        },
+        {
+          'kind': 'block',
+          'type': 'html_li'
+        },
+        {
+          'kind': 'block',
+          'type': 'html_button'
+        },
+        {
+          'kind': 'block',
+          'type': 'html_script'
+        },
+        {
+          'kind': 'block',
+          'type': 'html_id'
+        },
+        {
+          'kind': 'block',
+          'type': 'html_color'
+        },
+        {
+          'kind': 'block',
+          'type': 'html_text'
+        },
+      ]
+    },
+    {
+      kind: 'category',
+      name: 'JavaScript',
+      contents: [
+        {
+          kind: 'block',
+          type: 'js_getElementById'
+        },
+        {
+          kind: 'block',
+          type: 'js_addEventListener'
+        },
+        {
+          kind: 'block',
+          type: 'js_alert'
+        },
+      ]
+    },
     {
       kind: 'category',
       name: 'Logic',
@@ -625,5 +694,5 @@ export const toolbox = {
       categorystyle: 'procedure_category',
       custom: 'PROCEDURE',
     },
-  ],
-};
+  ]
+}
