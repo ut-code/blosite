@@ -5,12 +5,15 @@
     <title>Blockly Sample App</title>
   </head>
   <body>
-    <div id="pageContainer">
-      <div id="outputPane">
-        <pre id="generatedCode"><code></code></pre>
-        <div id="output"></div>
+    <div class="split-view vertical">
+      <div id="pageContainer">
+        <div id="outputPane">
+          <pre id="generatedCode" class="beforeClicked"><code></code></pre>
+          <div id="output"></div>
+          <button id="button">コードを表示する</button>
+        </div>
+        <div id="blocklyDiv"></div>
       </div>
-      <div id="blocklyDiv"></div>
     </div>
   </body>
 </html>
