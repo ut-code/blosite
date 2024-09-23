@@ -60,3 +60,15 @@ ws.addChangeListener((e) => {
   }
   runCode();
 });
+
+document.getElementById("button").onclick = () => {
+  const getCodeID = document.getElementById("generatedCode");
+  const getButtonID = document.getElementById("button");
+  getCodeID.classList.toggle("afterClicked");
+  getCodeID.classList.toggle("beforeClicked");
+  if (getButtonID.textContent === "コードを表示する"){
+    getButtonID.textContent = "コードを隠す";
+  } else {
+    getButtonID.textContent = "コードを表示する";
+  }
+}
