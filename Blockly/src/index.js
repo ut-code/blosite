@@ -99,6 +99,19 @@ ws.addChangeListener((e) => {
     return;
   }
   runCode();
+
+  function getCodeContent(){
+    const getCodeId = document.getElementById("generatedCode");
+    const pickCode = getCodeId.querySelector("code");
+    const getContentOfCode = pickCode ? pickCode.textContent : getCodeId.textContent;
+    return getContentOfCode
+  };
+  const outputId = document.getElementById("output");
+  const addDiv = document.createElement("div")
+  addDiv.textContent = getCodeContent();
+  outputId.appendChild(addDiv);
+
+
 });
 
 document.getElementById("button").onclick = () => {
@@ -112,3 +125,12 @@ document.getElementById("button").onclick = () => {
     getButtonID.textContent = "コードを表示する";
   }
 }
+
+/*
+const getButtonId = document.getElementById("button");
+if (not (getCodeContent() === "")) {
+  const getPageContainerId = doccument.getElementById("pageContainer");
+  const addDiv = document.createElement("div");
+  addDiv.textContent = getCodeContent();
+  getButtonId.appendChild(addDiv);
+*/
