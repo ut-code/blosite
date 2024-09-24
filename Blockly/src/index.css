@@ -75,15 +75,3 @@ code {
   display: none;
 }
 
-.hidden {
-  display:none;
-}
-
-#errorMessage {
-  display: block;
-  order: 6;
-  background-color: #FFA9A9;
-  padding: 20px;
-  color: #EFFDFF;
-  
-}
