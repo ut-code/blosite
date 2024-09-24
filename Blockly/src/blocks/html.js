@@ -240,4 +240,17 @@ export const htmlBlocks = Blockly.common.createBlockDefinitionsFromJsonArray([{
     'previousStatement': null,
     'nextStatement': null,
 },
+{
+    'type': 'js_string',
+    'message0': '"%1"',
+    'args0' : [
+        {
+            'type': 'field_input',
+            'name': 'CONTENT',
+            'text': '文字列'
+        },
+    ],
+    'previousStatement': null,
+    'nextStatement': null,
+},
 ]);

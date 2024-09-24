@@ -82,6 +82,10 @@ export const toolbox = {
           kind: 'block',
           type: 'js_alert'
         },
+        {
+          kind: 'block',
+          type: 'js_string'
+        }
       ]
     },
     {

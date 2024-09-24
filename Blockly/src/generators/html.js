@@ -135,3 +135,10 @@ htmlGenerator.forBlock['js_alert'] = function(block, generator) {
     const indentedCode = generator.prefixLines(code, generator.INDENT);
     return indentedCode;
 };
+htmlGenerator.forBlock['js_string'] = function(block, generator) {
+    const content = block.getFieldValue('CONTENT');
+    const sanitizedContent = DOMPurify.sanitize(content);
+    const code = `"${sanitizedContent}"\n`;
+    const indentedCode = generator.prefixLines(code, generator.INDENT);
+    return indentedCode;
+};
