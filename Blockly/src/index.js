@@ -69,11 +69,12 @@ const runCode = () => {
       console.error(e);
   }
 */
-
+  /*
   const outputId = document.getElementById("output");
   const addDiv = document.createElement("div")
   addDiv.textContent =DOMPurify.sanitize(scriptCode);
   outputId.appendChild(addDiv);
+  */
 
   // スクリプトを動的に評価
   // const script = document.createElement('script');
@@ -106,7 +107,7 @@ ws.addChangeListener((e) => {
     return;
   }
   runCode();
-
+  /*
   function getCodeContent(){
     const getCodeId = document.getElementById("generatedCode");
     const pickCode = getCodeId.querySelector("code");
@@ -117,6 +118,7 @@ ws.addChangeListener((e) => {
   const addDiv = document.createElement("div")
   addDiv.textContent = getCodeContent();
   outputId.appendChild(addDiv);
+  */
 
   const code = htmlGenerator.workspaceToCode(ws);
   codeDiv.innerText = code;
@@ -125,6 +127,11 @@ ws.addChangeListener((e) => {
   const match = code.match(scriptRegex);
   const scriptCode = match ? match[1] : '';
   const getErrorId = document.getElementById("errorMessage");
+  /*
+  const addDiv2 = document.createElement("div");
+  addDiv2.textContent = scriptCode;
+  outputId.appendChild(addDiv2);
+  */
   try {
     Function(DOMPurify.sanitize(scriptCode));
     getErrorId.textContent = "何もエラーは起こってません"
