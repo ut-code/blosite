@@ -62,12 +62,19 @@ const runCode = () => {
   const scriptCode = match ? match[1] : '';
   
   // スクリプトを動的に評価
+/*
   try {
       eval(DOMPurify.sanitize(scriptCode));
   } catch (e) {
       console.error(e);
   }
-  
+*/
+
+  const outputId = document.getElementById("output");
+  const addDiv = document.createElement("div")
+  addDiv.textContent =DOMPurify.sanitize(scriptCode);
+  outputId.appendChild(addDiv);
+
   // スクリプトを動的に評価
   // const script = document.createElement('script');
   // script.textContent = scriptCode;
@@ -110,6 +117,24 @@ ws.addChangeListener((e) => {
   const addDiv = document.createElement("div")
   addDiv.textContent = getCodeContent();
   outputId.appendChild(addDiv);
+
+  const code = htmlGenerator.workspaceToCode(ws);
+  codeDiv.innerText = code;
+  outputDiv.innerHTML = code;
+  const scriptRegex = /<script>([\s\S]*?)<\/script>/;
+  const match = code.match(scriptRegex);
+  const scriptCode = match ? match[1] : '';
+  const getErrorId = document.getElementById("errorMessage");
+  try {
+    Function(DOMPurify.sanitize(scriptCode));
+    getErrorId.textContent = "何もエラーは起こってません"
+    getErrorId.classList = "safe"
+  }  catch (e) {
+    getErrorId.textContent = e.name + " " +e.message 
+    getErrorId.classList = "errorOccured"
+  }
+
+
 
 
 });

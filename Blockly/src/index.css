@@ -79,11 +79,21 @@ code {
   display:none;
 }
 
-#errorMessage {
+.safe {
   display: block;
   order: 6;
-  background-color: #FFA9A9;
+  background-color: blue;
+  opacity:  50%;
   padding: 20px;
-  color: #EFFDFF;
-  
+  color: azure;
+  margin: 20px;
+}
+.errorOccured {
+  display: block;
+  order: 6;
+  background-color: red;
+  padding: 20px;
+  opacity: 80%;
+  color: white;
+  margin: 20px;
 }
