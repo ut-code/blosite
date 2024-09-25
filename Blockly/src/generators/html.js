@@ -124,7 +124,7 @@ htmlGenerator.forBlock['js_addEventListener'] = function(block, generator) {
     const event = block.getFieldValue('EVENT');
     const content = generator.statementToCode(block, 'CONTENT');
     const sanitizedId = DOMPurify.sanitize(id);
-    const code = `${sanitizedId}.addEventListener("${event}", () => {\n${content}});\n`;
+    const code = (sanitizedId) ? `${sanitizedId}.addEventListener("${event}", () => {\n${content}});\n` : "\n";
     const indentedCode = generator.prefixLines(code, generator.INDENT);
     return indentedCode;
 };
