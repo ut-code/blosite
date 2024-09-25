@@ -5,11 +5,11 @@
  */
 
 import * as Blockly from 'blockly';
-import {blocks} from './blocks/text';
+// import {blocks} from './blocks/text';
 import {htmlBlocks} from './blocks/html';
-import {forBlock} from './generators/javascript';
-import {javascriptGenerator} from 'blockly/javascript';
-import {htmlGenerator} from './generators/html';
+// import {forBlock} from './generators/javascript';
+// import {javascriptGenerator} from 'blockly/javascript';
+import {websiteGenerator} from './generators/html';
 import {save, load} from './serialization';
 import {toolbox} from './toolbox';
 import './index.css';
@@ -17,7 +17,7 @@ import DOMPurify from 'dompurify';
 
 // Register the blocks and generator with Blockly
 Blockly.common.defineBlocks(htmlBlocks);
-Object.assign(javascriptGenerator.forBlock, forBlock);
+// Object.assign(javascriptGenerator.forBlock, forBlock);
 
 // Set up UI elements and inject Blockly
 const codeDiv = document.getElementById('generatedCode').firstChild;
@@ -47,7 +47,7 @@ const ws = Blockly.inject(blocklyDiv, {
 // generated code from the workspace, and evals the code.
 // In a real application, you probably shouldn't use `eval`.
 const runCode = () => {
-  const code = htmlGenerator.workspaceToCode(ws);
+  const code = websiteGenerator.workspaceToCode(ws);
   codeDiv.innerText = code;
 
   outputDiv.innerHTML = code;
