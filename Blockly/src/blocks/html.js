@@ -168,15 +168,16 @@ export const htmlBlocks = Blockly.common.createBlockDefinitionsFromJsonArray([{
 },
 {
     'type': 'html_text',
-    'message0': '"%1"',
+    'message0': '%1',
     'args0': [
         {
             'type': 'field_input',
-            'name': 'CONTENT',
+            'name': 'TEXT',
         },
     ],
     'previousStatement': null,
     'nextStatement': null,
+    'extensions': ['text_quotes'], // ダブルクォーテーションのアイコンを追加
 },
 {
     'type': 'js_getElementById',

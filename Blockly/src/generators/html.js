@@ -104,7 +104,7 @@ websiteGenerator.forBlock['html_color'] = function(block, generator) {
 };
 
 websiteGenerator.forBlock['html_text'] = function(block, generator) {
-    const content = block.getFieldValue('CONTENT');
+    const content = block.getFieldValue('TEXT');
     const sanitizedContent = DOMPurify.sanitize(content);
     const code = `${sanitizedContent}\n`;
     const indentedCode = generator.prefixLines(code, generator.INDENT);
