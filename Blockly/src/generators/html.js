@@ -132,8 +132,8 @@ websiteGenerator.forBlock['js_addEventListener'] = function(block, generator) {
 };
 
 websiteGenerator.forBlock['js_alert'] = function(block, generator) {
-    const content = generator.statementToCode(block, 'CONTENT');
-    const code = `alert(${content.trimEnd()});\n`;
+    const content = generator.valueToCode(block, 'CONTENT', Order.ATOMIC);
+    const code = `alert(${content});\n`;
     const indentedCode = generator.prefixLines(code, generator.INDENT);
     return indentedCode;
 };

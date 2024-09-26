@@ -80,7 +80,17 @@ export const toolbox = {
         },
         {
           kind: 'block',
-          type: 'js_alert'
+          type: 'js_alert',
+          inputs: {
+            CONTENT: {
+              shadow: {
+                type: 'text',
+                fields: {
+                  TEXT: '',
+                },
+              },
+            },
+          },
         },
         {
           kind: 'block',

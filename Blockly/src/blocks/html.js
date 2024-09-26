@@ -231,10 +231,10 @@ export const htmlBlocks = Blockly.common.createBlockDefinitionsFromJsonArray([{
 },
 {
     'type': 'js_alert',
-    'message0': 'alert("%1")',
+    'message0': 'アラート%1',
     'args0': [
         {
-            'type': 'input_statement',
+            'type': 'input_value',
             'name': 'CONTENT',
         },
     ],
