@@ -12,12 +12,17 @@ import {htmlBlocks} from './blocks/html';
 import {websiteGenerator} from './generators/html';
 import {save, load} from './serialization';
 import {toolbox} from './toolbox';
+// import * as ja from 'blockly/msg/ja';  
+import customMsg from './custom_msg';
 import './index.css';
 import DOMPurify from 'dompurify';
 
 // Register the blocks and generator with Blockly
 Blockly.common.defineBlocks(htmlBlocks);
 // Object.assign(javascriptGenerator.forBlock, forBlock);
+
+// Register the custom messages
+Object.assign(Blockly.Msg, customMsg);
 
 // Set up UI elements and inject Blockly
 const codeDiv = document.getElementById('generatedCode').firstChild;

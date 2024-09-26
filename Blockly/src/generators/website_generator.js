@@ -4,13 +4,14 @@ import {Order} from 'blockly/javascript';
 
 class WebsiteGenerator extends JavascriptGenerator {
   // Empty constructor.
-  constructor() {
-    super();
-  }
+  // constructor() {
+  //   super();
+  // }
 
   // Add your generator functions here.
 }
 
 export const websiteGenerator = new WebsiteGenerator();
 
+// 定義済みのブロック，ジェネレータを登録
 Object.assign(websiteGenerator, javascriptGenerator);
