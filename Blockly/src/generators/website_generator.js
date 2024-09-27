@@ -3,12 +3,12 @@ import {JavascriptGenerator, javascriptGenerator} from 'blockly/javascript';
 import {Order} from 'blockly/javascript';
 
 class WebsiteGenerator extends JavascriptGenerator {
-  // Empty constructor.
+  
   // constructor() {
   //   super();
   // }
 
-  // Add your generator functions here.
+  static INDENT = '    ';
 
   // 定義が<script>タグ内の先頭に追加されるようにオーバーライド 
   // workspaceToCodeの最後で呼び出される
@@ -23,7 +23,7 @@ class WebsiteGenerator extends JavascriptGenerator {
 
     // <script> タグの位置を見つける
     const scriptTagIndex = code.indexOf('<script>');
-    if (scriptTagIndex === -1 && definitions.length > 0) {
+    if (scriptTagIndex < 0 && definitions.length > 0) {
       console.warn('No <script> tag found in the generated code.');
       return code; // 定義したいが<script> タグがない場合は変更なし
     }
@@ -44,10 +44,12 @@ class WebsiteGenerator extends JavascriptGenerator {
 
     // <script> タグ内の先頭に定義を追加
     const codeWithDefinitions = 
-      code.slice(0, scriptTagIndex + 8/*<script>の直後*/) + '\n' +
-      this.prefixLines(definitions, scriptIndent.length > 0 ? scriptIndent + this.INDENT : this.INDENT) + 
-      (definitions ? '\n' : '') +   
-      (scriptIndent.length > 0 ? scriptIndent : this.INDENT) + code.slice(scriptTagIndex + 8);
+      code.slice(0, scriptTagIndex + 8/*<script>の直後*/)
+      + (definitions ? '\n' : '')
+      + ((scriptIndent.length > 0 && definitions) ? this.prefixLines(definitions,  scriptIndent + WebsiteGenerator.INDENT) : '')
+      + (definitions ? '\n' : '')
+      + (scriptIndent ? scriptIndent : '')
+      + code.slice(scriptTagIndex + 8);
 
     return codeWithDefinitions;
   }

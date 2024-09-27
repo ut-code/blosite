@@ -61,6 +61,7 @@ websiteGenerator.forBlock['html_ul'] = function(block, generator) {
     const indentedCode = generator.prefixLines(code, generator.INDENT);
     return indentedCode;
 };
+
 websiteGenerator.forBlock['html_li'] = function(block, generator) {
     const content = block.getFieldValue('CONTENT');
     const attribute = generator.valueToCode(block, 'ATTRIBUTE', Order.ATOMIC);
