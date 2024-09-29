@@ -88,6 +88,22 @@ export const htmlBlocks = Blockly.common.createBlockDefinitionsFromJsonArray([{
     'nextStatement': null,
 },
 {
+    'type': 'html_ol',
+    'message0': '<ol> %1 %2 </ol>',
+    'args0': [
+        {
+            'type': 'input_value',
+            'name': 'ATTRIBUTE'
+        },
+        {
+            'type': 'input_statement',
+            'name': 'CONTENT'
+        }
+    ],
+    'previousStatement': null,
+    'nextStatement': null,
+},
+{
     'type': 'html_li',
     'message0': '<li> %1 </li> %2',
     'args0': [
@@ -121,7 +137,7 @@ export const htmlBlocks = Blockly.common.createBlockDefinitionsFromJsonArray([{
 },
 {
     'type': 'html_script',
-    'message0': '<script> %1 %2 </script>',
+    'message0': '<script> %1 %2</script>',
     'args0': [
         {
             'type': 'input_value',
@@ -166,6 +182,77 @@ export const htmlBlocks = Blockly.common.createBlockDefinitionsFromJsonArray([{
     ],
     'output': null,
 },
+{
+    'type': 'html_font-size',
+    'message0': 'font-size = %1 %2',
+    'args0': [
+        {
+            'type': 'field_input',
+            'name': 'FIELD',
+            'text': '16'
+        },
+        {
+            'type': 'input_value',
+            'name': 'VALUE'
+        }
+    ],
+    'output': null,
+},
+{
+    'type': 'html_style',
+    'message0': 'color = %1 font-size %2 %3',
+    'args0': [
+        {
+            'type': 'field_input',
+            'name': 'ColorFIELD',
+            'text': '#000000'
+        },
+        {
+            'type': 'field_input',
+            'name': 'FontFIELD',
+            'text': '16'
+        },
+        {
+            'type': 'input_value',
+            'name': 'VALUE'
+        }
+    ],
+    'output': null,
+},
+{
+    'type': 'html_strong',
+    'message0': '<strong> %1 %2 </strong>',
+    'args0': [
+        {
+            'type': 'input_value',
+            'name': 'ATTRIBUTE'
+        },
+        {
+            'type': 'input_statement',
+            'name': 'CONTENT'
+        }
+    ],
+    'previousStatement': null,
+    'nextStatement': null,
+},
+{
+    'type': 'html_input',
+    'message0': 'input type = %1 %2',
+    'args0': [
+        {
+            'type': 'field_input',
+            'name': 'CONTENT',
+            'text': 'text'
+        },
+        {
+            'type': 'input_value',
+            'name': 'VALUE'
+        }
+    ],
+    'previousStatement': null,
+    'nextStatement': null,
+},
+
 {
     'type': 'html_text',
     'message0': '%1',
