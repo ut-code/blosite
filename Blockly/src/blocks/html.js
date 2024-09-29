@@ -207,7 +207,8 @@ export const htmlBlocks = Blockly.common.createBlockDefinitionsFromJsonArray([
         type: "input_statement",
         name: "STACK",
       },
-    'output': null,
+    ],
+    output: null,
 },
 {
     'type': 'html_font-size',
@@ -377,8 +378,4 @@ export const htmlBlocks = Blockly.common.createBlockDefinitionsFromJsonArray([
     previousStatement: null,
     nextStatement: null,
   },
-]);
-    'previousStatement': null,
-    'nextStatement': null,
-},
 ]);
