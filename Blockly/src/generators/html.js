@@ -97,10 +97,99 @@ websiteGenerator.forBlock['html_id'] = function(block, generator) {
     return [code, Order.ATOMIC]; // valueは配列で返す
 };
 
+websiteGenerator.forBlock['html_style'] = function(block, generator) {
+  let elements = [];
+  for (let i = 0; i < block.itemCount_; i++) {
+      let element = generator.valueToCode(block, 'ADD' + i, Order.ATOMIC) || 'null';
+      elements.push(element);
+  }
+  let code = 'style="' + elements.join('; ') + ';"';
+  return [code, Order.ATOMIC];
+}
+
+//html_styleブロックのミューテーター
+Blockly.Extensions.registerMutator('html_style_mutator', {
+  mutationToDom: function() {
+    const container = Blockly.utils.xml.createElement('mutation');
+    container.setAttribute('items', this.itemCount_);
+    return container;
+  },
+  domToMutation: function(xmlElement) {
+    this.itemCount_ = parseInt(xmlElement.getAttribute('items'), 10);
+    this.updateShape_();
+  },
+  decompose: function(workspace) {
+    const containerBlock = workspace.newBlock('html_style_container');
+    containerBlock.initSvg();
+    let connection = containerBlock.getInput('STACK').connection;
+    for (let i = 0; i < this.itemCount_; i++) {
+      const itemBlock = workspace.newBlock('html_style_item');
+      itemBlock.initSvg();
+      connection.connect(itemBlock.previousConnection);
+      connection = itemBlock.nextConnection;
+    }
+    return containerBlock;
+  },
+  compose: function(containerBlock) {
+    let itemBlock = containerBlock.getInputTargetBlock('STACK');
+    const connections = [];
+    while (itemBlock) {
+      connections.push(itemBlock.valueConnection_);
+      itemBlock = itemBlock.nextConnection &&
+          itemBlock.nextConnection.targetBlock();
+    }
+    this.itemCount_ = connections.length;
+    this.updateShape_();
+    for (let i = 0; i < this.itemCount_; i++) {
+      const connection = this.getInput('ADD' + i).connection;
+      if (connections[i]) {
+        connection.connect(connections[i]);
+      }
+    }
+  },
+  updateShape_: function() {
+
+    while (this.getInput('EMPTY')) {
+      this.removeInput('EMPTY');
+    }
+    // Remove all inputs if no items.
+    if (this.itemCount_ === 0) {
+      while (this.getInput('EMPTY')) {
+        this.removeInput('EMPTY');
+      }
+      // Remove unnecessary inputs.
+      let i = 0;
+      while (this.getInput('ADD' + i)) {
+        this.removeInput('ADD' + i++);
+      }
+      this.appendDummyInput('EMPTY')
+      .appendField('style =');
+    } else {
+      // Add new inputs.
+      for (let i = 0; i < this.itemCount_; i++) {
+        if (!this.getInput('ADD' + i)) {
+          if(i === 0) {
+            this.appendValueInput('ADD' + i)
+            .appendField('style = ')
+            .setAlign(Blockly.inputs.Align.RIGHT);
+          }else {
+            const input = this.appendValueInput('ADD' + i)
+            .setAlign(Blockly.inputs.Align.RIGHT);
+          }   
+        }
+      }
+      // Remove unnecessary inputs.
+      while (this.getInput('ADD' + this.itemCount_)) {
+        this.removeInput('ADD' + this.itemCount_);
+      }
+    }
+  }
+}, null, ['html_style_item']);
+
 websiteGenerator.forBlock['html_color'] = function(block, generator) {
     const field = block.getFieldValue('FIELD');
     const value = generator.valueToCode(block, 'VALUE', Order.ATOMIC);
-    const code = value ? `style= "color:${field}" ${value}` : `style="color:${field}"`;
+    const code = value ? `color:${field} ${value}` : `color:${field}`;
     return [code, Order.ATOMIC];
 };
 

@@ -58,6 +58,10 @@ export const toolbox = {
         },
         {
           'kind': 'block',
+          'type': 'html_style'
+        },
+        {
+          'kind': 'block',
           'type': 'html_color'
         },
         {

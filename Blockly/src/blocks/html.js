@@ -151,6 +151,51 @@ export const htmlBlocks = Blockly.common.createBlockDefinitionsFromJsonArray([{
     'output': null,
 },
 {
+    'type': 'html_style',
+    "message0": "style = %1 %2",
+    "args0": [
+        {
+            "type": "input_value",
+            "name": "ADD0"
+        },
+        {
+            "type": "input_value",
+            "name": "ADD1"
+        },
+    ],
+    "mutator": "html_style_mutator",
+    "output": "Array",
+    "tooltip": "Create a list with any number of items.",
+    "helpUrl": ""
+},
+{
+    "type": "html_style_mutator",
+    "message0": "要素を追加",
+    "tooltip": "リストに要素を追加または削除します。"
+},
+{
+    "type": "html_style_item", // ミューテーター内のブロック
+    "message0": "項目",
+    "previousStatement": null,
+    "nextStatement": null,
+    "tooltip": "",
+    "helpUrl": ""
+},
+{
+    "type": "html_style_container", // ミューテーター内のブロック
+    "message0": "項目を追加 %1",
+    "args0": [
+        {
+            "type": "input_statement",
+            "name": "STACK"
+        }
+    ],
+    "previousStatement": null,
+    "nextStatement": null,
+    "tooltip": "",
+    "helpUrl": ""
+},
+{
     'type': 'html_color',
     'message0': 'color = %1 %2',
     'args0': [
