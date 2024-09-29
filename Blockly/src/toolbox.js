@@ -100,8 +100,22 @@ export const toolbox = {
         },
         {
           kind: 'block',
-          type: 'js_alert'
+          type: 'js_alert',
+          inputs: {
+            CONTENT: {
+              shadow: {
+                type: 'text',
+                fields: {
+                  TEXT: '',
+                },
+              },
+            },
+          },
         },
+        {
+          kind: 'block',
+          type: 'js_string'
+        }
       ]
     },
     {
@@ -580,20 +594,20 @@ export const toolbox = {
             },
           },
         },
-        {
-          kind: 'block',
-          type: 'add_text',
-          inputs: {
-            TEXT: {
-              shadow: {
-                type: 'text',
-                fields: {
-                  TEXT: 'abc',
-                },
-              },
-            },
-          },
-        },
+        // {
+        //   kind: 'block',
+        //   type: 'add_text',
+        //   inputs: {
+        //     TEXT: {
+        //       shadow: {
+        //         type: 'text',
+        //         fields: {
+        //           TEXT: 'abc',
+        //         },
+        //       },
+        //     },
+        //   },
+        // },
       ],
     },
     {

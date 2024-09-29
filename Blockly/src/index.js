@@ -5,19 +5,24 @@
  */
 
 import * as Blockly from 'blockly';
-import {blocks} from './blocks/text';
+// import {blocks} from './blocks/text';
 import {htmlBlocks} from './blocks/html';
-import {forBlock} from './generators/javascript';
-import {javascriptGenerator} from 'blockly/javascript';
-import {htmlGenerator} from './generators/html';
+// import {forBlock} from './generators/javascript';
+// import {javascriptGenerator} from 'blockly/javascript';
+import {websiteGenerator} from './generators/html';
 import {save, load} from './serialization';
 import {toolbox} from './toolbox';
+// import * as ja from 'blockly/msg/ja';  
+import customMsg from './custom_msg';
 import './index.css';
 import DOMPurify from 'dompurify';
 
 // Register the blocks and generator with Blockly
 Blockly.common.defineBlocks(htmlBlocks);
-Object.assign(javascriptGenerator.forBlock, forBlock);
+// Object.assign(javascriptGenerator.forBlock, forBlock);
+
+// Register the custom messages
+Object.assign(Blockly.Msg, customMsg);
 
 // Set up UI elements and inject Blockly
 const codeDiv = document.getElementById('generatedCode').firstChild;
@@ -47,7 +52,7 @@ const ws = Blockly.inject(blocklyDiv, {
 // generated code from the workspace, and evals the code.
 // In a real application, you probably shouldn't use `eval`.
 const runCode = () => {
-  const code = htmlGenerator.workspaceToCode(ws);
+  const code = websiteGenerator.workspaceToCode(ws);
   codeDiv.innerText = code;
 
   outputDiv.innerHTML = code;
@@ -67,7 +72,7 @@ const runCode = () => {
   } catch (e) {
       console.error(e);
   }
-
+  
   // スクリプトを動的に評価
   // const script = document.createElement('script');
   // script.textContent = scriptCode;
@@ -141,4 +146,18 @@ ws.addChangeListener((e) => {
   });
 
   runCode();
+
 });
+
+document.getElementById("button").onclick = () => {
+  const getCodeID = document.getElementById("generatedCode");
+  const getButtonID = document.getElementById("button");
+  getCodeID.classList.toggle("afterClicked");
+  getCodeID.classList.toggle("beforeClicked");
+  if (getButtonID.textContent === "コードを表示する"){
+    getButtonID.textContent = "コードを隠す";
+  } else {
+    getButtonID.textContent = "コードを表示する";
+  }
+}
+

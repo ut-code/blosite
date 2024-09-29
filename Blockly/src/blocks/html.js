@@ -255,15 +255,16 @@ export const htmlBlocks = Blockly.common.createBlockDefinitionsFromJsonArray([{
 
 {
     'type': 'html_text',
-    'message0': '"%1"',
+    'message0': '%1',
     'args0': [
         {
             'type': 'field_input',
-            'name': 'CONTENT',
+            'name': 'TEXT',
         },
     ],
     'previousStatement': null,
     'nextStatement': null,
+    'extensions': ['text_quotes'], // ダブルクォーテーションのアイコンを追加
 },
 {
     'type': 'js_getElementById',
@@ -317,11 +318,24 @@ export const htmlBlocks = Blockly.common.createBlockDefinitionsFromJsonArray([{
 },
 {
     'type': 'js_alert',
-    'message0': 'alert("%1")',
+    'message0': 'アラート%1',
     'args0': [
         {
-            'type': 'input_statement',
+            'type': 'input_value',
             'name': 'CONTENT',
+        },
+    ],
+    'previousStatement': null,
+    'nextStatement': null,
+},
+{
+    'type': 'js_string',
+    'message0': '"%1"',
+    'args0' : [
+        {
+            'type': 'field_input',
+            'name': 'CONTENT',
+            'text': '文字列'
         },
     ],
     'previousStatement': null,
