@@ -97,8 +97,60 @@ export const toolbox = {
           type: "css_color",
         },
         {
-          'kind': 'block',
-          'type': 'html_font-size'
+          kind: "block",
+          type: "css_font-size",
+        },
+        {
+          kind: "block",
+          type: "css_font-weight",
+        },
+        {
+          kind: "block",
+          type: "css_line-height",
+        },
+        {
+          kind: "block",
+          type: "css_background-color",
+        },
+        {
+          kind: "block",
+          type: "css_margin",
+        },
+        {
+          kind: "block",
+          type: "css_padding",
+        },
+        {
+          kind: "block",
+          type: "css_border",
+        },
+        {
+          kind: "block",
+          type: "css_border-radius",
+        },
+        {
+          kind: "block",
+          type: "css_display",
+        },
+        {
+          kind: "block",
+          type: "css_position",
+        },
+        {
+          kind: "block",
+          type: "css_top",
+        },
+        {
+          kind: "block",
+          type: "css_left",
+        },
+        {
+          kind: "block",
+          type: "css_right",
+        },
+        {
+          kind: "block",
+          type: "css_bottom",
         },
       ]
     },

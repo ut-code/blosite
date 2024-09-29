@@ -276,12 +276,284 @@ export const htmlBlocks = Blockly.common.createBlockDefinitionsFromJsonArray([
   },
   {
     type: "css_color",
-    message0: "color = %1 %2",
+    message0: "color: %1 %2",
     args0: [
       {
         type: "field_input",
         name: "FIELD",
         text: "#000000",
+      },
+      {
+        type: "input_value",
+        name: "VALUE",
+      },
+    ],
+    output: null,
+  },
+  {
+    type: "css_font-size",
+    message0: "font-size: %1 %2",
+    args0: [
+      {
+        type: "field_input",
+        name: "FIELD",
+        text: "16px",
+      },
+      {
+        type: "input_value",
+        name: "VALUE",
+      },
+    ],
+    output: null,
+  },
+  {
+    type: "css_font-weight",
+    message0: "font-weight: %1 %2",
+    args0: [
+      {
+        type: "field_input",
+        name: "FIELD",
+        text: "bold",
+      },
+      {
+        type: "input_value",
+        name: "VALUE",
+      },
+    ],
+    output: null,
+  },
+  {
+    type: "css_line-height",
+    message0: "line-height; %1 %2",
+    args0: [
+      {
+        type: "field_input",
+        name: "FIELD",
+        text: "1.5",
+      },
+      {
+        type: "input_value",
+        name: "VALUE",
+      },
+    ],
+    output: null,
+  },
+  {
+    type: "css_background-color",
+    message0: "background-color: %1 %2",
+    args0: [
+      {
+        type: "field_input",
+        name: "FIELD",
+        text: "#ffffff",
+      },
+      {
+        type: "input_value",
+        name: "VALUE",
+      },
+    ],
+    output: null,
+  },
+  {
+    type: "css_margin",
+    message0: "margin: %1 %2",
+    args0: [
+      {
+        type: "field_input",
+        name: "FIELD",
+        text: "20px",
+      },
+      {
+        type: "input_value",
+        name: "VALUE",
+      },
+    ],
+    output: null,
+  },
+  {
+    type: "css_padding",
+    message0: "padding: %1 %2",
+    args0: [
+      {
+        type: "field_input",
+        name: "FIELD",
+        text: "10px",
+      },
+      {
+        type: "input_value",
+        name: "VALUE",
+      },
+    ],
+    output: null,
+  },
+  {
+    type: "css_border",
+    message0: "border: %1 %2",
+    args0: [
+      {
+        type: "field_input",
+        name: "FIELD",
+        text: "1px solid #ccc",
+      },
+      {
+        type: "input_value",
+        name: "VALUE",
+      },
+    ],
+    output: null,
+  },
+  {
+    type: "css_border-radius",
+    message0: "border-radius: %1 %2",
+    args0: [
+      {
+        type: "field_input",
+        name: "FIELD",
+        text: "5px",
+      },
+      {
+        type: "input_value",
+        name: "VALUE",
+      },
+    ],
+    output: null,
+  },
+  {
+    type: "css_display",
+    message0: "display: %1 %2",
+    args0: [
+      {
+        type: "field_input",
+        name: "FIELD",
+        text: "block",
+      },
+      {
+        type: "input_value",
+        name: "VALUE",
+      },
+    ],
+    output: null,
+  },
+  {
+    type: "css_position",
+    message0: "position: %1 %2",
+    args0: [
+      {
+        type: "field_input",
+        name: "FIELD",
+        text: "relative",
+      },
+      {
+        type: "input_value",
+        name: "VALUE",
+      },
+    ],
+    output: null,
+  },
+  {
+    type: "css_top",
+    message0: "top: %1 %2",
+    args0: [
+      {
+        type: "field_input",
+        name: "FIELD",
+        text: "10px",
+      },
+      {
+        type: "input_value",
+        name: "VALUE",
+      },
+    ],
+    output: null,
+  },
+  {
+    type: "css_left",
+    message0: "left: %1 %2",
+    args0: [
+      {
+        type: "field_input",
+        name: "FIELD",
+        text: "10px",
+      },
+      {
+        type: "input_value",
+        name: "VALUE",
+      },
+    ],
+    output: null,
+  },
+  {
+    type: "css_right",
+    message0: "right: %1 %2",
+    args0: [
+      {
+        type: "field_input",
+        name: "FIELD",
+        text: "10px",
+      },
+      {
+        type: "input_value",
+        name: "VALUE",
+      },
+    ],
+    output: null,
+  },
+  {
+    type: "css_bottom",
+    message0: "bottom: %1 %2",
+    args0: [
+      {
+        type: "field_input",
+        name: "FIELD",
+        text: "10px",
+      },
+      {
+        type: "input_value",
+        name: "VALUE",
+      },
+    ],
+    output: null,
+  },
+  {
+    type: "css_top",
+    message0: "top: %1 %2",
+    args0: [
+      {
+        type: "field_input",
+        name: "FIELD",
+        text: "10px",
+      },
+      {
+        type: "input_value",
+        name: "VALUE",
+      },
+    ],
+    output: null,
+  },
+  {
+    type: "css_font-family",
+    message0: "font-family: %1 %2",
+    args0: [
+      {
+        type: "field_input",
+        name: "FIELD",
+        text: "serif",
+      },
+      {
+        type: "input_value",
+        name: "VALUE",
+      },
+    ],
+    output: null,
+  },
+  {
+    type: "css_font-family",
+    message0: "font-family: %1 %2",
+    args0: [
+      {
+        type: "field_input",
+        name: "FIELD",
+        text: "serif",
       },
       {
         type: "input_value",
