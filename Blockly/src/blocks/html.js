@@ -86,21 +86,37 @@ export const htmlBlocks = Blockly.common.createBlockDefinitionsFromJsonArray([
         name: "CONTENT",
       },
     ],
-    previousStatement: null,
-    nextStatement: null,
+    'previousStatement': null,
+    'nextStatement': null,
   },
   {
-    type: "html_li",
-    message0: "<li> %1 </li> %2",
-    args0: [
-      {
-        type: "field_input",
-        name: "CONTENT",
-      },
-      {
-        type: "input_value",
-        name: "ATTRIBUTE",
-      },
+    'type': 'html_ol',
+    'message0': '<ol> %1 %2 </ol>',
+    'args0': [
+        {
+            'type': 'input_value',
+            'name': 'ATTRIBUTE'
+        },
+        {
+            'type': 'input_statement',
+            'name': 'CONTENT'
+        }
+    ],
+    'previousStatement': null,
+    'nextStatement': null,
+  },
+  {
+    'type': 'html_li',
+    'message0': '<li> %1 </li> %2',
+    'args0': [
+        {
+            'type': 'field_input',
+            'name': 'CONTENT'
+        },
+        {
+            'type': 'input_value',
+            'name': 'ATTRIBUTE'
+        },
     ],
     previousStatement: null,
     nextStatement: null,
@@ -191,6 +207,67 @@ export const htmlBlocks = Blockly.common.createBlockDefinitionsFromJsonArray([
         type: "input_statement",
         name: "STACK",
       },
+    ],
+    'output': null,
+},
+{
+    'type': 'html_font-size',
+    'message0': 'font-size = %1 %2',
+    'args0': [
+        {
+            'type': 'field_input',
+            'name': 'FIELD',
+            'text': '16'
+        },
+        {
+            'type': 'input_value',
+            'name': 'VALUE'
+        }
+    ],
+    'output': null,
+},
+{
+    'type': 'html_strong',
+    'message0': '<strong> %1 %2 </strong>',
+    'args0': [
+        {
+            'type': 'input_value',
+            'name': 'ATTRIBUTE'
+        },
+        {
+            'type': 'input_statement',
+            'name': 'CONTENT'
+        }
+    ],
+    'previousStatement': null,
+    'nextStatement': null,
+},
+{
+    'type': 'html_input',
+    'message0': 'input type = %1 %2',
+    'args0': [
+        {
+            'type': 'field_input',
+            'name': 'CONTENT',
+            'text': 'text'
+        },
+        {
+            'type': 'input_value',
+            'name': 'VALUE'
+        }
+    ],
+    'previousStatement': null,
+    'nextStatement': null,
+},
+
+{
+    'type': 'html_text',
+    'message0': '%1',
+    'args0': [
+        {
+            'type': 'field_input',
+            'name': 'TEXT',
+        },
     ],
     previousStatement: null,
     nextStatement: null,
