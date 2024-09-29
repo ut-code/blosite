@@ -98,5 +98,47 @@ ws.addChangeListener((e) => {
   ) {
     return;
   }
+  // 追加するロジック: 特定のブロック同士の接続を禁止
+  const blocks = ws.getAllBlocks();
+  blocks.forEach((block) => {
+    if (block.type === 'html_script') {
+      const statementInput = block.getInput('CONTENT'); // 'CONTENT' は input_statement
+  
+      if (statementInput) {
+        const connection = statementInput.connection; // 'CONTENT' に接続されるブロックを取得
+  
+        if (connection && connection.targetBlock()) {
+          const targetBlock = connection.targetBlock(); // targetBlock を変数に格納
+        if (targetBlock) {
+          // 接続を禁止するブロックのタイプをリストにする
+          const forbiddenBlockTypes = [
+            'html_html-head-body',
+            'html_comment',
+            'html_title',
+            'html_div',
+            'html_ul',
+            'html_ol',
+            'html_li',
+            'html_button',
+            'html_id',
+            'html_color',
+            'html_font-size',
+            'html_style',
+            'html_strong',
+            'html_input',
+            'html_text',
+          ];
+
+          // 接続が input_statement であり、かつ禁止リストに含まれている場合
+          if (forbiddenBlockTypes.includes(targetBlock.type)) {
+            connection.disconnect(); // 接続を解除
+            console.log(`html_script には ${targetBlock.type} とは接続できません。`);
+          }
+        }
+        } 
+      }
+    }
+  });
+
   runCode();
 });

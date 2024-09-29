@@ -59,6 +59,14 @@ htmlGenerator.forBlock['html_ul'] = function(block, generator) {
     const indentedCode = generator.prefixLines(code, generator.INDENT);
     return indentedCode;
 };
+htmlGenerator.forBlock['html_ol'] = function(block, generator) {
+    const content = generator.statementToCode(block, 'CONTENT');
+    const attribute = generator.valueToCode(block, 'ATTRIBUTE', Order.ATOMIC);
+    const startTag = attribute ? `<ol ${attribute}>` : `<ol>`;
+    const code = content ? `${startTag}\n${content}</ol>\n` : `${startTag}</ol>\n`;
+    const indentedCode = generator.prefixLines(code, generator.INDENT);
+    return indentedCode;
+};
 htmlGenerator.forBlock['html_li'] = function(block, generator) {
     const content = block.getFieldValue('CONTENT');
     const attribute = generator.valueToCode(block, 'ATTRIBUTE', Order.ATOMIC);
@@ -86,7 +94,6 @@ htmlGenerator.forBlock['html_script'] = function(block, generator) {
     const indentedCode = generator.prefixLines(code, generator.INDENT);
     return indentedCode;
 };
-
 htmlGenerator.forBlock['html_id'] = function(block, generator) {
     const field = block.getFieldValue('FIELD');
     const value = generator.valueToCode(block, 'VALUE', Order.ATOMIC);
@@ -97,10 +104,37 @@ htmlGenerator.forBlock['html_id'] = function(block, generator) {
 htmlGenerator.forBlock['html_color'] = function(block, generator) {
     const field = block.getFieldValue('FIELD');
     const value = generator.valueToCode(block, 'VALUE', Order.ATOMIC);
-    const code = value ? `style= "color:${field}" ${value}` : `style="color:${field}"`;
+    const code = value ? `style= "color:${field};" ${value}` : `style="color:${field};"`;
     return [code, Order.ATOMIC];
 };
-
+htmlGenerator.forBlock['html_font-size'] = function(block, generator) {
+    const field = block.getFieldValue('FIELD');
+    const value = generator.valueToCode(block, 'VALUE', Order.ATOMIC);
+    const code = value ? `style= "font-size:${field}px;" ${value}` : `style="font-size:${field}px;"`;
+    return [code, Order.ATOMIC];
+};
+htmlGenerator.forBlock['html_style'] = function(block, generator) {
+    const colorfield = block.getFieldValue('ColorFIELD');
+    const fontfield = block.getFieldValue('FontFIELD');
+    const value = generator.valueToCode(block, 'VALUE', Order.ATOMIC);
+    const code = value ? `style= "color:${colorfield}; font-size:${fontfield}px;" ${value}` 
+    : `style= "color:${colorfield}; font-size:${fontfield}px"`;
+    return [code, Order.ATOMIC];
+};
+htmlGenerator.forBlock['html_strong'] = function(block, generator) {
+    const content = generator.statementToCode(block, 'CONTENT');
+    const attribute = generator.valueToCode(block, 'ATTRIBUTE', Order.ATOMIC);
+    const startTag = attribute ? `<strong ${attribute}>` : `<strong>`;
+    const code = content ? `${startTag}\n${content}</strong>\n` : `${startTag}</strong>\n`;
+    const indentedCode = generator.prefixLines(code, generator.INDENT);
+    return indentedCode;
+};
+htmlGenerator.forBlock['html_input'] = function(block, generator) {
+    const content = block.getFieldValue('CONTENT');
+    const value = generator.valueToCode(block, 'VALUE', Order.ATOMIC);
+    const code = value ? `<input type= ${content} ${value}>\n` : `<input type="${content}">\n`;
+    return code;
+};
 htmlGenerator.forBlock['html_text'] = function(block, generator) {
     const content = block.getFieldValue('CONTENT');
     const sanitizedContent = DOMPurify.sanitize(content);

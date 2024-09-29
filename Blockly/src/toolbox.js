@@ -42,6 +42,10 @@ export const toolbox = {
         },
         {
           'kind': 'block',
+          'type': 'html_ol'
+        },
+        {
+          'kind': 'block',
           'type': 'html_li'
         },
         {
@@ -59,6 +63,22 @@ export const toolbox = {
         {
           'kind': 'block',
           'type': 'html_color'
+        },
+        {
+          'kind': 'block',
+          'type': 'html_font-size'
+        },
+        {
+          'kind': 'block',
+          'type': 'html_style'
+        },
+        {
+          'kind': 'block',
+          'type': 'html_strong'
+        },
+        {
+          'kind': 'block',
+          'type': 'html_input'
         },
         {
           'kind': 'block',
