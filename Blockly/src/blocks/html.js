@@ -208,7 +208,7 @@ export const htmlBlocks = Blockly.common.createBlockDefinitionsFromJsonArray([
         name: "STACK",
       },
     ],
-    'output': null,
+    output: null,
 },
 {
     'type': 'html_font-size',
