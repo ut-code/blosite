@@ -145,7 +145,7 @@ export const htmlBlocks = Blockly.common.createBlockDefinitionsFromJsonArray([{
         },
         {
             'type': 'input_statement',
-            'name': 'CONTENT'
+            'name': 'CONTENT',
         }
     ],
     'previousStatement': null,
@@ -281,6 +281,7 @@ export const htmlBlocks = Blockly.common.createBlockDefinitionsFromJsonArray([{
     ],
     'previousStatement': null,
     'nextStatement': null,
+    'output':null
 },
 {
     'type': 'js_addEventListener',

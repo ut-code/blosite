@@ -76,4 +76,8 @@ code {
 .beforeClicked {
   display: none;
 }
-
+#wstitle{
+  background-color: gainsboro;
+  width: fit-content;
+  order: 3;
+}
