@@ -42,6 +42,14 @@ export const toolbox = {
         },
         {
           kind: "block",
+          type: "html_br",
+        },
+        {
+          kind: "block",
+          type: "html_p",
+        },
+        {
+          kind: "block",
           type: "html_div",
         },
         {

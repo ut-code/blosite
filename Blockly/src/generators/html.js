@@ -40,8 +40,17 @@ websiteGenerator.forBlock["html_comment"] = function (block, generator) {
 
 websiteGenerator.forBlock["html_text"] = function (block, generator) {
   const content = block.getFieldValue("TEXT");
+  const nextBlock = block.getNextBlock();
   const sanitizedContent = DOMPurify.sanitize(content);
-  const code = `${sanitizedContent}\n`;
+
+  // 下のブロックが存在する場合、そのtypeを取得
+  let nextType = null;
+  if (nextBlock) {
+    nextType = nextBlock.type;
+  }
+
+  // 前のブロックがhtml_textの場合は改行を追加
+  const code = (nextType == "html_text") ? `${sanitizedContent}<br />\n` : `${sanitizedContent}\n`;
   const indentedCode = generator.prefixLines(code, generator.INDENT);
   return indentedCode;
 };
@@ -72,6 +81,21 @@ websiteGenerator.forBlock["html_hn"] = function (block, generator) {
   const code = content
     ? `${startTag}\n${content}</h${hn}>\n`
     : `${startTag}</h${hn}>\n`;
+  const indentedCode = generator.prefixLines(code, generator.INDENT);
+  return indentedCode;
+};
+
+websiteGenerator.forBlock["html_br"] = function (block, generator) {
+  return "<br />\n";
+};
+
+websiteGenerator.forBlock["html_p"] = function (block, generator) {
+  const content = generator.statementToCode(block, "CONTENT");
+  const attribute = generator.valueToCode(block, "ATTRIBUTE", Order.ATOMIC);
+  const startTag = attribute ? `<p ${attribute}>` : `<p>`;
+  const code = content
+    ? `${startTag}\n${content}</p>\n`
+    : `${startTag}</p>\n`;
   const indentedCode = generator.prefixLines(code, generator.INDENT);
   return indentedCode;
 };
