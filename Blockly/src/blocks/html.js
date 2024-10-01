@@ -288,8 +288,10 @@ export const htmlBlocks = Blockly.common.createBlockDefinitionsFromJsonArray([
         name: "VALUE",
       },
     ],
-    output: null,
-  },
+    'previousStatement': null,
+    'nextStatement': null,
+    'output':null
+},
   {
     type: "css_font-size",
     message0: "font-size: %1 %2",
