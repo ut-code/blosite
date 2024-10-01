@@ -651,3 +651,64 @@ export const htmlBlocks = Blockly.common.createBlockDefinitionsFromJsonArray([
     nextStatement: null,
   },
 ]);
+
+
+// 動的な変更を伴うブロックの定義
+Blockly.Blocks['html_hn'] = {
+  init: function() {
+    // ブロックのJSON定義に基づいて初期化
+    this.jsonInit({
+      type: "html_hn",
+      message0: "<h%1>  %2 %3 %4",
+      args0: [
+        {
+          type: "field_dropdown",
+          name: "HN",
+          options: [
+            ["1", "1"],
+            ["2", "2"],
+            ["3", "3"],
+            ["4", "4"],
+            ["5", "5"],
+            ["6", "6"]
+          ],
+        },
+        {
+          type: "input_value",
+          name: "ATTRIBUTE",
+        },
+        {
+          type: "input_statement",
+          name: "CONTENT",
+        },
+        {
+          type: "field_label",
+          name: "LABEL",
+          text: "error!!",
+        }
+      ],
+      previousStatement: null,
+      nextStatement: null,
+    });
+
+    // ブロックの初期化時にラベルを更新
+    // 確実に更新させるためにsetTimeoutを使用
+    setTimeout(() => {
+      this.updateLabel();
+    }, 0);
+
+    // ドロップダウンの選択に応じてラベルを更新
+    this.setOnChange(() => {
+      this.updateLabel(); // ラベルを更新するメソッドを呼び出す
+    });
+  },
+
+  updateLabel: function() {
+    const selectedOption = this.getFieldValue('HN');
+    const labelField = this.getField('LABEL');
+
+    // ドロップダウンの値に応じてラベルを変更
+    labelField.setValue(`</h${selectedOption}>`);
+    console.log(`</h${selectedOption}>`);
+  }
+};

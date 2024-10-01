@@ -38,6 +38,10 @@ export const toolbox = {
         },
         {
           kind: "block",
+          type: "html_hn",
+        },
+        {
+          kind: "block",
           type: "html_div",
         },
         {

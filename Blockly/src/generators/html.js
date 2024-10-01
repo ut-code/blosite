@@ -63,6 +63,19 @@ websiteGenerator.forBlock["html_div"] = function (block, generator) {
   const indentedCode = generator.prefixLines(code, generator.INDENT);
   return indentedCode;
 };
+
+websiteGenerator.forBlock["html_hn"] = function (block, generator) {
+  const content = generator.statementToCode(block, "CONTENT");
+  const attribute = generator.valueToCode(block, "ATTRIBUTE", Order.ATOMIC);
+  const hn = block.getFieldValue("HN");
+  const startTag = attribute ? `<h${hn} ${attribute}>` : `<h${hn}>`;
+  const code = content
+    ? `${startTag}\n${content}</h${hn}>\n`
+    : `${startTag}</h${hn}>\n`;
+  const indentedCode = generator.prefixLines(code, generator.INDENT);
+  return indentedCode;
+};
+
 websiteGenerator.forBlock["html_ul"] = function (block, generator) {
   const content = generator.statementToCode(block, "CONTENT");
   const attribute = generator.valueToCode(block, "ATTRIBUTE", Order.ATOMIC);
