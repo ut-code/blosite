@@ -98,6 +98,22 @@ export const htmlBlocks = Blockly.common.createBlockDefinitionsFromJsonArray([
     nextStatement: null,
   },
   {
+    type: "html_blockquote",
+    message0: "<blockquote> %1 %2 </blockquote>",
+    args0: [
+      {
+        type: "input_value",
+        name: "ATTRIBUTE",
+      },
+      {
+        type: "input_statement",
+        name: "CONTENT",
+      },
+    ],
+    previousStatement: null,
+    nextStatement: null,
+  },
+  {
     type: "html_ul",
     message0: "<ul> %1 %2 </ul>",
     args0: [

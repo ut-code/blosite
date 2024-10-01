@@ -42,15 +42,15 @@ export const toolbox = {
         },
         {
           kind: "block",
-          type: "html_br",
-        },
-        {
-          kind: "block",
           type: "html_p",
         },
         {
           kind: "block",
           type: "html_div",
+        },
+        {
+          kind: "block",
+          type: "html_blockquote",
         },
         {
           kind: "block",

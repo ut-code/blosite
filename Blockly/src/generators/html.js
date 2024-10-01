@@ -100,6 +100,17 @@ websiteGenerator.forBlock["html_p"] = function (block, generator) {
   return indentedCode;
 };
 
+websiteGenerator.forBlock["html_blockquote"] = function (block, generator) {
+  const content = generator.statementToCode(block, "CONTENT");
+  const attribute = generator.valueToCode(block, "ATTRIBUTE", Order.ATOMIC);
+  const startTag = attribute ? `<blockquote ${attribute}>` : `<blockquote>`;
+  const code = content
+    ? `${startTag}\n${content}</blockquote>\n`
+    : `${startTag}</blockquote>\n`;
+  const indentedCode = generator.prefixLines(code, generator.INDENT);
+  return indentedCode;
+};
+
 websiteGenerator.forBlock["html_ul"] = function (block, generator) {
   const content = generator.statementToCode(block, "CONTENT");
   const attribute = generator.valueToCode(block, "ATTRIBUTE", Order.ATOMIC);

@@ -46,6 +46,16 @@ code {
   overflow: auto  ;
 }
 
+/*styleを指定しない場合のブロックのスタイルを定義*/
+#output blockquote {
+  margin: 1em 0;          /* 上下のマージンを設定 */
+  padding: 0.5em 1em;    /* 内側のパディングを設定 */
+  border-left: 4px solid #ccc; /* 左側にボーダーを追加 */
+  background-color: #f9f9f9;    /* 背景色を設定 */
+  /*color: #333;            /* 文字色を設定 */
+  quotes: "“" "”" "‘" "’"; /* 引用符を設定 */
+}
+
 #button {
   position: relative;
   height: 50px;
