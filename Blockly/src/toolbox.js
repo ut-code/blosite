@@ -46,6 +46,10 @@ export const toolbox = {
         },
         {
           kind: "block",
+          type: "html_br",
+        },
+        {
+          kind: "block",
           type: "html_div",
         },
         {
@@ -54,7 +58,55 @@ export const toolbox = {
         },
         {
           kind: "block",
+          type: "html_i",
+        },
+        {
+          kind: "block",
+          type: "html_b",
+        },
+        {
+          kind: "block",
+          type: "html_u",
+        },
+        {
+          kind: "block",
+          type: "html_del",
+        },
+        {
+          kind: "block",
+          type: "html_ins",
+        },
+        {
+          kind: "block",
+          type: "html_small",
+        },
+        {
+          kind: "block",
+          type: "html_sub",
+        },
+        {
+          kind: "block",
+          type: "html_sup",
+        },
+        {
+          kind: "block",
           type: "html_ul",
+        },
+        {
+          kind: "block",
+          type: "html_em",
+        },
+        {
+          kind: "block",
+          type: "html_code",
+        },
+        {
+          kind: "block",
+          type: "html_kbd",
+        },
+        {
+          kind: "block",
+          type: "html_var",
         },
         {
           'kind': 'block',
@@ -63,6 +115,50 @@ export const toolbox = {
         {
           'kind': 'block',
           'type': 'html_li'
+        },
+        {
+          kind: "block",
+          type: "html_cite",
+        },
+        {
+          kind: "block",
+          type: "html_table",
+        },
+        {
+          kind: "block",
+          type: "html_tr",
+        },
+        {
+          kind: "block",
+          type: "html_td",
+        },
+        {
+          kind: "block",
+          type: "html_th",
+        },
+        {
+          kind: "block",
+          type: "html_thead",
+        },
+        {
+          kind: "block",
+          type: "html_tbody",
+        },
+        {
+          kind: "block",
+          type: "html_tfoot",
+        },
+        {
+          kind: "block",
+          type: "html_caption",
+        },
+        {
+          kind: "block",
+          type: "html_header",
+        },
+        {
+          kind: "block",
+          type: "html_footer",
         },
         {
           kind: "block",

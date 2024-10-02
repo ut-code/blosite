@@ -114,6 +114,198 @@ export const htmlBlocks = Blockly.common.createBlockDefinitionsFromJsonArray([
     nextStatement: null,
   },
   {
+    type: 'html_i',
+    message0: '<i> %1 </i> %2',
+    args0: [
+        {
+            type: 'field_input',
+            name: 'CONTENT'
+        },
+        {
+            type: 'input_value',
+            name: 'ATTRIBUTE'
+        },
+    ],
+    previousStatement: null,
+    nextStatement: null,
+  },
+  {
+    type: 'html_b',
+    message0: '<b> %1 </b> %2',
+    args0: [
+        {
+            type: 'field_input',
+            name: 'CONTENT'
+        },
+        {
+            type: 'input_value',
+            name: 'ATTRIBUTE'
+        },
+    ],
+    previousStatement: null,
+    nextStatement: null,
+  },
+  {
+    type: 'html_u',
+    message0: '<u> %1 </u> %2',
+    args0: [
+        {
+            type: 'field_input',
+            name: 'CONTENT'
+        },
+        {
+            type: 'input_value',
+            name: 'ATTRIBUTE'
+        },
+    ],
+    previousStatement: null,
+    nextStatement: null,
+  },
+  {
+    type: 'html_del',
+    message0: '<del> %1 </del> %2',
+    args0: [
+        {
+            type: 'field_input',
+            name: 'CONTENT'
+        },
+        {
+            type: 'input_value',
+            name: 'ATTRIBUTE'
+        },
+    ],
+    previousStatement: null,
+    nextStatement: null,
+  },
+  {
+    type: 'html_ins',
+    message0: '<ins> %1 </ins> %2',
+    args0: [
+        {
+            type: 'field_input',
+            name: 'CONTENT'
+        },
+        {
+            type: 'input_value',
+            name: 'ATTRIBUTE'
+        },
+    ],
+    previousStatement: null,
+    nextStatement: null,
+  },
+  {
+    type: 'html_small',
+    message0: '<small> %1 </small> %2',
+    args0: [
+        {
+            type: 'field_input',
+            name: 'CONTENT'
+        },
+        {
+            type: 'input_value',
+            name: 'ATTRIBUTE'
+        },
+    ],
+    previousStatement: null,
+    nextStatement: null,
+  },
+  {
+    type: 'html_sub',
+    message0: '<sub> %1 </sub> %2',
+    args0: [
+        {
+            type: 'field_input',
+            name: 'CONTENT'
+        },
+        {
+            type: 'input_value',
+            name: 'ATTRIBUTE'
+        },
+    ],
+    previousStatement: null,
+    nextStatement: null,
+  },
+  {
+    type: 'html_sup',
+    message0: '<sup> %1 </sup> %2',
+    args0: [
+        {
+            type: 'field_input',
+            name: 'CONTENT'
+        },
+        {
+            type: 'input_value',
+            name: 'ATTRIBUTE'
+        },
+    ],
+    previousStatement: null,
+    nextStatement: null,
+  },
+  {
+    type: 'html_em',
+    message0: '<em> %1 </em> %2',
+    args0: [
+        {
+            type: 'field_input',
+            name: 'CONTENT'
+        },
+        {
+            type: 'input_value',
+            name: 'ATTRIBUTE'
+        },
+    ],
+    previousStatement: null,
+    nextStatement: null,
+  },
+  {
+    type: 'html_code',
+    message0: '<code> %1 </code> %2',
+    args0: [
+        {
+            type: 'field_input',
+            name: 'CONTENT'
+        },
+        {
+            type: 'input_value',
+            name: 'ATTRIBUTE'
+        },
+    ],
+    previousStatement: null,
+    nextStatement: null,
+  },
+  {
+    type: 'html_kbd',
+    message0: '<kbd> %1 </kbd> %2',
+    args0: [
+        {
+            type: 'field_input',
+            name: 'CONTENT'
+        },
+        {
+            type: 'input_value',
+            name: 'ATTRIBUTE'
+        },
+    ],
+    previousStatement: null,
+    nextStatement: null,
+  },
+  {
+    type: 'html_var',
+    message0: '<var> %1 </var> %2',
+    args0: [
+        {
+            type: 'field_input',
+            name: 'CONTENT'
+        },
+        {
+            type: 'input_value',
+            name: 'ATTRIBUTE'
+        },
+    ],
+    previousStatement: null,
+    nextStatement: null,
+  },
+  {
     type: "html_ul",
     message0: "<ul> %1 %2 </ul>",
     args0: [
@@ -157,6 +349,182 @@ export const htmlBlocks = Blockly.common.createBlockDefinitionsFromJsonArray([
             'type': 'input_value',
             'name': 'ATTRIBUTE'
         },
+    ],
+    previousStatement: null,
+    nextStatement: null,
+  },
+  {
+    'type': 'html_cite',
+    'message0': '<cite> %1 </cite> %2',
+    'args0': [
+        {
+            'type': 'field_input',
+            'name': 'CONTENT'
+        },
+        {
+            'type': 'input_value',
+            'name': 'ATTRIBUTE'
+        },
+    ],
+    previousStatement: null,
+    nextStatement: null,
+  },
+  {
+    type: "html_table",
+    message0: "<table> %1 %2 </table>",
+    args0: [
+      {
+        type: "input_value",
+        name: "ATTRIBUTE",
+      },
+      {
+        type: "input_statement",
+        name: "CONTENT",
+      },
+    ],
+    previousStatement: null,
+    nextStatement: null,
+  },
+  {
+    type: "html_thead",
+    message0: "<thead> %1 %2 </thead>",
+    args0: [
+      {
+        type: "input_value",
+        name: "ATTRIBUTE",
+      },
+      {
+        type: "input_statement",
+        name: "CONTENT",
+      },
+    ],
+    previousStatement: null,
+    nextStatement: null,
+  },
+  {
+    type: "html_tbody",
+    message0: "<tbody> %1 %2 </tbody>",
+    args0: [
+      {
+        type: "input_value",
+        name: "ATTRIBUTE",
+      },
+      {
+        type: "input_statement",
+        name: "CONTENT",
+      },
+    ],
+    previousStatement: null,
+    nextStatement: null,
+  },
+  {
+    type: "html_tfoot",
+    message0: "<tfoot> %1 %2 </tfoot>",
+    args0: [
+      {
+        type: "input_value",
+        name: "ATTRIBUTE",
+      },
+      {
+        type: "input_statement",
+        name: "CONTENT",
+      },
+    ],
+    previousStatement: null,
+    nextStatement: null,
+  },
+  {
+    type: "html_tr",
+    message0: "<tr> %1 %2 </tr>",
+    args0: [
+      {
+        type: "input_value",
+        name: "ATTRIBUTE",
+      },
+      {
+        type: "input_statement",
+        name: "CONTENT",
+      },
+    ],
+    previousStatement: null,
+    nextStatement: null,
+  },
+  {
+    'type': 'html_caption',
+    'message0': '<caption> %1 </caption> %2',
+    'args0': [
+        {
+            'type': 'field_input',
+            'name': 'CONTENT'
+        },
+        {
+            'type': 'input_value',
+            'name': 'ATTRIBUTE'
+        },
+    ],
+    previousStatement: null,
+    nextStatement: null,
+  },
+  {
+    'type': 'html_th',
+    'message0': '<th> %1 </th> %2',
+    'args0': [
+        {
+            'type': 'field_input',
+            'name': 'CONTENT'
+        },
+        {
+            'type': 'input_value',
+            'name': 'ATTRIBUTE'
+        },
+    ],
+    previousStatement: null,
+    nextStatement: null,
+  },
+  {
+    'type': 'html_td',
+    'message0': '<td> %1 </td> %2',
+    'args0': [
+        {
+            'type': 'field_input',
+            'name': 'CONTENT'
+        },
+        {
+            'type': 'input_value',
+            'name': 'ATTRIBUTE'
+        },
+    ],
+    previousStatement: null,
+    nextStatement: null,
+  },
+  {
+    type: "html_header",
+    message0: "<header> %1 %2 </header>",
+    args0: [
+      {
+        type: "input_value",
+        name: "ATTRIBUTE",
+      },
+      {
+        type: "input_statement",
+        name: "CONTENT",
+      },
+    ],
+    previousStatement: null,
+    nextStatement: null,
+  },
+  {
+    type: "html_footer",
+    message0: "<footer> %1 %2 </footer>",
+    args0: [
+      {
+        type: "input_value",
+        name: "ATTRIBUTE",
+      },
+      {
+        type: "input_statement",
+        name: "CONTENT",
+      },
     ],
     previousStatement: null,
     nextStatement: null,
@@ -249,22 +617,6 @@ export const htmlBlocks = Blockly.common.createBlockDefinitionsFromJsonArray([
       },
     ],
     output: null,
-},
-{
-    'type': 'html_font-size',
-    'message0': 'font-size = %1 %2',
-    'args0': [
-        {
-            'type': 'field_input',
-            'name': 'FIELD',
-            'text': '16'
-        },
-        {
-            'type': 'input_value',
-            'name': 'VALUE'
-        }
-    ],
-    'output': null,
 },
 {
     'type': 'html_strong',
