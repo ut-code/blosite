@@ -7,7 +7,7 @@
 import * as Blockly from 'blockly/core';
 
 // キャッシュの保存先を決定
-const storageKey = 'htmlGeneratorWorkspace';
+const storageKey = 'htmlGeneratorWorkspac';
 
 /**
  * Saves the state of the workspace to browser's local storage.
