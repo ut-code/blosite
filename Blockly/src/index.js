@@ -85,12 +85,20 @@ const runCode = () => {
   const scriptCode = match ? match[1] : '';
   
   // スクリプトを動的に評価
+/*
   try {
       eval(DOMPurify.sanitize(scriptCode));
   } catch (e) {
       console.error(e);
   }
-  
+*/
+  /*
+  const outputId = document.getElementById("output");
+  const addDiv = document.createElement("div")
+  addDiv.textContent =DOMPurify.sanitize(scriptCode);
+  outputId.appendChild(addDiv);
+  */
+
   // スクリプトを動的に評価
   // const script = document.createElement('script');
   // script.textContent = scriptCode;
@@ -193,6 +201,42 @@ ws.addChangeListener((e) => {
   
 
   runCode();
+  /*
+  function getCodeContent(){
+    const getCodeId = document.getElementById("generatedCode");
+    const pickCode = getCodeId.querySelector("code");
+    const getContentOfCode = pickCode ? pickCode.textContent : getCodeId.textContent;
+    return getContentOfCode
+  };
+  const outputId = document.getElementById("output");
+  const addDiv = document.createElement("div")
+  addDiv.textContent = getCodeContent();
+  outputId.appendChild(addDiv);
+  */
+
+  const code = websiteGenerator.workspaceToCode(ws);
+  codeDiv.innerText = code;
+  outputDiv.innerHTML = code;
+  const scriptRegex = /<script>([\s\S]*?)<\/script>/;
+  const match = code.match(scriptRegex);
+  const scriptCode = match ? match[1] : '';
+  const getErrorId = document.getElementById("errorMessage");
+  /*
+  const addDiv2 = document.createElement("div");
+  addDiv2.textContent = scriptCode;
+  outputId.appendChild(addDiv2);
+  */
+  try {
+    Function(DOMPurify.sanitize(scriptCode));
+    getErrorId.textContent = "何もエラーは起こってません"
+    getErrorId.classList = "safe"
+  }  catch (e) {
+    getErrorId.textContent = e.name + " " +e.message 
+    getErrorId.classList = "errorOccured"
+  }
+
+
+
 
 });
 limitBlockCount(ws,'html_html-head-body',1);
@@ -246,3 +290,14 @@ document.getElementById("button").onclick = () => {
     getButtonID.textContent = "コードを表示する";
   }
 }
+const popupId = document.getElementById("popup");
+const popupOuterId = document.getElementById("popup-outer");
+const popupInnerId = document.getElementById("popup-inner");
+const closeId = document.getElementById("close");
+
+popupId.addEventListener('click', e => {
+  if ((e.target.id === popupOuterId.id) || (e.target.id === closeId.id)){
+    popupOuterId.style.display = 'none';
+    popupInnerId.style.display = 'none';
+  }
+})
