@@ -590,105 +590,120 @@ Blockly.Extensions.registerMutator(
 websiteGenerator.forBlock["css_color"] = function (block, generator) {
   const field = block.getFieldValue("FIELD");
   const value = generator.valueToCode(block, "VALUE", Order.ATOMIC);
-  const code = value ? `color:${field}; ${value}` : `color:${field}`;
+  const sanitizedField = sanitizeInput(field);
+  const code = value ? `color:${sanitizedField}; ${value}` : `color:${sanitixedField}`;
   return [code, Order.ATOMIC];
 };
 
 websiteGenerator.forBlock["css_font-size"] = function (block, generator) {
   const field = block.getFieldValue("FIELD");
   const value = generator.valueToCode(block, "VALUE", Order.ATOMIC);
-  const code = value ? `font-size:${field}; ${value}` : `font-size:${field}`;
+  const sanitizedField = sanitizeInput(field);
+  const code = value ? `font-size:${sanitizedField}; ${value}` : `font-size:${sanitizedField}`;
   return [code, Order.ATOMIC];
 };
 
 websiteGenerator.forBlock["css_font-weight"] = function (block, generator) {
   const field = block.getFieldValue("FIELD");
   const value = generator.valueToCode(block, "VALUE", Order.ATOMIC);
-  const code = value ? `font-weight:${field}; ${value}` : `font-weight:${field}`;
+  const sanitizedField = sanitizeInput(field);
+  const code = value ? `font-weight:${sanitizedField}; ${value}` : `font-weight:${sanitizedField}`;
   return [code, Order.ATOMIC];
 };
 
 websiteGenerator.forBlock["css_line-weight"] = function (block, generator) {
   const field = block.getFieldValue("FIELD");
   const value = generator.valueToCode(block, "VALUE", Order.ATOMIC);
-  const code = value ? `line-weight:${field}; ${value}` : `line-weight:${field}`;
+  const sanitizedField = sanitizeInput(field);
+  const code = value ? `line-weight:${sanitizedField}; ${value}` : `line-weight:${sanitizedField}`;
   return [code, Order.ATOMIC];
 };
 
 websiteGenerator.forBlock["css_background-color"] = function (block, generator) {
   const field = block.getFieldValue("FIELD");
   const value = generator.valueToCode(block, "VALUE", Order.ATOMIC);
-  const code = value ? `background-color:${field}; ${value}` : `background-color:${field}`;
+  const sanitizedField = sanitizeInput(field);
+  const code = value ? `background-color:${sanitizedField}; ${value}` : `background-color:${sanitizedField}`;
   return [code, Order.ATOMIC];
 };
 
 websiteGenerator.forBlock["css_margin"] = function (block, generator) {
   const field = block.getFieldValue("FIELD");
   const value = generator.valueToCode(block, "VALUE", Order.ATOMIC);
-  const code = value ? `margin:${field}; ${value}` : `margin:${field}`;
+  const sanitizedField = sanitizeInput(field);
+  const code = value ? `margin:${sanitizedField}; ${value}` : `margin:${sanitizedField}`;
   return [code, Order.ATOMIC];
 };
 
 websiteGenerator.forBlock["css_padding"] = function (block, generator) {
   const field = block.getFieldValue("FIELD");
   const value = generator.valueToCode(block, "VALUE", Order.ATOMIC);
-  const code = value ? `padding:${field}; ${value}` : `padding:${field}`;
+  const sanitizedField = sanitizeInput(field);
+  const code = value ? `padding:${sanitizedField}; ${value}` : `padding:${sanitizedField}`;
   return [code, Order.ATOMIC];
 };
 
 websiteGenerator.forBlock["css_border"] = function (block, generator) {
   const field = block.getFieldValue("FIELD");
   const value = generator.valueToCode(block, "VALUE", Order.ATOMIC);
-  const code = value ? `border:${field}; ${value}` : `border:${field}`;
+  const sanitizedField = sanitizeInput(field);
+  const code = value ? `border:${sanitizedField}; ${value}` : `border:${sanitizedField}`;
   return [code, Order.ATOMIC];
 };
 
 websiteGenerator.forBlock["css_border-radius"] = function (block, generator) {
   const field = block.getFieldValue("FIELD");
   const value = generator.valueToCode(block, "VALUE", Order.ATOMIC);
-  const code = value ? `border-radius:${field}; ${value}` : `border-radius:${field}`;
+  const sanitizedField = sanitizeInput(field);
+  const code = value ? `border-radius:${sanitizedField}; ${value}` : `border-radius:${sanitizedField}`;
   return [code, Order.ATOMIC];
 };
 
 websiteGenerator.forBlock["css_display"] = function (block, generator) {
   const field = block.getFieldValue("FIELD");
   const value = generator.valueToCode(block, "VALUE", Order.ATOMIC);
-  const code = value ? `display:${field}; ${value}` : `display:${field}`;
+  const sanitizedField = sanitizeInput(field);
+  const code = value ? `display:${sanitizedField}; ${value}` : `display:${sanitizedField}`;
   return [code, Order.ATOMIC];
 };
 
 websiteGenerator.forBlock["css_position"] = function (block, generator) {
   const field = block.getFieldValue("FIELD");
   const value = generator.valueToCode(block, "VALUE", Order.ATOMIC);
-  const code = value ? `position:${field}; ${value}` : `position:${field}`;
+  const sanitizedField = sanitizeInput(field);
+  const code = value ? `position:${sanitizedField}; ${value}` : `position:${sanitizedField}`;
   return [code, Order.ATOMIC];
 };
 
 websiteGenerator.forBlock["css_top"] = function (block, generator) {
   const field = block.getFieldValue("FIELD");
   const value = generator.valueToCode(block, "VALUE", Order.ATOMIC);
-  const code = value ? `top:${field}; ${value}` : `top:${field}`;
+  const sanitizedField = sanitizeInput(field);
+  const code = value ? `top:${sanitizedField}; ${value}` : `top:${sanitizedField}`;
   return [code, Order.ATOMIC];
 };
 
 websiteGenerator.forBlock["css_left"] = function (block, generator) {
   const field = block.getFieldValue("FIELD");
   const value = generator.valueToCode(block, "VALUE", Order.ATOMIC);
-  const code = value ? `left:${field}; ${value}` : `left:${field}`;
+  const sanitizedField = sanitizeInput(field);
+  const code = value ? `left:${sanitizedField}; ${value}` : `left:${sanitizedField}`;
   return [code, Order.ATOMIC];
 };
 
 websiteGenerator.forBlock["css_right"] = function (block, generator) {
   const field = block.getFieldValue("FIELD");
   const value = generator.valueToCode(block, "VALUE", Order.ATOMIC);
-  const code = value ? `right:${field}; ${value}` : `right:${field}`;
+  const sanitizedField = sanitizeInput(field);
+  const code = value ? `right:${sanitizedField}; ${value}` : `right:${sanitizedField}`;
   return [code, Order.ATOMIC];
 };
 
 websiteGenerator.forBlock["css_bottom"] = function (block, generator) {
   const field = block.getFieldValue("FIELD");
   const value = generator.valueToCode(block, "VALUE", Order.ATOMIC);
-  const code = value ? `bottom:${field}; ${value}` : `bottom:${field}`;
+  const sanitizedField = sanitizeInput(field);
+  const code = value ? `bottom:${sanitizedField}; ${value}` : `bottom:${sanitizedField}`;
   return [code, Order.ATOMIC];
 };
 
