@@ -132,19 +132,24 @@ code {
 }
 */
 #popup-outer{
-  position: relative;
+  position: absolute;
   top: 0;
   left: 0;
   height: 100%;
   width: 100%;
+  background: rgba(100,100,100,0.5);
+  z-index: 5000000;
+  opacity: 0.5;
 }
 
 #popup-inner{
   position:absolute;
   top: 10%;
   left: 10%;
-  height: 300px;
-  width: 500px;
+  height: 80%;
+  width: 80%;
+  background-color  : rgba(255, 255, 255, 1);
+  z-index: 10000000;
 }
 
 #close {

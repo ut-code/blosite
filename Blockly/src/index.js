@@ -290,12 +290,14 @@ document.getElementById("button").onclick = () => {
     getButtonID.textContent = "コードを表示する";
   }
 }
-
+const popupId = document.getElementById("popup");
 const popupOuterId = document.getElementById("popup-outer");
+const popupInnerId = document.getElementById("popup-inner");
 const closeId = document.getElementById("close");
 
-popupOuterId.addEventListener('click', e => {
+popupId.addEventListener('click', e => {
   if ((e.target.id === popupOuterId.id) || (e.target.id === closeId.id)){
     popupOuterId.style.display = 'none';
+    popupInnerId.style.display = 'none';
   }
 })
