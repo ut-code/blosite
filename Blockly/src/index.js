@@ -290,3 +290,12 @@ document.getElementById("button").onclick = () => {
     getButtonID.textContent = "コードを表示する";
   }
 }
+
+const popupOuterId = document.getElementById("popup-outer");
+const closeId = document.getElementById("close");
+
+popupOuterId.addEventListener('click', e => {
+  if ((e.target.id === popupOuterId.id) || (e.target.id === closeId.id)){
+    popupOuterId.style.display = 'none';
+  }
+})
