@@ -21,6 +21,22 @@ import { Order } from "blockly/javascript";
 //     return code;
 // };
 
+function sanitizeInput(input) {
+  // エスケープ処理
+  const escapeHtml = (unsafe) => {
+      return unsafe
+          .replace(/&/g, '&amp;')
+          .replace(/</g, '&lt;')
+          .replace(/>/g, '&gt;')
+          .replace(/"/g, '&quot;')
+          .replace(/'/g, '&#039;');
+  };
+
+  // エスケープされた文字列をDOMPurifyでさらにサニタイズ
+  const escapedInput = escapeHtml(input);
+  return DOMPurify.sanitize(escapedInput);
+}
+
 // ブロックの生成するコードを定義
 websiteGenerator.forBlock["html_html-head-body"] = function (block, generator) {
   const headContent = generator.statementToCode(block, "HEAD");
@@ -41,7 +57,7 @@ websiteGenerator.forBlock["html_comment"] = function (block, generator) {
 websiteGenerator.forBlock["html_text"] = function (block, generator) {
   const content = block.getFieldValue("TEXT");
   const nextBlock = block.getNextBlock();
-  const sanitizedContent = DOMPurify.sanitize(content);
+  const sanitizedContent = sanitizeInput(content);
 
   // 下のブロックが存在する場合、そのtypeを取得
   let nextType = null;
@@ -114,7 +130,7 @@ websiteGenerator.forBlock["html_blockquote"] = function (block, generator) {
 websiteGenerator.forBlock["html_i"] = function (block, generator) {
   const content = block.getFieldValue("CONTENT");
   const attribute = generator.valueToCode(block, "ATTRIBUTE", Order.ATOMIC);
-  const sanitizedContent = DOMPurify.sanitize(content);
+  const sanitizedContent = sanitizeInput(content);
   const startTag = attribute ? `<i ${attribute}>` : `<i>`;
   const code = `${startTag}${sanitizedContent}</i>\n`;
   const indentedCode = generator.prefixLines(code, generator.INDENT);
@@ -124,7 +140,7 @@ websiteGenerator.forBlock["html_i"] = function (block, generator) {
 websiteGenerator.forBlock["html_b"] = function (block, generator) {
   const content = block.getFieldValue("CONTENT");
   const attribute = generator.valueToCode(block, "ATTRIBUTE", Order.ATOMIC);
-  const sanitizedContent = DOMPurify.sanitize(content);
+  const sanitizedContent = sanitizeInput(content);
   const startTag = attribute ? `<b ${attribute}>` : `<b>`;
   const code = `${startTag}${sanitizedContent}</b>\n`;
   const indentedCode = generator.prefixLines(code, generator.INDENT);
@@ -134,7 +150,7 @@ websiteGenerator.forBlock["html_b"] = function (block, generator) {
 websiteGenerator.forBlock["html_u"] = function (block, generator) {
   const content = block.getFieldValue("CONTENT");
   const attribute = generator.valueToCode(block, "ATTRIBUTE", Order.ATOMIC);
-  const sanitizedContent = DOMPurify.sanitize(content);
+  const sanitizedContent = sanitizeInput(content);
   const startTag = attribute ? `<u ${attribute}>` : `<u>`;
   const code = `${startTag}${sanitizedContent}</u>\n`;
   const indentedCode = generator.prefixLines(code, generator.INDENT);
@@ -144,7 +160,7 @@ websiteGenerator.forBlock["html_u"] = function (block, generator) {
 websiteGenerator.forBlock["html_del"] = function (block, generator) {
   const content = block.getFieldValue("CONTENT");
   const attribute = generator.valueToCode(block, "ATTRIBUTE", Order.ATOMIC);
-  const sanitizedContent = DOMPurify.sanitize(content);
+  const sanitizedContent = sanitizeInput(content);
   const startTag = attribute ? `<del ${attribute}>` : `<del>`;
   const code = `${startTag}${sanitizedContent}</del>\n`;
   const indentedCode = generator.prefixLines(code, generator.INDENT);
@@ -154,7 +170,7 @@ websiteGenerator.forBlock["html_del"] = function (block, generator) {
 websiteGenerator.forBlock["html_ins"] = function (block, generator) {
   const content = block.getFieldValue("CONTENT");
   const attribute = generator.valueToCode(block, "ATTRIBUTE", Order.ATOMIC);
-  const sanitizedContent = DOMPurify.sanitize(content);
+  const sanitizedContent = sanitizeInput(content);
   const startTag = attribute ? `<ins ${attribute}>` : `<ins>`;
   const code = `${startTag}${sanitizedContent}</ins>\n`;
   const indentedCode = generator.prefixLines(code, generator.INDENT);
@@ -164,7 +180,7 @@ websiteGenerator.forBlock["html_ins"] = function (block, generator) {
 websiteGenerator.forBlock["html_small"] = function (block, generator) {
   const content = block.getFieldValue("CONTENT");
   const attribute = generator.valueToCode(block, "ATTRIBUTE", Order.ATOMIC);
-  const sanitizedContent = DOMPurify.sanitize(content);
+  const sanitizedContent = sanitizeInput(content);
   const startTag = attribute ? `<small ${attribute}>` : `<small>`;
   const code = `${startTag}${sanitizedContent}</small>\n`;
   const indentedCode = generator.prefixLines(code, generator.INDENT);
@@ -174,7 +190,7 @@ websiteGenerator.forBlock["html_small"] = function (block, generator) {
 websiteGenerator.forBlock["html_sub"] = function (block, generator) {
   const content = block.getFieldValue("CONTENT");
   const attribute = generator.valueToCode(block, "ATTRIBUTE", Order.ATOMIC);
-  const sanitizedContent = DOMPurify.sanitize(content);
+  const sanitizedContent = sanitizeInput(content);
   const startTag = attribute ? `<sub ${attribute}>` : `<sub>`;
   const code = `${startTag}${sanitizedContent}</sub>\n`;
   const indentedCode = generator.prefixLines(code, generator.INDENT);
@@ -184,7 +200,7 @@ websiteGenerator.forBlock["html_sub"] = function (block, generator) {
 websiteGenerator.forBlock["html_sup"] = function (block, generator) {
   const content = block.getFieldValue("CONTENT");
   const attribute = generator.valueToCode(block, "ATTRIBUTE", Order.ATOMIC);
-  const sanitizedContent = DOMPurify.sanitize(content);
+  const sanitizedContent = sanitizeInput(content);
   const startTag = attribute ? `<sup ${attribute}>` : `<sup>`;
   const code = `${startTag}${sanitizedContent}</sup>\n`;
   const indentedCode = generator.prefixLines(code, generator.INDENT);
@@ -194,7 +210,7 @@ websiteGenerator.forBlock["html_sup"] = function (block, generator) {
 websiteGenerator.forBlock["html_em"] = function (block, generator) {
   const content = block.getFieldValue("CONTENT");
   const attribute = generator.valueToCode(block, "ATTRIBUTE", Order.ATOMIC);
-  const sanitizedContent = DOMPurify.sanitize(content);
+  const sanitizedContent = sanitizeInput(content);
   const startTag = attribute ? `<em ${attribute}>` : `<em>`;
   const code = `${startTag}${sanitizedContent}</em>\n`;
   const indentedCode = generator.prefixLines(code, generator.INDENT);
@@ -204,7 +220,7 @@ websiteGenerator.forBlock["html_em"] = function (block, generator) {
 websiteGenerator.forBlock["html_code"] = function (block, generator) {
   const content = block.getFieldValue("CONTENT");
   const attribute = generator.valueToCode(block, "ATTRIBUTE", Order.ATOMIC);
-  const sanitizedContent = DOMPurify.sanitize(content);
+  const sanitizedContent = sanitizeInput(content);
   const startTag = attribute ? `<code ${attribute}>` : `<code>`;
   const code = `${startTag}${sanitizedContent}</code>\n`;
   const indentedCode = generator.prefixLines(code, generator.INDENT);
@@ -214,7 +230,7 @@ websiteGenerator.forBlock["html_code"] = function (block, generator) {
 websiteGenerator.forBlock["html_kbd"] = function (block, generator) {
   const content = block.getFieldValue("CONTENT");
   const attribute = generator.valueToCode(block, "ATTRIBUTE", Order.ATOMIC);
-  const sanitizedContent = DOMPurify.sanitize(content);
+  const sanitizedContent = sanitizeInput(content);
   const startTag = attribute ? `<kbd ${attribute}>` : `<kbd>`;
   const code = `${startTag}${sanitizedContent}</kbd>\n`;
   const indentedCode = generator.prefixLines(code, generator.INDENT);
@@ -224,7 +240,7 @@ websiteGenerator.forBlock["html_kbd"] = function (block, generator) {
 websiteGenerator.forBlock["html_var"] = function (block, generator) {
   const content = block.getFieldValue("CONTENT");
   const attribute = generator.valueToCode(block, "ATTRIBUTE", Order.ATOMIC);
-  const sanitizedContent = DOMPurify.sanitize(content);
+  const sanitizedContent = sanitizeInput(content);
   const startTag = attribute ? `<var ${attribute}>` : `<var>`;
   const code = `${startTag}${sanitizedContent}</var>\n`;
   const indentedCode = generator.prefixLines(code, generator.INDENT);
@@ -245,7 +261,7 @@ websiteGenerator.forBlock["html_ul"] = function (block, generator) {
 websiteGenerator.forBlock["html_li"] = function (block, generator) {
   const content = block.getFieldValue("CONTENT");
   const attribute = generator.valueToCode(block, "ATTRIBUTE", Order.ATOMIC);
-  const sanitizedContent = DOMPurify.sanitize(content);
+  const sanitizedContent = sanitizeInput(content);
   const startTag = attribute ? `<li ${attribute}>` : `<li>`;
   const code = `${startTag}${sanitizedContent}</li>\n`;
   const indentedCode = generator.prefixLines(code, generator.INDENT);
@@ -264,7 +280,7 @@ websiteGenerator.forBlock['html_ol'] = function(block, generator) {
 websiteGenerator.forBlock["html_cite"] = function (block, generator) {
   const content = block.getFieldValue("CONTENT");
   const attribute = generator.valueToCode(block, "ATTRIBUTE", Order.ATOMIC);
-  const sanitizedContent = DOMPurify.sanitize(content);
+  const sanitizedContent = sanitizeInput(content);
   const startTag = attribute ? `<cite ${attribute}>` : `<cite>`;
   const code = `${startTag}${sanitizedContent}</cite>\n`;
   const indentedCode = generator.prefixLines(code, generator.INDENT);
@@ -329,7 +345,7 @@ websiteGenerator.forBlock["html_tr"] = function (block, generator) {
 websiteGenerator.forBlock["html_th"] = function (block, generator) {
   const content = block.getFieldValue("CONTENT");
   const attribute = generator.valueToCode(block, "ATTRIBUTE", Order.ATOMIC);
-  const sanitizedContent = DOMPurify.sanitize(content);
+  const sanitizedContent = sanitizeInput(content);
   const startTag = attribute ? `<th ${attribute}>` : `<th>`;
   const code = `${startTag}${sanitizedContent}</th>\n`;
   const indentedCode = generator.prefixLines(code, generator.INDENT);
@@ -339,7 +355,7 @@ websiteGenerator.forBlock["html_th"] = function (block, generator) {
 websiteGenerator.forBlock["html_td"] = function (block, generator) {
   const content = block.getFieldValue("CONTENT");
   const attribute = generator.valueToCode(block, "ATTRIBUTE", Order.ATOMIC);
-  const sanitizedContent = DOMPurify.sanitize(content);
+  const sanitizedContent = sanitizeInput(content);
   const startTag = attribute ? `<td ${attribute}>` : `<td>`;
   const code = `${startTag}${sanitizedContent}</td>\n`;
   const indentedCode = generator.prefixLines(code, generator.INDENT);
@@ -368,6 +384,17 @@ websiteGenerator.forBlock["html_footer"] = function (block, generator) {
   return indentedCode;
 };
 
+websiteGenerator.forBlock["html_hgroup"] = function (block, generator) {
+  const content = generator.statementToCode(block, "CONTENT");
+  const attribute = generator.valueToCode(block, "ATTRIBUTE", Order.ATOMIC);
+  const startTag = attribute ? `<hgroup ${attribute}>` : `<hgroup>`;
+  const code = content
+    ? `${startTag}\n${content}</hgroup>\n`
+    : `${startTag}</hgroup>\n`;
+  const indentedCode = generator.prefixLines(code, generator.INDENT);
+  return indentedCode;
+};
+
 websiteGenerator.forBlock["html_button"] = function (block, generator) {
   const content = generator.statementToCode(block, "CONTENT");
   const attribute = generator.valueToCode(block, "ATTRIBUTE", Order.ATOMIC);
@@ -379,11 +406,66 @@ websiteGenerator.forBlock["html_button"] = function (block, generator) {
   return indentedCode;
 };
 
-websiteGenerator.forBlock['html_input'] = function(block, generator) {
-    const content = block.getFieldValue('CONTENT');
-    const value = generator.valueToCode(block, 'VALUE', Order.ATOMIC);
-    const code = value ? `<input type= ${content} ${value}>\n` : `<input type="${content}">\n`;
-    return code;
+websiteGenerator.forBlock["html_form"] = function (block, generator) {
+  const content = generator.statementToCode(block, "CONTENT");
+  const attribute = generator.valueToCode(block, "ATTRIBUTE", Order.ATOMIC);
+  const startTag = attribute ? `<form ${attribute}>` : `<form>`;
+  const code = content
+    ? `${startTag}\n${content}</form>\n`
+    : `${startTag}</form>\n`;
+  const indentedCode = generator.prefixLines(code, generator.INDENT);
+  return indentedCode;
+};
+
+websiteGenerator.forBlock["html_input"] = function (block, generator) {
+  const attribute = generator.valueToCode(block, "ATTRIBUTE", Order.ATOMIC);
+  const startTag = attribute ? `<input ${attribute}` : `<input`;
+  const code = `${startTag} />\n`;
+  const indentedCode = generator.prefixLines(code, generator.INDENT);
+  return indentedCode;
+};
+
+websiteGenerator.forBlock["html_textarea"] = function (block, generator) {
+  const content = generator.statementToCode(block, "CONTENT");
+  const attribute = generator.valueToCode(block, "ATTRIBUTE", Order.ATOMIC);
+  const startTag = attribute ? `<textarea ${attribute}>` : `<textarea>`;
+  const code = content
+    ? `${startTag}\n${content}</textarea>\n`
+    : `${startTag}</textarea>\n`;
+  const indentedCode = generator.prefixLines(code, generator.INDENT);
+  return indentedCode;
+};
+
+websiteGenerator.forBlock["html_select"] = function (block, generator) {
+  const content = generator.statementToCode(block, "CONTENT");
+  const attribute = generator.valueToCode(block, "ATTRIBUTE", Order.ATOMIC);
+  const startTag = attribute ? `<select ${attribute}>` : `<select>`;
+  const code = content
+    ? `${startTag}\n${content}</select>\n`
+    : `${startTag}</select>\n`;
+  const indentedCode = generator.prefixLines(code, generator.INDENT);
+  return indentedCode;
+};
+
+websiteGenerator.forBlock["html_optgroup"] = function (block, generator) {
+  const content = generator.statementToCode(block, "CONTENT");
+  const attribute = generator.valueToCode(block, "ATTRIBUTE", Order.ATOMIC);
+  const startTag = attribute ? `<optgroup ${attribute}>` : `<optgroup>`;
+  const code = content
+    ? `${startTag}\n${content}</optgroup>\n`
+    : `${startTag}</optgroup>\n`;
+  const indentedCode = generator.prefixLines(code, generator.INDENT);
+  return indentedCode;
+};
+
+websiteGenerator.forBlock["html_option"] = function (block, generator) {
+  const content = block.getFieldValue("CONTENT");
+  const attribute = generator.valueToCode(block, "ATTRIBUTE", Order.ATOMIC);
+  const sanitizedContent = sanitizeInput(content);
+  const startTag = attribute ? `<option ${attribute}>` : `<option>`;
+  const code = `${startTag}${sanitizedContent}</option>\n`;
+  const indentedCode = generator.prefixLines(code, generator.INDENT);
+  return indentedCode;
 };
 
 websiteGenerator.forBlock["html_script"] = function (block, generator) {
@@ -400,7 +482,8 @@ websiteGenerator.forBlock["html_script"] = function (block, generator) {
 websiteGenerator.forBlock["html_id"] = function (block, generator) {
   const field = block.getFieldValue("FIELD");
   const value = generator.valueToCode(block, "VALUE", Order.ATOMIC);
-  const code = value ? `id="${field}" ${value}` : `id="${field}"`;
+  const sanitizedField = sanitizeInput(field);
+  const code = value ? `id="${sanitizedField}" ${value}` : `id="${sanitizedField}"`;
   return [code, Order.ATOMIC]; // valueは配列で返す
 };
 

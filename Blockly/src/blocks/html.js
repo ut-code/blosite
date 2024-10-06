@@ -530,6 +530,22 @@ export const htmlBlocks = Blockly.common.createBlockDefinitionsFromJsonArray([
     nextStatement: null,
   },
   {
+    type: "html_hgroup",
+    message0: "<hgroup> %1 %2 </hgroup>",
+    args0: [
+      {
+        type: "input_value",
+        name: "ATTRIBUTE",
+      },
+      {
+        type: "input_statement",
+        name: "CONTENT",
+      },
+    ],
+    previousStatement: null,
+    nextStatement: null,
+  },
+  {
     type: "html_button",
     message0: "<button> %1 %2 </button>",
     args0: [
@@ -544,6 +560,34 @@ export const htmlBlocks = Blockly.common.createBlockDefinitionsFromJsonArray([
     ],
     previousStatement: null,
     nextStatement: null,
+  },
+  {
+    type: "html_form",
+    message0: "<form> %1 %2 </form>",
+    args0: [
+      {
+        type: "input_value",
+        name: "ATTRIBUTE",
+      },
+      {
+        type: "input_statement",
+        name: "CONTENT",
+      },
+    ],
+    previousStatement: null,
+    nextStatement: null,
+  },
+  {
+    'type': 'html_input',
+    'message0': '<input /> %1',
+    'args0': [
+      {
+        type: "input_value",
+        name: "ATTRIBUTE",
+      },
+    ],
+    'previousStatement': null,
+    'nextStatement': null,
   },
   {
     type: "html_script",
@@ -562,8 +606,87 @@ export const htmlBlocks = Blockly.common.createBlockDefinitionsFromJsonArray([
     nextStatement: null,
   },
   {
+    type: "html_textarea",
+    message0: "<textarea> %1 %2 </textarea>",
+    args0: [
+      {
+        type: "input_value",
+        name: "ATTRIBUTE",
+      },
+      {
+        type: "input_statement",
+        name: "CONTENT",
+      },
+    ],
+    previousStatement: null,
+    nextStatement: null,
+  },
+  {
+    type: "html_select",
+    message0: "<select> %1 %2 </select>",
+    args0: [
+      {
+        type: "input_value",
+        name: "ATTRIBUTE",
+      },
+      {
+        type: "input_statement",
+        name: "CONTENT",
+      },
+    ],
+    previousStatement: null,
+    nextStatement: null,
+  },
+  {
+    type: "html_optgroup",
+    message0: "<optgroup> %1 %2 </optgroup>",
+    args0: [
+      {
+        type: "input_value",
+        name: "ATTRIBUTE",
+      },
+      {
+        type: "input_statement",
+        name: "CONTENT",
+      },
+    ],
+    previousStatement: null,
+    nextStatement: null,
+  },
+  {
+    'type': 'html_option',
+    'message0': '<option> %1 </option> %2',
+    'args0': [
+        {
+            'type': 'field_input',
+            'name': 'CONTENT'
+        },
+        {
+            'type': 'input_value',
+            'name': 'ATTRIBUTE'
+        },
+    ],
+    previousStatement: null,
+    nextStatement: null,
+  },
+  {
     type: "html_id",
     message0: 'id = "%1" %2',
+    args0: [
+      {
+        type: "field_input",
+        name: "FIELD",
+      },
+      {
+        type: "input_value",
+        name: "VALUE",
+      },
+    ],
+    output: null,
+  },
+  {
+    type: "html_class",
+    message0: 'class = "%1" %2',
     args0: [
       {
         type: "field_input",
@@ -634,24 +757,6 @@ export const htmlBlocks = Blockly.common.createBlockDefinitionsFromJsonArray([
     'previousStatement': null,
     'nextStatement': null,
 },
-{
-    'type': 'html_input',
-    'message0': 'input type = %1 %2',
-    'args0': [
-        {
-            'type': 'field_input',
-            'name': 'CONTENT',
-            'text': 'text'
-        },
-        {
-            'type': 'input_value',
-            'name': 'VALUE'
-        }
-    ],
-    'previousStatement': null,
-    'nextStatement': null,
-},
-
 {
     'type': 'html_text',
     'message0': '%1',
@@ -1101,6 +1206,5 @@ Blockly.Blocks['html_hn'] = {
 
     // ドロップダウンの値に応じてラベルを変更
     labelField.setValue(`</h${selectedOption}>`);
-    console.log(`</h${selectedOption}>`);
   }
 };

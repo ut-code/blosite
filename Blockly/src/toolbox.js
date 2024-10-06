@@ -162,7 +162,35 @@ export const toolbox = {
         },
         {
           kind: "block",
+          type: "html_hgroup",
+        },
+        {
+          kind: "block",
           type: "html_button",
+        },
+        {
+          kind: "block",
+          type: "html_form",
+        },
+        {
+          kind: "block",
+          type: "html_input",
+        },
+        {
+          kind: "block",
+          type: "html_textarea",
+        },
+        {
+          kind: "block",
+          type: "html_select",
+        },
+        {
+          kind: "block",
+          type: "html_optgroup",
+        },
+        {
+          kind: "block",
+          type: "html_option",
         },
         {
           kind: "block",
