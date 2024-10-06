@@ -214,7 +214,7 @@ ws.addChangeListener((e) => {
   outputId.appendChild(addDiv);
   */
 
-  const code = htmlGenerator.workspaceToCode(ws);
+  const code = websiteGenerator.workspaceToCode(ws);
   codeDiv.innerText = code;
   outputDiv.innerHTML = code;
   const scriptRegex = /<script>([\s\S]*?)<\/script>/;
