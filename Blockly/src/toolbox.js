@@ -19,6 +19,7 @@ export const toolbox = {
     {
       kind: "CATEGORY",
       name: "HTML Elements",
+      categorystyle: "htmlelement_category",
       contents: [
         {
           kind: "block",
@@ -117,12 +118,12 @@ export const toolbox = {
           type: "html_var",
         },
         {
-          'kind': 'block',
-          'type': 'html_ol'
+          kind: 'block',
+          type: 'html_ol'
         },
         {
-          'kind': 'block',
-          'type': 'html_li'
+          kind: 'block',
+          type: 'html_li'
         },
         {
           kind: "block",
@@ -209,6 +210,7 @@ export const toolbox = {
     {
       kind: "CATEGORY",
       name: "HTML Attributes",
+      categorystyle: "htmlattribute_category",
       contents: [
         {
           kind: "block",
@@ -316,7 +318,7 @@ export const toolbox = {
         },
         {
           kind: "block",
-          type: "html_title",
+          type: "html_title_attr",
         },
         {
           kind: "block",
@@ -339,6 +341,7 @@ export const toolbox = {
     {
       kind: "CATEGORY",
       name: "CSS",
+      categorystyle: "css_category",
       contents: [
         {
           kind: "block",
@@ -405,6 +408,7 @@ export const toolbox = {
     {
       kind: "category",
       name: "JavaScript",
+      categorystyle: "javascript_category",
       contents: [
         {
           kind: "block",
@@ -430,7 +434,7 @@ export const toolbox = {
         },
         {
           kind: "block",
-          type: "js_string",
+          type: "text",
         },
       ],
     },

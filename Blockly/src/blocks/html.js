@@ -32,6 +32,7 @@ export const htmlBlocks = Blockly.common.createBlockDefinitionsFromJsonArray([
         type: "input_dummy",
       },
     ],
+    style: "htmlelement_blocks",
   },
   {
     type: "html_comment",
@@ -44,6 +45,21 @@ export const htmlBlocks = Blockly.common.createBlockDefinitionsFromJsonArray([
     ],
     previousStatement: null,
     nextStatement: null,
+    style: "htmlelement_blocks",
+  },
+  {
+    type: "html_text",
+    message0: "%1",
+    args0: [
+      {
+        type: "field_input",
+        name: "TEXT",
+      },
+    ],
+    previousStatement: null,
+    nextStatement: null,
+    style: "htmlelement_blocks",
+    extensions: ["text_quotes"], // ダブルクォーテーションのアイコンを追加
   },
   {
     type: "html_title",
@@ -56,6 +72,7 @@ export const htmlBlocks = Blockly.common.createBlockDefinitionsFromJsonArray([
     ],
     previousStatement: null,
     nextStatement: null,
+    style: "htmlelement_blocks",
   },
   {
     type: "html_div",
@@ -72,6 +89,7 @@ export const htmlBlocks = Blockly.common.createBlockDefinitionsFromJsonArray([
     ],
     previousStatement: null,
     nextStatement: null,
+    style: "htmlelement_blocks",
   },
   {
     type: "html_br",
@@ -80,6 +98,7 @@ export const htmlBlocks = Blockly.common.createBlockDefinitionsFromJsonArray([
     ],
     previousStatement: null,
     nextStatement: null,
+    style: "htmlelement_blocks",
   },
   {
     type: "html_p",
@@ -96,6 +115,7 @@ export const htmlBlocks = Blockly.common.createBlockDefinitionsFromJsonArray([
     ],
     previousStatement: null,
     nextStatement: null,
+    style: "htmlelement_blocks",
   },
   {
     type: "html_a",
@@ -112,6 +132,7 @@ export const htmlBlocks = Blockly.common.createBlockDefinitionsFromJsonArray([
     ],
     previousStatement: null,
     nextStatement: null,
+    style: "htmlelement_blocks",
   },
   {
     type: "html_blockquote",
@@ -128,6 +149,7 @@ export const htmlBlocks = Blockly.common.createBlockDefinitionsFromJsonArray([
     ],
     previousStatement: null,
     nextStatement: null,
+    style: "htmlelement_blocks",
   },
   {
     type: 'html_i',
@@ -144,6 +166,7 @@ export const htmlBlocks = Blockly.common.createBlockDefinitionsFromJsonArray([
     ],
     previousStatement: null,
     nextStatement: null,
+    style: "htmlelement_blocks",
   },
   {
     type: 'html_b',
@@ -160,6 +183,7 @@ export const htmlBlocks = Blockly.common.createBlockDefinitionsFromJsonArray([
     ],
     previousStatement: null,
     nextStatement: null,
+    style: "htmlelement_blocks",
   },
   {
     type: 'html_u',
@@ -176,6 +200,7 @@ export const htmlBlocks = Blockly.common.createBlockDefinitionsFromJsonArray([
     ],
     previousStatement: null,
     nextStatement: null,
+    style: "htmlelement_blocks",
   },
   {
     type: 'html_del',
@@ -192,6 +217,7 @@ export const htmlBlocks = Blockly.common.createBlockDefinitionsFromJsonArray([
     ],
     previousStatement: null,
     nextStatement: null,
+    style: "htmlelement_blocks",
   },
   {
     type: 'html_ins',
@@ -208,6 +234,7 @@ export const htmlBlocks = Blockly.common.createBlockDefinitionsFromJsonArray([
     ],
     previousStatement: null,
     nextStatement: null,
+    style: "htmlelement_blocks",
   },
   {
     type: 'html_small',
@@ -224,6 +251,7 @@ export const htmlBlocks = Blockly.common.createBlockDefinitionsFromJsonArray([
     ],
     previousStatement: null,
     nextStatement: null,
+    style: "htmlelement_blocks",
   },
   {
     type: 'html_sub',
@@ -240,6 +268,7 @@ export const htmlBlocks = Blockly.common.createBlockDefinitionsFromJsonArray([
     ],
     previousStatement: null,
     nextStatement: null,
+    style: "htmlelement_blocks",
   },
   {
     type: 'html_sup',
@@ -256,6 +285,7 @@ export const htmlBlocks = Blockly.common.createBlockDefinitionsFromJsonArray([
     ],
     previousStatement: null,
     nextStatement: null,
+    style: "htmlelement_blocks",
   },
   {
     type: 'html_em',
@@ -272,6 +302,7 @@ export const htmlBlocks = Blockly.common.createBlockDefinitionsFromJsonArray([
     ],
     previousStatement: null,
     nextStatement: null,
+    style: "htmlelement_blocks",
   },
   {
     type: 'html_strong',
@@ -288,6 +319,7 @@ export const htmlBlocks = Blockly.common.createBlockDefinitionsFromJsonArray([
     ],
     previousStatement: null,
     nextStatement: null,
+    style: "htmlelement_blocks",
 },
   {
     type: 'html_code',
@@ -304,6 +336,7 @@ export const htmlBlocks = Blockly.common.createBlockDefinitionsFromJsonArray([
     ],
     previousStatement: null,
     nextStatement: null,
+    style: "htmlelement_blocks",
   },
   {
     type: 'html_kbd',
@@ -320,6 +353,7 @@ export const htmlBlocks = Blockly.common.createBlockDefinitionsFromJsonArray([
     ],
     previousStatement: null,
     nextStatement: null,
+    style: "htmlelement_blocks",
   },
   {
     type: 'html_var',
@@ -336,6 +370,7 @@ export const htmlBlocks = Blockly.common.createBlockDefinitionsFromJsonArray([
     ],
     previousStatement: null,
     nextStatement: null,
+    style: "htmlelement_blocks",
   },
   {
     type: "html_ul",
@@ -350,29 +385,31 @@ export const htmlBlocks = Blockly.common.createBlockDefinitionsFromJsonArray([
         name: "CONTENT",
       },
     ],
-    'previousStatement': null,
-    'nextStatement': null,
+    previousStatement: null,
+    nextStatement: null,
+    style: "htmlelement_blocks",
   },
   {
-    'type': 'html_ol',
-    'message0': '<ol> %1 %2 </ol>',
-    'args0': [
+    type: 'html_ol',
+    message0: '<ol> %1 %2 </ol>',
+    args0: [
         {
-            'type': 'input_value',
-            'name': 'ATTRIBUTE'
+            type: 'input_value',
+            name: 'ATTRIBUTE'
         },
         {
-            'type': 'input_statement',
-            'name': 'CONTENT'
+            type: 'input_statement',
+            name: 'CONTENT'
         }
     ],
-    'previousStatement': null,
-    'nextStatement': null,
+    previousStatement: null,
+    nextStatement: null,
+    style: "htmlelement_blocks",
   },
   {
-    'type': 'html_li',
-    'message0': '<li> %1 </li> %2',
-    'args0': [
+    type: 'html_li',
+    message0: '<li> %1 </li> %2',
+    args0: [
         {
             'type': 'field_input',
             'name': 'CONTENT'
@@ -384,22 +421,24 @@ export const htmlBlocks = Blockly.common.createBlockDefinitionsFromJsonArray([
     ],
     previousStatement: null,
     nextStatement: null,
+    style: "htmlelement_blocks",
   },
   {
-    'type': 'html_cite',
-    'message0': '<cite> %1 </cite> %2',
-    'args0': [
+    type: 'html_cite',
+    message0: '<cite> %1 </cite> %2',
+    args0: [
         {
-            'type': 'field_input',
-            'name': 'CONTENT'
+            type: 'field_input',
+            name: 'CONTENT'
         },
         {
-            'type': 'input_value',
-            'name': 'ATTRIBUTE'
+            type: 'input_value',
+            name: 'ATTRIBUTE'
         },
     ],
     previousStatement: null,
     nextStatement: null,
+    style: "htmlelement_blocks",
   },
   {
     type: "html_table",
@@ -416,6 +455,7 @@ export const htmlBlocks = Blockly.common.createBlockDefinitionsFromJsonArray([
     ],
     previousStatement: null,
     nextStatement: null,
+    style: "htmlelement_blocks",
   },
   {
     type: "html_thead",
@@ -432,6 +472,7 @@ export const htmlBlocks = Blockly.common.createBlockDefinitionsFromJsonArray([
     ],
     previousStatement: null,
     nextStatement: null,
+    style: "htmlelement_blocks",
   },
   {
     type: "html_tbody",
@@ -448,6 +489,7 @@ export const htmlBlocks = Blockly.common.createBlockDefinitionsFromJsonArray([
     ],
     previousStatement: null,
     nextStatement: null,
+    style: "htmlelement_blocks",
   },
   {
     type: "html_tfoot",
@@ -464,6 +506,7 @@ export const htmlBlocks = Blockly.common.createBlockDefinitionsFromJsonArray([
     ],
     previousStatement: null,
     nextStatement: null,
+    style: "htmlelement_blocks",
   },
   {
     type: "html_tr",
@@ -480,54 +523,58 @@ export const htmlBlocks = Blockly.common.createBlockDefinitionsFromJsonArray([
     ],
     previousStatement: null,
     nextStatement: null,
+    style: "htmlelement_blocks",
   },
   {
-    'type': 'html_caption',
-    'message0': '<caption> %1 </caption> %2',
-    'args0': [
+    type: 'html_caption',
+    message0: '<caption> %1 </caption> %2',
+    args0: [
         {
-            'type': 'field_input',
-            'name': 'CONTENT'
+            type: 'field_input',
+            name: 'CONTENT'
         },
         {
-            'type': 'input_value',
-            'name': 'ATTRIBUTE'
+            type: 'input_value',
+            name: 'ATTRIBUTE'
         },
     ],
     previousStatement: null,
     nextStatement: null,
+    style: "htmlelement_blocks",
   },
   {
-    'type': 'html_th',
-    'message0': '<th> %1 </th> %2',
-    'args0': [
+    type: 'html_th',
+    message0: '<th> %1 </th> %2',
+    args0: [
         {
-            'type': 'field_input',
-            'name': 'CONTENT'
+            type: 'field_input',
+            name: 'CONTENT'
         },
         {
-            'type': 'input_value',
-            'name': 'ATTRIBUTE'
+            type: 'input_value',
+            name: 'ATTRIBUTE'
         },
     ],
     previousStatement: null,
     nextStatement: null,
+    style: "htmlelement_blocks",
   },
   {
-    'type': 'html_td',
-    'message0': '<td> %1 </td> %2',
-    'args0': [
+    type: 'html_td',
+    message0: '<td> %1 </td> %2',
+    args0: [
         {
-            'type': 'field_input',
-            'name': 'CONTENT'
+            type: 'field_input',
+            name: 'CONTENT'
         },
         {
-            'type': 'input_value',
-            'name': 'ATTRIBUTE'
+            type: 'input_value',
+            name: 'ATTRIBUTE'
         },
     ],
     previousStatement: null,
     nextStatement: null,
+    style: "htmlelement_blocks",
   },
   {
     type: "html_header",
@@ -544,6 +591,7 @@ export const htmlBlocks = Blockly.common.createBlockDefinitionsFromJsonArray([
     ],
     previousStatement: null,
     nextStatement: null,
+    style: "htmlelement_blocks",
   },
   {
     type: "html_footer",
@@ -560,6 +608,7 @@ export const htmlBlocks = Blockly.common.createBlockDefinitionsFromJsonArray([
     ],
     previousStatement: null,
     nextStatement: null,
+    style: "htmlelement_blocks",
   },
   {
     type: "html_hgroup",
@@ -576,6 +625,7 @@ export const htmlBlocks = Blockly.common.createBlockDefinitionsFromJsonArray([
     ],
     previousStatement: null,
     nextStatement: null,
+    style: "htmlelement_blocks",
   },
   {
     type: "html_button",
@@ -592,6 +642,7 @@ export const htmlBlocks = Blockly.common.createBlockDefinitionsFromJsonArray([
     ],
     previousStatement: null,
     nextStatement: null,
+    style: "htmlelement_blocks",
   },
   {
     type: "html_form",
@@ -608,18 +659,20 @@ export const htmlBlocks = Blockly.common.createBlockDefinitionsFromJsonArray([
     ],
     previousStatement: null,
     nextStatement: null,
+    style: "htmlelement_blocks",
   },
   {
-    'type': 'html_input',
-    'message0': '<input /> %1',
-    'args0': [
+    type: 'html_input',
+    message0: '<input /> %1',
+    args0: [
       {
         type: "input_value",
         name: "ATTRIBUTE",
       },
     ],
-    'previousStatement': null,
-    'nextStatement': null,
+    previousStatement: null,
+    nextStatement: null,
+    style: "htmlelement_blocks",
   },
   {
     type: "html_script",
@@ -636,6 +689,7 @@ export const htmlBlocks = Blockly.common.createBlockDefinitionsFromJsonArray([
     ],
     previousStatement: null,
     nextStatement: null,
+    style: "htmlelement_blocks",
   },
   {
     type: "html_textarea",
@@ -652,6 +706,7 @@ export const htmlBlocks = Blockly.common.createBlockDefinitionsFromJsonArray([
     ],
     previousStatement: null,
     nextStatement: null,
+    style: "htmlelement_blocks",
   },
   {
     type: "html_select",
@@ -668,6 +723,7 @@ export const htmlBlocks = Blockly.common.createBlockDefinitionsFromJsonArray([
     ],
     previousStatement: null,
     nextStatement: null,
+    style: "htmlelement_blocks",
   },
   {
     type: "html_optgroup",
@@ -684,11 +740,12 @@ export const htmlBlocks = Blockly.common.createBlockDefinitionsFromJsonArray([
     ],
     previousStatement: null,
     nextStatement: null,
+    style: "htmlelement_blocks",
   },
   {
-    'type': 'html_option',
-    'message0': '<option> %1 </option> %2',
-    'args0': [
+    type: 'html_option',
+    message0: '<option> %1 </option> %2',
+    args0: [
         {
             'type': 'field_input',
             'name': 'CONTENT'
@@ -700,6 +757,7 @@ export const htmlBlocks = Blockly.common.createBlockDefinitionsFromJsonArray([
     ],
     previousStatement: null,
     nextStatement: null,
+    style: "htmlelement_blocks",
   },
   {
     type: "html_id",
@@ -715,6 +773,7 @@ export const htmlBlocks = Blockly.common.createBlockDefinitionsFromJsonArray([
       },
     ],
     output: null,
+    style: "htmlattribute_blocks",
   },
   {
     type: "html_class",
@@ -730,6 +789,7 @@ export const htmlBlocks = Blockly.common.createBlockDefinitionsFromJsonArray([
       },
     ],
     output: null,
+    style: "htmlattribute_blocks",
   },
   {
     type: "html_style",
@@ -746,6 +806,7 @@ export const htmlBlocks = Blockly.common.createBlockDefinitionsFromJsonArray([
     ],
     mutator: "html_style_mutator",
     output: "Array",
+    style: "htmlattribute_blocks",
     tooltip: "Create a list with any number of items.",
     helpUrl: "",
   },
@@ -759,6 +820,7 @@ export const htmlBlocks = Blockly.common.createBlockDefinitionsFromJsonArray([
     message0: "項目",
     previousStatement: null,
     nextStatement: null,
+    style: "htmlattribute_blocks",
     tooltip: "",
     helpUrl: "",
   },
@@ -772,20 +834,7 @@ export const htmlBlocks = Blockly.common.createBlockDefinitionsFromJsonArray([
       },
     ],
     output: null,
-},
-{
-    'type': 'html_text',
-    'message0': '%1',
-    'args0': [
-        {
-            'type': 'field_input',
-            'name': 'TEXT',
-        },
-    ],
-    previousStatement: null,
-    nextStatement: null,
-    tooltip: "",
-    helpUrl: "",
+    style: "htmlattribute_blocks",
   },
   {
     type: "html_hidden",
@@ -797,6 +846,7 @@ export const htmlBlocks = Blockly.common.createBlockDefinitionsFromJsonArray([
       },
     ],
     output: null,
+    style: "htmlattribute_blocks",
   },
   {
     type: "html_spellcheck",
@@ -816,9 +866,10 @@ export const htmlBlocks = Blockly.common.createBlockDefinitionsFromJsonArray([
       },
     ],
     output: null,
+    style: "htmlattribute_blocks",
   },
   {
-    type: "html_title",
+    type: "html_title_attr",
     message0: 'title = "%1" %2',
     args0: [
       {
@@ -831,6 +882,7 @@ export const htmlBlocks = Blockly.common.createBlockDefinitionsFromJsonArray([
       },
     ],
     output: null,
+    style: "htmlattribute_blocks",
   },
   {
     type: "html_autocapitalize",
@@ -852,6 +904,7 @@ export const htmlBlocks = Blockly.common.createBlockDefinitionsFromJsonArray([
       },
     ],
     output: null,
+    style: "htmlattribute_blocks",
   },
   {
     type: "html_checked",
@@ -863,6 +916,7 @@ export const htmlBlocks = Blockly.common.createBlockDefinitionsFromJsonArray([
       },
     ],
     output: null,
+    style: "htmlattribute_blocks",
   },
   {
     type: "html_cols",
@@ -878,6 +932,7 @@ export const htmlBlocks = Blockly.common.createBlockDefinitionsFromJsonArray([
       },
     ],
     output: null,
+    style: "htmlattribute_blocks",
   },
   {
     type: "html_rows",
@@ -893,6 +948,7 @@ export const htmlBlocks = Blockly.common.createBlockDefinitionsFromJsonArray([
       },
     ],
     output: null,
+    style: "htmlattribute_blocks",
   },
   {
     type: "html_contenteditable",
@@ -912,6 +968,7 @@ export const htmlBlocks = Blockly.common.createBlockDefinitionsFromJsonArray([
       },
     ],
     output: null,
+    style: "htmlattribute_blocks",
   },
   {
     type: "html_disabled",
@@ -923,6 +980,7 @@ export const htmlBlocks = Blockly.common.createBlockDefinitionsFromJsonArray([
       },
     ],
     output: null,
+    style: "htmlattribute_blocks",
   },
   {
     type: "html_href",
@@ -938,6 +996,7 @@ export const htmlBlocks = Blockly.common.createBlockDefinitionsFromJsonArray([
       },
     ],
     output: null,
+    style: "htmlattribute_blocks",
   },
   {
     type: "html_label",
@@ -953,6 +1012,7 @@ export const htmlBlocks = Blockly.common.createBlockDefinitionsFromJsonArray([
       },
     ],
     output: null,
+    style: "htmlattribute_blocks",
   },
   {
     type: "html_max",
@@ -968,6 +1028,7 @@ export const htmlBlocks = Blockly.common.createBlockDefinitionsFromJsonArray([
       },
     ],
     output: null,
+    style: "htmlattribute_blocks",
   },
   {
     type: "html_min",
@@ -983,6 +1044,7 @@ export const htmlBlocks = Blockly.common.createBlockDefinitionsFromJsonArray([
       },
     ],
     output: null,
+    style: "htmlattribute_blocks",
   },
   {
     type: "html_maxlength",
@@ -998,6 +1060,7 @@ export const htmlBlocks = Blockly.common.createBlockDefinitionsFromJsonArray([
       },
     ],
     output: null,
+    style: "htmlattribute_blocks",
   },
   {
     type: "html_minlength",
@@ -1013,6 +1076,7 @@ export const htmlBlocks = Blockly.common.createBlockDefinitionsFromJsonArray([
       },
     ],
     output: null,
+    style: "htmlattribute_blocks",
   },
   {
     type: "html_pattern",
@@ -1028,6 +1092,7 @@ export const htmlBlocks = Blockly.common.createBlockDefinitionsFromJsonArray([
       },
     ],
     output: null,
+    style: "htmlattribute_blocks",
   },
   {
     type: "html_placeholder",
@@ -1043,6 +1108,7 @@ export const htmlBlocks = Blockly.common.createBlockDefinitionsFromJsonArray([
       },
     ],
     output: null,
+    style: "htmlattribute_blocks",
   },
   {
     type: "html_readonly",
@@ -1054,6 +1120,7 @@ export const htmlBlocks = Blockly.common.createBlockDefinitionsFromJsonArray([
       },
     ],
     output: null,
+    style: "htmlattribute_blocks",
   },
   {
     type: "html_selected",
@@ -1065,6 +1132,7 @@ export const htmlBlocks = Blockly.common.createBlockDefinitionsFromJsonArray([
       },
     ],
     output: null,
+    style: "htmlattribute_blocks",
   },
   {
     type: "html_size",
@@ -1080,6 +1148,7 @@ export const htmlBlocks = Blockly.common.createBlockDefinitionsFromJsonArray([
       },
     ],
     output: null,
+    style: "htmlattribute_blocks",
   },
   {
     type: "html_src",
@@ -1095,6 +1164,7 @@ export const htmlBlocks = Blockly.common.createBlockDefinitionsFromJsonArray([
       },
     ],
     output: null,
+    style: "htmlattribute_blocks",
   },
   {
     type: "html_step",
@@ -1110,6 +1180,7 @@ export const htmlBlocks = Blockly.common.createBlockDefinitionsFromJsonArray([
       },
     ],
     output: null,
+    style: "htmlattribute_blocks",
   },
   {
     type: "html_start",
@@ -1125,6 +1196,7 @@ export const htmlBlocks = Blockly.common.createBlockDefinitionsFromJsonArray([
       },
     ],
     output: null,
+    style: "htmlattribute_blocks",
   },
   {
     type: "html_tabindex",
@@ -1140,6 +1212,7 @@ export const htmlBlocks = Blockly.common.createBlockDefinitionsFromJsonArray([
       },
     ],
     output: null,
+    style: "htmlattribute_blocks",
   },
   {
     type: "html_type",
@@ -1155,6 +1228,7 @@ export const htmlBlocks = Blockly.common.createBlockDefinitionsFromJsonArray([
       },
     ],
     output: null,
+    style: "htmlattribute_blocks",
   },
   {
     type: "html_value",
@@ -1170,6 +1244,7 @@ export const htmlBlocks = Blockly.common.createBlockDefinitionsFromJsonArray([
       },
     ],
     output: null,
+    style: "htmlattribute_blocks",
   },
   {
     type: "html_width",
@@ -1185,6 +1260,7 @@ export const htmlBlocks = Blockly.common.createBlockDefinitionsFromJsonArray([
       },
     ],
     output: null,
+    style: "htmlattribute_blocks",
   },
   {
     type: "html_wrap",
@@ -1204,6 +1280,7 @@ export const htmlBlocks = Blockly.common.createBlockDefinitionsFromJsonArray([
       },
     ],
     output: null,
+    style: "htmlattribute_blocks",
   },
   {
     type: "css_color",
@@ -1220,6 +1297,7 @@ export const htmlBlocks = Blockly.common.createBlockDefinitionsFromJsonArray([
       },
     ],
     output: null,
+    style: "css_blocks",
   },
   {
     type: "css_font-size",
@@ -1236,6 +1314,7 @@ export const htmlBlocks = Blockly.common.createBlockDefinitionsFromJsonArray([
       },
     ],
     output: null,
+    style: "css_blocks",
   },
   {
     type: "css_font-weight",
@@ -1252,10 +1331,11 @@ export const htmlBlocks = Blockly.common.createBlockDefinitionsFromJsonArray([
       },
     ],
     output: null,
+    style: "css_blocks",
   },
   {
     type: "css_line-height",
-    message0: "line-height; %1 %2",
+    message0: "line-height: %1 %2",
     args0: [
       {
         type: "field_input",
@@ -1268,6 +1348,7 @@ export const htmlBlocks = Blockly.common.createBlockDefinitionsFromJsonArray([
       },
     ],
     output: null,
+    style: "css_blocks",
   },
   {
     type: "css_background-color",
@@ -1284,6 +1365,7 @@ export const htmlBlocks = Blockly.common.createBlockDefinitionsFromJsonArray([
       },
     ],
     output: null,
+    style: "css_blocks",
   },
   {
     type: "css_margin",
@@ -1300,6 +1382,7 @@ export const htmlBlocks = Blockly.common.createBlockDefinitionsFromJsonArray([
       },
     ],
     output: null,
+    style: "css_blocks",
   },
   {
     type: "css_padding",
@@ -1316,6 +1399,7 @@ export const htmlBlocks = Blockly.common.createBlockDefinitionsFromJsonArray([
       },
     ],
     output: null,
+    style: "css_blocks",
   },
   {
     type: "css_border",
@@ -1332,6 +1416,7 @@ export const htmlBlocks = Blockly.common.createBlockDefinitionsFromJsonArray([
       },
     ],
     output: null,
+    style: "css_blocks",
   },
   {
     type: "css_border-radius",
@@ -1348,6 +1433,7 @@ export const htmlBlocks = Blockly.common.createBlockDefinitionsFromJsonArray([
       },
     ],
     output: null,
+    style: "css_blocks",
   },
   {
     type: "css_display",
@@ -1364,6 +1450,7 @@ export const htmlBlocks = Blockly.common.createBlockDefinitionsFromJsonArray([
       },
     ],
     output: null,
+    style: "css_blocks",
   },
   {
     type: "css_position",
@@ -1380,6 +1467,7 @@ export const htmlBlocks = Blockly.common.createBlockDefinitionsFromJsonArray([
       },
     ],
     output: null,
+    style: "css_blocks",
   },
   {
     type: "css_top",
@@ -1396,6 +1484,7 @@ export const htmlBlocks = Blockly.common.createBlockDefinitionsFromJsonArray([
       },
     ],
     output: null,
+    style: "css_blocks",
   },
   {
     type: "css_left",
@@ -1412,6 +1501,7 @@ export const htmlBlocks = Blockly.common.createBlockDefinitionsFromJsonArray([
       },
     ],
     output: null,
+    style: "css_blocks",
   },
   {
     type: "css_right",
@@ -1428,6 +1518,7 @@ export const htmlBlocks = Blockly.common.createBlockDefinitionsFromJsonArray([
       },
     ],
     output: null,
+    style: "css_blocks",
   },
   {
     type: "css_bottom",
@@ -1444,6 +1535,7 @@ export const htmlBlocks = Blockly.common.createBlockDefinitionsFromJsonArray([
       },
     ],
     output: null,
+    style: "css_blocks",
   },
   {
     type: "css_top",
@@ -1460,6 +1552,7 @@ export const htmlBlocks = Blockly.common.createBlockDefinitionsFromJsonArray([
       },
     ],
     output: null,
+    style: "css_blocks",
   },
   {
     type: "css_font-family",
@@ -1476,6 +1569,7 @@ export const htmlBlocks = Blockly.common.createBlockDefinitionsFromJsonArray([
       },
     ],
     output: null,
+    style: "css_blocks",
   },
   {
     type: "css_font-family",
@@ -1492,19 +1586,7 @@ export const htmlBlocks = Blockly.common.createBlockDefinitionsFromJsonArray([
       },
     ],
     output: null,
-  },
-  {
-    type: "html_text",
-    message0: "%1",
-    args0: [
-      {
-        type: "field_input",
-        name: "TEXT",
-      },
-    ],
-    previousStatement: null,
-    nextStatement: null,
-    extensions: ["text_quotes"], // ダブルクォーテーションのアイコンを追加
+    style: "css_blocks",
   },
   {
     type: "js_getElementById",
@@ -1521,6 +1603,7 @@ export const htmlBlocks = Blockly.common.createBlockDefinitionsFromJsonArray([
     ],
     previousStatement: null,
     nextStatement: null,
+    style: "javascript_blocks",
   },
   {
     type: "js_addEventListener",
@@ -1555,6 +1638,7 @@ export const htmlBlocks = Blockly.common.createBlockDefinitionsFromJsonArray([
     ],
     previousStatement: null,
     nextStatement: null,
+    style: "javascript_blocks",
   },
   {
     type: "js_alert",
@@ -1567,19 +1651,7 @@ export const htmlBlocks = Blockly.common.createBlockDefinitionsFromJsonArray([
     ],
     previousStatement: null,
     nextStatement: null,
-  },
-  {
-    type: "js_string",
-    message0: '"%1"',
-    args0: [
-      {
-        type: "field_input",
-        name: "CONTENT",
-        text: "文字列",
-      },
-    ],
-    previousStatement: null,
-    nextStatement: null,
+    style: "javascript_blocks",
   },
 ]);
 
@@ -1620,6 +1692,7 @@ Blockly.Blocks['html_hn'] = {
       ],
       previousStatement: null,
       nextStatement: null,
+      style: "htmlelement_blocks",
     });
 
     // ブロックの初期化時にラベルを更新

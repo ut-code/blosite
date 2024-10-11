@@ -17,6 +17,46 @@ import customMsg from './custom_msg';
 import './index.css';
 import DOMPurify from 'dompurify';
 
+Blockly.Themes.customStyle = Blockly.Theme.defineTheme('custom_style', {
+   'base': Blockly.Themes.Classic,
+   'blockStyles' : {
+      'htmlelement_blocks': {
+      'colourPrimary': '#673ab7', // 紫
+      'colourSecondary': '#ab47bc', // 明るい紫
+      'colourTertiary': '#e1bee7' // 薄い紫
+      },
+      'htmlattribute_blocks': {
+          'colourPrimary': '#00796b', // 深い緑
+          'colourSecondary': '#4db6ac', // 明るい緑
+          'colourTertiary': '#b2dfdb' // 薄い緑
+      },
+      'css_blocks': {
+          'colourPrimary': '#ff5722', // オレンジ
+          'colourSecondary': '#ffab40', // 明るいオレンジ
+          'colourTertiary': '#ffe0b2' // 薄いオレンジ
+      },
+      'javascript_blocks': {
+          'colourPrimary': '#2196f3', // 青
+          'colourSecondary': '#64b5f6', // 明るい青
+          'colourTertiary': '#bbdefb' // 薄い青
+      },
+   },
+   'categoryStyles': {
+      'htmlelement_category': {
+         'colour': '#673ab7'
+      },
+      'htmlattribute_category': {
+         'colour': '#00796b'
+      },
+      'css_category': {
+         'colour': '#ff5722'
+      },
+      'javascript_category': {
+         'colour': '#2196f3'
+      },
+   },
+});
+
 // Register the blocks and generator with Blockly
 Blockly.common.defineBlocks(htmlBlocks);
 // Object.assign(javascriptGenerator.forBlock, forBlock);
@@ -31,6 +71,7 @@ const blocklyDiv = document.getElementById('blocklyDiv');
 const ws = Blockly.inject(blocklyDiv, {
   // ワークスペースにおける見た目などの設定
   toolbox, //使用するツールボックスを定義
+  theme: Blockly.Themes.customStyle,
   grid: {
     spacing: 20,    // グリッド線の間隔
     length: 3,      // グリッド線の長さ

@@ -637,7 +637,7 @@ websiteGenerator.forBlock["html_autocapitalize"] = function (block, generator) {
   return [code, Order.ATOMIC];
 };
 
-websiteGenerator.forBlock["html_title"] = function (block, generator) {
+websiteGenerator.forBlock["html_title_attr"] = function (block, generator) {
   const field = block.getFieldValue("FIELD");
   const value = generator.valueToCode(block, "VALUE", Order.ATOMIC);
   const sanitizedField = sanitizeInput(field);
@@ -678,6 +678,14 @@ websiteGenerator.forBlock["html_contenteditable"] = function (block, generator) 
 websiteGenerator.forBlock["html_disabled"] = function (block, generator) {
   const value = generator.valueToCode(block, "VALUE", Order.ATOMIC);
   const code = value ? `disabled ${value}` : `disabled`;
+  return [code, Order.ATOMIC];
+};
+
+
+websiteGenerator.forBlock['html_font-size'] = function(block, generator) {
+  const field = block.getFieldValue('FIELD');
+  const value = generator.valueToCode(block, 'VALUE', Order.ATOMIC);
+  const code = value ? `style= "font-size:${field}px;" ${value}` : `style="font-size:${field}px;"`;
   return [code, Order.ATOMIC];
 };
 
@@ -977,21 +985,6 @@ websiteGenerator.forBlock["js_alert"] = function (block, generator) {
   const code = `alert(${content});\n`;
   const indentedCode = generator.prefixLines(code, generator.INDENT);
   return indentedCode;
-};
-
-websiteGenerator.forBlock["js_string"] = function (block, generator) {
-  const content = block.getFieldValue("CONTENT");
-  const sanitizedContent = DOMPurify.sanitize(content);
-  const code = `"${sanitizedContent}"\n`;
-  const indentedCode = generator.prefixLines(code, generator.INDENT);
-  return indentedCode;
-};
-
-websiteGenerator.forBlock['html_font-size'] = function(block, generator) {
-    const field = block.getFieldValue('FIELD');
-    const value = generator.valueToCode(block, 'VALUE', Order.ATOMIC);
-    const code = value ? `style= "font-size:${field}px;" ${value}` : `style="font-size:${field}px;"`;
-    return [code, Order.ATOMIC];
 };
 
 export { websiteGenerator };
