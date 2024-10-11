@@ -98,6 +98,22 @@ export const htmlBlocks = Blockly.common.createBlockDefinitionsFromJsonArray([
     nextStatement: null,
   },
   {
+    type: "html_a",
+    message0: "<a> %1 %2 </a>",
+    args0: [
+      {
+        type: "input_value",
+        name: "ATTRIBUTE",
+      },
+      {
+        type: "input_statement",
+        name: "CONTENT",
+      },
+    ],
+    previousStatement: null,
+    nextStatement: null,
+  },
+  {
     type: "html_blockquote",
     message0: "<blockquote> %1 %2 </blockquote>",
     args0: [
@@ -257,6 +273,22 @@ export const htmlBlocks = Blockly.common.createBlockDefinitionsFromJsonArray([
     previousStatement: null,
     nextStatement: null,
   },
+  {
+    type: 'html_strong',
+    message0: '<strong> %1 </strong> %2',
+    args0: [
+        {
+          type: 'field_input',
+          name: 'CONTENT'
+        },
+        {
+            type: 'input_value',
+            name: 'ATTRIBUTE'
+        },
+    ],
+    previousStatement: null,
+    nextStatement: null,
+},
   {
     type: 'html_code',
     message0: '<code> %1 </code> %2',
@@ -742,22 +774,6 @@ export const htmlBlocks = Blockly.common.createBlockDefinitionsFromJsonArray([
     output: null,
 },
 {
-    'type': 'html_strong',
-    'message0': '<strong> %1 %2 </strong>',
-    'args0': [
-        {
-            'type': 'input_value',
-            'name': 'ATTRIBUTE'
-        },
-        {
-            'type': 'input_statement',
-            'name': 'CONTENT'
-        }
-    ],
-    'previousStatement': null,
-    'nextStatement': null,
-},
-{
     'type': 'html_text',
     'message0': '%1',
     'args0': [
@@ -770,6 +786,424 @@ export const htmlBlocks = Blockly.common.createBlockDefinitionsFromJsonArray([
     nextStatement: null,
     tooltip: "",
     helpUrl: "",
+  },
+  {
+    type: "html_hidden",
+    message0: 'hidden %1',
+    args0: [
+      {
+        type: "input_value",
+        name: "VALUE",
+      },
+    ],
+    output: null,
+  },
+  {
+    type: "html_spellcheck",
+    message0: 'spellcheck = "%1" %2',
+    args0: [
+      {
+        type: "field_dropdown",
+        name: "FIELD",
+        options: [
+          ["true", "true"],
+          ["false", "false"],
+        ],
+      },
+      {
+        type: "input_value",
+        name: "VALUE",
+      },
+    ],
+    output: null,
+  },
+  {
+    type: "html_title",
+    message0: 'title = "%1" %2',
+    args0: [
+      {
+        type: "field_input",
+        name: "FIELD",
+      },
+      {
+        type: "input_value",
+        name: "VALUE",
+      },
+    ],
+    output: null,
+  },
+  {
+    type: "html_autocapitalize",
+    message0: 'autocapitalize = "%1" %2',
+    args0: [
+      {
+        type: "field_dropdown",
+        name: "FIELD",
+        options: [
+          ["off", "off"],
+          ["on", "on"],
+          ["words", "words"],
+          ["characters", "characters"],
+        ],
+      },
+      {
+        type: "input_value",
+        name: "VALUE",
+      },
+    ],
+    output: null,
+  },
+  {
+    type: "html_checked",
+    message0: 'checked %1',
+    args0: [
+      {
+        type: "input_value",
+        name: "VALUE",
+      },
+    ],
+    output: null,
+  },
+  {
+    type: "html_cols",
+    message0: 'cols = "%1" %2',
+    args0: [
+      {
+        type: "field_input",
+        name: "FIELD",
+      },
+      {
+        type: "input_value",
+        name: "VALUE",
+      },
+    ],
+    output: null,
+  },
+  {
+    type: "html_rows",
+    message0: 'rows = "%1" %2',
+    args0: [
+      {
+        type: "field_input",
+        name: "FIELD",
+      },
+      {
+        type: "input_value",
+        name: "VALUE",
+      },
+    ],
+    output: null,
+  },
+  {
+    type: "html_contenteditable",
+    message0: 'contenteditable = "%1" %2',
+    args0: [
+      {
+        type: "field_dropdown",
+        name: "FIELD",
+        options: [
+          ["true", "true"],
+          ["false", "false"],
+        ],
+      },
+      {
+        type: "input_value",
+        name: "VALUE",
+      },
+    ],
+    output: null,
+  },
+  {
+    type: "html_disabled",
+    message0: 'disabled %1',
+    args0: [
+      {
+        type: "input_value",
+        name: "VALUE",
+      },
+    ],
+    output: null,
+  },
+  {
+    type: "html_href",
+    message0: 'href = "%1" %2',
+    args0: [
+      {
+        type: "field_input",
+        name: "FIELD",
+      },
+      {
+        type: "input_value",
+        name: "VALUE",
+      },
+    ],
+    output: null,
+  },
+  {
+    type: "html_label",
+    message0: 'label = "%1" %2',
+    args0: [
+      {
+        type: "field_input",
+        name: "FIELD",
+      },
+      {
+        type: "input_value",
+        name: "VALUE",
+      },
+    ],
+    output: null,
+  },
+  {
+    type: "html_max",
+    message0: 'max = "%1" %2',
+    args0: [
+      {
+        type: "field_input",
+        name: "FIELD",
+      },
+      {
+        type: "input_value",
+        name: "VALUE",
+      },
+    ],
+    output: null,
+  },
+  {
+    type: "html_min",
+    message0: 'min = "%1" %2',
+    args0: [
+      {
+        type: "field_input",
+        name: "FIELD",
+      },
+      {
+        type: "input_value",
+        name: "VALUE",
+      },
+    ],
+    output: null,
+  },
+  {
+    type: "html_maxlength",
+    message0: 'maxlength = "%1" %2',
+    args0: [
+      {
+        type: "field_input",
+        name: "FIELD",
+      },
+      {
+        type: "input_value",
+        name: "VALUE",
+      },
+    ],
+    output: null,
+  },
+  {
+    type: "html_minlength",
+    message0: 'minlength = "%1" %2',
+    args0: [
+      {
+        type: "field_input",
+        name: "FIELD",
+      },
+      {
+        type: "input_value",
+        name: "VALUE",
+      },
+    ],
+    output: null,
+  },
+  {
+    type: "html_pattern",
+    message0: 'pattern = "%1" %2',
+    args0: [
+      {
+        type: "field_input",
+        name: "FIELD",
+      },
+      {
+        type: "input_value",
+        name: "VALUE",
+      },
+    ],
+    output: null,
+  },
+  {
+    type: "html_placeholder",
+    message0: 'placeholder = "%1" %2',
+    args0: [
+      {
+        type: "field_input",
+        name: "FIELD",
+      },
+      {
+        type: "input_value",
+        name: "VALUE",
+      },
+    ],
+    output: null,
+  },
+  {
+    type: "html_readonly",
+    message0: 'readonly %1',
+    args0: [
+      {
+        type: "input_value",
+        name: "VALUE",
+      },
+    ],
+    output: null,
+  },
+  {
+    type: "html_selected",
+    message0: 'selected %1',
+    args0: [
+      {
+        type: "input_value",
+        name: "VALUE",
+      },
+    ],
+    output: null,
+  },
+  {
+    type: "html_size",
+    message0: 'size = "%1" %2',
+    args0: [
+      {
+        type: "field_input",
+        name: "FIELD",
+      },
+      {
+        type: "input_value",
+        name: "VALUE",
+      },
+    ],
+    output: null,
+  },
+  {
+    type: "html_src",
+    message0: 'src = "%1" %2',
+    args0: [
+      {
+        type: "field_input",
+        name: "FIELD",
+      },
+      {
+        type: "input_value",
+        name: "VALUE",
+      },
+    ],
+    output: null,
+  },
+  {
+    type: "html_step",
+    message0: 'step = "%1" %2',
+    args0: [
+      {
+        type: "field_input",
+        name: "FIELD",
+      },
+      {
+        type: "input_value",
+        name: "VALUE",
+      },
+    ],
+    output: null,
+  },
+  {
+    type: "html_start",
+    message0: 'start = "%1" %2',
+    args0: [
+      {
+        type: "field_input",
+        name: "FIELD",
+      },
+      {
+        type: "input_value",
+        name: "VALUE",
+      },
+    ],
+    output: null,
+  },
+  {
+    type: "html_tabindex",
+    message0: 'tabindex = "%1" %2',
+    args0: [
+      {
+        type: "field_input",
+        name: "FIELD",
+      },
+      {
+        type: "input_value",
+        name: "VALUE",
+      },
+    ],
+    output: null,
+  },
+  {
+    type: "html_type",
+    message0: 'type = "%1" %2',
+    args0: [
+      {
+        type: "field_input",
+        name: "FIELD",
+      },
+      {
+        type: "input_value",
+        name: "VALUE",
+      },
+    ],
+    output: null,
+  },
+  {
+    type: "html_value",
+    message0: 'value = "%1" %2',
+    args0: [
+      {
+        type: "field_input",
+        name: "FIELD",
+      },
+      {
+        type: "input_value",
+        name: "VALUE",
+      },
+    ],
+    output: null,
+  },
+  {
+    type: "html_width",
+    message0: 'width = "%1" %2',
+    args0: [
+      {
+        type: "field_input",
+        name: "FIELD",
+      },
+      {
+        type: "input_value",
+        name: "VALUE",
+      },
+    ],
+    output: null,
+  },
+  {
+    type: "html_wrap",
+    message0: 'wrap = "%1" %2',
+    args0: [
+      {
+        type: "field_dropdown",
+        name: "FIELD",
+        options: [
+          ["hard", "hard"],
+          ["soft", "soft"],
+        ],
+      },
+      {
+        type: "input_value",
+        name: "VALUE",
+      },
+    ],
+    output: null,
   },
   {
     type: "css_color",

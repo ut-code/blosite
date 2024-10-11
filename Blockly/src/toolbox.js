@@ -46,6 +46,10 @@ export const toolbox = {
         },
         {
           kind: "block",
+          type: "html_a",
+        },
+        {
+          kind: "block",
           type: "html_br",
         },
         {
@@ -55,6 +59,10 @@ export const toolbox = {
         {
           kind: "block",
           type: "html_blockquote",
+        },
+        {
+          kind: "block",
+          type: "html_strong",
         },
         {
           kind: "block",
@@ -208,19 +216,123 @@ export const toolbox = {
         },
         {
           kind: "block",
+          type: "html_class",
+        },
+        {
+          kind: "block",
           type: "html_style",
         },
         {
-          'kind': 'block',
-          'type': 'html_strong'
+          kind: "block",
+          type: "html_autocapitalize",
         },
         {
-          'kind': 'block',
-          'type': 'html_input'
+          kind: "block",
+          type: "html_checked",
         },
         {
-          'kind': 'block',
-          'type': 'html_text'
+          kind: "block",
+          type: "html_cols",
+        },
+        {
+          kind: "block",
+          type: "html_rows",
+        },
+        {
+          kind: "block",
+          type: "html_contenteditable",
+        },
+        {
+          kind: "block",
+          type: "html_disabled",
+        },
+        {
+          kind: "block",
+          type: "html_hidden",
+        },
+        {
+          kind: "block",
+          type: "html_href",
+        },
+        {
+          kind: "block",
+          type: "html_label",
+        },
+        {
+          kind: "block",
+          type: "html_max",
+        },
+        {
+          kind: "block",
+          type: "html_min",
+        },
+        {
+          kind: "block",
+          type: "html_maxlength",
+        },
+        {
+          kind: "block",
+          type: "html_minlength",
+        },
+        {
+          kind: "block",
+          type: "html_pattern",
+        },
+        {
+          kind: "block",
+          type: "html_placeholder",
+        },
+        {
+          kind: "block",
+          type: "html_readonly",
+        },
+        {
+          kind: "block",
+          type: "html_selected",
+        },
+        {
+          kind: "block",
+          type: "html_size",
+        },
+        {
+          kind: "block",
+          type: "html_spellcheck",
+        },
+        {
+          kind: "block",
+          type: "html_src",
+        },
+        {
+          kind: "block",
+          type: "html_start",
+        },
+        {
+          kind: "block",
+          type: "html_step",
+        },
+        {
+          kind: "block",
+          type: "html_tabindex",
+        },
+        {
+          kind: "block",
+          type: "html_title",
+        },
+        {
+          kind: "block",
+          type: "html_type",
+        },
+        {
+          kind: "block",
+          type: "html_value",
+        },
+        {
+          kind: "block",
+          type: "html_width",
+        },
+        {
+          kind: "block",
+          type: "html_wrap",
         },
       ]
     },
