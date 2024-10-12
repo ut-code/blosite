@@ -1588,30 +1588,102 @@ export const htmlBlocks = Blockly.common.createBlockDefinitionsFromJsonArray([
     output: null,
     style: "css_blocks",
   },
+  // {
+  //   type: "js_getElementById",
+  //   message0: 'id="%1"の要素を取得し変数"%2"に代入',
+  //   args0: [
+  //     {
+  //       type: "field_input",
+  //       name: "ID",
+  //     },
+  //     {
+  //       type: "field_input",
+  //       name: "NAME",
+  //     },
+  //   ],
+  //   previousStatement: null,
+  //   nextStatement: null,
+  //   style: "javascript_blocks",
+  // },
   {
     type: "js_getElementById",
-    message0: 'id="%1"の要素を取得し変数"%2"に代入',
+    message0: 'id="%1"の要素',
     args0: [
       {
         type: "field_input",
         name: "ID",
       },
-      {
-        type: "field_input",
-        name: "NAME",
-      },
     ],
-    previousStatement: null,
-    nextStatement: null,
+    output: null,
     style: "javascript_blocks",
   },
   {
-    type: "js_addEventListener",
-    message0: 'もし id="%1" が %2 されたら %3 %4',
+    type: "js_getElementByClassName",
+    message0: 'class="%1"の要素',
     args0: [
       {
         type: "field_input",
+        name: "CLASS",
+      },
+    ],
+    output: null,
+    style: "javascript_blocks",
+  },
+  {
+    type: "js_getElementByTagName",
+    message0: '要素名"%1"の要素',
+    args0: [
+      {
+        type: "field_input",
+        name: "TAG",
+      },
+    ],
+    output: null,
+    style: "javascript_blocks",
+  },
+  // {
+  //   type: "js_addEventListener",
+  //   message0: 'id="%1" にイベント %2 が発生したとき %3 %4',
+  //   args0: [
+  //     {
+  //       type: "field_input",
+  //       name: "ID",
+  //     },
+  //     {
+  //       type: "field_dropdown",
+  //       name: "EVENT",
+  //       options: [
+  //         ["クリック", "click"],
+  //         ["マウスオーバー", "mouseover"],
+  //         ["マウスアウト", "mouseout"],
+  //         ["フォーカス", "focus"],
+  //         ["フォーカスアウト", "blur"],
+  //         ["キーダウン", "keydown"],
+  //         ["キーアップ", "keyup"],
+  //         ["キープレス", "keypress"],
+  //       ],
+  //     },
+  //     {
+  //       type: "input_dummy",
+  //     },
+  //     {
+  //       type: "input_statement",
+  //       name: "CONTENT",
+  //       check: "Javascript",
+  //     },
+  //   ],
+  //   previousStatement: null,
+  //   nextStatement: null,
+  //   style: "javascript_blocks",
+  // },
+  {
+    type: "js_addEventListener",
+    message0: '%1 にイベント %2 が発生したとき %3 %4',
+    args0: [
+      {
+        type: "input_value",
         name: "ID",
+        check: "variable",
       },
       {
         type: "field_dropdown",

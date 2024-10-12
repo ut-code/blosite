@@ -15,7 +15,7 @@ import {toolbox} from './toolbox';
 // import * as ja from 'blockly/msg/ja';  
 import customMsg from './custom_msg';
 import './index.css';
-import DOMPurify from 'dompurify';
+// import DOMPurify from 'dompurify';
 
 Blockly.Themes.customStyle = Blockly.Theme.defineTheme('custom_style', {
    'base': Blockly.Themes.Classic,
@@ -90,6 +90,8 @@ const ws = Blockly.inject(blocklyDiv, {
   sounds: true, // 音を鳴らすかどうか
 });
 
+const getErrorId = document.getElementById("errorMessage");
+
 // This function resets the code and output divs, shows the
 // generated code from the workspace, and evals the code.
 // In a real application, you probably shouldn't use `eval`.
@@ -125,14 +127,16 @@ const runCode = () => {
   // スクリプト部分とそれ以外の部分を抽出
   const scriptCode = match ? match[1] : '';
   
-  // スクリプトを動的に評価
-/*
+  // スクリプトを動的に評価してエラーがあれば表示
   try {
-      eval(DOMPurify.sanitize(scriptCode));
-  } catch (e) {
-      console.error(e);
+    eval(scriptCode);
+    getErrorId.textContent = "何もエラーは起こってません"
+    getErrorId.classList = "safe"
+  }  catch (e) {
+    getErrorId.textContent = e.name + " " +e.message 
+    getErrorId.classList = "errorOccured"
   }
-*/
+
   /*
   const outputId = document.getElementById("output");
   const addDiv = document.createElement("div")
@@ -240,8 +244,8 @@ ws.addChangeListener((e) => {
      forbidblockconnect(block,'html_strong','html_input')
   });
   
-
   runCode();
+
   /*
   function getCodeContent(){
     const getCodeId = document.getElementById("generatedCode");
@@ -255,31 +259,29 @@ ws.addChangeListener((e) => {
   outputId.appendChild(addDiv);
   */
 
-  const code = websiteGenerator.workspaceToCode(ws);
-  codeDiv.innerText = code;
-  outputDiv.innerHTML = code;
-  const scriptRegex = /<script>([\s\S]*?)<\/script>/;
-  const match = code.match(scriptRegex);
-  const scriptCode = match ? match[1] : '';
-  const getErrorId = document.getElementById("errorMessage");
+  // const code = websiteGenerator.workspaceToCode(ws);
+  // codeDiv.innerText = code;
+  // outputDiv.innerHTML = code;
+  // const scriptRegex = /<script>([\s\S]*?)<\/script>/;
+  // const match = code.match(scriptRegex);
+  // const scriptCode = match ? match[1] : '';
+  // const getErrorId = document.getElementById("errorMessage");
   /*
   const addDiv2 = document.createElement("div");
   addDiv2.textContent = scriptCode;
   outputId.appendChild(addDiv2);
   */
-  try {
-    Function(DOMPurify.sanitize(scriptCode));
-    getErrorId.textContent = "何もエラーは起こってません"
-    getErrorId.classList = "safe"
-  }  catch (e) {
-    getErrorId.textContent = e.name + " " +e.message 
-    getErrorId.classList = "errorOccured"
-  }
-
-
-
+  // try {
+  //   eval(scriptCode);
+  //   getErrorId.textContent = "何もエラーは起こってません"
+  //   getErrorId.classList = "safe"
+  // }  catch (e) {
+  //   getErrorId.textContent = e.name + " " +e.message 
+  //   getErrorId.classList = "errorOccured"
+  // }
 
 });
+
 limitBlockCount(ws,'html_html-head-body',1);
 function limitBlockCount(workspace, blockType, maxCount) {
   // ワークスペースにイベントリスナーを追加
@@ -320,6 +322,7 @@ function forbidblockconnect(block,blockA,blockB,){
 }
 }
 }
+
 document.getElementById("button").onclick = () => {
   const getCodeID = document.getElementById("generatedCode");
   const getButtonID = document.getElementById("button");
@@ -331,6 +334,7 @@ document.getElementById("button").onclick = () => {
     getButtonID.textContent = "コードを表示する";
   }
 }
+
 const popupId = document.getElementById("popup");
 const popupOuterId = document.getElementById("popup-outer");
 const popupInnerId = document.getElementById("popup-inner");

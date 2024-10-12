@@ -416,6 +416,14 @@ export const toolbox = {
         },
         {
           kind: "block",
+          type: "js_getElementByClassName",
+        },
+        {
+          kind: "block",
+          type: "js_getElementByTagName",
+        },
+        {
+          kind: "block",
           type: "js_addEventListener",
         },
         {
@@ -1321,13 +1329,43 @@ export const toolbox = {
             "CONTENT": {
               "block": {
                 "type": "html_input",
+                "inputs": {
+                  "ATTRIBUTE": {
+                    "block": {
+                      "type": "html_type",
+                      "fields": {
+                        "FIELD": "date"
+                      }
+                    }
+                  },
+                },
                 "next": {
                   "block": {
                     "type": "html_input",
+                    "inputs": {
+                      "ATTRIBUTE": {
+                        "block": {
+                          "type": "html_type",
+                          "fields": {
+                            "FIELD": "checkbox"
+                          }
+                        }
+                      },
+                    },
                     "next": {
                       "block": {
                         "type": "html_button",
-                      }   
+                        "inputs": {
+                          "CONTENT": {
+                            "block": {
+                              "type": "html_text",
+                              "fields": {
+                                "TEXT": "Submit"
+                              }
+                            }
+                          }
+                        }
+                      },
                     }
                   }
                 }
