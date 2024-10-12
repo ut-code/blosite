@@ -9,10 +9,32 @@
       <div id="pageContainer">
         <div id="outputPane">
           <pre id="generatedCode" class="beforeClicked"><code></code></pre>
+          <div id="wstitle"></div>
           <div id="output"></div>
           <button id="button">コードを表示する</button>
+          <div id="errorMessage" //class="safe"//>何もエラーは起こってません</div>
         </div>
         <div id="blocklyDiv"></div>
+      </div>
+      <!--
+      <label for="popupflag1">popup 1</label>
+      <input type="checkbox" class="popup-flag1" id="popupFlag1">
+      <label class="popup-background" for="popupFlag1"></label>
+      <div class="popup">
+        <label class="close-button" for="popupFlag1">×</label>
+        <div class="content">
+          content
+        </div>
+      </div>
+      --->
+      <div id="popup">
+        <div id="popup-outer"></div>
+        <div id="popup-inner">
+          <div id="close">×</div>
+          <div id="message">
+            テストテストテストテストテストテスト
+          </div>
+        </div>
       </div>
     </div>
   </body>
