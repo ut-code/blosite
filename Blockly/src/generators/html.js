@@ -382,6 +382,16 @@ websiteGenerator.forBlock["html_td"] = function (block, generator) {
   return indentedCode;
 };
 
+websiteGenerator.forBlock["html_caption"] = function (block, generator) {
+  const content = block.getFieldValue("CONTENT");
+  const attribute = generator.valueToCode(block, "ATTRIBUTE", Order.ATOMIC);
+  const sanitizedContent = sanitizeInput(content);
+  const startTag = attribute ? `<caption ${attribute}>` : `<caption>`;
+  const code = `${startTag}${sanitizedContent}</caption>\n`;
+  const indentedCode = generator.prefixLines(code, generator.INDENT);
+  return indentedCode;
+};
+
 websiteGenerator.forBlock["html_header"] = function (block, generator) {
   const content = generator.statementToCode(block, "CONTENT");
   const attribute = generator.valueToCode(block, "ATTRIBUTE", Order.ATOMIC);
