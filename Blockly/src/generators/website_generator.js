@@ -23,9 +23,14 @@ class WebsiteGenerator extends JavascriptGenerator {
 
     // <script> タグの位置を見つける
     const scriptTagIndex = code.indexOf('<script>');
+    
     if (scriptTagIndex < 0 && definitions.length > 0) {
       console.warn('No <script> tag found in the generated code.');
       return code; // 定義したいが<script> タグがない場合は変更なし
+    }
+
+    if (scriptTagIndex < 0 || definitions.length === 0) {
+      return code; // <script> タグがないまたは定義がない場合は変更なし
     }
 
     // <script> タグ内のインデントを数える

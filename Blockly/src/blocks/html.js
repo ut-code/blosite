@@ -32,6 +32,7 @@ export const htmlBlocks = Blockly.common.createBlockDefinitionsFromJsonArray([
         type: "input_dummy",
       },
     ],
+    style: "htmlelement_blocks",
   },
   {
     type: "html_comment",
@@ -44,6 +45,21 @@ export const htmlBlocks = Blockly.common.createBlockDefinitionsFromJsonArray([
     ],
     previousStatement: null,
     nextStatement: null,
+    style: "htmlelement_blocks",
+  },
+  {
+    type: "html_text",
+    message0: "%1",
+    args0: [
+      {
+        type: "field_input",
+        name: "TEXT",
+      },
+    ],
+    previousStatement: null,
+    nextStatement: null,
+    style: "htmlelement_blocks",
+    extensions: ["text_quotes"], // ダブルクォーテーションのアイコンを追加
   },
   {
     type: "html_title",
@@ -56,6 +72,7 @@ export const htmlBlocks = Blockly.common.createBlockDefinitionsFromJsonArray([
     ],
     previousStatement: null,
     nextStatement: null,
+    style: "htmlelement_blocks",
   },
   {
     type: "html_div",
@@ -72,6 +89,288 @@ export const htmlBlocks = Blockly.common.createBlockDefinitionsFromJsonArray([
     ],
     previousStatement: null,
     nextStatement: null,
+    style: "htmlelement_blocks",
+  },
+  {
+    type: "html_br",
+    message0: "<br />",
+    args0: [
+    ],
+    previousStatement: null,
+    nextStatement: null,
+    style: "htmlelement_blocks",
+  },
+  {
+    type: "html_p",
+    message0: "<p> %1 %2 </p>",
+    args0: [
+      {
+        type: "input_value",
+        name: "ATTRIBUTE",
+      },
+      {
+        type: "input_statement",
+        name: "CONTENT",
+      },
+    ],
+    previousStatement: null,
+    nextStatement: null,
+    style: "htmlelement_blocks",
+  },
+  {
+    type: "html_a",
+    message0: "<a> %1 %2 </a>",
+    args0: [
+      {
+        type: "input_value",
+        name: "ATTRIBUTE",
+      },
+      {
+        type: "input_statement",
+        name: "CONTENT",
+      },
+    ],
+    previousStatement: null,
+    nextStatement: null,
+    style: "htmlelement_blocks",
+  },
+  {
+    type: "html_blockquote",
+    message0: "<blockquote> %1 %2 </blockquote>",
+    args0: [
+      {
+        type: "input_value",
+        name: "ATTRIBUTE",
+      },
+      {
+        type: "input_statement",
+        name: "CONTENT",
+      },
+    ],
+    previousStatement: null,
+    nextStatement: null,
+    style: "htmlelement_blocks",
+  },
+  {
+    type: 'html_i',
+    message0: '<i> %1 </i> %2',
+    args0: [
+        {
+            type: 'field_input',
+            name: 'CONTENT'
+        },
+        {
+            type: 'input_value',
+            name: 'ATTRIBUTE'
+        },
+    ],
+    previousStatement: null,
+    nextStatement: null,
+    style: "htmlelement_blocks",
+  },
+  {
+    type: 'html_b',
+    message0: '<b> %1 </b> %2',
+    args0: [
+        {
+            type: 'field_input',
+            name: 'CONTENT'
+        },
+        {
+            type: 'input_value',
+            name: 'ATTRIBUTE'
+        },
+    ],
+    previousStatement: null,
+    nextStatement: null,
+    style: "htmlelement_blocks",
+  },
+  {
+    type: 'html_u',
+    message0: '<u> %1 </u> %2',
+    args0: [
+        {
+            type: 'field_input',
+            name: 'CONTENT'
+        },
+        {
+            type: 'input_value',
+            name: 'ATTRIBUTE'
+        },
+    ],
+    previousStatement: null,
+    nextStatement: null,
+    style: "htmlelement_blocks",
+  },
+  {
+    type: 'html_del',
+    message0: '<del> %1 </del> %2',
+    args0: [
+        {
+            type: 'field_input',
+            name: 'CONTENT'
+        },
+        {
+            type: 'input_value',
+            name: 'ATTRIBUTE'
+        },
+    ],
+    previousStatement: null,
+    nextStatement: null,
+    style: "htmlelement_blocks",
+  },
+  {
+    type: 'html_ins',
+    message0: '<ins> %1 </ins> %2',
+    args0: [
+        {
+            type: 'field_input',
+            name: 'CONTENT'
+        },
+        {
+            type: 'input_value',
+            name: 'ATTRIBUTE'
+        },
+    ],
+    previousStatement: null,
+    nextStatement: null,
+    style: "htmlelement_blocks",
+  },
+  {
+    type: 'html_small',
+    message0: '<small> %1 </small> %2',
+    args0: [
+        {
+            type: 'field_input',
+            name: 'CONTENT'
+        },
+        {
+            type: 'input_value',
+            name: 'ATTRIBUTE'
+        },
+    ],
+    previousStatement: null,
+    nextStatement: null,
+    style: "htmlelement_blocks",
+  },
+  {
+    type: 'html_sub',
+    message0: '<sub> %1 </sub> %2',
+    args0: [
+        {
+            type: 'field_input',
+            name: 'CONTENT'
+        },
+        {
+            type: 'input_value',
+            name: 'ATTRIBUTE'
+        },
+    ],
+    previousStatement: null,
+    nextStatement: null,
+    style: "htmlelement_blocks",
+  },
+  {
+    type: 'html_sup',
+    message0: '<sup> %1 </sup> %2',
+    args0: [
+        {
+            type: 'field_input',
+            name: 'CONTENT'
+        },
+        {
+            type: 'input_value',
+            name: 'ATTRIBUTE'
+        },
+    ],
+    previousStatement: null,
+    nextStatement: null,
+    style: "htmlelement_blocks",
+  },
+  {
+    type: 'html_em',
+    message0: '<em> %1 </em> %2',
+    args0: [
+        {
+            type: 'field_input',
+            name: 'CONTENT'
+        },
+        {
+            type: 'input_value',
+            name: 'ATTRIBUTE'
+        },
+    ],
+    previousStatement: null,
+    nextStatement: null,
+    style: "htmlelement_blocks",
+  },
+  {
+    type: 'html_strong',
+    message0: '<strong> %1 </strong> %2',
+    args0: [
+        {
+          type: 'field_input',
+          name: 'CONTENT'
+        },
+        {
+            type: 'input_value',
+            name: 'ATTRIBUTE'
+        },
+    ],
+    previousStatement: null,
+    nextStatement: null,
+    style: "htmlelement_blocks",
+},
+  {
+    type: 'html_code',
+    message0: '<code> %1 </code> %2',
+    args0: [
+        {
+            type: 'field_input',
+            name: 'CONTENT'
+        },
+        {
+            type: 'input_value',
+            name: 'ATTRIBUTE'
+        },
+    ],
+    previousStatement: null,
+    nextStatement: null,
+    style: "htmlelement_blocks",
+  },
+  {
+    type: 'html_kbd',
+    message0: '<kbd> %1 </kbd> %2',
+    args0: [
+        {
+            type: 'field_input',
+            name: 'CONTENT'
+        },
+        {
+            type: 'input_value',
+            name: 'ATTRIBUTE'
+        },
+    ],
+    previousStatement: null,
+    nextStatement: null,
+    style: "htmlelement_blocks",
+  },
+  {
+    type: 'html_var',
+    message0: '<var> %1 </var> %2',
+    args0: [
+        {
+            type: 'field_input',
+            name: 'CONTENT'
+        },
+        {
+            type: 'input_value',
+            name: 'ATTRIBUTE'
+        },
+    ],
+    previousStatement: null,
+    nextStatement: null,
+    style: "htmlelement_blocks",
   },
   {
     type: "html_ul",
@@ -86,29 +385,31 @@ export const htmlBlocks = Blockly.common.createBlockDefinitionsFromJsonArray([
         name: "CONTENT",
       },
     ],
-    'previousStatement': null,
-    'nextStatement': null,
+    previousStatement: null,
+    nextStatement: null,
+    style: "htmlelement_blocks",
   },
   {
-    'type': 'html_ol',
-    'message0': '<ol> %1 %2 </ol>',
-    'args0': [
+    type: 'html_ol',
+    message0: '<ol> %1 %2 </ol>',
+    args0: [
         {
-            'type': 'input_value',
-            'name': 'ATTRIBUTE'
+            type: 'input_value',
+            name: 'ATTRIBUTE'
         },
         {
-            'type': 'input_statement',
-            'name': 'CONTENT'
+            type: 'input_statement',
+            name: 'CONTENT'
         }
     ],
-    'previousStatement': null,
-    'nextStatement': null,
+    previousStatement: null,
+    nextStatement: null,
+    style: "htmlelement_blocks",
   },
   {
-    'type': 'html_li',
-    'message0': '<li> %1 </li> %2',
-    'args0': [
+    type: 'html_li',
+    message0: '<li> %1 </li> %2',
+    args0: [
         {
             'type': 'field_input',
             'name': 'CONTENT'
@@ -120,6 +421,211 @@ export const htmlBlocks = Blockly.common.createBlockDefinitionsFromJsonArray([
     ],
     previousStatement: null,
     nextStatement: null,
+    style: "htmlelement_blocks",
+  },
+  {
+    type: 'html_cite',
+    message0: '<cite> %1 </cite> %2',
+    args0: [
+        {
+            type: 'field_input',
+            name: 'CONTENT'
+        },
+        {
+            type: 'input_value',
+            name: 'ATTRIBUTE'
+        },
+    ],
+    previousStatement: null,
+    nextStatement: null,
+    style: "htmlelement_blocks",
+  },
+  {
+    type: "html_table",
+    message0: "<table> %1 %2 </table>",
+    args0: [
+      {
+        type: "input_value",
+        name: "ATTRIBUTE",
+      },
+      {
+        type: "input_statement",
+        name: "CONTENT",
+      },
+    ],
+    previousStatement: null,
+    nextStatement: null,
+    style: "htmlelement_blocks",
+  },
+  {
+    type: "html_thead",
+    message0: "<thead> %1 %2 </thead>",
+    args0: [
+      {
+        type: "input_value",
+        name: "ATTRIBUTE",
+      },
+      {
+        type: "input_statement",
+        name: "CONTENT",
+      },
+    ],
+    previousStatement: null,
+    nextStatement: null,
+    style: "htmlelement_blocks",
+  },
+  {
+    type: "html_tbody",
+    message0: "<tbody> %1 %2 </tbody>",
+    args0: [
+      {
+        type: "input_value",
+        name: "ATTRIBUTE",
+      },
+      {
+        type: "input_statement",
+        name: "CONTENT",
+      },
+    ],
+    previousStatement: null,
+    nextStatement: null,
+    style: "htmlelement_blocks",
+  },
+  {
+    type: "html_tfoot",
+    message0: "<tfoot> %1 %2 </tfoot>",
+    args0: [
+      {
+        type: "input_value",
+        name: "ATTRIBUTE",
+      },
+      {
+        type: "input_statement",
+        name: "CONTENT",
+      },
+    ],
+    previousStatement: null,
+    nextStatement: null,
+    style: "htmlelement_blocks",
+  },
+  {
+    type: "html_tr",
+    message0: "<tr> %1 %2 </tr>",
+    args0: [
+      {
+        type: "input_value",
+        name: "ATTRIBUTE",
+      },
+      {
+        type: "input_statement",
+        name: "CONTENT",
+      },
+    ],
+    previousStatement: null,
+    nextStatement: null,
+    style: "htmlelement_blocks",
+  },
+  {
+    type: 'html_caption',
+    message0: '<caption> %1 </caption> %2',
+    args0: [
+        {
+            type: 'field_input',
+            name: 'CONTENT'
+        },
+        {
+            type: 'input_value',
+            name: 'ATTRIBUTE'
+        },
+    ],
+    previousStatement: null,
+    nextStatement: null,
+    style: "htmlelement_blocks",
+  },
+  {
+    type: 'html_th',
+    message0: '<th> %1 </th> %2',
+    args0: [
+        {
+            type: 'field_input',
+            name: 'CONTENT'
+        },
+        {
+            type: 'input_value',
+            name: 'ATTRIBUTE'
+        },
+    ],
+    previousStatement: null,
+    nextStatement: null,
+    style: "htmlelement_blocks",
+  },
+  {
+    type: 'html_td',
+    message0: '<td> %1 </td> %2',
+    args0: [
+        {
+            type: 'field_input',
+            name: 'CONTENT'
+        },
+        {
+            type: 'input_value',
+            name: 'ATTRIBUTE'
+        },
+    ],
+    previousStatement: null,
+    nextStatement: null,
+    style: "htmlelement_blocks",
+  },
+  {
+    type: "html_header",
+    message0: "<header> %1 %2 </header>",
+    args0: [
+      {
+        type: "input_value",
+        name: "ATTRIBUTE",
+      },
+      {
+        type: "input_statement",
+        name: "CONTENT",
+      },
+    ],
+    previousStatement: null,
+    nextStatement: null,
+    style: "htmlelement_blocks",
+  },
+  {
+    type: "html_footer",
+    message0: "<footer> %1 %2 </footer>",
+    args0: [
+      {
+        type: "input_value",
+        name: "ATTRIBUTE",
+      },
+      {
+        type: "input_statement",
+        name: "CONTENT",
+      },
+    ],
+    previousStatement: null,
+    nextStatement: null,
+    style: "htmlelement_blocks",
+  },
+  {
+    type: "html_hgroup",
+    message0: "<hgroup> %1 %2 </hgroup>",
+    args0: [
+      {
+        type: "input_value",
+        name: "ATTRIBUTE",
+      },
+      {
+        type: "input_statement",
+        name: "CONTENT",
+      },
+    ],
+    previousStatement: null,
+    nextStatement: null,
+    style: "htmlelement_blocks",
   },
   {
     type: "html_button",
@@ -136,6 +642,37 @@ export const htmlBlocks = Blockly.common.createBlockDefinitionsFromJsonArray([
     ],
     previousStatement: null,
     nextStatement: null,
+    style: "htmlelement_blocks",
+  },
+  {
+    type: "html_form",
+    message0: "<form> %1 %2 </form>",
+    args0: [
+      {
+        type: "input_value",
+        name: "ATTRIBUTE",
+      },
+      {
+        type: "input_statement",
+        name: "CONTENT",
+      },
+    ],
+    previousStatement: null,
+    nextStatement: null,
+    style: "htmlelement_blocks",
+  },
+  {
+    type: 'html_input',
+    message0: '<input /> %1',
+    args0: [
+      {
+        type: "input_value",
+        name: "ATTRIBUTE",
+      },
+    ],
+    previousStatement: null,
+    nextStatement: null,
+    style: "htmlelement_blocks",
   },
   {
     type: "html_script",
@@ -152,6 +689,75 @@ export const htmlBlocks = Blockly.common.createBlockDefinitionsFromJsonArray([
     ],
     previousStatement: null,
     nextStatement: null,
+    style: "htmlelement_blocks",
+  },
+  {
+    type: "html_textarea",
+    message0: "<textarea> %1 %2 </textarea>",
+    args0: [
+      {
+        type: "input_value",
+        name: "ATTRIBUTE",
+      },
+      {
+        type: "input_statement",
+        name: "CONTENT",
+      },
+    ],
+    previousStatement: null,
+    nextStatement: null,
+    style: "htmlelement_blocks",
+  },
+  {
+    type: "html_select",
+    message0: "<select> %1 %2 </select>",
+    args0: [
+      {
+        type: "input_value",
+        name: "ATTRIBUTE",
+      },
+      {
+        type: "input_statement",
+        name: "CONTENT",
+      },
+    ],
+    previousStatement: null,
+    nextStatement: null,
+    style: "htmlelement_blocks",
+  },
+  {
+    type: "html_optgroup",
+    message0: "<optgroup> %1 %2 </optgroup>",
+    args0: [
+      {
+        type: "input_value",
+        name: "ATTRIBUTE",
+      },
+      {
+        type: "input_statement",
+        name: "CONTENT",
+      },
+    ],
+    previousStatement: null,
+    nextStatement: null,
+    style: "htmlelement_blocks",
+  },
+  {
+    type: 'html_option',
+    message0: '<option> %1 </option> %2',
+    args0: [
+        {
+            'type': 'field_input',
+            'name': 'CONTENT'
+        },
+        {
+            'type': 'input_value',
+            'name': 'ATTRIBUTE'
+        },
+    ],
+    previousStatement: null,
+    nextStatement: null,
+    style: "htmlelement_blocks",
   },
   {
     type: "html_id",
@@ -167,6 +773,23 @@ export const htmlBlocks = Blockly.common.createBlockDefinitionsFromJsonArray([
       },
     ],
     output: null,
+    style: "htmlattribute_blocks",
+  },
+  {
+    type: "html_class",
+    message0: 'class = "%1" %2',
+    args0: [
+      {
+        type: "field_input",
+        name: "FIELD",
+      },
+      {
+        type: "input_value",
+        name: "VALUE",
+      },
+    ],
+    output: null,
+    style: "htmlattribute_blocks",
   },
   {
     type: "html_style",
@@ -183,6 +806,7 @@ export const htmlBlocks = Blockly.common.createBlockDefinitionsFromJsonArray([
     ],
     mutator: "html_style_mutator",
     output: "Array",
+    style: "htmlattribute_blocks",
     tooltip: "Create a list with any number of items.",
     helpUrl: "",
   },
@@ -196,6 +820,7 @@ export const htmlBlocks = Blockly.common.createBlockDefinitionsFromJsonArray([
     message0: "項目",
     previousStatement: null,
     nextStatement: null,
+    style: "htmlattribute_blocks",
     tooltip: "",
     helpUrl: "",
   },
@@ -209,70 +834,453 @@ export const htmlBlocks = Blockly.common.createBlockDefinitionsFromJsonArray([
       },
     ],
     output: null,
-},
-{
-    'type': 'html_font-size',
-    'message0': 'font-size = %1 %2',
-    'args0': [
-        {
-            'type': 'field_input',
-            'name': 'FIELD',
-            'text': '16'
-        },
-        {
-            'type': 'input_value',
-            'name': 'VALUE'
-        }
+    style: "htmlattribute_blocks",
+  },
+  {
+    type: "html_hidden",
+    message0: 'hidden %1',
+    args0: [
+      {
+        type: "input_value",
+        name: "VALUE",
+      },
     ],
-    'output': null,
-},
-{
-    'type': 'html_strong',
-    'message0': '<strong> %1 %2 </strong>',
-    'args0': [
-        {
-            'type': 'input_value',
-            'name': 'ATTRIBUTE'
-        },
-        {
-            'type': 'input_statement',
-            'name': 'CONTENT'
-        }
+    output: null,
+    style: "htmlattribute_blocks",
+  },
+  {
+    type: "html_spellcheck",
+    message0: 'spellcheck = "%1" %2',
+    args0: [
+      {
+        type: "field_dropdown",
+        name: "FIELD",
+        options: [
+          ["true", "true"],
+          ["false", "false"],
+        ],
+      },
+      {
+        type: "input_value",
+        name: "VALUE",
+      },
     ],
-    'previousStatement': null,
-    'nextStatement': null,
-},
-{
-    'type': 'html_input',
-    'message0': 'input type = %1 %2',
-    'args0': [
-        {
-            'type': 'field_input',
-            'name': 'CONTENT',
-            'text': 'text'
-        },
-        {
-            'type': 'input_value',
-            'name': 'VALUE'
-        }
+    output: null,
+    style: "htmlattribute_blocks",
+  },
+  {
+    type: "html_title_attr",
+    message0: 'title = "%1" %2',
+    args0: [
+      {
+        type: "field_input",
+        name: "FIELD",
+      },
+      {
+        type: "input_value",
+        name: "VALUE",
+      },
     ],
-    'previousStatement': null,
-    'nextStatement': null,
-},
-
-{
-    'type': 'html_text',
-    'message0': '%1',
-    'args0': [
-        {
-            'type': 'field_input',
-            'name': 'TEXT',
-        },
+    output: null,
+    style: "htmlattribute_blocks",
+  },
+  {
+    type: "html_autocapitalize",
+    message0: 'autocapitalize = "%1" %2',
+    args0: [
+      {
+        type: "field_dropdown",
+        name: "FIELD",
+        options: [
+          ["off", "off"],
+          ["on", "on"],
+          ["words", "words"],
+          ["characters", "characters"],
+        ],
+      },
+      {
+        type: "input_value",
+        name: "VALUE",
+      },
     ],
-    previousStatement: null,
-    nextStatement: null,
-    tooltip: "",
-    helpUrl: "",
+    output: null,
+    style: "htmlattribute_blocks",
+  },
+  {
+    type: "html_checked",
+    message0: 'checked %1',
+    args0: [
+      {
+        type: "input_value",
+        name: "VALUE",
+      },
+    ],
+    output: null,
+    style: "htmlattribute_blocks",
+  },
+  {
+    type: "html_cols",
+    message0: 'cols = "%1" %2',
+    args0: [
+      {
+        type: "field_input",
+        name: "FIELD",
+      },
+      {
+        type: "input_value",
+        name: "VALUE",
+      },
+    ],
+    output: null,
+    style: "htmlattribute_blocks",
+  },
+  {
+    type: "html_rows",
+    message0: 'rows = "%1" %2',
+    args0: [
+      {
+        type: "field_input",
+        name: "FIELD",
+      },
+      {
+        type: "input_value",
+        name: "VALUE",
+      },
+    ],
+    output: null,
+    style: "htmlattribute_blocks",
+  },
+  {
+    type: "html_contenteditable",
+    message0: 'contenteditable = "%1" %2',
+    args0: [
+      {
+        type: "field_dropdown",
+        name: "FIELD",
+        options: [
+          ["true", "true"],
+          ["false", "false"],
+        ],
+      },
+      {
+        type: "input_value",
+        name: "VALUE",
+      },
+    ],
+    output: null,
+    style: "htmlattribute_blocks",
+  },
+  {
+    type: "html_disabled",
+    message0: 'disabled %1',
+    args0: [
+      {
+        type: "input_value",
+        name: "VALUE",
+      },
+    ],
+    output: null,
+    style: "htmlattribute_blocks",
+  },
+  {
+    type: "html_href",
+    message0: 'href = "%1" %2',
+    args0: [
+      {
+        type: "field_input",
+        name: "FIELD",
+      },
+      {
+        type: "input_value",
+        name: "VALUE",
+      },
+    ],
+    output: null,
+    style: "htmlattribute_blocks",
+  },
+  {
+    type: "html_label",
+    message0: 'label = "%1" %2',
+    args0: [
+      {
+        type: "field_input",
+        name: "FIELD",
+      },
+      {
+        type: "input_value",
+        name: "VALUE",
+      },
+    ],
+    output: null,
+    style: "htmlattribute_blocks",
+  },
+  {
+    type: "html_max",
+    message0: 'max = "%1" %2',
+    args0: [
+      {
+        type: "field_input",
+        name: "FIELD",
+      },
+      {
+        type: "input_value",
+        name: "VALUE",
+      },
+    ],
+    output: null,
+    style: "htmlattribute_blocks",
+  },
+  {
+    type: "html_min",
+    message0: 'min = "%1" %2',
+    args0: [
+      {
+        type: "field_input",
+        name: "FIELD",
+      },
+      {
+        type: "input_value",
+        name: "VALUE",
+      },
+    ],
+    output: null,
+    style: "htmlattribute_blocks",
+  },
+  {
+    type: "html_maxlength",
+    message0: 'maxlength = "%1" %2',
+    args0: [
+      {
+        type: "field_input",
+        name: "FIELD",
+      },
+      {
+        type: "input_value",
+        name: "VALUE",
+      },
+    ],
+    output: null,
+    style: "htmlattribute_blocks",
+  },
+  {
+    type: "html_minlength",
+    message0: 'minlength = "%1" %2',
+    args0: [
+      {
+        type: "field_input",
+        name: "FIELD",
+      },
+      {
+        type: "input_value",
+        name: "VALUE",
+      },
+    ],
+    output: null,
+    style: "htmlattribute_blocks",
+  },
+  {
+    type: "html_pattern",
+    message0: 'pattern = "%1" %2',
+    args0: [
+      {
+        type: "field_input",
+        name: "FIELD",
+      },
+      {
+        type: "input_value",
+        name: "VALUE",
+      },
+    ],
+    output: null,
+    style: "htmlattribute_blocks",
+  },
+  {
+    type: "html_placeholder",
+    message0: 'placeholder = "%1" %2',
+    args0: [
+      {
+        type: "field_input",
+        name: "FIELD",
+      },
+      {
+        type: "input_value",
+        name: "VALUE",
+      },
+    ],
+    output: null,
+    style: "htmlattribute_blocks",
+  },
+  {
+    type: "html_readonly",
+    message0: 'readonly %1',
+    args0: [
+      {
+        type: "input_value",
+        name: "VALUE",
+      },
+    ],
+    output: null,
+    style: "htmlattribute_blocks",
+  },
+  {
+    type: "html_selected",
+    message0: 'selected %1',
+    args0: [
+      {
+        type: "input_value",
+        name: "VALUE",
+      },
+    ],
+    output: null,
+    style: "htmlattribute_blocks",
+  },
+  {
+    type: "html_size",
+    message0: 'size = "%1" %2',
+    args0: [
+      {
+        type: "field_input",
+        name: "FIELD",
+      },
+      {
+        type: "input_value",
+        name: "VALUE",
+      },
+    ],
+    output: null,
+    style: "htmlattribute_blocks",
+  },
+  {
+    type: "html_src",
+    message0: 'src = "%1" %2',
+    args0: [
+      {
+        type: "field_input",
+        name: "FIELD",
+      },
+      {
+        type: "input_value",
+        name: "VALUE",
+      },
+    ],
+    output: null,
+    style: "htmlattribute_blocks",
+  },
+  {
+    type: "html_step",
+    message0: 'step = "%1" %2',
+    args0: [
+      {
+        type: "field_input",
+        name: "FIELD",
+      },
+      {
+        type: "input_value",
+        name: "VALUE",
+      },
+    ],
+    output: null,
+    style: "htmlattribute_blocks",
+  },
+  {
+    type: "html_start",
+    message0: 'start = "%1" %2',
+    args0: [
+      {
+        type: "field_input",
+        name: "FIELD",
+      },
+      {
+        type: "input_value",
+        name: "VALUE",
+      },
+    ],
+    output: null,
+    style: "htmlattribute_blocks",
+  },
+  {
+    type: "html_tabindex",
+    message0: 'tabindex = "%1" %2',
+    args0: [
+      {
+        type: "field_input",
+        name: "FIELD",
+      },
+      {
+        type: "input_value",
+        name: "VALUE",
+      },
+    ],
+    output: null,
+    style: "htmlattribute_blocks",
+  },
+  {
+    type: "html_type",
+    message0: 'type = "%1" %2',
+    args0: [
+      {
+        type: "field_input",
+        name: "FIELD",
+      },
+      {
+        type: "input_value",
+        name: "VALUE",
+      },
+    ],
+    output: null,
+    style: "htmlattribute_blocks",
+  },
+  {
+    type: "html_value",
+    message0: 'value = "%1" %2',
+    args0: [
+      {
+        type: "field_input",
+        name: "FIELD",
+      },
+      {
+        type: "input_value",
+        name: "VALUE",
+      },
+    ],
+    output: null,
+    style: "htmlattribute_blocks",
+  },
+  {
+    type: "html_width",
+    message0: 'width = "%1" %2',
+    args0: [
+      {
+        type: "field_input",
+        name: "FIELD",
+      },
+      {
+        type: "input_value",
+        name: "VALUE",
+      },
+    ],
+    output: null,
+    style: "htmlattribute_blocks",
+  },
+  {
+    type: "html_wrap",
+    message0: 'wrap = "%1" %2',
+    args0: [
+      {
+        type: "field_dropdown",
+        name: "FIELD",
+        options: [
+          ["hard", "hard"],
+          ["soft", "soft"],
+        ],
+      },
+      {
+        type: "input_value",
+        name: "VALUE",
+      },
+    ],
+    output: null,
+    style: "htmlattribute_blocks",
   },
   {
     type: "css_color",
@@ -288,10 +1296,9 @@ export const htmlBlocks = Blockly.common.createBlockDefinitionsFromJsonArray([
         name: "VALUE",
       },
     ],
-    'previousStatement': null,
-    'nextStatement': null,
-    'output':null
-},
+    output: null,
+    style: "css_blocks",
+  },
   {
     type: "css_font-size",
     message0: "font-size: %1 %2",
@@ -307,6 +1314,7 @@ export const htmlBlocks = Blockly.common.createBlockDefinitionsFromJsonArray([
       },
     ],
     output: null,
+    style: "css_blocks",
   },
   {
     type: "css_font-weight",
@@ -323,10 +1331,11 @@ export const htmlBlocks = Blockly.common.createBlockDefinitionsFromJsonArray([
       },
     ],
     output: null,
+    style: "css_blocks",
   },
   {
     type: "css_line-height",
-    message0: "line-height; %1 %2",
+    message0: "line-height: %1 %2",
     args0: [
       {
         type: "field_input",
@@ -339,6 +1348,7 @@ export const htmlBlocks = Blockly.common.createBlockDefinitionsFromJsonArray([
       },
     ],
     output: null,
+    style: "css_blocks",
   },
   {
     type: "css_background-color",
@@ -355,6 +1365,7 @@ export const htmlBlocks = Blockly.common.createBlockDefinitionsFromJsonArray([
       },
     ],
     output: null,
+    style: "css_blocks",
   },
   {
     type: "css_margin",
@@ -371,6 +1382,7 @@ export const htmlBlocks = Blockly.common.createBlockDefinitionsFromJsonArray([
       },
     ],
     output: null,
+    style: "css_blocks",
   },
   {
     type: "css_padding",
@@ -387,6 +1399,7 @@ export const htmlBlocks = Blockly.common.createBlockDefinitionsFromJsonArray([
       },
     ],
     output: null,
+    style: "css_blocks",
   },
   {
     type: "css_border",
@@ -403,6 +1416,7 @@ export const htmlBlocks = Blockly.common.createBlockDefinitionsFromJsonArray([
       },
     ],
     output: null,
+    style: "css_blocks",
   },
   {
     type: "css_border-radius",
@@ -419,6 +1433,7 @@ export const htmlBlocks = Blockly.common.createBlockDefinitionsFromJsonArray([
       },
     ],
     output: null,
+    style: "css_blocks",
   },
   {
     type: "css_display",
@@ -435,6 +1450,7 @@ export const htmlBlocks = Blockly.common.createBlockDefinitionsFromJsonArray([
       },
     ],
     output: null,
+    style: "css_blocks",
   },
   {
     type: "css_position",
@@ -451,6 +1467,7 @@ export const htmlBlocks = Blockly.common.createBlockDefinitionsFromJsonArray([
       },
     ],
     output: null,
+    style: "css_blocks",
   },
   {
     type: "css_top",
@@ -467,6 +1484,7 @@ export const htmlBlocks = Blockly.common.createBlockDefinitionsFromJsonArray([
       },
     ],
     output: null,
+    style: "css_blocks",
   },
   {
     type: "css_left",
@@ -483,6 +1501,7 @@ export const htmlBlocks = Blockly.common.createBlockDefinitionsFromJsonArray([
       },
     ],
     output: null,
+    style: "css_blocks",
   },
   {
     type: "css_right",
@@ -499,6 +1518,7 @@ export const htmlBlocks = Blockly.common.createBlockDefinitionsFromJsonArray([
       },
     ],
     output: null,
+    style: "css_blocks",
   },
   {
     type: "css_bottom",
@@ -515,6 +1535,7 @@ export const htmlBlocks = Blockly.common.createBlockDefinitionsFromJsonArray([
       },
     ],
     output: null,
+    style: "css_blocks",
   },
   {
     type: "css_top",
@@ -531,6 +1552,7 @@ export const htmlBlocks = Blockly.common.createBlockDefinitionsFromJsonArray([
       },
     ],
     output: null,
+    style: "css_blocks",
   },
   {
     type: "css_font-family",
@@ -547,6 +1569,7 @@ export const htmlBlocks = Blockly.common.createBlockDefinitionsFromJsonArray([
       },
     ],
     output: null,
+    style: "css_blocks",
   },
   {
     type: "css_font-family",
@@ -563,19 +1586,7 @@ export const htmlBlocks = Blockly.common.createBlockDefinitionsFromJsonArray([
       },
     ],
     output: null,
-  },
-  {
-    type: "html_text",
-    message0: "%1",
-    args0: [
-      {
-        type: "field_input",
-        name: "TEXT",
-      },
-    ],
-    previousStatement: null,
-    nextStatement: null,
-    extensions: ["text_quotes"], // ダブルクォーテーションのアイコンを追加
+    style: "css_blocks",
   },
   {
     type: "js_getElementById",
@@ -592,6 +1603,7 @@ export const htmlBlocks = Blockly.common.createBlockDefinitionsFromJsonArray([
     ],
     previousStatement: null,
     nextStatement: null,
+    style: "javascript_blocks",
   },
   {
     type: "js_addEventListener",
@@ -626,6 +1638,7 @@ export const htmlBlocks = Blockly.common.createBlockDefinitionsFromJsonArray([
     ],
     previousStatement: null,
     nextStatement: null,
+    style: "javascript_blocks",
   },
   {
     type: "js_alert",
@@ -638,18 +1651,67 @@ export const htmlBlocks = Blockly.common.createBlockDefinitionsFromJsonArray([
     ],
     previousStatement: null,
     nextStatement: null,
-  },
-  {
-    type: "js_string",
-    message0: '"%1"',
-    args0: [
-      {
-        type: "field_input",
-        name: "CONTENT",
-        text: "文字列",
-      },
-    ],
-    previousStatement: null,
-    nextStatement: null,
+    style: "javascript_blocks",
   },
 ]);
+
+
+// 動的な変更を伴うブロックの定義
+Blockly.Blocks['html_hn'] = {
+  init: function() {
+    // ブロックのJSON定義に基づいて初期化
+    this.jsonInit({
+      type: "html_hn",
+      message0: "<h%1>  %2 %3 %4",
+      args0: [
+        {
+          type: "field_dropdown",
+          name: "HN",
+          options: [
+            ["1", "1"],
+            ["2", "2"],
+            ["3", "3"],
+            ["4", "4"],
+            ["5", "5"],
+            ["6", "6"]
+          ],
+        },
+        {
+          type: "input_value",
+          name: "ATTRIBUTE",
+        },
+        {
+          type: "input_statement",
+          name: "CONTENT",
+        },
+        {
+          type: "field_label",
+          name: "LABEL",
+          text: "error!!",
+        }
+      ],
+      previousStatement: null,
+      nextStatement: null,
+      style: "htmlelement_blocks",
+    });
+
+    // ブロックの初期化時にラベルを更新
+    // 確実に更新させるためにsetTimeoutを使用
+    setTimeout(() => {
+      this.updateLabel();
+    }, 0);
+
+    // ドロップダウンの選択に応じてラベルを更新
+    this.setOnChange(() => {
+      this.updateLabel(); // ラベルを更新するメソッドを呼び出す
+    });
+  },
+
+  updateLabel: function() {
+    const selectedOption = this.getFieldValue('HN');
+    const labelField = this.getField('LABEL');
+
+    // ドロップダウンの値に応じてラベルを変更
+    labelField.setValue(`</h${selectedOption}>`);
+  }
+};

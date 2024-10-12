@@ -46,6 +46,42 @@ code {
   overflow: auto  ;
 }
 
+/* styleを指定しない場合にブロックが生成する要素のスタイルを定義 */
+
+#output blockquote {
+  margin: 1em 0;          /* 上下のマージンを設定 */
+  padding: 0.5em 1em;    /* 内側のパディングを設定 */
+  border-left: 4px solid #ccc; /* 左側にボーダーを追加 */
+  background-color: #f9f9f9;    /* 背景色を設定 */
+  /*color: #333;            /* 文字色を設定 */
+  quotes: "“" "”" "‘" "’"; /* 引用符を設定 */
+}
+
+#output code {
+  font-family: monospace;
+  background-color: #f9f9f9;
+  /* padding: 0.2em 0.4em;
+  margin: 0; */
+  /* font-size: 85%; */
+  border-radius: 3px;
+}
+
+#output kbd {
+  font-family: monospace;
+  font-size: 1em;
+  background-color: #f7f7f7;
+  border: 1px solid #ccc;
+  border-radius: 3px;
+  padding: 0.1em 0.6em;
+  box-shadow: 0 1px 0 rgba(0,0,0,0.2);
+}
+
+#output var {
+  font-style: italic; /* 標準がitalic */
+}
+
+/* ブロックが生成する要素のスタイルここまで */
+
 #button {
   position: relative;
   height: 50px;
