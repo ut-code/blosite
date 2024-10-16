@@ -18,7 +18,7 @@ import './index.css';
 // import DOMPurify from 'dompurify';
 
 Blockly.Themes.customStyle = Blockly.Theme.defineTheme('custom_style', {
-   'base': Blockly.Themes.Classic,
+   'base': Blockly.Themes.Classic, // 既存のベーステーマを指定
    'blockStyles' : {
       'htmlelement_blocks': {
       'colourPrimary': '#673ab7', // 紫
@@ -69,7 +69,9 @@ const titlename = document.getElementById('wstitle');
 const codeDiv = document.getElementById('generatedCode').firstChild;
 const outputDiv = document.getElementById('output');
 const blocklyDiv = document.getElementById('blocklyDiv');
+
 const ws = Blockly.inject(blocklyDiv, {
+
   // ワークスペースにおける見た目などの設定
   toolbox, //使用するツールボックスを定義
   theme: Blockly.Themes.customStyle,

@@ -1555,6 +1555,26 @@ export const htmlBlocks = Blockly.common.createBlockDefinitionsFromJsonArray([
     style: "css_blocks",
   },
   {
+    type: "css_table-layout",
+    message0: 'table-layout: %1 %2',
+    args0: [
+      {
+        type: "field_dropdown",
+        name: "FIELD",
+        options: [
+          ["auto", "auto"],
+          ["fixed", "fixed"],
+        ],
+      },
+      {
+        type: "input_value",
+        name: "VALUE",
+      },
+    ],
+    output: null,
+    style: "css_blocks",
+  },
+  {
     type: "css_font-family",
     message0: "font-family: %1 %2",
     args0: [
@@ -1723,6 +1743,35 @@ export const htmlBlocks = Blockly.common.createBlockDefinitionsFromJsonArray([
     ],
     previousStatement: null,
     nextStatement: null,
+    style: "javascript_blocks",
+  },
+  {
+    type: "js_textContent",
+    message0: "%1の文章を%2に変更",
+    args0: [
+      {
+        type: "input_value",
+        name: "VARIABLE",
+      },
+      {
+        type: "input_value",
+        name: "TEXT",
+      }
+    ],
+    previousStatement: null,
+    nextStatement: null,
+    style: "javascript_blocks",
+  },
+  {
+    type: "js_createElement",
+    message0: "要素名 %1 の要素を新規作成",
+    args0: [
+      {
+        type: "field_input",
+        name: "TAG",
+      }
+    ],
+    output: null,
     style: "javascript_blocks",
   },
 ]);

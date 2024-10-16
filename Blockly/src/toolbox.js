@@ -403,6 +403,10 @@ export const toolbox = {
           kind: "block",
           type: "css_bottom",
         },
+        {
+          kind: "block",
+          type: "css_table-layout",
+        },
       ]
     },
     {
@@ -425,6 +429,14 @@ export const toolbox = {
         {
           kind: "block",
           type: "js_addEventListener",
+        },
+        {
+          kind: "block",
+          type: "js_textContent",
+        },
+        {
+          kind: "block",
+          type: "js_createElement",
         },
         {
           kind: "block",
