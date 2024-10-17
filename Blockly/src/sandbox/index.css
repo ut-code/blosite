@@ -293,6 +293,12 @@ code {
   border: #007BFF 2px solid;
 }
 
+#popup-navigation #popup-prev:disabled {
+  color: #ccc;
+  border: #ccc 2px solid;
+  pointer-events: none;
+}
+
 #popup-navigation button:hover {
   background-color: #0056b3; /* ホバー時の色変更 */
 }
