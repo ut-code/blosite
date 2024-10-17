@@ -82,7 +82,7 @@ code {
 
 /* ブロックが生成する要素のスタイルここまで */
 
-#button {
+#code-button {
   position: relative;
   height: 50px;
   width: 150px;
@@ -167,6 +167,20 @@ code {
   width:var(--width);
 }
 */
+
+/* #popup {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.7);
+  z-index: 999;
+} */
+
 #popup-outer{
   position: absolute;
   top: 0;
@@ -188,7 +202,18 @@ code {
   z-index: 10000000;
 }
 
-#close {
+#popup-title {
+  padding-top: 10px; /* 上部のマージン */  
+  font-size: 24px; /* フォントサイズを大きく */
+  font-weight: bold; /* 太字に */
+  color: #333; /* タイトルの色 */
+  margin-bottom: 15px; /* 下部のマージン */
+  text-align: center; /* 中央揃え */
+  border-bottom: 2px solid #007BFF; /* 下線の追加 */
+  padding-bottom: 10px; /* 下線とのスペース */
+}
+
+#popup-close {
   position: absolute;
   top: 0;
   right: 10px;
@@ -198,4 +223,80 @@ code {
   border-radius: 40%;
   width: 40px;
   height: 40px;
+}
+
+#popup-button-container {
+  display: flex;
+  justify-content: space-evenly;
+  margin-bottom: 20px;
+  /* margin-left: 20px;
+  margin-right: 20px; */
+}
+
+.popup-buttons {
+  padding: 10px 15px;
+  background-color: white;
+  color: #007BFF;
+  font-size: 20px;
+
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.popup-buttons:hover {
+  background-color: #e9f3fe;
+}
+
+.popup-buttons.active {
+  background-color: #59a2f0; /* 選択中のボタンの背景色 */
+  color: #fff; /* 選択中のボタンのテキスト色 */
+  border: 2px solid #007BFF; /* 選択中のボタンに枠線を追加 */
+}
+
+#popup-message {
+  margin-bottom: 20px;
+}
+
+.popup-slides {
+  display: none; /* 初期は全て非表示 */
+  margin-right: 20px;
+  margin-left: 20px;
+}
+
+#popup-navigation {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: auto;
+  padding-top: 20px; 
+  margin-bottom: 0;
+  position: absolute;
+  bottom: 20px;
+  right: 20px;
+}
+
+#popup-navigation button {
+  padding: 10px 15px;
+  background-color: #007BFF;
+  color: white;
+  font-size: 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-left: 10px; /* ボタン間のスペース */
+  transition: background-color 0.3s; /* ホバー時のスムーズな変化 */
+}
+
+#popup-navigation #popup-prev {
+  color: #007BFF;
+  background-color: white;
+  border: #007BFF 2px solid;
+}
+
+#popup-navigation button:hover {
+  background-color: #0056b3; /* ホバー時の色変更 */
+}
+
+#popup-navigation #popup-prev:hover {
+  background-color: #e9f3fe;
 }

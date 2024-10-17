@@ -285,9 +285,12 @@ ws.addChangeListener((e) => {
 });
 
 limitBlockCount(ws,'html_html-head-body',1);
+
 function limitBlockCount(workspace, blockType, maxCount) {
+  
   // ワークスペースにイベントリスナーを追加
   workspace.addChangeListener(function(event) {
+
     // イベントがブロック作成（BLOCK_CREATE）でない場合は無視
     if (event.type !== Blockly.Events.BLOCK_CREATE) {
       return;
@@ -307,27 +310,28 @@ function limitBlockCount(workspace, blockType, maxCount) {
     }
   });
 }
+
 function forbidblockconnect(block,blockA,blockB,){
   if (block.type === blockA){
-  const statementInput =  block.getInput('CONTENT'); // 
-  if (statementInput) {
-    const connection = statementInput.connection; // 'CONTENT' に接続されるブロックを取得
-  if (connection && connection.targetBlock()) {
-    const targetBlock = connection.targetBlock(); // targetBlock を変数に格納
-  if (targetBlock) {
-    if (targetBlock.type === blockB){
-      connection.disconnect();
-      alert(`${blockA}に${blockB}を中に入れることはできません`);
+    const statementInput =  block.getInput('CONTENT'); // 
+    if (statementInput) {
+        const connection = statementInput.connection; // 'CONTENT' に接続されるブロックを取得
+      if (connection && connection.targetBlock()) {
+        const targetBlock = connection.targetBlock(); // targetBlock を変数に格納
+        if (targetBlock) {
+          if (targetBlock.type === blockB){
+            connection.disconnect();
+            alert(`${blockA}に${blockB}を中に入れることはできません`);
+          }
+        }
+      }
     }
   }
 }
-}
-}
-}
 
-document.getElementById("button").onclick = () => {
+document.getElementById("code-button").onclick = () => {
   const getCodeID = document.getElementById("generatedCode");
-  const getButtonID = document.getElementById("button");
+  const getButtonID = document.getElementById("code-button");
   getCodeID.classList.toggle("afterClicked");
   getCodeID.classList.toggle("beforeClicked");
   if (getButtonID.textContent === "コードを表示する"){
@@ -337,14 +341,100 @@ document.getElementById("button").onclick = () => {
   }
 }
 
+// ポップアップの表示
+
 const popupId = document.getElementById("popup");
 const popupOuterId = document.getElementById("popup-outer");
 const popupInnerId = document.getElementById("popup-inner");
-const closeId = document.getElementById("close");
+const popupCloseId = document.getElementById("popup-close");
 
 popupId.addEventListener('click', e => {
-  if ((e.target.id === popupOuterId.id) || (e.target.id === closeId.id)){
+  if ((e.target.id === popupOuterId.id) || (e.target.id === popupCloseId.id)){
     popupOuterId.style.display = 'none';
     popupInnerId.style.display = 'none';
   }
 })
+
+// 現在表示しているポップアップスライドの番号
+let currentSlideIndex = 0;
+
+// 各ボタンにクリックイベントを追加
+const buttons = document.querySelectorAll('.popup-buttons');
+
+buttons.forEach((button, index) => {
+    button.addEventListener('click', () => {
+      showPopupSlideContent(index)
+      highlightButton(button);
+    });
+});
+
+// スライドを表示する関数
+function showPopupSlideContent(index) {
+    const slides = document.querySelectorAll('.popup-slides');
+    slides.forEach((slide, i) => {
+        slide.style.display = (i === index) ? 'block' : 'none';
+    });
+    currentSlideIndex = index;
+    updateNavigationButtons();
+}
+
+// 選択中のボタンをハイライトする関数
+function highlightButton(selectedButton) {
+  buttons.forEach(button => {
+      button.classList.remove('active'); // すべてのボタンからactiveクラスを削除
+  });
+  selectedButton.classList.add('active'); // 選択されたボタンにactiveクラスを追加
+}
+
+// 戻るボタンの機能
+function popupPrevSlide() {
+    if (currentSlideIndex > 0) {
+      const button = document.getElementById(`popup-button-${currentSlideIndex - 1}`)
+      showPopupSlideContent(currentSlideIndex - 1);
+      highlightButton(button);
+    }
+}
+
+// 進むボタンの機能
+function popupNextSlide() {
+    const slides = document.querySelectorAll('.popup-slides');
+    if (currentSlideIndex < slides.length - 1) {
+      const button = document.getElementById(`popup-button-${currentSlideIndex + 1}`)
+      showPopupSlideContent(currentSlideIndex + 1);
+      highlightButton(button);
+    }
+}
+
+// ナビゲーションボタンの状態を更新する関数
+function updateNavigationButtons() {
+  const prevButton = document.getElementById('popup-prev');
+  const nextButton = document.getElementById('popup-next');
+  const endButton = document.getElementById('popup-end');
+
+  // 戻るボタンの無効化
+  prevButton.disabled = (currentSlideIndex === 0);
+  
+  // 進むボタンの無効化
+  const slides = document.querySelectorAll('.popup-slides');
+  nextButton.disabled = (currentSlideIndex === slides.length - 1);
+  if (currentSlideIndex === slides.length - 1) {
+    nextButton.style.display = 'none';
+    endButton.style.display = 'block';
+  }
+  else {
+    nextButton.style.display = 'block';
+    endButton.style.display = 'none';
+  }
+}
+
+// 戻るボタンと進むボタンにイベントリスナーを追加
+document.getElementById('popup-prev').addEventListener('click', popupPrevSlide);
+document.getElementById('popup-next').addEventListener('click', popupNextSlide);
+document.getElementById('popup-end').addEventListener('click', () => {
+  popupOuterId.style.display = 'none';
+  popupInnerId.style.display = 'none';
+});
+
+// 初期表示
+showPopupSlideContent(0);
+highlightButton(buttons[0]); 
