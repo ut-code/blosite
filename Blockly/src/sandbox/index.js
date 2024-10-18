@@ -427,7 +427,7 @@ function updateNavigationButtons() {
   }
 }
 
-// 戻るボタンと進むボタンにイベントリスナーを追加
+// 戻るボタン、進むボタン、始めるボタンにイベントリスナーを追加
 document.getElementById('popup-prev').addEventListener('click', popupPrevSlide);
 document.getElementById('popup-next').addEventListener('click', popupNextSlide);
 document.getElementById('popup-end').addEventListener('click', () => {
@@ -435,6 +435,14 @@ document.getElementById('popup-end').addEventListener('click', () => {
   popupInnerId.style.display = 'none';
 });
 
-// 初期表示
+// ヘルプボタンでポップアップを表示
+document.getElementById("header-help").onclick = () => {
+  popupOuterId.style.display = 'block';
+  popupInnerId.style.display = 'block';
+  showPopupSlideContent(0);
+  highlightButton(buttons[0]);
+}
+
+// ポップアップの初期表示
 showPopupSlideContent(0);
 highlightButton(buttons[0]); 
