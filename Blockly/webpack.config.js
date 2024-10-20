@@ -3,10 +3,14 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 // Base config that applies to either development or production mode.
 const config = {
-  entry: './src/index.js',
+  entry: {
+    index: './src/index.js',
+    tutorial: './src/tutorial/index.js',
+    sandbox: './src/sandbox/index.js',
+  },
   output: {
     // Compile the source files into a bundle.
-    filename: 'bundle.js',
+    filename: '[name].bundle.js',
     path: path.resolve(__dirname, 'dist'),
     clean: true,
   },
@@ -27,8 +31,23 @@ const config = {
     // Generate the HTML index page based on our template.
     // This will output the same index page with the bundle we
     // created above added in a script tag.
+    // new HtmlWebpackPlugin({
+    //   template: 'src/index.html',
+    // }),
     new HtmlWebpackPlugin({
-      template: 'src/index.html',
+      template: './src/index.html',
+      filename: 'index.html',
+      chunks: ['index'],
+    }),
+    new HtmlWebpackPlugin({
+      template: './src/tutorial/index.html', // tutorial用のHTMLテンプレート
+      filename: 'tutorial/index.html',       // dist/tutorial/index.htmlとして出力
+      chunks: ['tutorial'],
+    }),
+    new HtmlWebpackPlugin({
+      template: './src/sandbox/index.html', // sandbox用のHTMLテンプレート
+      filename: 'sandbox/index.html',        // dist/sandbox/index.htmlとして出力
+      chunks: ['sandbox'],
     }),
   ],
 };

@@ -943,6 +943,14 @@ websiteGenerator.forBlock["css_top"] = function (block, generator) {
   return [code, Order.ATOMIC];
 };
 
+websiteGenerator.forBlock["css_table-layout"] = function (block, generator) {
+  const field = block.getFieldValue("FIELD");
+  const value = generator.valueToCode(block, "VALUE", Order.ATOMIC);
+  const sanitizedField = sanitizeInput(field);
+  const code = value ? `table-layout:${sanitizedField}; ${value}` : `table-layout:${sanitizedField}`;
+  return [code, Order.ATOMIC];
+};
+
 websiteGenerator.forBlock["css_left"] = function (block, generator) {
   const field = block.getFieldValue("FIELD");
   const value = generator.valueToCode(block, "VALUE", Order.ATOMIC);
@@ -967,34 +975,90 @@ websiteGenerator.forBlock["css_bottom"] = function (block, generator) {
   return [code, Order.ATOMIC];
 };
 
+// websiteGenerator.forBlock["js_getElementById"] = function (block, generator) {
+//   const id = block.getFieldValue("ID");
+//   const name = block.getFieldValue("NAME");
+//   const sanitizedId = DOMPurify.sanitize(id);
+//   const sanitizedName = DOMPurify.sanitize(name);
+//   const code =
+//     sanitizedId && sanitizedName
+//       ? `const ${sanitizedName} = document.getElementById("${sanitizedId}");\n`
+//       : "\n";
+//   const indentedCode = generator.prefixLines(code, generator.INDENT);
+//   return indentedCode;
+// };
+
 websiteGenerator.forBlock["js_getElementById"] = function (block, generator) {
   const id = block.getFieldValue("ID");
-  const name = block.getFieldValue("NAME");
-  const sanitizedId = DOMPurify.sanitize(id);
-  const sanitizedName = DOMPurify.sanitize(name);
+  const sanitizedId = sanitizeInput(id);
   const code =
-    sanitizedId && sanitizedName
-      ? `const ${sanitizedName} = document.getElementById("${sanitizedId}");\n`
-      : "\n";
-  const indentedCode = generator.prefixLines(code, generator.INDENT);
-  return indentedCode;
+    sanitizedId
+      ? `document.getElementById("${sanitizedId}")`
+      : "";
+  return [code, Order.ATOMIC];
 };
 
+websiteGenerator.forBlock["js_getElementByClassName"] = function (block, generator) {
+  const className = block.getFieldValue("CLASS");
+  const sanitizedClassName = sanitizeInput(className);
+  const code =
+    sanitizedClassName
+      ? `document.getElementById("${sanitizedClassName}")`
+      : "";
+  return [code, Order.ATOMIC];
+};
+
+websiteGenerator.forBlock["js_getElementByTagName"] = function (block, generator) {
+  const tagName = block.getFieldValue("TAG");
+  const sanitizedtagName = sanitizeInput(tagName);
+  const code =
+    sanitizedtagName
+      ? `document.getElementById("${sanitizedtagName}")`
+      : "";
+  return [code, Order.ATOMIC];
+};
+
+// websiteGenerator.forBlock["js_addEventListener"] = function (block, generator) {
+//   const id = block.getFieldValue("ID");
+//   const event = block.getFieldValue("EVENT");
+//   const content = generator.statementToCode(block, "CONTENT");
+//   const sanitizedId = DOMPurify.sanitize(id);
+//   const code = `${sanitizedId}.addEventListener("${event}", () => {\n${content}});\n`;
+//   const indentedCode = generator.prefixLines(code, generator.INDENT);
+//   return indentedCode;
+// };
+
 websiteGenerator.forBlock["js_addEventListener"] = function (block, generator) {
-  const id = block.getFieldValue("ID");
+  const id = generator.valueToCode(block, "ID", Order.ATOMIC);
   const event = block.getFieldValue("EVENT");
   const content = generator.statementToCode(block, "CONTENT");
-  const sanitizedId = DOMPurify.sanitize(id);
-  const code = `${sanitizedId}.addEventListener("${event}", () => {\n${content}});\n`;
-  const indentedCode = generator.prefixLines(code, generator.INDENT);
-  return indentedCode;
+  const code = id ? `${id}.addEventListener("${event}", () => {\n${content}});\n` : "\n";
+  return code;
+};
+
+websiteGenerator.forBlock["js_textContent"] = function (block, generator) {
+  const variable = generator.valueToCode(block, "VARIABLE", Order.ATOMIC);
+  const text = generator.valueToCode(block, "TEXT", Order.ATOMIC);
+  //const sanitizedText = sanitizeInput(text);
+  const code = (variable && text) ? `${variable}.textContent = ${text}\n` : "\n";
+  //const indentedCode = generator.prefixLines(code, generator.INDENT);
+  return code;
+};
+
+websiteGenerator.forBlock["js_createElement"] = function (block, generator) {
+  const tagName = block.getFieldValue("TAG");
+  const sanitizedtagName = sanitizeInput(tagName);
+  const code =
+    sanitizedtagName
+      ? `createEleent("${sanitizedtagName}")`
+      : "";
+  return [code, Order.ATOMIC];
 };
 
 websiteGenerator.forBlock["js_alert"] = function (block, generator) {
   const content = generator.valueToCode(block, "CONTENT", Order.ATOMIC);
   const code = `alert(${content});\n`;
-  const indentedCode = generator.prefixLines(code, generator.INDENT);
-  return indentedCode;
+  return code;
 };
 
 export { websiteGenerator };

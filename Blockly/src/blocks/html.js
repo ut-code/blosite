@@ -1555,6 +1555,26 @@ export const htmlBlocks = Blockly.common.createBlockDefinitionsFromJsonArray([
     style: "css_blocks",
   },
   {
+    type: "css_table-layout",
+    message0: 'table-layout: %1 %2',
+    args0: [
+      {
+        type: "field_dropdown",
+        name: "FIELD",
+        options: [
+          ["auto", "auto"],
+          ["fixed", "fixed"],
+        ],
+      },
+      {
+        type: "input_value",
+        name: "VALUE",
+      },
+    ],
+    output: null,
+    style: "css_blocks",
+  },
+  {
     type: "css_font-family",
     message0: "font-family: %1 %2",
     args0: [
@@ -1588,30 +1608,102 @@ export const htmlBlocks = Blockly.common.createBlockDefinitionsFromJsonArray([
     output: null,
     style: "css_blocks",
   },
+  // {
+  //   type: "js_getElementById",
+  //   message0: 'id="%1"の要素を取得し変数"%2"に代入',
+  //   args0: [
+  //     {
+  //       type: "field_input",
+  //       name: "ID",
+  //     },
+  //     {
+  //       type: "field_input",
+  //       name: "NAME",
+  //     },
+  //   ],
+  //   previousStatement: null,
+  //   nextStatement: null,
+  //   style: "javascript_blocks",
+  // },
   {
     type: "js_getElementById",
-    message0: 'id="%1"の要素を取得し変数"%2"に代入',
+    message0: 'id="%1"の要素',
     args0: [
       {
         type: "field_input",
         name: "ID",
       },
-      {
-        type: "field_input",
-        name: "NAME",
-      },
     ],
-    previousStatement: null,
-    nextStatement: null,
+    output: null,
     style: "javascript_blocks",
   },
   {
-    type: "js_addEventListener",
-    message0: 'もし id="%1" が %2 されたら %3 %4',
+    type: "js_getElementByClassName",
+    message0: 'class="%1"の要素',
     args0: [
       {
         type: "field_input",
+        name: "CLASS",
+      },
+    ],
+    output: null,
+    style: "javascript_blocks",
+  },
+  {
+    type: "js_getElementByTagName",
+    message0: '要素名"%1"の要素',
+    args0: [
+      {
+        type: "field_input",
+        name: "TAG",
+      },
+    ],
+    output: null,
+    style: "javascript_blocks",
+  },
+  // {
+  //   type: "js_addEventListener",
+  //   message0: 'id="%1" にイベント %2 が発生したとき %3 %4',
+  //   args0: [
+  //     {
+  //       type: "field_input",
+  //       name: "ID",
+  //     },
+  //     {
+  //       type: "field_dropdown",
+  //       name: "EVENT",
+  //       options: [
+  //         ["クリック", "click"],
+  //         ["マウスオーバー", "mouseover"],
+  //         ["マウスアウト", "mouseout"],
+  //         ["フォーカス", "focus"],
+  //         ["フォーカスアウト", "blur"],
+  //         ["キーダウン", "keydown"],
+  //         ["キーアップ", "keyup"],
+  //         ["キープレス", "keypress"],
+  //       ],
+  //     },
+  //     {
+  //       type: "input_dummy",
+  //     },
+  //     {
+  //       type: "input_statement",
+  //       name: "CONTENT",
+  //       check: "Javascript",
+  //     },
+  //   ],
+  //   previousStatement: null,
+  //   nextStatement: null,
+  //   style: "javascript_blocks",
+  // },
+  {
+    type: "js_addEventListener",
+    message0: '%1 にイベント %2 が発生したとき %3 %4',
+    args0: [
+      {
+        type: "input_value",
         name: "ID",
+        check: "variable",
       },
       {
         type: "field_dropdown",
@@ -1651,6 +1743,35 @@ export const htmlBlocks = Blockly.common.createBlockDefinitionsFromJsonArray([
     ],
     previousStatement: null,
     nextStatement: null,
+    style: "javascript_blocks",
+  },
+  {
+    type: "js_textContent",
+    message0: "%1の文章を%2に変更",
+    args0: [
+      {
+        type: "input_value",
+        name: "VARIABLE",
+      },
+      {
+        type: "input_value",
+        name: "TEXT",
+      }
+    ],
+    previousStatement: null,
+    nextStatement: null,
+    style: "javascript_blocks",
+  },
+  {
+    type: "js_createElement",
+    message0: "要素名 %1 の要素を新規作成",
+    args0: [
+      {
+        type: "field_input",
+        name: "TAG",
+      }
+    ],
+    output: null,
     style: "javascript_blocks",
   },
 ]);
