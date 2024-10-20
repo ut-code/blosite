@@ -446,3 +446,12 @@ document.getElementById("header-help").onclick = () => {
 // ポップアップの初期表示
 showPopupSlideContent(0);
 highlightButton(buttons[0]); 
+
+// ページ読み込み時のレイアウト崩れを防ぐための処理
+window.addEventListener('load', function() {
+  const content = document.getElementById('content');
+
+  setTimeout(function() {
+      content.style.display = 'block';
+  }, 0); // 画面を表示
+});

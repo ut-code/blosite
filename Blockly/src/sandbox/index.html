@@ -5,58 +5,59 @@
     <title>Blockly Sample App</title>
   </head>
   <body>
-    <header>
-      <div class="header-container">
+    <div id="content" style="display :none;">
+      <header>
+        <div class="header-container">
           <a href="#" class="header-logo">Blosite</a>
           <!-- <sub>by ut.code();</sub> -->
           <nav>
-              <ul class="nav-links">
-                  <li><a href="./..">トップページに戻る</a></li>
-                  <li id="header-help"><a>ヘルプ</a></li>
-                  <li><a href="#">Q&A</a></li>
-              </ul>
-              <div class="hamburger">
-                  <span></span>
-                  <span></span>
-                  <span></span>
-              </div>
+            <ul class="nav-links">
+                <li><a href="./..">トップページに戻る</a></li>
+                <li id="header-help"><a>ヘルプ</a></li>
+                <li><a href="#">Q&A</a></li>
+            </ul>
+            <div class="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
           </nav>
-      </div>
-  </header>
-    <div class="split-view vertical">
-      <div id="pageContainer">
-        <div id="outputPane">
-          <pre id="generatedCode" class="beforeClicked"><code></code></pre>
-          <div id="wstitle"></div>
-          <div id="output"></div>
-          <button id="code-button">コードを表示する</button>
-          <div id="errorMessage" //class="safe"//>何もエラーは起こってません</div>
         </div>
-        <div id="blocklyDiv"></div>
-      </div>
-      <!--
-      <label for="popupflag1">popup 1</label>
-      <input type="checkbox" class="popup-flag1" id="popupFlag1">
-      <label class="popup-background" for="popupFlag1"></label>
-      <div class="popup">
-        <label class="close-button" for="popupFlag1">×</label>
-        <div class="content">
-          content
-        </div>
-      </div>
-      --->
-      <div id="popup">
-        <div id="popup-outer"></div>
-        <div id="popup-inner">
-          <div id="popup-title">ポップアップタイトル</div>
-          <div id="popup-close">×</div>
-          <div id="popup-button-container">
-            <button class="popup-buttons" id="popup-button-0">ボタン1</button>
-            <button class="popup-buttons" id="popup-button-1">ボタン2</button>
-            <button class="popup-buttons" id="popup-button-2">ボタン3</button>
-            <button class="popup-buttons" id="popup-button-3">ボタン4</button>
+      </header>
+      <div class="split-view vertical">
+        <div id="pageContainer">
+          <div id="outputPane">
+            <pre id="generatedCode" class="beforeClicked"><code></code></pre>
+            <div id="wstitle"></div>
+            <div id="output"></div>
+            <button id="code-button">コードを表示する</button>
+            <div id="errorMessage" //class="safe"//>何もエラーは起こってません</div>
           </div>
-          <div id="popup-message">
+          <div id="blocklyDiv"></div>
+        </div>
+        <!--
+        <label for="popupflag1">popup 1</label>
+        <input type="checkbox" class="popup-flag1" id="popupFlag1">
+        <label class="popup-background" for="popupFlag1"></label>
+        <div class="popup">
+          <label class="close-button" for="popupFlag1">×</label>
+          <div class="content">
+            content
+          </div>
+        </div>
+        --->
+        <div id="popup">
+          <div id="popup-outer"></div>
+          <div id="popup-inner">
+            <div id="popup-title">ポップアップタイトル</div>
+            <div id="popup-close">×</div>
+            <div id="popup-button-container">
+              <button class="popup-buttons" id="popup-button-0">ボタン1</button>
+              <button class="popup-buttons" id="popup-button-1">ボタン2</button>
+              <button class="popup-buttons" id="popup-button-2">ボタン3</button>
+              <button class="popup-buttons" id="popup-button-3">ボタン4</button>
+            </div>
+            <div id="popup-message">
               <!-- ここにスライドコンテンツを表示 -->
               <div class="popup-slides" id="popupSlide-0">
                 <section>
@@ -67,15 +68,15 @@
               <div class="popup-slides" id="popup-slide-1" style="display: none;">スライド2の内容</div>
               <div class="popup-slides" id="popup-slide-2" style="display: none;">スライド3の内容</div>
               <div class="popup-slides" id="popup-slide-3" style="display: none;">スライド4の内容</div>
-          </div>
-          <div id="popup-navigation">
+            </div>
+            <div id="popup-navigation">
               <button id="popup-prev">戻る</button>
               <button id="popup-next">進む</button>
               <button id="popup-end">始める</button>
+            </div>
           </div>
         </div>
       </div>
     </div>
-    <script src="index.js"></script>
   </body>
 </html>

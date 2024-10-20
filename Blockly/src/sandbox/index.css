@@ -322,9 +322,9 @@ code {
   height: 40px;
 }
 
-#popup-close:hover {
+/* #popup-close:hover {
   background-color: #f9f9f9;
-}
+} */
 
 #popup-button-container {
   display: flex;
