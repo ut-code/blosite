@@ -12,20 +12,29 @@ const storageKey = 'webGeneratorWorkspace';
 // 初期状態のブロックをXMLで定義
 const xml = `
 <xml xmlns="http://www.w3.org/1999/xhtml">
-  <block type="html_ol" x="20" y="20">
-    <statement name="CONTENT">
-      <block type="html_li">
-        <field name="CONTENT">Item 1</field>
-        <next>
+  <block type="html_html-head-body" x="20" y="20">
+    <statement name="HEAD">
+      <block type="html_title">
+        <field name="CONTENT">Sample</field>
+      </block>
+    </statement>
+    <statement name="BODY">
+      <block type="html_ul">
+        <statement name="CONTENT">
           <block type="html_li">
-            <field name="CONTENT">Item 2</field>
+            <field name="CONTENT">Item 1</field>
             <next>
               <block type="html_li">
-                <field name="CONTENT">Item 3</field>
+                <field name="CONTENT">Item 2</field>
+                <next>
+                  <block type="html_li">
+                    <field name="CONTENT">Item 3</field>
+                  </block>
+                </next>
               </block>
             </next>
           </block>
-        </next>
+        </statement>
       </block>
     </statement>
   </block>
@@ -50,7 +59,7 @@ export const save = function (workspace) {
  */
 export const load = function (workspace) {
   const data = window.localStorage?.getItem(storageKey);
-  if (!data || workspace.getAllBlocks().length === 0) {
+  if (!data) {
     Blockly.Xml.domToWorkspace(xmlDom, workspace);
     return;
   };
