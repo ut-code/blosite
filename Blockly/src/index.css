@@ -1,201 +1,81 @@
-body {
+* {
   margin: 0;
-  max-width: 100vw;
+  padding: 0;
+  box-sizing: border-box;
 }
 
-pre,
-code {
-  overflow: auto;
+body {
+  font-family: 'Arial', sans-serif;
+  line-height: 1.6;
+  background-color: #f4f4f4;
+  color: #333;
 }
 
-#pageContainer {
-  display: flex;
-  width: 100%;
-  max-width: 100vw;
-  height: 100vh;
-}
-
-#blocklyDiv {
-  flex-basis: 100%;
-  height: 100%;
-  min-width: 600px;
-  order: 1;
-}
-
-#outputPane {
-  display: flex;
-  flex-direction: column;
-  width: 400px;
-  height: 100%;
-  flex: 0 0 400px;
-  overflow: auto;
-  margin: 1rem;
-  order: 2;
-}
-
-#generatedCode {
-  background-color: rgb(247, 240, 228);
-  order: 5;
-  user-select: text;
-  cursor: text;
-}
-
-#output {
-  height: 70%;
-  order: 3;
-  overflow: auto  ;
-}
-
-/* styleを指定しない場合にブロックが生成する要素のスタイルを定義 */
-
-#output blockquote {
-  margin: 1em 0;          /* 上下のマージンを設定 */
-  padding: 0.5em 1em;    /* 内側のパディングを設定 */
-  border-left: 4px solid #ccc; /* 左側にボーダーを追加 */
-  background-color: #f9f9f9;    /* 背景色を設定 */
-  /*color: #333;            /* 文字色を設定 */
-  quotes: "“" "”" "‘" "’"; /* 引用符を設定 */
-}
-
-#output code {
-  font-family: monospace;
-  background-color: #f9f9f9;
-  /* padding: 0.2em 0.4em;
-  margin: 0; */
-  /* font-size: 85%; */
-  border-radius: 3px;
-}
-
-#output kbd {
-  font-family: monospace;
-  font-size: 1em;
-  background-color: #f7f7f7;
-  border: 1px solid #ccc;
-  border-radius: 3px;
-  padding: 0.1em 0.6em;
-  box-shadow: 0 1px 0 rgba(0,0,0,0.2);
-}
-
-#output var {
-  font-style: italic; /* 標準がitalic */
-}
-
-/* ブロックが生成する要素のスタイルここまで */
-
-#button {
-  position: relative;
-  height: 50px;
-  width: 150px;
-  order: 4;
-  margin: 0 auto
-}
-
-
-.split-view {
-  display: flex;
-}
-.split-view.vertical{
-  flex-direction: row;
-}
-.split-view.holizontal{
-  flex-direction: column;
-}
-
-
-.afterClicked {
-  position: relative;
-  height: 160%;
-  background-color: rgb(247,240,228);
-  order:  5;
-}
-
-.beforeClicked {
-  display: none;
-}
-#wstitle{
-  background-color: gainsboro;
-  width: fit-content;
-  order: 3;
-}
-.hidden {
-  display:none;
-}
-
-.safe {
-  display: block;
-  order: 6;
-  background-color: blue;
-  opacity:  50%;
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
   padding: 20px;
-  color: white;
-  margin: 20px;
-  font-weight: 900;
-  font-size: 20px;
+  text-align: center;
 }
-.errorOccured {
-  display: block;
-  order: 6;
-  background-color: red;
+
+header {
+  margin-bottom: 50px;
+}
+
+header h1 {
+  font-size: 3rem;
+  color: #333;
+}
+
+header p {
+  font-size: 1.2rem;
+  color: #777;
+}
+
+.content {
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+.card {
+  background-color: #fff;
   padding: 20px;
-  opacity: 80%;
-  color: white;
-  margin: 20px;
-  font-weight: 1000;
-  font-size: 20px;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  flex: 1 1 45%;
+  min-width: 300px;
 }
 
-/*
-.popup-background{
-  position: fixed;
-  z-index: 100;
-  top: 0;
-  left: 0;
-  height: 100vh ;
-  width: 100vw ;
-
-  background-color: gray;
-  opacity: 0.5;
-}
-.popup{
-  --height: 300px;
-  width: 300px;
-  z-index: 100;
-  position: fixed;
-  top: calc(50vh -calc(var(--height)/2));
-  left: calc(50vw -calc(var(--width)/2));
-  height:var(--height);
-  width:var(--width);
-}
-*/
-#popup-outer{
-  position: absolute;
-  top: 0;
-  left: 0;
-  height: 100%;
-  width: 100%;
-  background: rgba(100,100,100,0.5);
-  z-index: 5000000;
-  opacity: 0.5;
+.card h2 {
+  font-size: 2rem;
+  color: #444;
+  margin-bottom: 15px;
 }
 
-#popup-inner{
-  position:absolute;
-  top: 10%;
-  left: 10%;
-  height: 80%;
-  width: 80%;
-  background-color  : rgba(255, 255, 255, 1);
-  z-index: 10000000;
+.card p {
+  font-size: 1rem;
+  color: #666;
+  margin-bottom: 20px;
 }
 
-#close {
-  position: absolute;
-  top: 0;
-  right: 10px;
-  font-size: 32px;
-  font-weight: 800;
-  cursor: pointer;
-  border-radius: 40%;
-  width: 40px;
-  height: 40px;
+.btn {
+  display: inline-block;
+  padding: 10px 20px;
+  background-color: #007BFF;
+  color: #fff;
+  text-decoration: none;
+  border-radius: 5px;
+  transition: background-color 0.3s ease;
+}
+
+.btn:hover {
+  background-color: #0056b3;
+}
+
+footer {
+  margin-top: 50px;
+  color: #777;
+  font-size: 0.9rem;
 }
