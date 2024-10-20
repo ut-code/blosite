@@ -49,6 +49,12 @@ const config = {
       filename: 'sandbox/index.html',        // dist/sandbox/index.htmlとして出力
       chunks: ['sandbox'],
     }),
+    new HtmlWebpackPlugin({
+      template: './src/todo/index.html', // sandbox用のHTMLテンプレート
+      filename: 'todo/index.html',        // dist/sandbox/index.htmlとして出力
+      chunks: ['todo'],
+    }),
+
   ],
 };
 
