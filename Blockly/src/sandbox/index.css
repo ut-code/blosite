@@ -140,7 +140,10 @@ code {
 #output {
   height: 70%;
   order: 3;
-  overflow: auto  ;
+  overflow: auto ;
+  border: 2px solid #ccc;
+  padding: 10px;
+  margin-bottom: 10px;
 }
 
 /* styleを指定しない場合にブロックが生成する要素のスタイルを定義 */
