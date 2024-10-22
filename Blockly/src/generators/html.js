@@ -1047,10 +1047,9 @@ websiteGenerator.forBlock["js_appendChild"] = function (block, generator) {
 };
 
 websiteGenerator.forBlock["js_value"] = function (block, generator) {
-  const variable = generator.valueToCode(block, "VARIABLE", Order.ATOMIC);
   const value = generator.valueToCode(block, "VALUE", Order.ATOMIC);
-  const code = (variable && value) ? `${variable}.value = ${value}\n` : "\n";
-  return code;
+  const code = value ? `${value}.value` : "";
+  return [code,Order.ATOMIC];
 };
 
 websiteGenerator.forBlock["js_textContent"] = function (block, generator) {

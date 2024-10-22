@@ -1734,12 +1734,8 @@ export const htmlBlocks = Blockly.common.createBlockDefinitionsFromJsonArray([
   },
   {
     type: "js_value",
-    message0: "%1の値を%2に変更",
+    message0: "要素 %1 の値",
     args0: [
-      {
-        type: "input_value",
-        name: "VARIABLE",
-      },
       {
         type: "input_value",
         name: "VALUE",
