@@ -373,11 +373,12 @@ websiteGenerator.forBlock["html_th"] = function (block, generator) {
 };
 
 websiteGenerator.forBlock["html_td"] = function (block, generator) {
-  const content = block.getFieldValue("CONTENT");
+  const content = generator.statementToCode(block, "CONTENT");
   const attribute = generator.valueToCode(block, "ATTRIBUTE", Order.ATOMIC);
-  const sanitizedContent = sanitizeInput(content);
   const startTag = attribute ? `<td ${attribute}>` : `<td>`;
-  const code = `${startTag}${sanitizedContent}</td>\n`;
+  const code = content
+    ? `${startTag}\n${content}</td>\n`
+    : `${startTag}</td>\n`;
   const indentedCode = generator.prefixLines(code, generator.INDENT);
   return indentedCode;
 };
@@ -919,6 +920,14 @@ websiteGenerator.forBlock["css_border-radius"] = function (block, generator) {
   return [code, Order.ATOMIC];
 };
 
+websiteGenerator.forBlock["css_border-collapse"] = function (block, generator) {
+  const field = block.getFieldValue("FIELD");
+  const value = generator.valueToCode(block, "VALUE", Order.ATOMIC);
+  const sanitizedField = sanitizeInput(field);
+  const code = value ? `border-collapse:${sanitizedField}; ${value}` : `border-collapse:${sanitizedField}`;
+  return [code, Order.ATOMIC];
+};
+
 websiteGenerator.forBlock["css_display"] = function (block, generator) {
   const field = block.getFieldValue("FIELD");
   const value = generator.valueToCode(block, "VALUE", Order.ATOMIC);
@@ -1037,12 +1046,15 @@ websiteGenerator.forBlock["js_addEventListener"] = function (block, generator) {
 };
 
 websiteGenerator.forBlock["js_textContent"] = function (block, generator) {
-  const variable = generator.valueToCode(block, "VARIABLE", Order.ATOMIC);
-  const text = generator.valueToCode(block, "TEXT", Order.ATOMIC);
-  //const sanitizedText = sanitizeInput(text);
-  const code = (variable && text) ? `${variable}.textContent = ${text}\n` : "\n";
-  //const indentedCode = generator.prefixLines(code, generator.INDENT);
-  return code;
+  const value = generator.valueToCode(block, "VALUE", Order.ATOMIC);
+  const code = value ? `${value}.textContent` : "";
+  return [code, Order.ATOMIC];
+};
+
+websiteGenerator.forBlock["js_value"] = function (block, generator) {
+  const value = generator.valueToCode(block, "VALUE", Order.ATOMIC);
+  const code = value ? `${value}.value` : "";
+  return [code, Order.ATOMIC];
 };
 
 websiteGenerator.forBlock["js_createElement"] = function (block, generator) {
@@ -1050,7 +1062,7 @@ websiteGenerator.forBlock["js_createElement"] = function (block, generator) {
   const sanitizedtagName = sanitizeInput(tagName);
   const code =
     sanitizedtagName
-      ? `createEleent("${sanitizedtagName}")`
+      ? `document.createElement("${sanitizedtagName}")`
       : "";
   return [code, Order.ATOMIC];
 };
@@ -1059,6 +1071,44 @@ websiteGenerator.forBlock["js_alert"] = function (block, generator) {
   const content = generator.valueToCode(block, "CONTENT", Order.ATOMIC);
   const code = `alert(${content});\n`;
   return code;
+};
+
+websiteGenerator.forBlock["js_appendChild"] = function (block, generator) {
+  const parent = generator.valueToCode(block, "PARENT", Order.ATOMIC);
+  const child = generator.valueToCode(block,"CHILD", Order.ATOMIC);
+  const code =
+    (parent && child)
+      ? `${parent}.appendChild(${child});\n`
+      : "\n";
+  return code;
+};
+
+websiteGenerator.forBlock["js_prompt"] = function (block, generator) {
+  const content = generator.valueToCode(block, "CONTENT", Order.ATOMIC);
+  const defaultText = generator.valueToCode(block,"DEFAULT", Order.ATOMIC);
+  if (content && defaultText) {
+    const code = `prompt(${content}, ${defaultText});\n`;
+    return code;
+  }
+  const code =
+    content
+      ? `prompt(${content});`
+      : "";
+  return [code, Order.ATOMIC];
+};
+
+websiteGenerator.forBlock["js_setter"] = function (block, generator) {
+  const variable = generator.valueToCode(block, "VARIABLE", Order.ATOMIC);
+  const content = generator.valueToCode(block, "CONTENT", Order.ATOMIC);
+  const code = (variable && content) ? `${variable} = ${content};\n` : "\n";
+  return code;
+};
+
+websiteGenerator.forBlock["js_cast"] = function (block, generator) {
+  const content = generator.valueToCode(block, "VALUE", Order.ATOMIC);
+  const type = block.getFieldValue("TYPE");
+  const code = content ? `${type}(${content})` : "";
+  return [code, Order.ATOMIC];
 };
 
 export { websiteGenerator };

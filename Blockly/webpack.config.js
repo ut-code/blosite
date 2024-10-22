@@ -6,6 +6,7 @@ const config = {
   entry: {
     index: './src/index.js',
     tutorial: './src/tutorial/index.js',
+    spreadSheet: './src/tutorial/spread-sheet/index.js',
     sandbox: './src/sandbox/index.js',
   },
   output: {
@@ -43,6 +44,11 @@ const config = {
       template: './src/tutorial/index.html', // tutorial用のHTMLテンプレート
       filename: 'tutorial/index.html',       // dist/tutorial/index.htmlとして出力
       chunks: ['tutorial'],
+    }),
+    new HtmlWebpackPlugin({
+      template: './src/tutorial/spread-sheet/index.html', // spread-sheet用のHTMLテンプレート
+      filename: 'tutorial/spread-sheet/index.html',        // dist/tutorial/spread-sheet/index.htmlとして出力
+      chunks: ['spreadSheet'],
     }),
     new HtmlWebpackPlugin({
       template: './src/sandbox/index.html', // sandbox用のHTMLテンプレート
