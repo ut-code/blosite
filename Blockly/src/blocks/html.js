@@ -561,15 +561,15 @@ export const htmlBlocks = Blockly.common.createBlockDefinitionsFromJsonArray([
   },
   {
     type: 'html_td',
-    message0: '<td> %1 </td> %2',
+    message0: '<td> %1 %2 </td>',
     args0: [
         {
-            type: 'field_input',
-            name: 'CONTENT'
+          type: 'input_value',
+          name: 'ATTRIBUTE'
         },
         {
-            type: 'input_value',
-            name: 'ATTRIBUTE'
+            type: 'input_statement',
+            name: 'CONTENT'
         },
     ],
     previousStatement: null,
@@ -1436,6 +1436,23 @@ export const htmlBlocks = Blockly.common.createBlockDefinitionsFromJsonArray([
     style: "css_blocks",
   },
   {
+    type: "css_border-collapse",
+    message0: "border-collapse: %1 %2",
+    args0: [
+      {
+        type: "field_input",
+        name: "FIELD",
+        text: "1px solid #ccc",
+      },
+      {
+        type: "input_value",
+        name: "VALUE",
+      },
+    ],
+    output: null,
+    style: "css_blocks",
+  },
+  {
     type: "css_display",
     message0: "display: %1 %2",
     args0: [
@@ -1747,19 +1764,26 @@ export const htmlBlocks = Blockly.common.createBlockDefinitionsFromJsonArray([
   },
   {
     type: "js_textContent",
-    message0: "%1の文章を%2に変更",
+    message0: "要素 %1 の文章",
     args0: [
       {
         type: "input_value",
-        name: "VARIABLE",
-      },
-      {
-        type: "input_value",
-        name: "TEXT",
+        name: "VALUE",
       }
     ],
-    previousStatement: null,
-    nextStatement: null,
+    output: null,
+    style: "javascript_blocks",
+  },
+  {
+    type: "js_value",
+    message0: "要素 %1 の値",
+    args0: [
+      {
+        type: "input_value",
+        name: "VALUE",
+      }
+    ],
+    output: null,
     style: "javascript_blocks",
   },
   {
@@ -1770,6 +1794,77 @@ export const htmlBlocks = Blockly.common.createBlockDefinitionsFromJsonArray([
         type: "field_input",
         name: "TAG",
       }
+    ],
+    output: null,
+    style: "javascript_blocks",
+  },
+  {
+    type: "js_appendChild",
+    message0: "要素 %1 内の末尾に要素 %2 を追加",
+    args0: [
+      {
+        type: "input_value",
+        name: "PARENT",
+      },
+      {
+        type: "input_value",
+        name: "CHILD",
+      }
+    ],
+    previousStatement: null, 
+    nextStatement: null,
+    style: "javascript_blocks",
+  },
+  {
+    type: "js_prompt",
+    message0: "プロンプト %1 初期値 %2",
+    args0: [
+      {
+        type: "input_value",
+        name: "CONTENT",
+      },
+      {
+        type: "input_value",
+        name: "DEFAULT",
+      },
+    ],
+    output: null,
+    style: "javascript_blocks",
+  },
+  {
+    type: "js_setter",
+    message0: "%1に%2を代入",
+    args0: [
+      {
+        type: "input_value",
+        name: "VARIABLE",
+      },
+      {
+        type: "input_value",
+        name: "CONTENT",
+      }
+    ],
+    previousStatement: null,
+    nextStatement: null,
+    style: "javascript_blocks",
+  },
+  {
+    type: "js_cast",
+    message0: "%1 を %2 に変換",
+    args0: [
+      {
+        type: "input_value",
+        name: "VALUE",
+      },
+      {
+        type: "field_dropdown",
+        name: "TYPE",
+        options: [
+          ["文字列", "String"],
+          ["数値", "Number"],
+          ["真偽値", "Boolean"],
+        ],
+      },
     ],
     output: null,
     style: "javascript_blocks",
