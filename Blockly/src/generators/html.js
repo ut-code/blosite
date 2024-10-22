@@ -1036,6 +1036,23 @@ websiteGenerator.forBlock["js_addEventListener"] = function (block, generator) {
   return code;
 };
 
+websiteGenerator.forBlock["js_appendChild"] = function (block, generator) {
+  const parent = generator.valueToCode(block, "PARENT", Order.ATOMIC);
+  const child = generator.valueToCode(block,"CHILD", Order.ATOMIC);
+  const code =
+    (parent && child)
+      ? `${parent}.appendChild(${child});\n`
+      : "\n";
+  return code;
+};
+
+websiteGenerator.forBlock["js_value"] = function (block, generator) {
+  const variable = generator.valueToCode(block, "VARIABLE", Order.ATOMIC);
+  const value = generator.valueToCode(block, "VALUE", Order.ATOMIC);
+  const code = (variable && value) ? `${variable}.value = ${value}\n` : "\n";
+  return code;
+};
+
 websiteGenerator.forBlock["js_textContent"] = function (block, generator) {
   const variable = generator.valueToCode(block, "VARIABLE", Order.ATOMIC);
   const text = generator.valueToCode(block, "TEXT", Order.ATOMIC);
@@ -1050,7 +1067,21 @@ websiteGenerator.forBlock["js_createElement"] = function (block, generator) {
   const sanitizedtagName = sanitizeInput(tagName);
   const code =
     sanitizedtagName
-      ? `createEleent("${sanitizedtagName}")`
+      ? `createElement("${sanitizedtagName}")`
+      : "";
+  return [code, Order.ATOMIC];
+};
+
+websiteGenerator.forBlock["js_prompt"] = function (block, generator) {
+  const content = generator.valueToCode(block, "CONTENT", Order.ATOMIC);
+  const defaultText = generator.valueToCode(block,"DEFAULT", Order.ATOMIC);
+  if (content && defaultText) {
+    const code = `prompt(${content}, ${defaultText});\n`;
+    return code;
+  }
+  const code =
+    content
+      ? `prompt(${content});`
       : "";
   return [code, Order.ATOMIC];
 };

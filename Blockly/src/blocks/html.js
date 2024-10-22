@@ -1733,6 +1733,40 @@ export const htmlBlocks = Blockly.common.createBlockDefinitionsFromJsonArray([
     style: "javascript_blocks",
   },
   {
+    type: "js_value",
+    message0: "%1の値を%2に変更",
+    args0: [
+      {
+        type: "input_value",
+        name: "VARIABLE",
+      },
+      {
+        type: "input_value",
+        name: "VALUE",
+      }
+    ],
+    previousStatement: null,
+    nextStatement: null,
+    style: "javascript_blocks",
+  },
+  {
+    type: "js_appendChild",
+    message0: "要素 %1 内の末尾に要素 %2 を追加",
+    args0: [
+      {
+        type: "input_value",
+        name: "PARENT",
+      },
+      {
+        type: "input_value",
+        name: "CHILD",
+      }
+    ],
+    previousStatement: null, 
+    nextStatement: null,
+    style: "javascript_blocks",
+  },
+  {
     type: "js_alert",
     message0: "アラート%1",
     args0: [
@@ -1760,6 +1794,22 @@ export const htmlBlocks = Blockly.common.createBlockDefinitionsFromJsonArray([
     ],
     previousStatement: null,
     nextStatement: null,
+    style: "javascript_blocks",
+  },
+  {
+    type: "js_prompt",
+    message0: "プロンプト %1 初期値 %2",
+    args0: [
+      {
+        type: "input_value",
+        name: "CONTENT",
+      },
+      {
+        type: "input_value",
+        name: "DEFAULT",
+      },
+    ],
+    output: null,
     style: "javascript_blocks",
   },
   {
