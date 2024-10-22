@@ -1067,7 +1067,7 @@ websiteGenerator.forBlock["js_createElement"] = function (block, generator) {
   const sanitizedtagName = sanitizeInput(tagName);
   const code =
     sanitizedtagName
-      ? `createElement("${sanitizedtagName}")`
+      ? `document.createElement("${sanitizedtagName}")`
       : "";
   return [code, Order.ATOMIC];
 };
