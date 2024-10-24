@@ -10,12 +10,41 @@ import {htmlBlocks} from '/src/blocks/html';
 // import {forBlock} from './generators/javascript';
 // import {javascriptGenerator} from 'blockly/javascript';
 import {websiteGenerator} from '/src/generators/html';
-import {save, load} from './serialization';
-import {toolbox} from './toolbox';
+// import {save, load} from './serialization';
+// import {toolbox} from './toolbox';
 // import * as ja from 'blockly/msg/ja';  
 import customMsg from '/src/custom_msg';
-import './index.css';
+import '/src/styles/main.css';
 // import DOMPurify from 'dompurify';
+
+// 現在のページを取得
+const page = window.location.pathname;
+let toolbox, save, load;
+
+// モジュールの読み込み関数
+async function loadModules(page) {
+  let toolboxModule, serializationModule;
+  console.log(page);
+
+  switch(page) {
+    case '/sandbox':
+      toolboxModule = await import('/src/sandbox/toolbox.js');
+      serializationModule = await import('/src/sandbox/serialization.js');
+      break;
+    case '/tutorial/spread-sheet':
+      toolboxModule = await import('/src/tutorial/spread-sheet/toolbox.js');
+      serializationModule = await import('/src/tutorial/spread-sheet/serialization.js');
+      break;
+    default:
+      throw new Error('Unknown page');
+  }
+
+  toolbox = toolboxModule.toolbox;
+  save = serializationModule.save;
+  load = serializationModule.load;
+}
+
+await loadModules(page);
 
 Blockly.Themes.customStyle = Blockly.Theme.defineTheme('custom_style', {
    'base': Blockly.Themes.Classic, // 既存のベーステーマを指定
