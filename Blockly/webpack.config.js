@@ -4,10 +4,9 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 // Base config that applies to either development or production mode.
 const config = {
   entry: {
-    index: './src/index.js',
-    tutorial: './src/tutorial/index.js',
-    spreadSheet: './src/tutorial/spread-sheet/index.js',
-    sandbox: './src/sandbox/index.js',
+    top: './src/scripts/top.js',
+    tutorial: './src/scripts/tutorial.js',
+    main: './src/scripts/main.js',
   },
   output: {
     // Compile the source files into a bundle.
@@ -38,7 +37,7 @@ const config = {
     new HtmlWebpackPlugin({
       template: './src/index.html',
       filename: 'index.html',
-      chunks: ['index'],
+      chunks: ['top'],
     }),
     new HtmlWebpackPlugin({
       template: './src/tutorial/index.html', // tutorial用のHTMLテンプレート
@@ -46,14 +45,19 @@ const config = {
       chunks: ['tutorial'],
     }),
     new HtmlWebpackPlugin({
-      template: './src/tutorial/spread-sheet/index.html', // spread-sheet用のHTMLテンプレート
-      filename: 'tutorial/spread-sheet/index.html',        // dist/tutorial/spread-sheet/index.htmlとして出力
-      chunks: ['spreadSheet'],
+      template: './src/tutorial/html-introduction/index.html',
+      filename: 'tutorial/html-introduction/index.html',
+      chunks: ['main'],
     }),
     new HtmlWebpackPlugin({
-      template: './src/sandbox/index.html', // sandbox用のHTMLテンプレート
-      filename: 'sandbox/index.html',        // dist/sandbox/index.htmlとして出力
-      chunks: ['sandbox'],
+      template: './src/tutorial/spread-sheet/index.html',
+      filename: 'tutorial/spread-sheet/index.html',
+      chunks: ['main'],
+    }),
+    new HtmlWebpackPlugin({
+      template: './src/sandbox/index.html',
+      filename: 'sandbox/index.html',
+      chunks: ['main'],
     }),
   ],
 };

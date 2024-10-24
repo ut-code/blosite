@@ -7,7 +7,7 @@
 import * as Blockly from 'blockly/core';
 
 // キャッシュの保存先を決定
-const storageKey = 'webGeneratorWorkspace';
+const storageKey = 'sandboxWorkspace';
 
 // 初期状態のブロックをXMLで定義
 const xml = `
