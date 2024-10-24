@@ -45,13 +45,18 @@ const config = {
       chunks: ['tutorial'],
     }),
     new HtmlWebpackPlugin({
-      template: './src/tutorial/spread-sheet/index.html', // spread-sheet用のHTMLテンプレート
-      filename: 'tutorial/spread-sheet/index.html',        // dist/tutorial/spread-sheet/index.htmlとして出力
+      template: './src/tutorial/html-introduction/index.html',
+      filename: 'tutorial/html-introduction/index.html',
       chunks: ['main'],
     }),
     new HtmlWebpackPlugin({
-      template: './src/sandbox/index.html', // sandbox用のHTMLテンプレート
-      filename: 'sandbox/index.html',        // dist/sandbox/index.htmlとして出力
+      template: './src/tutorial/spread-sheet/index.html',
+      filename: 'tutorial/spread-sheet/index.html',
+      chunks: ['main'],
+    }),
+    new HtmlWebpackPlugin({
+      template: './src/sandbox/index.html',
+      filename: 'sandbox/index.html',
       chunks: ['main'],
     }),
   ],

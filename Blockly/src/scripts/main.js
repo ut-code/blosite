@@ -5,23 +5,16 @@
  */
 
 import * as Blockly from 'blockly';
-// import {blocks} from './blocks/text';
-import {htmlBlocks} from '/src/blocks/html';
-// import {forBlock} from './generators/javascript';
-// import {javascriptGenerator} from 'blockly/javascript';
-import {websiteGenerator} from '/src/generators/html';
-// import {save, load} from './serialization';
-// import {toolbox} from './toolbox';
-// import * as ja from 'blockly/msg/ja';  
-import customMsg from '/src/custom_msg';
+import {htmlBlocks} from '/src/blockly/blocks/html';
+import {websiteGenerator} from '/src/blockly/generators/html';
+import customMsg from '/src/blockly/custom_msg';
 import '/src/styles/main.css';
-// import DOMPurify from 'dompurify';
 
 // 現在のページを取得
 const page = window.location.pathname;
 let toolbox, save, load;
 
-// モジュールの読み込み関数
+// 現在のページに応じてファイルを読み込む
 async function loadModules(page) {
   let toolboxModule, serializationModule;
   console.log(page);
