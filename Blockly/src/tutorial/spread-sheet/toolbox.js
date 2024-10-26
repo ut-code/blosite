@@ -381,6 +381,10 @@ export const toolbox = {
         },
         {
           kind: "block",
+          type: "css_border-collapse",
+        },
+        {
+          kind: "block",
           type: "css_display",
         },
         {
@@ -436,6 +440,10 @@ export const toolbox = {
         },
         {
           kind: "block",
+          type: "js_value",
+        },
+        {
+          kind: "block",
           type: "js_createElement",
         },
         {
@@ -451,6 +459,14 @@ export const toolbox = {
               },
             },
           },
+        },
+        {
+          kind: "block",
+          type: "js_setter",
+        },
+        {
+          kind: "block",
+          type: "js_cast",
         },
         {
           kind: "block",
