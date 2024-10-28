@@ -6,22 +6,60 @@
     <title>チュートリアル</title>
 </head>
 <body>
-    <header>
-        <h1>チュートリアルへようこそ</h1>
-    </header>
-    <p></p>
-    <div>
-        <a href="./tutorial/html-introduction">
-            <p>HTMLに触れてみよう</p>
-            <p>まずはここから</p>
-        </a>
-        <a href="./tutorial/spread-sheet">
-            <p>表計算</p>
-            <p>やってみよう</p>
-        </a>
+    <div id="content" style="visibility: hidden;">
+        <header>
+            <h1>チュートリアル</h1>
+            <a href="./.." class="btn">トップページに戻る</a>
+        </header>
+        <section>
+            <div class="group-title">はじめはここから</div>
+            <div class="group">
+                <div class="card">
+                    <a href="./tutorial/html-introduction" class="btn">
+                        <h3>HTMLについて知ろう</h3>
+                        <p>ウェブサイトの形を決める方法を学ぼう！</p>
+                    </a>
+                </div>
+                <div class="card">
+                    <a href="./tutorial/html-introduction" class="btn">
+                        <h3>いろいろなHTML要素</h3>
+                        <p>様々なHTML要素を使ってみよう！</p>
+                    </a>
+                </div>
+                <div class="card">
+                    <a href="./tutorial/css-introduction" class="btn">
+                        <h3>CSSについて知ろう</h3>
+                        <p>ウェブサイトの見た目を整える方法を学ぼう！</p>
+                    </a>
+                </div>
+            </div>
+        </section>
+        <section>
+            <div class="group-title">実践しよう</div>
+            <div class="group">
+                <div class="card">
+                    <a href="./tutorial/spread-sheet" class="btn">
+                        <h3>おみくじ</h3>
+                        <p>条件分岐と表示の処理を実践しよう！</p>
+                    </a>
+                </div>
+                <div class="card">
+                    <a href="./tutorial/spread-sheet" class="btn">
+                        <h3>ToDoアプリ</h3>
+                        <p>HTML要素を自在に制御しよう！</p>
+                    </a>
+                </div>
+                <div class="card">
+                    <a href="./tutorial/spread-sheet" class="btn">
+                        <h3>表計算</h3>
+                        <p>！</p>
+                    </a>
+                </div>
+            </div>
+        </section>
+        <footer>
+            <p>ut.code(); 駒場祭プロジェクト</p>
+        </footer>
     </div>
-    <footer>
-        <p>&copy; 2023 サンプルページ</p>
-    </footer>
 </body>
 </html>
