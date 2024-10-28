@@ -6,30 +6,42 @@
     <title>Blosite</title>
 </head>
 <body>
-    <div class="container">
+    <div id="container" style="visibility: hidden;">
         <header>
             <h1>Blositeへようこそ</h1>
             <p></p>
         </header>
-        <section class="about"></section>
-          <h2>Blositeとは？</h2>
-          <p>Blositeでは、直感的に操作しやすいブロックプログラミングでWebページを作ることができます。</p>
-        </section>
-        <section class="content">
+        <div class="content">
+            <div class="card" id="about">
+                <h2>Blositeとは？</h2>
+                <p>Blositeでは、直感的に操作しやすいブロックプログラミングでWebページを作ることができます。
+                    プログラミングが初めての方でも気軽に楽しめます！
+                </p>
+                <a href="" class="btn">駒場祭ウェブサイトに戻る</a>
+            </div>
             <div class="card">
                 <h2>チュートリアル</h2>
-                <p>ここでは、基本的な使い方や様々な機能を学ぶことができます。</p>
+                <p>Blositeでの操作方法やウェブサイトがどのように作られているかを学ぼう！</p>
                 <a href="./tutorial" class="btn">チュートリアルページへ</a>
             </div>
             <div class="card">
                 <h2>サンドボックス</h2>
-                <p>自由にコードを書いて、試してみましょう！自分のペースで学べます。</p>
+                <p>自由にブロックを配置して、自分なりのサイトを作ってみよう！</p>
                 <a href="./sandbox" class="btn">サンドボックスページへ</a>
             </div>
-        </section>
-
+            <div class="card">
+                <h2></h2>
+                <p>他の人が作って公開したウェブサイトに触れてみよう！</p>
+                <a href="./sandbox" class="btn">共有ページへ</a>
+            </div>
+            <div class="card">
+                <h2>よくある質問</h2>
+                <p></p>
+                <a href="" class="btn">もっと詳しく</a>
+            </div>
+        </div>
         <footer>
-            <p>ut.code();</p>
+            <p>ut.code(); 駒場祭プロジェクト</p>
         </footer>
     </div>
 </body>
