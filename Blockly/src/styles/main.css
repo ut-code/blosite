@@ -448,3 +448,11 @@ code {
   width: 40%;
   object-fit: contain;
 }
+
+#popup-form {
+  display: none;
+  flex-direction: column;
+  margin: 20px;
+  background-color: white;
+  width : 80%;
+}

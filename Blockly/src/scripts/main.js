@@ -201,17 +201,6 @@ const runCode = () => {
     getErrorId.classList = "errorOccured"
   }
 
-  /*
-  const outputId = document.getElementById("output");
-  const addDiv = document.createElement("div")
-  addDiv.textContent =DOMPurify.sanitize(scriptCode);
-  outputId.appendChild(addDiv);
-  */
-
-  // スクリプトを動的に評価
-  // const script = document.createElement('script');
-  // script.textContent = scriptCode;
-  // document.body.appendChild(script);
 };
 
 // Load the initial state from storage and run the code.
@@ -309,41 +298,6 @@ ws.addChangeListener((e) => {
   });
   
   runCode();
-
-  /*
-  function getCodeContent(){
-    const getCodeId = document.getElementById("generatedCode");
-    const pickCode = getCodeId.querySelector("code");
-    const getContentOfCode = pickCode ? pickCode.textContent : getCodeId.textContent;
-    return getContentOfCode
-  };
-  const outputId = document.getElementById("output");
-  const addDiv = document.createElement("div")
-  addDiv.textContent = getCodeContent();
-  outputId.appendChild(addDiv);
-  */
-
-  // const code = websiteGenerator.workspaceToCode(ws);
-  // codeDiv.innerText = code;
-  // outputDiv.innerHTML = code;
-  // const scriptRegex = /<script>([\s\S]*?)<\/script>/;
-  // const match = code.match(scriptRegex);
-  // const scriptCode = match ? match[1] : '';
-  // const getErrorId = document.getElementById("errorMessage");
-  /*
-  const addDiv2 = document.createElement("div");
-  addDiv2.textContent = scriptCode;
-  outputId.appendChild(addDiv2);
-  */
-  // try {
-  //   eval(scriptCode);
-  //   getErrorId.textContent = "何もエラーは起こってません"
-  //   getErrorId.classList = "safe"
-  // }  catch (e) {
-  //   getErrorId.textContent = e.name + " " +e.message 
-  //   getErrorId.classList = "errorOccured"
-  // }
-
 });
 
 limitBlockCount(ws,'html_html-head-body',1);
@@ -391,6 +345,7 @@ function forbidblockconnect(block,blockA,blockB,){
   }
 }
 
+// コードを表示するボタン
 document.getElementById("code-button").onclick = () => {
   const getCodeID = document.getElementById("generatedCode");
   const getButtonID = document.getElementById("code-button");
@@ -514,3 +469,47 @@ window.addEventListener('load', function() {
   const content = document.getElementById('content');
   content.style.visibility = 'visible';
 });
+
+document.getElementById("save-button").onclick = () => {
+  // ポップアップを表示して入力を求める
+  const popupForm = document.getElementById('popup-form');
+  popupOuterId.style.display = 'block';
+  // popupInnerId.style.display = 'block';
+  popupForm.style.display = 'block';
+
+  // フォームの送信イベントを設定
+  popupForm.onsubmit = async (e) => {
+    e.preventDefault();
+    
+    // フォームデータを取得
+    const formData = new FormData(popupForm);
+    const contentData = {};
+    formData.forEach((value, key) => {
+      contentData[key] = value;
+    });
+
+    // コンテンツを保存
+    await saveContent(contentData);
+
+    // ポップアップを閉じる
+    popupOuterId.style.display = 'none';
+    // popupInnerId.style.display = 'none';
+    popupForm.style.display = 'none';
+  };
+}
+
+async function saveContent(contentData) {
+  try {
+    const response = await fetch('/api/saveContent', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(contentData),
+    });
+    const data = await response.json();
+    console.log('Content saved:', data);
+  } catch (error) {
+    console.error('Error saving content:', error);
+  }
+}
