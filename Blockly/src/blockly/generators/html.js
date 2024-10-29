@@ -1050,11 +1050,18 @@ websiteGenerator.forBlock["js_textContent"] = function (block, generator) {
   const code = value ? `${value}.textContent` : "";
   return [code, Order.ATOMIC];
 };
-
 websiteGenerator.forBlock["js_value"] = function (block, generator) {
   const value = generator.valueToCode(block, "VALUE", Order.ATOMIC);
   const code = value ? `${value}.value` : "";
   return [code, Order.ATOMIC];
+};
+websiteGenerator.forBlock["js_textContent"] = function (block, generator) {
+  const variable = generator.valueToCode(block, "VARIABLE", Order.ATOMIC);
+  const text = generator.valueToCode(block, "TEXT", Order.ATOMIC);
+  //const sanitizedText = sanitizeInput(text);
+  const code = (variable && text) ? `${variable}.textContent = ${text}\n` : "\n";
+  //const indentedCode = generator.prefixLines(code, generator.INDENT);
+  return code;
 };
 
 websiteGenerator.forBlock["js_createElement"] = function (block, generator) {
