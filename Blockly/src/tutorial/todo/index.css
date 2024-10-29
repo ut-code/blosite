@@ -342,7 +342,7 @@ code {
   padding: 10px 15px;
   background-color: white;
   color: #007BFF;
-  font-size: 20px;
+  font-size: 18px;
   border: none;
   border-radius: 5px;
   cursor: pointer;
@@ -371,6 +371,7 @@ code {
 
 #popup-message {
   margin-bottom: 20px;
+  overflow: auto;
 }
 
 .popup-slides {
@@ -385,7 +386,7 @@ code {
   margin-top: auto;
   padding-top: 20px; 
   margin-bottom: 0;
-  position: absolute;
+  position: relative;
   bottom: 20px;
   right: 20px;
 }
