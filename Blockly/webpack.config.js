@@ -7,6 +7,7 @@ const config = {
     index: './src/index.js',
     tutorial: './src/tutorial/index.js',
     sandbox: './src/sandbox/index.js',
+    omikuji: './src/tutorial/omikuji/index.js'
   },
   output: {
     // Compile the source files into a bundle.
@@ -48,6 +49,11 @@ const config = {
       template: './src/sandbox/index.html', // sandbox用のHTMLテンプレート
       filename: 'sandbox/index.html',        // dist/sandbox/index.htmlとして出力
       chunks: ['sandbox'],
+    }),
+    new HtmlWebpackPlugin({
+      template: './src/tutorial/omikuji/index.html', // kujibiki用のHTMLテンプレート
+      filename: 'tutorial/omikuji/index.html',        // dist/tutorial/kujibiki/index.htmlとして出力
+      chunks: ['omikuji'],
     }),
   ],
 };

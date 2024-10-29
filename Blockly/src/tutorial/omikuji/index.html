@@ -1,0 +1,120 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>Blockly Sample App</title>
+  </head>
+  <body>
+    <div id="content" style="visibility: hidden;">
+      <header>
+        <div class="header-container">
+          <a href="#" class="header-logo">Blosite</a>
+          <!-- <sub>by ut.code();</sub> -->
+          <nav>
+            <ul class="nav-links">
+                <li><a href="./..">トップページに戻る</a></li>
+                <li id="header-help"><a>ヘルプ</a></li>
+                <li><a href="#">Q&A</a></li>
+            </ul>
+            <div class="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+          </nav>
+        </div>
+      </header>
+      <div class="split-view vertical">
+        <div id="pageContainer">
+          <div id="outputPane">
+            <pre id="generatedCode" class="beforeClicked"><code></code></pre>
+            <div id="wstitle"></div>
+            <div id="output"></div>
+            <button id="code-button">コードを表示する</button>
+            <div id="errorMessage" //class="safe"//>何もエラーは起こってません</div>
+          </div>
+          <div id="blocklyDiv"></div>
+        </div>
+        <!--
+        <label for="popupflag1">popup 1</label>
+        <input type="checkbox" class="popup-flag1" id="popupFlag1">
+        <label class="popup-background" for="popupFlag1"></label>
+        <div class="popup">
+          <label class="close-button" for="popupFlag1">×</label>
+          <div class="content">
+            content
+          </div>
+        </div>
+        --->
+        <div id="popup">
+          <div id="popup-outer"></div>
+          <div id="popup-inner">
+            <div id="popup-title">おみくじ</div>
+            <div id="popup-close">×</div>
+            <div id="popup-button-container">
+              <button class="popup-buttons" id="popup-button-0">目標</button>
+              <span class="popup-arrow">➡️</span> 
+              <button class="popup-buttons" id="popup-button-1">ボタンの作成</button>
+              <span class="popup-arrow">➡️</span> 
+              <button class="popup-buttons" id="popup-button-2">scriptを作ろう</button>
+              <span class="popup-arrow">➡️</span> 
+              <button class="popup-buttons" id="popup-button-3">発展・工夫</button>
+            </div>
+            <div id="popup-message">
+              <!-- ここにスライドコンテンツを表示 -->
+              <div class="popup-slides" id="popupSlide-0">
+                <section>
+                  <h1>目標</h1>
+                  <p>ボタンを押すとおみくじの結果が出てくるプログラミングを作成しよう。</p>
+                </section>
+                <section>
+                  <p>次のページからはヒントなので自信のある人はヒントを見ないでやってみよう！</p>
+                </section>
+                <video
+                  src = blosite/Blockly/src/tutorial/omikuji/omikuji-example.mp4>
+                </video>
+              </div>
+              <div class="popup-slides" id="popup-slide-1" style="display: none;">
+                <section>
+                  <h1>ボタン</h1>
+                  <p>
+                    &emsp;まずはボタンを作ってみましょう。ボタンを作るにはHTML Elementsブロックの中から、&lt;button&gt;で囲まれたブロックを選びましょう。<br>
+                    &emsp;ボタンの中に文字を入れてみましょう、ボタンを作ることができたら結果を表示する場所を作りましょう。結果の中身を後で変えることができるようにidを
+                    つけて要素を取得できるようにしましょう。中身は後でjavascriptを用いて変更するので中身はからでも構いません
+                  </p>
+                </section>
+              </div>
+              <div class="popup-slides" id="popup-slide-2" style="display: none;">
+                <h1>javascript</h1>
+                <p>
+                  &emsp;javascriptのコードをscriptブロックの中にJavaScriptブロックをいれることで
+                  作りましょう。どんな結果になるのかはおみくじなので運で決まってほしいです。そこで
+                  ここではMathブロックに含まれている、1未満の正の実数をランダムで生成するブロックを
+                  使ってみましょう。この場合0~0.20の数字が生成される確率は20%です。発生した乱数はそのままでは使えないので
+                  変数に保存しましょう。変数はVariablesブロックの変数の作成をクリックすると変数を作ることができます。
+                  次に条件分岐を作りましょう。条件分岐を作るにはLogicブロックの「もし」と書かれているブロックを使ってみましょう。条件分岐と
+                  条件を満たすかどうかによって実行するプログラムを変化させることです。
+
+                </p>
+              </div>
+              <div class="popup-slides" id="popup-slide-3" style="display: none;">
+              <p>
+                結果の文字やボタンの色、文字の大きさ表示される位置などを変更してみましょう。
+                cssブロックを使うことでこれらの変更を加えることができます。
+              </p>
+              <p>
+                
+              </p>
+              </div>
+            </div>
+            <div id="popup-navigation">
+              <button id="popup-prev">戻る</button>
+              <button id="popup-next">進む</button>
+              <button id="popup-end">始める</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

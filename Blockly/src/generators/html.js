@@ -851,7 +851,7 @@ websiteGenerator.forBlock["css_color"] = function (block, generator) {
   const field = block.getFieldValue("FIELD");
   const value = generator.valueToCode(block, "VALUE", Order.ATOMIC);
   const sanitizedField = sanitizeInput(field);
-  const code = value ? `color:${sanitizedField}; ${value}` : `color:${sanitixedField}`;
+  const code = value ? `color:${sanitizedField}; ${value}` : `color:${sanitizedField}`;
   return [code, Order.ATOMIC];
 };
 
