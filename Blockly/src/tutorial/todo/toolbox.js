@@ -436,8 +436,23 @@ export const toolbox = {
         },
         {
           kind: "block",
+          type: "js_value",
+        },
+        {
+          kind: "block",
           type: "js_createElement",
         },
+
+        /*
+        {
+          kind: "block",
+          type: "js_prompt"
+        },
+        {
+          kind: "block",
+          type: "js_appendChild"
+        },
+        */
         {
           kind: "block",
           type: "js_alert",
@@ -451,6 +466,14 @@ export const toolbox = {
               },
             },
           },
+        },
+        {
+          kind: "block",
+          type: "js_setter",
+        },
+        {
+          kind: "block",
+          type: "js_cast",
         },
         {
           kind: "block",
