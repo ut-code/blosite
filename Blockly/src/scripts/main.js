@@ -24,6 +24,10 @@ async function loadModules(page) {
       toolboxModule = await import('/src/sandbox/toolbox.js');
       serializationModule = await import('/src/sandbox/serialization.js');
       break;
+    case '/tutorial/omikuji':
+      toolboxModule = await import('/src/tutorial/omikuji/toolbox.js');
+      serializationModule = await import('/src/tutorial/omikuji/serialization.js');
+      break;
     case '/tutorial/spread-sheet':
       toolboxModule = await import('/src/tutorial/spread-sheet/toolbox.js');
       serializationModule = await import('/src/tutorial/spread-sheet/serialization.js');

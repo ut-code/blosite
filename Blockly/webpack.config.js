@@ -50,6 +50,11 @@ const config = {
       chunks: ['main'],
     }),
     new HtmlWebpackPlugin({
+      template: './src/tutorial/omikuji/index.html',
+      filename: 'tutorial/omikuji/index.html',
+      chunks: ['main'],
+    }),
+    new HtmlWebpackPlugin({
       template: './src/tutorial/spread-sheet/index.html',
       filename: 'tutorial/spread-sheet/index.html',
       chunks: ['main'],
