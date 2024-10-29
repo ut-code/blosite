@@ -452,10 +452,6 @@ export const toolbox = {
         },
         {
           kind: "block",
-          type: "js_value",
-        },
-        {
-          kind: "block",
           type: "js_prompt"
         },
         {
@@ -471,10 +467,6 @@ export const toolbox = {
               },
             },
           },
-        },
-        {
-          kind: "block",
-          type: "js_prompt",
         },
         {
           kind: "block",
