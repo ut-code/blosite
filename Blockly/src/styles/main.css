@@ -423,3 +423,11 @@ code {
 #popup-navigation #popup-prev:hover {
   background-color: #e9f3fe;
 }
+
+#popup-form {
+  display: none;
+  flex-direction: column;
+  margin: 20px;
+  background-color: white;
+  width : 80%;
+}
