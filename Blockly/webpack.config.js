@@ -60,9 +60,9 @@ const config = {
       chunks: ['main'],
     }),
     new HtmlWebpackPlugin({
-      template: './src/todo/index.html', // sandbox用のHTMLテンプレート
-      filename: 'todo/index.html',        // dist/sandbox/index.htmlとして出力
-      chunks: ['todo'],
+      template: './src/tutorial/todo/index.html', // sandbox用のHTMLテンプレート
+      filename: 'tutorial/todo/index.html',        // dist/sandbox/index.htmlとして出力
+      chunks: ['main'],
     }),
 
   ],
