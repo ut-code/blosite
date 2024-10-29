@@ -49,28 +49,85 @@
         <div id="popup">
           <div id="popup-outer"></div>
           <div id="popup-inner">
-            <div id="popup-title">ポップアップタイトル</div>
+            <div id="popup-title">Todoリストを作ろう</div>
             <div id="popup-close">×</div>
             <div id="popup-button-container">
-              <button class="popup-buttons" id="popup-button-0">ボタン1</button>
+              <button class="popup-buttons" id="popup-button-0">todoの内容を入れられるようにする</button>
               <span class="popup-arrow">➡️</span> 
-              <button class="popup-buttons" id="popup-button-1">ボタン2</button>
+              <button class="popup-buttons" id="popup-button-1">Todoリストの追加</button>
               <span class="popup-arrow">➡️</span> 
-              <button class="popup-buttons" id="popup-button-2">ボタン3</button>
+              <button class="popup-buttons" id="popup-button-2">Todoリストの削除</button>
               <span class="popup-arrow">➡️</span> 
-              <button class="popup-buttons" id="popup-button-3">ボタン4</button>
+              <button class="popup-buttons" id="popup-button-3">Todoリストの編集</button>
             </div>
             <div id="popup-message">
               <!-- ここにスライドコンテンツを表示 -->
               <div class="popup-slides" id="popupSlide-0">
-                <section>
-                  <h2>スライド1</h2>
-                  <p></p>
+                <section id="popup-slide-content-0">
+                  <h2>
+                    構造
+                  </h2>
+                  <p>
+                    Todoリストを構成する基本的な要素として、
+                    <ul>
+                      <li>Todoリストが入るタグを作る</li>
+                      <li>Todoリストにテキストを入れられるようにする</li>
+                      <li>Todoリストを追加、削除するボタンを作る</li>
+                    </ul>
+                    この３つが挙げられます。<br>
+                    まずリストを作る元となる&lt;ul&gt;タグと、テキストを入れる場所を作る&lt;input&gt;タグを&lt;body&gt;タグに入れてみましょう。
+                  </p>
+                  <!--
+                  <h2>IDでタグ付け</h2>
+                  <p>
+                    次に、&lt;ul&gt;と&lt;input&gt;にIDブロックをつけましょう。<br>
+                    IDをつけることによって、この後行うJavaScriptを用いた作業でこれらのタグに色々な機能をつけることができます。<br>
+                    IDの名前は今回は&lt;ul&gt;にtodo-list、&lt;input&gt;にtodo-inputと入れることにしましょう。
+                  </p>
+                  -->
                 </section>
               </div>
-              <div class="popup-slides" id="popup-slide-1" style="display: none;">スライド2の内容</div>
-              <div class="popup-slides" id="popup-slide-2" style="display: none;">スライド3の内容</div>
-              <div class="popup-slides" id="popup-slide-3" style="display: none;">スライド4の内容</div>
+              <div class="popup-slides" id="popup-slide-1" style="display: none;">
+                <section>
+                  <p>
+                    次に、押すことでTodoリストを追加できるようなボタンを作りましょう。<br>
+                    ボタンを押した後に<br>
+                    <ul>
+                      <li>&lt;ul&gt;の中に新たな項目&lt;li&gt;を入れる</li>
+                      <li>&lt;input&gt;の中に入れた文章を&lt;li&gt;の中に入れる</li>
+                    </ul>
+                    この２つがしたいですね。<br>
+                    ここでJavascriptを用いてクリックしたら<br>
+                    <ul>
+                      <li>要素名liを追加する</li>
+                      <li>追加した要素の内容を&lt;input&gt;の内容に変更する</li>
+                    </ul>
+                    ようにしましょう。
+                  </p>
+                </section>
+              </div>
+              <div class="popup-slides" id="popup-slide-2" style="display: none;">
+                <section>
+                  <p>
+                    次に、削除ボタンをTodoリストに追加しましょう。<br>
+                    ボタンを押した後に、
+                    <ul>
+                      <li>要素buttonを追加し、その内容を「削除」に変える</li>
+                      <li>削除ボタンが押された際に&lt;li&gt;タグを消す</li>
+                    </ul>
+                    とすればいいですね。<br>
+                  </p>
+                </section>
+              </div>
+              <div class="popup-slides" id="popup-slide-3" style="display: none;">
+                <section>
+                    <p>
+                      最後に、作ったTodoリストを編集できるようにしましょう。<br>
+                      削除ボタンを作ったときと同様に編集ボタンを作ります。<br>
+                      
+                    </p>
+                </section>
+              </div>
             </div>
             <div id="popup-navigation">
               <button id="popup-prev">戻る</button>
