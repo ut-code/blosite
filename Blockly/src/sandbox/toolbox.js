@@ -452,6 +452,14 @@ export const toolbox = {
         },
         {
           kind: "block",
+          type: "js_value",
+        },
+        {
+          kind: "block",
+          type: "js_prompt"
+        },
+        {
+          kind: "block",
           type: "js_alert",
           inputs: {
             CONTENT: {
