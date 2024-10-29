@@ -24,6 +24,42 @@ async function loadModules(page) {
       toolboxModule = await import('/src/sandbox/toolbox.js');
       serializationModule = await import('/src/sandbox/serialization.js');
       break;
+    case '/tutorial/blosite-introduction':
+      toolboxModule = await import('/src/tutorial/blosite-introduction/toolbox.js');
+      serializationModule = await import('/src/tutorial/blosite-introduction/serialization.js');
+      break;
+    case '/tutorial/html-introduction':
+      toolboxModule = await import('/src/tutorial/html-introduction/toolbox.js');
+      serializationModule = await import('/src/tutorial/html-introduction/serialization.js');
+      break;
+    case '/tutorial/various-html-elements':
+      toolboxModule = await import('/src/tutorial/various-html-elements/toolbox.js');
+      serializationModule = await import('/src/tutorial/various-html-elements/serialization.js');
+      break;
+    case '/tutorial/css-introduction':
+      toolboxModule = await import('/src/tutorial/css-introduction/toolbox.js');
+      serializationModule = await import('/src/tutorial/css-introduction/serialization.js');
+      break;
+    case '/tutorial/variables-and-functions':
+      toolboxModule = await import('/src/tutorial/variables-and-functions/toolbox.js');
+      serializationModule = await import('/src/tutorial/variables-and-functions/serialization.js');
+      break;
+    case '/tutorial/dom-manipulation':
+      toolboxModule = await import('/src/tutorial/dom-manipulation/toolbox.js');
+      serializationModule = await import('/src/tutorial/dom-manipulation/serialization.js');
+      break;
+    case '/tutorial/control-structure':
+      toolboxModule = await import('/src/tutorial/control-structure/toolbox.js');
+      serializationModule = await import('/src/tutorial/control-structure/serialization.js');
+      break;
+    case '/tutorial/omikuji':
+      toolboxModule = await import('/src/tutorial/omikuji/toolbox.js');
+      serializationModule = await import('/src/tutorial/omikuji/serialization.js');
+      break;
+    case '/tutorial/todo':
+      toolboxModule = await import('/src/tutorial/todo/toolbox.js');
+      serializationModule = await import('/src/tutorial/todo/serialization.js');
+      break;
     case '/tutorial/spread-sheet':
       toolboxModule = await import('/src/tutorial/spread-sheet/toolbox.js');
       serializationModule = await import('/src/tutorial/spread-sheet/serialization.js');
