@@ -1,18 +1,22 @@
-// app.js (または server.js)
 const express = require('express');
 const { PrismaClient } = require('@prisma/client');
+const cors = require('cors');
+const multer = require('multer');
 
 const app = express();
 const prisma = new PrismaClient();
+const upload = multer();
 
 app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
+app.use(cors());
 
 // コンテンツを保存するAPI
-app.post('/api/saveContent', async (req, res) => {
+app.post('/api/saveContent', upload.none(),  async (req, res) => {
   const { username, contentName, description, content, photo } = req.body;
-
+  console.log('Received content:', req.body);
   try {
-    const newContent = await prisma.content.create({
+    const newContent = await prisma.websites.create({
       data: {
         username,
         contentName,
@@ -23,6 +27,7 @@ app.post('/api/saveContent', async (req, res) => {
     });
     res.json(newContent);
   } catch (error) {
+    console.error('Error saving content:', error);
     res.status(500).json({ error: 'Error saving content' });
   }
 });
@@ -30,7 +35,7 @@ app.post('/api/saveContent', async (req, res) => {
 // コンテンツを取得するAPI
 app.get('/api/getContents', async (req, res) => {
   try {
-    const contents = await prisma.content.findMany({
+    const contents = await prisma.websites.findMany({
       orderBy: { createdAt: 'desc' }, // 作成日時でソート
     });
     res.json(contents);

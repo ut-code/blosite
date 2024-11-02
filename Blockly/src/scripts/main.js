@@ -12,7 +12,7 @@ import '/src/styles/main.css';
 
 // 現在のページを取得
 const page = window.location.pathname;
-let toolbox, save, load;
+let toolbox, save, load, storageKey;
 
 // 現在のページに応じてファイルを読み込む
 async function loadModules(page) {
@@ -75,6 +75,7 @@ async function loadModules(page) {
   toolbox = toolboxModule.toolbox;
   save = serializationModule.save;
   load = serializationModule.load;
+  storageKey = serializationModule.storageKey;
 }
 
 await loadModules(page);
@@ -473,43 +474,74 @@ window.addEventListener('load', function() {
 document.getElementById("save-button").onclick = () => {
   // ポップアップを表示して入力を求める
   const popupForm = document.getElementById('popup-form');
+  const contentForm = document.getElementById('contentForm');
+
   popupOuterId.style.display = 'block';
   // popupInnerId.style.display = 'block';
   popupForm.style.display = 'block';
 
-  // フォームの送信イベントを設定
-  popupForm.onsubmit = async (e) => {
-    e.preventDefault();
+  // // フォームの送信イベントを設定
+  // contentForm.onsubmit = async (e) => {
+  //   e.preventDefault();
     
-    // フォームデータを取得
-    const formData = new FormData(popupForm);
-    const contentData = {};
-    formData.forEach((value, key) => {
-      contentData[key] = value;
-    });
+  //   // フォームデータを取得
+  //   const formData = new FormData(contentForm);
+  //   const contentData = {};
+  //   formData.forEach((value, key) => {
+  //     contentData[key] = value;
+  //   });
 
-    // コンテンツを保存
-    await saveContent(contentData);
+  //   // コンテンツを保存
+  //   await saveContent(contentData);
 
-    // ポップアップを閉じる
-    popupOuterId.style.display = 'none';
-    // popupInnerId.style.display = 'none';
-    popupForm.style.display = 'none';
-  };
+  //   // ポップアップを閉じる
+  //   popupOuterId.style.display = 'none';
+  //   // popupInnerId.style.display = 'none';
+  //   popupForm.style.display = 'none';
+  // };
 }
 
-async function saveContent(contentData) {
+// async function saveContent(contentData) {
+//   try {
+//     const response = await fetch('/api/saveContent', {
+//       method: 'POST',
+//       headers: {
+//         'Content-Type': 'application/json',
+//       },
+//       body: JSON.stringify(contentData),
+//     });
+//     const data = await response.json();
+//     console.log('Content saved:', data);
+//   } catch (error) {
+//     console.error('Error saving content:', error);
+//   }
+// }
+
+document.getElementById('contentForm').addEventListener('submit', async function(event) {
+  event.preventDefault(); // フォームのデフォルトの送信を防ぐ
+
+  const formElement = document.getElementById('contentForm'); // フォーム要素を取得
+  
+  const formData = new FormData(formElement); // FormDataを作成
+  console.log(formData);
   try {
-    const response = await fetch('/api/saveContent', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify(contentData),
-    });
-    const data = await response.json();
-    console.log('Content saved:', data);
+      const response = await fetch('http://localhost:3000/api/saveContent', {
+          method: 'POST',
+          body: formData,
+      });
+      console.log(response);
+
+      if (!response.ok) {
+        const errorText = await response.text(); // エラーレスポンスを取得
+        throw new Error(`ネットワークエラーが発生しました: ${response.status} ${errorText}`);
+      }
+
+      const result = await response.json();
+      console.log('保存成功:', result);
+      // 成功した場合の処理（例: フォームをクリアする）
+      formElement.reset();
   } catch (error) {
-    console.error('Error saving content:', error);
+      console.error('エラー:', error);
   }
-}
+
+});
