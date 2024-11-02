@@ -116,7 +116,7 @@ code {
 
 .split-view {
   display: flex;
-  margin-top: 47px;
+  margin-top: 37px;
   height : 100%;
 }
 .split-view.vertical{
@@ -130,16 +130,13 @@ code {
   display: flex;
   width: 100%;
   max-width: 100%;
-  height: calc(100vh - 40px)
+  height: calc(100vh - 37px)
 }
 
-@media (max-width: 1014px) {
+/* スクリーンバーの表示に合わせて画面サイズを調整 */
+@media (max-width: 1016px) {
   #pageContainer {
     height: calc(100vh - 52px)
-  }
-
-  .split-view {
-    margin-top: 67px;
   }
 }
 
