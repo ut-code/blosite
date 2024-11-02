@@ -7,7 +7,7 @@
 import * as Blockly from 'blockly/core';
 
 // キャッシュの保存先を決定
-const storageKey = 'sandboxWorkspace';
+export const storageKey = 'sandboxWorkspace';
 
 // 初期状態のブロックをXMLで定義
 const xml = `
@@ -59,6 +59,8 @@ export const save = function (workspace) {
  */
 export const load = function (workspace) {
   const data = window.localStorage?.getItem(storageKey);
+
+  // 事前に保存されていないときは初期状態をロード
   if (!data) {
     Blockly.Xml.domToWorkspace(xmlDom, workspace);
     return;
