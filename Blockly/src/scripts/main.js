@@ -434,7 +434,6 @@ window.addEventListener('load', function() {
 document.getElementById("save-button").onclick = () => {
   // ポップアップを表示して入力を求める
   const popupForm = document.getElementById('popup-form');
-  const contentForm = document.getElementById('contentForm');
 
   popupOuterId.style.display = 'block';
   // popupInnerId.style.display = 'block';
@@ -483,6 +482,7 @@ document.getElementById('contentForm').addEventListener('submit', async function
   const formElement = document.getElementById('contentForm'); // フォーム要素を取得
   
   const formData = new FormData(formElement); // FormDataを作成
+  formData.append('content', JSON.stringify(Blockly.serialization.workspaces.save(ws))); // コードを追加
   console.log(formData);
   try {
       const response = await fetch('http://localhost:3000/api/saveContent', {
