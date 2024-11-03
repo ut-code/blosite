@@ -4,8 +4,19 @@
     <meta charset="UTF-8">
     <title>コンテンツ一覧</title>
 </head>
-<body>
+<body style="visibility: hidden">
     <h1>コンテンツ一覧</h1>
-    <div id="contentsList"></div>
+    <a href="./.." class="btn">トップページに戻る</a>
+    <div id="contents-list"></div>
+    <div id="popup" class="popup hidden">
+        <div class="popup-content">
+            <p id="popup-message">このページに移動してもよろしいですか？</p>
+            <button id="confirmButton">はい</button>
+            <button id="cancelButton">キャンセル</button>
+        </div>
+    </div>
+    <footer>
+        <p>ut.code(); 駒場祭プロジェクト</p>
+    </footer>
 </body>
 </html>
