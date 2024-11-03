@@ -6,6 +6,7 @@ const config = {
   entry: {
     top: './src/scripts/top.js',
     tutorial: './src/scripts/tutorial.js',
+    share: './src/scripts/share.js',
     main: './src/scripts/main.js',
   },
   output: {
@@ -110,9 +111,9 @@ const config = {
       chunks: ['main'],
     }),
     new HtmlWebpackPlugin({
-      template: './src/tutorial/htmlwosiru/index.html',
-      filename: 'tutorial/htmlwosiru/index.html',
-      chunks: ['main'],
+      template: './src/share/index.html',
+      filename: 'share/index.html',
+      chunks: ['share'],
     }),
   ],
 };

@@ -8,6 +8,8 @@ import * as Blockly from 'blockly';
 import {htmlBlocks} from '/src/blockly/blocks/html';
 import {websiteGenerator} from '/src/blockly/generators/html';
 import customMsg from '/src/blockly/custom_msg';
+import html2canvas from 'html2canvas';
+import { createClient } from '@supabase/supabase-js';
 import '/src/styles/main.css';
 
 // 現在のページを取得
@@ -516,32 +518,85 @@ document.getElementById("save-button").onclick = () => {
 //   }
 // }
 
+// SupabaseのプロジェクトURLとAPIキーを使用してクライアントを作成
+const supabaseUrl = 'https://foxfxembozpnvfdwxnog.supabase.co';
+const supabaseKey = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImZveGZ4ZW1ib3pwbnZmZHd4bm9nIiwicm9sZSI6ImFub24iLCJpYXQiOjE3MzAxMTQ0NDMsImV4cCI6MjA0NTY5MDQ0M30.brm2eeigBJv6u1QBcbEl5QAsqsEl1IzYtICuhrlYdDc';
+const supabase = createClient(supabaseUrl, supabaseKey);
+
 document.getElementById('contentForm').addEventListener('submit', async function(event) {
   event.preventDefault(); // フォームのデフォルトの送信を防ぐ
 
   const formElement = document.getElementById('contentForm'); // フォーム要素を取得
   
-  const formData = new FormData(formElement); // FormDataを作成
-  formData.append('content', JSON.stringify(Blockly.serialization.workspaces.save(ws))); // コードを追加
+  const formData = new FormData(formElement);
+  const content = JSON.stringify(Blockly.serialization.workspaces.save(ws)); // ブロックの配置を取得
   console.log(formData);
   try {
-      const response = await fetch('http://localhost:3000/api/saveContent', {
-          method: 'POST',
-          body: formData,
-      });
-      console.log(response);
 
-      if (!response.ok) {
-        const errorText = await response.text(); // エラーレスポンスを取得
-        throw new Error(`ネットワークエラーが発生しました: ${response.status} ${errorText}`);
-      }
+    const response = await fetch('http://localhost:3000/api/saveContent', {
+      method: 'POST',
+      headers: {
+          'Accept': 'application/json', // レスポンスの形式を指定
+          'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+          username: formData.get('username'),
+          contentName: formData.get('contentName'),
+          description: formData.get('description'),
+          content: content,
+          photo: '', // 一時的に空
+      }),
+    });
 
-      const result = await response.json();
-      console.log('保存成功:', result);
-      // 成功した場合の処理（例: フォームをクリアする）
-      formElement.reset();
+    console.log(response);
+
+    if (!response.ok) {
+      const errorText = await response.text(); // エラーレスポンスを取得
+      throw new Error(`ネットワークエラーが発生しました: ${response.status} ${errorText}`);
+    }
+
+    const result = await response.json();
+    const contentId = result.id;
+    console.log('コンテンツの保存に成功しました:', result);
+
+    // html2canvasを使用して出力されたHTMLをキャプチャ
+    const canvas = await html2canvas(document.getElementById('output'));
+    const imgData = canvas.toDataURL('image/png'); // PNGデータを取得
+    const blob = await (await fetch(imgData)).blob(); // Blob形式に変換
+    
+    // Supabaseに画像をアップロード
+    const fileName = `images/content-${contentId}.png`; // IDをファイル名に追加
+    const { data, error } = await supabase.storage.from('Blosite_photos').upload(fileName, blob, {
+        contentType: 'image/png',
+    });
+
+    if (error) {
+        console.error('Error uploading image:', error);
+        return;
+    }
+
+    // アップロードした画像のURLを取得
+    const url = `https://foxfxembozpnvfdwxnog.supabase.co/storage/v1/object/public/Blosite_photos/images/content-${contentId}.png`;
+    
+    // データベースに画像のURLを更新
+    await fetch(`http://localhost:3000/api/updateContent`, {
+        method: 'PUT',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+            id: contentId, // コンテンツIDを指定
+            photo: url, // 画像のURLを保存
+        }),
+    });
+
+    console.log('画像のアップロードとURLの更新に成功しました');
+
+    // 成功した場合の処理（例: フォームをクリアする）
+    formElement.reset();
+
   } catch (error) {
       console.error('エラー:', error);
   }
-
+  
 });
