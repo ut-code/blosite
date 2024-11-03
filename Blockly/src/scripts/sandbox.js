@@ -8,6 +8,8 @@ import * as Blockly from 'blockly';
 import {htmlBlocks} from '/src/blockly/blocks/html';
 import {websiteGenerator} from '/src/blockly/generators/html';
 import customMsg from '/src/blockly/custom_msg';
+import html2canvas from 'html2canvas';
+import { createClient } from '@supabase/supabase-js';
 import '/src/styles/main.css';
 
 // 現在のページを取得
@@ -24,49 +26,9 @@ async function loadModules(page) {
       toolboxModule = await import('/src/sandbox/toolbox.js');
       serializationModule = await import('/src/sandbox/serialization.js');
       break;
-    case '/tutorial/blosite-introduction':
-      toolboxModule = await import('/src/tutorial/blosite-introduction/toolbox.js');
-      serializationModule = await import('/src/tutorial/blosite-introduction/serialization.js');
-      break;
-    case '/tutorial/html-introduction':
-      toolboxModule = await import('/src/tutorial/html-introduction/toolbox.js');
-      serializationModule = await import('/src/tutorial/html-introduction/serialization.js');
-      break;
-    case '/tutorial/various-html-elements':
-      toolboxModule = await import('/src/tutorial/various-html-elements/toolbox.js');
-      serializationModule = await import('/src/tutorial/various-html-elements/serialization.js');
-      break;
-    case '/tutorial/css-introduction':
-      toolboxModule = await import('/src/tutorial/css-introduction/toolbox.js');
-      serializationModule = await import('/src/tutorial/css-introduction/serialization.js');
-      break;
-    case '/tutorial/variables-and-functions':
-      toolboxModule = await import('/src/tutorial/variables-and-functions/toolbox.js');
-      serializationModule = await import('/src/tutorial/variables-and-functions/serialization.js');
-      break;
-    case '/tutorial/dom-manipulation':
-      toolboxModule = await import('/src/tutorial/dom-manipulation/toolbox.js');
-      serializationModule = await import('/src/tutorial/dom-manipulation/serialization.js');
-      break;
-    case '/tutorial/control-structure':
-      toolboxModule = await import('/src/tutorial/control-structure/toolbox.js');
-      serializationModule = await import('/src/tutorial/control-structure/serialization.js');
-      break;
-    case '/tutorial/omikuji':
-      toolboxModule = await import('/src/tutorial/omikuji/toolbox.js');
-      serializationModule = await import('/src/tutorial/omikuji/serialization.js');
-      break;
-    case '/tutorial/todo':
-      toolboxModule = await import('/src/tutorial/todo/toolbox.js');
-      serializationModule = await import('/src/tutorial/todo/serialization.js');
-      break;
     case '/tutorial/spread-sheet':
       toolboxModule = await import('/src/tutorial/spread-sheet/toolbox.js');
       serializationModule = await import('/src/tutorial/spread-sheet/serialization.js');
-      break;
-    case '/tutorial/htmlwosiru':
-      toolboxModule = await import('/src/tutorial/htmlwosiru/toolbox.js');
-      serializationModule = await import('/src/tutorial/htmlwosiru/serialization.js');
       break;
     default:
       throw new Error('Unknown page');
@@ -390,7 +352,7 @@ buttons.forEach((button, index) => {
 function showPopupSlideContent(index) {
     const slides = document.querySelectorAll('.popup-slides');
     slides.forEach((slide, i) => {
-        slide.style.display = (i === index) ? 'flex' : 'none';
+        slide.style.display = (i === index) ? 'block' : 'none';
     });
     currentSlideIndex = index;
     updateNavigationButtons();
@@ -469,4 +431,132 @@ highlightButton(buttons[0]);
 window.addEventListener('load', function() {
   const content = document.getElementById('content');
   content.style.visibility = 'visible';
+});
+
+document.getElementById("save-button").onclick = () => {
+  // ポップアップを表示して入力を求める
+  const popupForm = document.getElementById('popup-form');
+
+  popupOuterId.style.display = 'block';
+  // popupInnerId.style.display = 'block';
+  popupForm.style.display = 'block';
+
+  // // フォームの送信イベントを設定
+  // contentForm.onsubmit = async (e) => {
+  //   e.preventDefault();
+    
+  //   // フォームデータを取得
+  //   const formData = new FormData(contentForm);
+  //   const contentData = {};
+  //   formData.forEach((value, key) => {
+  //     contentData[key] = value;
+  //   });
+
+  //   // コンテンツを保存
+  //   await saveContent(contentData);
+
+  //   // ポップアップを閉じる
+  //   popupOuterId.style.display = 'none';
+  //   // popupInnerId.style.display = 'none';
+  //   popupForm.style.display = 'none';
+  // };
+}
+
+// async function saveContent(contentData) {
+//   try {
+//     const response = await fetch('/api/saveContent', {
+//       method: 'POST',
+//       headers: {
+//         'Content-Type': 'application/json',
+//       },
+//       body: JSON.stringify(contentData),
+//     });
+//     const data = await response.json();
+//     console.log('Content saved:', data);
+//   } catch (error) {
+//     console.error('Error saving content:', error);
+//   }
+// }
+
+// SupabaseのプロジェクトURLとAPIキーを使用してクライアントを作成
+const supabaseUrl = 'https://foxfxembozpnvfdwxnog.supabase.co';
+const supabaseKey = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImZveGZ4ZW1ib3pwbnZmZHd4bm9nIiwicm9sZSI6ImFub24iLCJpYXQiOjE3MzAxMTQ0NDMsImV4cCI6MjA0NTY5MDQ0M30.brm2eeigBJv6u1QBcbEl5QAsqsEl1IzYtICuhrlYdDc';
+const supabase = createClient(supabaseUrl, supabaseKey);
+
+document.getElementById('contentForm').addEventListener('submit', async function(event) {
+  event.preventDefault(); // フォームのデフォルトの送信を防ぐ
+
+  const formElement = document.getElementById('contentForm'); // フォーム要素を取得
+  
+  const formData = new FormData(formElement);
+  const content = JSON.stringify(Blockly.serialization.workspaces.save(ws)); // ブロックの配置を取得
+  console.log(formData);
+  try {
+
+    const response = await fetch('http://localhost:3000/api/saveContent', {
+      method: 'POST',
+      headers: {
+          'Accept': 'application/json', // レスポンスの形式を指定
+          'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+          username: formData.get('username'),
+          contentName: formData.get('contentName'),
+          description: formData.get('description'),
+          content: content,
+          photo: '', // 一時的に空
+      }),
+    });
+
+    console.log(response);
+
+    if (!response.ok) {
+      const errorText = await response.text(); // エラーレスポンスを取得
+      throw new Error(`ネットワークエラーが発生しました: ${response.status} ${errorText}`);
+    }
+
+    const result = await response.json();
+    const contentId = result.id;
+    console.log('コンテンツの保存に成功しました:', result);
+
+    // html2canvasを使用して出力されたHTMLをキャプチャ
+    const canvas = await html2canvas(document.getElementById('output'));
+    const imgData = canvas.toDataURL('image/png'); // PNGデータを取得
+    const blob = await (await fetch(imgData)).blob(); // Blob形式に変換
+    
+    // Supabaseに画像をアップロード
+    const fileName = `images/content-${contentId}.png`; // IDをファイル名に追加
+    const { data, error } = await supabase.storage.from('Blosite_photos').upload(fileName, blob, {
+        contentType: 'image/png',
+    });
+
+    if (error) {
+        console.error('Error uploading image:', error);
+        return;
+    }
+
+    // アップロードした画像のURLを取得
+    const url = `https://foxfxembozpnvfdwxnog.supabase.co/storage/v1/object/public/Blosite_photos/images/content-${contentId}.png`;
+    
+    // データベースに画像のURLを更新
+    await fetch(`http://localhost:3000/api/updateContent`, {
+        method: 'PUT',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+            id: contentId, // コンテンツIDを指定
+            photo: url, // 画像のURLを保存
+        }),
+    });
+
+    console.log('画像のアップロードとURLの更新に成功しました');
+
+    // 成功した場合の処理（例: フォームをクリアする）
+    formElement.reset();
+
+  } catch (error) {
+      console.error('エラー:', error);
+  }
+  
 });

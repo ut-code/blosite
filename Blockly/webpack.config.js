@@ -5,6 +5,7 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const config = {
   entry: {
     top: './src/scripts/top.js',
+    sandbox: './src/scripts/sandbox.js',
     tutorial: './src/scripts/tutorial.js',
     share: './src/scripts/share.js',
     main: './src/scripts/main.js',
@@ -108,7 +109,7 @@ const config = {
     new HtmlWebpackPlugin({
       template: './src/sandbox/index.html',
       filename: 'sandbox/index.html',
-      chunks: ['main'],
+      chunks: ['sandbox'],
     }),
     new HtmlWebpackPlugin({
       template: './src/share/index.html',
