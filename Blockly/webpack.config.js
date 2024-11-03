@@ -50,8 +50,48 @@ const config = {
       chunks: ['tutorial'],
     }),
     new HtmlWebpackPlugin({
+      template: './src/tutorial/blosite-introduction/index.html',
+      filename: 'tutorial/blosite-introduction/index.html',
+      chunks: ['main'],
+    }),
+    new HtmlWebpackPlugin({
       template: './src/tutorial/html-introduction/index.html',
       filename: 'tutorial/html-introduction/index.html',
+      chunks: ['main'],
+    }),
+    new HtmlWebpackPlugin({
+      template: './src/tutorial/various-html-elements/index.html',
+      filename: 'tutorial/various-html-elements/index.html',
+      chunks: ['main'],
+    }),
+    new HtmlWebpackPlugin({
+      template: './src/tutorial/css-introduction/index.html',
+      filename: 'tutorial/css-introduction/index.html',
+      chunks: ['main'],
+    }),
+    new HtmlWebpackPlugin({
+      template: './src/tutorial/variables-and-functions/index.html',
+      filename: 'tutorial/variables-and-functions/index.html',
+      chunks: ['main'],
+    }),
+    new HtmlWebpackPlugin({
+      template: './src/tutorial/dom-manipulation/index.html',
+      filename: 'tutorial/dom-manipulation/index.html',
+      chunks: ['main'],
+    }),
+    new HtmlWebpackPlugin({
+      template: './src/tutorial/control-structure/index.html',
+      filename: 'tutorial/control-structure/index.html',
+      chunks: ['main'],
+    }),
+    new HtmlWebpackPlugin({
+      template: './src/tutorial/omikuji/index.html',
+      filename: 'tutorial/omikuji/index.html',
+      chunks: ['main'],
+    }),
+    new HtmlWebpackPlugin({
+      template: './src/tutorial/todo/index.html',
+      filename: 'tutorial/todo/index.html',
       chunks: ['main'],
     }),
     new HtmlWebpackPlugin({
