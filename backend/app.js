@@ -32,6 +32,29 @@ app.post('/api/saveContent', upload.none(),  async (req, res) => {
   }
 });
 
+// コンテンツを更新するAPI
+app.put('/api/updateContent', upload.none(), async (req, res) => {
+  const { id, username, contentName, description, content, photo } = req.body;
+  console.log('Received content:', req.body);
+
+  if (!id) {
+    return res.status(400).json({ error: 'ID is required to update content' });
+  }
+
+  try {
+    const updatedContent = await prisma.websites.update({
+      where: { id: parseInt(id) },
+      data: {
+        photo: photo,
+      },
+    });
+    res.json(updatedContent);
+  } catch (error) {
+    console.error('Error updating content:', error);
+    res.status(500).json({ error: 'Error updating content' });
+  }
+});
+
 // コンテンツを取得するAPI
 app.get('/api/getContents', async (req, res) => {
   try {

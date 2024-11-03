@@ -1,0 +1,19 @@
+body {
+    font-family: Arial, sans-serif;
+}
+
+h1 {
+    text-align: center;
+}
+
+.content-item {
+    border: 1px solid #ccc;
+    padding: 15px;
+    margin: 10px;
+    border-radius: 5px;
+}
+
+.content-item img {
+    max-width: 100%;
+    height: auto;
+}
