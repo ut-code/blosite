@@ -493,7 +493,7 @@ document.getElementById('contentForm').addEventListener('submit', async function
   console.log(formData);
   try {
 
-    const response = await fetch('http://localhost:3000/api/saveContent', {
+    const response = await fetch(`${process.env.API_ENDPOINT}/api/saveContent`, {
       method: 'POST',
       headers: {
           'Accept': 'application/json', // レスポンスの形式を指定
@@ -539,7 +539,7 @@ document.getElementById('contentForm').addEventListener('submit', async function
     const url = `https://foxfxembozpnvfdwxnog.supabase.co/storage/v1/object/public/Blosite_photos/images/content-${contentId}.png`;
     
     // データベースに画像のURLを更新
-    await fetch(`http://localhost:3000/api/updateContent`, {
+    await fetch(`${process.env.API_ENDPOINT}/api/updateContent`, {
         method: 'PUT',
         headers: {
             'Content-Type': 'application/json',
