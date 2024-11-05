@@ -26,9 +26,11 @@ const config = {
         use: ['style-loader', 'css-loader'],
       },
       {
-        // Load assets like images and fonts
-        test: /\.(png|jpg|jpeg|gif|svg|eot|ttf|woff|woff2)$/i,
+        test: /\.(png|jpe?g|gif|svg)$/i,
         type: 'asset/resource',
+        generator: {
+          filename: 'images/[name][hash][ext]',  // 出力先とファイル名の指定
+        },
       },
     ],
   },
