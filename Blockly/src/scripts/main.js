@@ -28,6 +28,14 @@ async function loadModules(page) {
       toolboxModule = await import('/src/tutorial/spread-sheet/toolbox.js');
       serializationModule = await import('/src/tutorial/spread-sheet/serialization.js');
       break;
+    case '/tutorial/todo':
+      toolboxModule = await import('/src/tutorial/todo/toolbox.js');
+      serializationModule = await import('/src/tutorial/todo/serialization.js');
+      break;
+    case '/tutorial/html-introduction':
+      toolboxModule = await import('/src/tutorial/html-introduction/toolbox.js');
+      serializationModule = await import('/src/tutorial/html-introduction/serialization.js');
+      break;
     default:
       throw new Error('Unknown page');
   }
