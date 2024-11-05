@@ -1,5 +1,5 @@
 {
-  "name": "Blosite",
+  "name": "blosite",
   "version": "1.0.0",
   "description": "A sample app using Blockly",
   "main": "index.js",
@@ -16,6 +16,7 @@
   "license": "Apache-2.0",
   "devDependencies": {
     "css-loader": "^6.7.1",
+    "file-loader": "^6.2.0",
     "html-webpack-plugin": "^5.5.0",
     "source-map-loader": "^4.0.1",
     "style-loader": "^3.3.1",
@@ -25,6 +26,7 @@
   },
   "dependencies": {
     "blockly": "^11.1.1",
-    "dompurify": "^3.1.6"
+    "dompurify": "^3.1.6",
+    "ejs": "^3.1.10"
   }
 }

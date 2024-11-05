@@ -28,6 +28,10 @@ async function loadModules(page) {
       toolboxModule = await import('/src/tutorial/spread-sheet/toolbox.js');
       serializationModule = await import('/src/tutorial/spread-sheet/serialization.js');
       break;
+    case '/tutorial/htmlwosiru':
+      toolboxModule = await import('/src/tutorial/htmlwosiru/toolbox.js');
+      serializationModule = await import('/src/tutorial/htmlwosiru/serialization.js');
+      break;
     default:
       throw new Error('Unknown page');
   }
@@ -394,7 +398,7 @@ buttons.forEach((button, index) => {
 function showPopupSlideContent(index) {
     const slides = document.querySelectorAll('.popup-slides');
     slides.forEach((slide, i) => {
-        slide.style.display = (i === index) ? 'block' : 'none';
+        slide.style.display = (i === index) ? 'flex' : 'none';
     });
     currentSlideIndex = index;
     updateNavigationButtons();
