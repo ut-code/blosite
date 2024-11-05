@@ -1799,7 +1799,7 @@ export const htmlBlocks = Blockly.common.createBlockDefinitionsFromJsonArray([
       {
         type: "input_value",
         name: "VALUE",
-      }
+      },
     ],
     output: null,
     style: "javascript_blocks",

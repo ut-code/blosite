@@ -1056,10 +1056,9 @@ websiteGenerator.forBlock["js_value"] = function (block, generator) {
   return [code, Order.ATOMIC];
 };
 websiteGenerator.forBlock["js_textContent"] = function (block, generator) {
-  const variable = generator.valueToCode(block, "VARIABLE", Order.ATOMIC);
-  const text = generator.valueToCode(block, "TEXT", Order.ATOMIC);
+  const variable = generator.valueToCode(block, "VALUE", Order.ATOMIC);
   //const sanitizedText = sanitizeInput(text);
-  const code = (variable && text) ? `${variable}.textContent = ${text}\n` : "\n";
+  const code = (variable) ? `${variable}.textContent` : "\n";
   //const indentedCode = generator.prefixLines(code, generator.INDENT);
   return code;
 };
