@@ -106,6 +106,11 @@ const config = {
       filename: 'sandbox/index.html',
       chunks: ['main'],
     }),
+    new HtmlWebpackPlugin({
+      template: './src/tutorial/htmlwosiru/index.html',
+      filename: 'tutorial/htmlwosiru/index.html',
+      chunks: ['main'],
+    }),
   ],
 };
 

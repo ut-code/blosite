@@ -251,7 +251,7 @@ websiteGenerator.forBlock['html_strong'] = function(block, generator) {
   const content = block.getFieldValue("CONTENT");
   const attribute = generator.valueToCode(block, 'ATTRIBUTE', Order.ATOMIC);
   const startTag = attribute ? `<strong ${attribute}>` : `<strong>`;
-  const code = content ? `${startTag}\n${content}</strong>\n` : `${startTag}</strong>\n`;
+  const code = content ? `${startTag}\n${content}\n</strong>\n` : `${startTag}</strong>\n`;
   const indentedCode = generator.prefixLines(code, generator.INDENT);
   return indentedCode;
 };
