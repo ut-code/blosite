@@ -430,7 +430,7 @@ buttons.forEach((button, index) => {
 function showPopupSlideContent(index) {
     const slides = document.querySelectorAll('.popup-slides');
     slides.forEach((slide, i) => {
-        slide.style.display = (i === index) ? 'block' : 'none';
+        slide.style.display = (i === index) ? 'flex' : 'none';
     });
     currentSlideIndex = index;
     updateNavigationButtons();

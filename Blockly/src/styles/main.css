@@ -386,14 +386,15 @@ code {
 
 #popup-message {
   margin-bottom: 20px;
-  overflow: auto;
-  height: 50%;
+  overflow-x: hidden;
+  height: calc(100% - 250px);
 }
 
 .popup-slides {
-  display: none; /* 初期は全て非表示 */
+  display: flex; /* 初期は全て非表示 */
   margin-right: 20px;
   margin-left: 20px;
+  align-content: space-between;
 }
 
 #popup-navigation {
@@ -437,4 +438,13 @@ code {
 
 #popup-navigation #popup-prev:hover {
   background-color: #e9f3fe;
+}
+
+/* .slide-text-with-images {
+  width: 60%;
+} */
+
+.slide-images {
+  width: 40%;
+  object-fit: contain;
 }
