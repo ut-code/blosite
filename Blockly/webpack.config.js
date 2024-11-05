@@ -25,6 +25,11 @@ const config = {
         test: /\.css$/i,
         use: ['style-loader', 'css-loader'],
       },
+      {
+        // Load assets like images and fonts
+        test: /\.(png|jpg|jpeg|gif|svg|eot|ttf|woff|woff2)$/i,
+        type: 'asset/resource',
+      },
     ],
   },
   plugins: [
@@ -97,6 +102,11 @@ const config = {
     new HtmlWebpackPlugin({
       template: './src/sandbox/index.html',
       filename: 'sandbox/index.html',
+      chunks: ['main'],
+    }),
+    new HtmlWebpackPlugin({
+      template: './src/tutorial/htmlwosiru/index.html',
+      filename: 'tutorial/htmlwosiru/index.html',
       chunks: ['main'],
     }),
   ],
