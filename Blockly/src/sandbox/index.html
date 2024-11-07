@@ -31,21 +31,11 @@
             <div id="wstitle"></div>
             <div id="output"></div>
             <button id="code-button">コードを表示する</button>
+            <button id="save-button">保存する</button>
             <div id="errorMessage">何もエラーは起こってません</div>
           </div>
           <div id="blocklyDiv"></div>
         </div>
-        <!--
-        <label for="popupflag1">popup 1</label>
-        <input type="checkbox" class="popup-flag1" id="popupFlag1">
-        <label class="popup-background" for="popupFlag1"></label>
-        <div class="popup">
-          <label class="close-button" for="popupFlag1">×</label>
-          <div class="content">
-            content
-          </div>
-        </div>
-        --->
         <div id="popup">
           <div id="popup-outer"></div>
           <div id="popup-inner">
@@ -53,24 +43,10 @@
             <div id="popup-close">×</div>
             <div id="popup-button-container">
               <button class="popup-buttons" id="popup-button-0">ボタン1</button>
-              <span class="popup-arrow">➡️</span> 
-              <button class="popup-buttons" id="popup-button-1">ボタン2</button>
-              <span class="popup-arrow">➡️</span> 
-              <button class="popup-buttons" id="popup-button-2">ボタン3</button>
-              <span class="popup-arrow">➡️</span> 
-              <button class="popup-buttons" id="popup-button-3">ボタン4</button>
             </div>
             <div id="popup-message">
               <!-- ここにスライドコンテンツを表示 -->
-              <div class="popup-slides" id="popupSlide-0">
-                <section>
-                  <h2>スライド1</h2>
-                  <p></p>
-                </section>
-              </div>
-              <div class="popup-slides" id="popup-slide-1" style="display: none;">スライド2の内容</div>
-              <div class="popup-slides" id="popup-slide-2" style="display: none;">スライド3の内容</div>
-              <div class="popup-slides" id="popup-slide-3" style="display: none;">スライド4の内容</div>
+              <div class="popup-slides" id="popupSlide-0"></div>
             </div>
             <div id="popup-navigation">
               <button id="popup-prev">戻る</button>
@@ -78,6 +54,20 @@
               <button id="popup-end">始める</button>
             </div>
           </div>
+        </div>
+        <div id="popup-form">
+          <form id="contentForm">
+            <label for="username">ユーザー名:</label>
+            <input type="text" id="username" name="username" required><br><br>
+    
+            <label for="contentName">コンテンツ名:</label>
+            <input type="text" id="contentName" name="contentName" required><br><br>
+    
+            <label for="description">コンテンツの説明:</label>
+            <textarea id="description" name="description" required></textarea><br><br>
+    
+            <button type="submit">保存</button>
+          </form>
         </div>
       </div>
     </div>

@@ -1,11 +1,14 @@
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const webpack = require('webpack');
 
 // Base config that applies to either development or production mode.
 const config = {
   entry: {
     top: './src/scripts/top.js',
+    sandbox: './src/scripts/sandbox.js',
     tutorial: './src/scripts/tutorial.js',
+    share: './src/scripts/share.js',
     main: './src/scripts/main.js',
   },
   output: {
@@ -17,6 +20,9 @@ const config = {
   // Enable webpack-dev-server to get hot refresh of the app.
   devServer: {
     static: './build',
+    proxy: {
+      '/api': 'http://localhost:3000'
+    }
   },
   module: {
     rules: [
@@ -104,7 +110,15 @@ const config = {
     new HtmlWebpackPlugin({
       template: './src/sandbox/index.html',
       filename: 'sandbox/index.html',
-      chunks: ['main'],
+      chunks: ['sandbox'],
+    }),
+    new HtmlWebpackPlugin({
+      template: './src/share/index.html',
+      filename: 'share/index.html',
+      chunks: ['share'],
+    }),
+    new webpack.EnvironmentPlugin({
+      "API_ENDPOINT": "http://localhost:3000"
     }),
     new HtmlWebpackPlugin({
       template: './src/tutorial/htmlwosiru/index.html',

@@ -25,8 +25,9 @@
     "webpack-dev-server": "^4.11.1"
   },
   "dependencies": {
+    "@supabase/supabase-js": "^2.46.1",
     "blockly": "^11.1.1",
     "dompurify": "^3.1.6",
-    "ejs": "^3.1.10"
+    "html2canvas": "^1.4.1"
   }
 }
