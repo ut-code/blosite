@@ -37,6 +37,23 @@ function sanitizeInput(input) {
   return DOMPurify.sanitize(escapedInput);
 }
 
+// 後続したときに\nがいらないブロックのリスト
+const noLineBreakBlockList = ["html_strong", "html_i", "html_b", "html_u", "html_del", "html_ins", "html_small", "html_sub", "html_sup", "html_em", "html_kbd", "html_var"];
+
+// 前方のブロックを見て判断
+function isAfterNoLineBreakBlock(block, code) {
+  const previousBlock = block.getPreviousBlock();
+  const previousType = previousBlock ? previousBlock.type : null;
+  return noLineBreakBlockList.includes(previousType);
+}
+
+// 後続のブロックを見て判断
+function isBeforeNoLineBreakBlock(block, code) {
+  const nextBlock = block.getNextBlock();
+  const nextType = nextBlock ? nextBlock.type : null;
+  return noLineBreakBlockList.includes(nextType);
+}
+
 // ブロックの生成するコードを定義
 websiteGenerator.forBlock["html_html-head-body"] = function (block, generator) {
   const headContent = generator.statementToCode(block, "HEAD");
@@ -61,13 +78,14 @@ websiteGenerator.forBlock["html_text"] = function (block, generator) {
 
   // 下のブロックが存在する場合、そのtypeを取得
   let nextType = null;
-  if (nextBlock) {
+  if (nextBlock) {  
     nextType = nextBlock.type;
   }
 
   // 前のブロックがhtml_textの場合は改行を追加
-  const code = (nextType == "html_text") ? `${sanitizedContent}<br />\n` : `${sanitizedContent}\n`;
-  const indentedCode = generator.prefixLines(code, generator.INDENT);
+  const code = (nextType == "html_text") ? `${sanitizedContent}<br />` : `${sanitizedContent}`;
+  const linedCode = isBeforeNoLineBreakBlock(block, code) ? code : code + "\n";
+  const indentedCode = isAfterNoLineBreakBlock(block) ? generator.prefixLines(linedCode, generator.INDENT) : linedCode;
   return indentedCode;
 };
 
@@ -75,6 +93,7 @@ websiteGenerator.forBlock["html_title"] = function (block, generator) {
   const content = block.getFieldValue("CONTENT");
   const code = `<title>${content}</title>\n`;
   const indentedCode = generator.prefixLines(code, generator.INDENT);
+  console.log(generator.INDENT);
   return indentedCode;
 };
 
@@ -232,7 +251,7 @@ websiteGenerator.forBlock['html_strong'] = function(block, generator) {
   const content = block.getFieldValue("CONTENT");
   const attribute = generator.valueToCode(block, 'ATTRIBUTE', Order.ATOMIC);
   const startTag = attribute ? `<strong ${attribute}>` : `<strong>`;
-  const code = content ? `${startTag}\n${content}</strong>\n` : `${startTag}</strong>\n`;
+  const code = content ? `${startTag}\n${content}\n</strong>\n` : `${startTag}</strong>\n`;
   const indentedCode = generator.prefixLines(code, generator.INDENT);
   return indentedCode;
 };

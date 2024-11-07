@@ -31,6 +31,13 @@ const config = {
         test: /\.css$/i,
         use: ['style-loader', 'css-loader'],
       },
+      {
+        test: /\.(png|jpe?g|gif|svg)$/i,
+        type: 'asset/resource',
+        generator: {
+          filename: 'images/[name][hash][ext]',  // 出力先とファイル名の指定
+        },
+      },
     ],
   },
   plugins: [
@@ -112,6 +119,11 @@ const config = {
     }),
     new webpack.EnvironmentPlugin({
       "API_ENDPOINT": "http://localhost:3000"
+    }),
+    new HtmlWebpackPlugin({
+      template: './src/tutorial/htmlwosiru/index.html',
+      filename: 'tutorial/htmlwosiru/index.html',
+      chunks: ['main'],
     }),
   ],
 };

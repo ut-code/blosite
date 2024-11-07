@@ -1,0 +1,130 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>Blockly Sample App</title>
+  </head>
+  <body>
+    <div id="content" style="visibility: hidden;">
+      <header>
+        <div class="header-container">
+          <a href="#" class="header-logo">Blosite</a>
+          <!-- <sub>by ut.code();</sub> -->
+          <nav>
+            <ul class="nav-links">
+                <li><a href="./..">トップページに戻る</a></li>
+                <li id="header-help"><a>ヘルプ</a></li>
+                <li><a href="#">Q&A</a></li>
+            </ul>
+            <div class="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+          </nav>
+        </div>
+      </header>
+      <div class="split-view vertical">
+        <div id="pageContainer">
+          <div id="outputPane">
+            <pre id="generatedCode" class="beforeClicked"><code></code></pre>
+            <div id="wstitle"></div>
+            <div id="output"></div>
+            <button id="code-button">コードを表示する</button>
+            <div id="errorMessage">何もエラーは起こってません</div>
+          </div>
+          <div id="blocklyDiv"></div>
+        </div>
+        <!--
+        <label for="popupflag1">popup 1</label>
+        <input type="checkbox" class="popup-flag1" id="popupFlag1">
+        <label class="popup-background" for="popupFlag1"></label>
+        <div class="popup">
+          <label class="close-button" for="popupFlag1">×</label>
+          <div class="content">
+            content
+          </div>
+        </div>
+        --->
+        <div id="popup">
+          <div id="popup-outer"></div>
+          <div id="popup-inner">
+            <div id="popup-title">HTMLについて知ろう</div>
+            <div id="popup-close">×</div>
+            <div id="popup-button-container">
+              <button class="popup-buttons" id="popup-button-0">HTMLとは</button>
+              <span class="popup-arrow">➡️</span> 
+              <button class="popup-buttons" id="popup-button-1">実際にやってみよう</button>
+              <span class="popup-arrow">➡️</span> 
+              <button class="popup-buttons" id="popup-button-2">持ち物リストを作ってみよう</button>
+              <span class="popup-arrow">➡️</span> 
+              <button class="popup-buttons" id="popup-button-3">ヒント</button>
+            </div>
+            <div id="popup-message">
+              <!-- ここにスライドコンテンツを表示 -->
+              <div class="popup-slides" id="popupSlide-0">
+                <section>
+                  <h2>HTMLについて</h2>
+                  <p>
+                    &emsp;HTMLはプログラミング言語のひとつで普段皆さんが使っているウェブサイトの構造を書き表すことができます。左下の画像のように
+                    htmlは入れ子構造で書かれます。
+                  </p>  
+                  <img src ="<%= require('/src/images/htmlbasic.png')%>"alt="Description of image" ></img>              
+                  <h2>HTML要素</h2>
+                  <p class="text">
+                    &emsp;HTMLでは、タグを使うことで文章に意味を持たせることができます。タグとは<span style="background-color: gainsboro;">&lt;</span>と<span style="background-color: gainsboro;">&gt;</span>
+                    で囲まれた英数字のまとまりで&lt;tag&gt;内容&lt;/tag&gt;のように書かれた場合&lt;tag&gt;を
+                    開始タグ&lt;/tag&gt;を終了タグと呼びます。そしてこの開始タグと終了タグの間に含まれる内容を<strong>要素</strong>と呼びます。
+                    開始タグと終了タグの間にはテキストや要素、別のタグを入れることができます。
+                  </p>
+                </section>
+              </div>
+              <div class="popup-slides" id="popup-slide-1" style="display: none;">
+                <section>
+                  <h2>実際に要素を書き換えてみよう</h2>
+                  <p>
+                    &emsp;まずは実際に要素を書き換えてみましょう。このポップアップを一度閉じてHello World!と書かれている部分を好きなように
+                    書き換えてみましょう。書き換えることに成功したら右上のヘルプをクリックしてもう一度この画面に戻ってきてください。
+                  </p>
+                  <h2>ここで使われているタグの説明</h2>
+                  <ul>
+                    <li>htmlタグ：この文章がhtmlであることを表します</li>
+                    <li>headタグ：ウェブサイトのタイトルやリンク情報を入れることができます</li>
+                    <li>tieileタグ：この文章のタイトルを表します</li>
+                    <li>bodyタグ：ウェブサイトの中身を表すタグでこの中に書いた要素がページ上に現れます。</li>
+                    <li>h1タグ：見出しを表します。数字を大きくするにつれて見出しの大きさが小さくなります。</li>
+                  </ul>
+                </section>
+              </div>
+              <div class="popup-slides" id="popup-slide-2" style="display: none;">
+                <section>
+                  <h2>持ち物リストを作ろう</h2>
+                <p>
+                  &emsp;ではさっそく下の画像のような持ち物リストを作ってみましょう。今回使用するブロックは&lt;h&gt;で囲まれたブロック、&lt;”&gt;で囲まれたブロック、&lt;ul&gt;で囲まれたブロックと
+                  &lt;li&gt;で囲まれたブロックです。左上のhtmlElementsの部分をクリックするとブロックが出てきます。&lt;ul&gt;で表されるulタグは箇条書きを使う際に用いられるタグです。そして&lt;li&gt;
+                  で表されるliタグはlist&nbsp;itemの略でulタグの中に入れることにより箇条書きで表示させる要素を入れることができます。まずはヒントを見ないでやってみましょう。わからなくなったらヒントを見てみましょう。
+                </p>
+                <img src ="<%= require('/src/images/motimono.png')%>"alt="Description of image" ></img>
+                </section>
+              </div>
+              <div class="popup-slides" id="popup-slide-3" style="display: none;">
+                <section>
+                <h2>ヒント</h2>
+                <p>
+                  &lt;h1&gt;ブロックの中には&lt;"&gt;で囲まれたテキストブロックのみを入れます。&lt;ul&gt;ブロックはh1ブロックの下において&lt;li&gt;ブロックはulブロックの中に入れます。
+                </p>
+                <img src ="<%= require('/src/images/kuttukekata.png')%>"alt="Description of image" ></img>
+                </section>
+              </div>
+            </div>
+            <div id="popup-navigation">
+              <button id="popup-prev">戻る</button>
+              <button id="popup-next">進む</button>
+              <button id="popup-end">始める</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
