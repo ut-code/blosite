@@ -2,7 +2,7 @@
 <html>
   <head>
     <meta charset="utf-8" />
-    <title>チュートリアル：表計算</title>
+    <title>チュートリアル：DOM操作</title>
   </head>
   <body>
     <div id="content" style="visibility: hidden;">
@@ -38,76 +38,80 @@
         <div id="popup">
           <div id="popup-outer"></div>
           <div id="popup-inner">
-            <div id="popup-title">表計算</div>
+            <div id="popup-title">DOM操作してみよう</div>
             <div id="popup-close">×</div>
             <div id="popup-button-container">
               <button class="popup-buttons" id="popup-button-0">目標</button>
               <span class="popup-arrow">➡️</span> 
-              <button class="popup-buttons" id="popup-button-1">HTMLの構成</button>
+              <button class="popup-buttons" id="popup-button-1">要素を取得</button>
               <span class="popup-arrow">➡️</span> 
-              <button class="popup-buttons" id="popup-button-2">さまざまな処理</button>
+              <button class="popup-buttons" id="popup-button-2">イベント処理</button>
               <span class="popup-arrow">➡️</span> 
-              <button class="popup-buttons" id="popup-button-3">独自の機能を追加</button>
+              <button class="popup-buttons" id="popup-button-3">要素の変更</button>
             </div>
             <div id="popup-message">
               <!-- ここにスライドコンテンツを表示 -->
               <div class="popup-slides" id="popupSlide-0">
                 <section>
                   <h3>目標</h3>
-                  <p>表に値を入力し、行ごとの総和や平均が出力されるプログラムを作ってみよう！</p>
-                  <h3>詳細</h3>
+                  <p>HTMLの要素を制御する方法を学び、右のようにボタンを押したら文字が表示されるサイトを作ろう！</p>
+                  <!-- <h3>詳細</h3>
                   <p>
                     ３✕３の表のうち、一行目には「一列目」「二列目」「計算結果」と表示させ、他の行の一、二列目には数字を入力する箇所を、三列目には列ごとの計算結果を表示する場所を作りましょう。<br>
                     また、行ごとの計算方法を選択できるメニューと、押すと計算結果が表示されるボタンも置きましょう。<br>
                     <br>
                     自信のある方は次の説明を見ずに自分で一から作ってみましょう！<br>
-                  </p>
+                  </p> -->
                 </section>
+                <video src="<%= require('/src/images/dom-manipulation_0.mp4') %>" controls class="slide-images"></video>
               </div>
               <div class="popup-slides" id="popup-slide-1" style="display: none;">
                 <section>
-                  <h3>HTML</h3>
+                  <h3>DOM</h3>
                   <p>
-                    まずは&lt;table&gt;などを利用して表を作ってみましょう。<br>
-                    その後、&lt;input&gt;を使って値を入力する箇所を、&lt;button&gt;を使って計算を行うボタンを、&lt;select&gt;で計算方法を選べるメニューを作成します。&lt;input&gt;には、type = numberを設定するとよいでしょう。<br>
-                    数値を取得する、計算結果を表示するためにidも設定しておきましょう。<br>
+                    <em>DOM</em>(Document Object Model)とは、HTMLの構造を表現したものです。<br>
+                    このDOMを通して、HTML内の要素を取り出したり、その取り出した要素を変更したり、また新たに要素を追加することができます。<br>
+                    DOMの操作はJavascriptで行われます。つまり&lt;script&gt;タグ内にブロックを配置するということです。<br>
                   </p>
-                  <h3>CSS</h3>
+                  <h3>要素にアクセス</h3>
                   <p>
-                    つぎはCSSを使って自分の思うままにスタイルを設定してみましょう。&lt;style&gt;タグを使ってその中にCSSを記述します。<br>
-                    &lt;td&gt;や&lt;th&gt;にはborderを、&lt;table&gt;にはborder-collapse: collapseを設定することで、それらしいボーダーが表示されるようになります。<br>
-                    ある程度できたら次に進みましょう。<br>
+                    では実際に要素を取得してみましょう。ここでは、idを使った方法を紹介します。　右の写真を参考にしてください。<br>
+                    取得したいHTML要素（ここでは&lt;div&gt;）にあらかじめid属性を設定しておきます。そして、&lt;script&gt;タグ内で「id="　"の要素」ブロックを利用します。<br>
+                    ここで注意したいのが、「id="　"の要素」ブロックで取得したものは、単なる文字列ではなく、様々な要素の情報を含んでいるということです。この中から要素内の文章を取り出すために、「要素～の文章」ブロックを使いましょう。<br>
+                    これを「アラート」ブロックにくっつけて、&lt;script&gt;タグ内に入れましょう。&lt;div&gt;の中身が表示されるはずです。<br>
+                    ちなみに、「id="　"の要素」ブロックで取得した要素は、変数にセットすることもできます。必要であればセットしておきましょう。<br>
+                  </p>
                 </section>
+                <img src="<%= require('/src/images/dom-manipulation_1.png') %>" class="slide-images">
               </div>
               <div class="popup-slides" id="popup-slide-2" style="display: none;">
                 <section>
-                  <h3>値の取得</h3>
+                  <h3>イベントの設定</h3>
                   <p>
-                    JavaScriptを使って、入力された値の取得、計算、表示を行いましょう。&lt;script&gt;タグを使ってその中にJavaScriptを記述します。<br>
-                    前もって設定しておいたidの要素を取得するには、「id="～"の要素」ブロックを使いましょう。必要であれば、取得した要素を変数にセットしましょう。<br>
-                    &lt;input&gt;に入力された値を読み取るには「要素内の値を取得」ブロックを、&lt;select&gt;の選択には「要素内の文章を取得」を使いましょう。<br>
-                  </p>
-                  <h3>計算</h3>
-                  <p>
-                    取得した値を使って計算を行いましょう。&lt;select&gt;で選択された値によって、計算方法を変えるには、logic内の「もし～実行～」ブロックなどを使って別々の計算をしましょう。<br>
-                    計算をする前に気をつけなければならないことがあります。それは、「要素内の値を取得」で取得した値は文字列として扱われるため、計算を行う際には数値に変換する必要があるということです。「～を～に変換」ブロックを使いましょう。<br>
-                    そうしたら、Math内のブロックで計算をしましょう。必要であれば、計算結果も変数にセットしておきましょう。<br>
-                  <h3>表示</h3>
-                  <p>
-                    最後に、計算結果を表示するようにしましょう。ボタンを押すと結果が表示されるようにするために、「～にイベントクリックが発生したときに～」ブロックを使いましょう。ここで注意点ですが、このブロックの内部で&lt;input&gt;の値を取得するようにしてください。そうしないと、取得されるのがinputに何も入っていない最初の一回だけとなり正常に動作しません。計算処理もこのブロックの中に入れ込みましょう。<br>
-                    表示については、「～を～に代入」ブロックを使って、要素内の値を変更することができます。<br>
+                    次は、ボタンを押したときに要素を変更する方法を学びましょう。<br>
+                    「～にイベント～が発生したとき」ブロックを使います。空欄には、取得した要素を入れます。ブロックの中身は、設定した要素に指定したイベントが発生したときに実行されます。<br>
+                    ここでは、ボタンを押したときにアラートを出してみましょう。右の写真を参考にしてください。<br>
+                    まず、要素を取得して空欄に入れます。次に、ブロックの中身にアラートを設置して、&lt;script&gt;タグ内に入れましょう。ボタンを押すとアラートが表示されるはずです。<br>
                   </p>
                 </section>
+                <img src="<%= require('/src/images/dom-manipulation_2.png') %>" class="slide-images">
               </div>
               <div class="popup-slides" id="popup-slide-3" style="display: none;">
                 <section>
-                  <h3>機能追加</h3>
+                  <h3>イベント処理の中身</h3>
                   <p>
-                    ここまでできたら、さらに機能を追加してみましょう。<br>
-                    「こんなのができたらいいな～」、「こんな機能があったら便利だな～」と想像を膨らませ、趣くままに作ってみましょう。<br>
-                    考えられる機能としては例えば、行の追加や削除機能、列の追加や削除機能、セルの色を変える機能などが挙げられます。<br>
+                    それでは、イベント処理の中身を変更してみましょう。<br>
+                    ここでやりたいことは、ボタンを押したときに、要素内の文章を変更することです。<br>
+                    これを行うためには、「～に～を代入」ブロックを使います。左の空欄には、取得した要素の文章を入れます。右の空欄には、ボタンを押したら表示される文章を入れます。<br>
+                    これを「～にイベント～が発生したとき」ブロックにくっつけて、&lt;script&gt;タグ内に入れましょう。ボタンを押すと、要素内の文章が変わるはずです。<br>
+                  </p>
+                  <h3>実行</h3>
+                  <p>
+                    では、実際にボタンを押してみましょう。ボタンを押すと、要素内の文章が変わるはずです。<br>
+                    これで、HTMLの要素を制御する方法を習得できましたね！<br>
                   </p>
                 </section>
+                <img src="<%= require('/src/images/dom-manipulation_3.png') %>" class="slide-images">
               </div>
             </div>
             <div id="popup-navigation">
