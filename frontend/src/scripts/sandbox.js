@@ -43,43 +43,43 @@ async function loadModules(page) {
 await loadModules(page);
 
 Blockly.Themes.customStyle = Blockly.Theme.defineTheme('custom_style', {
-   'base': Blockly.Themes.Classic, // 既存のベーステーマを指定
-   'blockStyles' : {
-      'htmlelement_blocks': {
-      'colourPrimary': '#673ab7', // 紫
-      'colourSecondary': '#ab47bc', // 明るい紫
-      'colourTertiary': '#e1bee7' // 薄い紫
-      },
-      'htmlattribute_blocks': {
-          'colourPrimary': '#00796b', // 深い緑
-          'colourSecondary': '#4db6ac', // 明るい緑
-          'colourTertiary': '#b2dfdb' // 薄い緑
-      },
-      'css_blocks': {
-          'colourPrimary': '#ff5722', // オレンジ
-          'colourSecondary': '#ffab40', // 明るいオレンジ
-          'colourTertiary': '#ffe0b2' // 薄いオレンジ
-      },
-      'javascript_blocks': {
-          'colourPrimary': '#2196f3', // 青
-          'colourSecondary': '#64b5f6', // 明るい青
-          'colourTertiary': '#bbdefb' // 薄い青
-      },
-   },
-   'categoryStyles': {
-      'htmlelement_category': {
-         'colour': '#673ab7'
-      },
-      'htmlattribute_category': {
-         'colour': '#00796b'
-      },
-      'css_category': {
-         'colour': '#ff5722'
-      },
-      'javascript_category': {
-         'colour': '#2196f3'
-      },
-   },
+  'base': Blockly.Themes.Classic, // 既存のベーステーマを指定
+  'blockStyles' : {
+     'htmlelement_blocks': {
+       'colourPrimary': '#d8a200', // 暗めで少し明るくした黄色
+       'colourSecondary': '#a67900', // 少し明るめの黄土色
+       'colourTertiary': '#e0b415' // 落ち着いた黄色
+     },
+     'htmlattribute_blocks': {
+       'colourPrimary': '#00796b', // 深い緑
+       'colourSecondary': '#4db6ac', // 明るい緑
+       'colourTertiary': '#b2dfdb' // 薄い緑
+     },
+     'css_blocks': {
+       'colourPrimary': '#f4511e', // やや薄めの暗いオレンジ
+       'colourSecondary': '#ff8e53', // やや薄めの明るいオレンジ
+       'colourTertiary': '#ffd1a3' // 薄めのオレンジ
+     },
+     'javascript_blocks': {
+       'colourPrimary': '#1e88e5', // 少し暗めの青
+       'colourSecondary': '#5aaefb', // 少し暗めの明るい青
+       'colourTertiary': '#aed6fb' // やや薄めの青
+     },
+  },
+  'categoryStyles': {
+     'htmlelement_category': {
+        'colour': '#d8a200'
+     },
+     'htmlattribute_category': {
+        'colour': '#00796b'
+     },
+     'css_category': {
+        'colour': '#f4511e'
+     },
+     'javascript_category': {
+        'colour': '#1e88e5'
+     },
+  },
 });
 
 // Register the blocks and generator with Blockly
@@ -327,11 +327,13 @@ const popupId = document.getElementById("popup");
 const popupOuterId = document.getElementById("popup-outer");
 const popupInnerId = document.getElementById("popup-inner");
 const popupCloseId = document.getElementById("popup-close");
+const popupForm = document.getElementById('popup-form');
 
 popupId.addEventListener('click', e => {
   if ((e.target.id === popupOuterId.id) || (e.target.id === popupCloseId.id)){
     popupOuterId.style.display = 'none';
     popupInnerId.style.display = 'none';
+    popupForm.style.display = 'none';
   }
 })
 
