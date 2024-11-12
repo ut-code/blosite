@@ -15,26 +15,38 @@ const xml = `
   <block type="html_html-head-body" x="20" y="20">
     <statement name="HEAD">
       <block type="html_title">
-        <field name="CONTENT">Sample</field>
+        <field name="CONTENT">DOM</field>
       </block>
     </statement>
     <statement name="BODY">
-      <block type="html_ul">
+      <block type="html_button">
+        <value name="ATTRIBUTE">
+          <block type="html_id">
+            <value name="VALUE">
+              <block type="html_style">
+              </block>
+            </value>
+          </block>
+        </value>
         <statement name="CONTENT">
-          <block type="html_li">
-            <field name="CONTENT">Item 1</field>
+          <block type="html_text">
+            <field name="TEXT">押してください</field>
+          </block>
+        </statement>
+        <next>
+          <block type="html_div">
+            <value name="ATTRIBUTE">
+              <block type="html_id">
+              </block>
+            </value>
+            <statemant name="CONTENT">
+            </statemant>
             <next>
-              <block type="html_li">
-                <field name="CONTENT">Item 2</field>
-                <next>
-                  <block type="html_li">
-                    <field name="CONTENT">Item 3</field>
-                  </block>
-                </next>
+              <block type="html_script">
               </block>
             </next>
           </block>
-        </statement>
+        </next>
       </block>
     </statement>
   </block>
