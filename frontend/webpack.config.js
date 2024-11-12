@@ -31,7 +31,7 @@ const config = {
         use: ['style-loader', 'css-loader'],
       },
       {
-        test: /\.(png|jpe?g|gif|svg)$/i,
+        test: /\.(png|jpe?g|gif|svg|mp4)$/i,
         type: 'asset/resource',
         generator: {
           filename: 'images/[name][hash][ext]',  // 出力先とファイル名の指定
