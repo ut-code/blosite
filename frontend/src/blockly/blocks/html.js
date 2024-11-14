@@ -33,6 +33,7 @@ export const htmlBlocks = Blockly.common.createBlockDefinitionsFromJsonArray([
       },
     ],
     style: "htmlelement_blocks",
+    tooltip: "HTMLの基本構造を作成します。\nフィールド上に一つしか設置できません。",
   },
   {
     type: "html_comment",

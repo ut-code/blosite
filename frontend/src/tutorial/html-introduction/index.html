@@ -55,33 +55,32 @@
                 <section>
                   <h2>HTMLについて</h2>
                   <p>
-                    &emsp;HTMLはプログラミング言語のひとつで普段皆さんが使っているウェブサイトの構造を書き表すことができます。左下の画像のように
-                    htmlは入れ子構造で書かれます。
-                  </p>  
-                  <img src ="<%= require('/src/images/htmlbasic.png')%>"alt="Description of image" ></img>              
+                    &emsp;<b>HTML</b>(HyperText Markup Language)は普段皆さんが使っているウェブサイトの構造を書き表すための言語のひとつです。右の画像のようにHTMLは入れ子構造で書かれます。
+                  </p>               
                   <h2>HTML要素</h2>
                   <p class="text">
-                    &emsp;HTMLでは、タグを使うことで文章に意味を持たせることができます。タグとは<span style="background-color: gainsboro;">&lt;</span>と<span style="background-color: gainsboro;">&gt;</span>
-                    で囲まれた英数字のまとまりで&lt;tag&gt;内容&lt;/tag&gt;のように書かれた場合&lt;tag&gt;を
-                    開始タグ&lt;/tag&gt;を終了タグと呼びます。そしてこの開始タグと終了タグの間に含まれる内容を<strong>要素</strong>と呼びます。
-                    開始タグと終了タグの間にはテキストや要素、別のタグを入れることができます。
+                    &emsp;HTMLでは、タグを使うことで文章に意味を持たせることができます。<br>
+                    &emsp;タグとは<code class="popup-code">&lt;</code>と<code class="popup-code">&gt;</code>で囲まれた英数字のまとまりで、<code class="popup-code">&lt;tag&gt;内容&lt;/tag&gt;</code>のように書かれた場合<code class="popup-code">&lt;tag&gt;</code>を開始タグ、<code class="popup-code">&lt;/tag&gt;</code>を終了タグと呼びます。そしてこの開始タグから終了タグまでをまとめて<b>要素</b>と呼びます。<br>
+                    &emsp;また、開始タグと終了タグの間にはテキストや別の要素を入れることができます。
                   </p>
                 </section>
+                <img src ="<%= require('/src/images/htmlbasic.png')%>"alt="Description of image" class="slide-images"></img> 
               </div>
               <div class="popup-slides" id="popup-slide-1" style="display: none;">
                 <section>
-                  <h2>実際に要素を書き換えてみよう</h2>
+                  <h2>要素の変更</h2>
                   <p>
-                    &emsp;まずは実際に要素を書き換えてみましょう。このポップアップを一度閉じてHello World!と書かれている部分を好きなように
-                    書き換えてみましょう。書き換えることに成功したら右上のヘルプをクリックしてもう一度この画面に戻ってきてください。
+                    &emsp;まずは実際に要素の中身を書き換えてみましょう。このポップアップを一度閉じてHello World!と書かれている部分を好きなように書き換えてみましょう。<br>
+                    文章の書き換えに応じて、右側のプレビューも変わることを確認してください。<br>
+                    書き換えることに成功したら右上のヘルプをクリックしてもう一度この画面に戻ってきてください。
                   </p>
-                  <h2>ここで使われているタグの説明</h2>
+                  <h2>ここで使われている要素の説明</h2>
                   <ul>
-                    <li>htmlタグ：この文章がhtmlであることを表します</li>
-                    <li>headタグ：ウェブサイトのタイトルやリンク情報を入れることができます</li>
-                    <li>tieileタグ：この文章のタイトルを表します</li>
-                    <li>bodyタグ：ウェブサイトの中身を表すタグでこの中に書いた要素がページ上に現れます。</li>
-                    <li>h1タグ：見出しを表します。数字を大きくするにつれて見出しの大きさが小さくなります。</li>
+                    <li>html要素：この文章がHTMLであることを表します。</li>
+                    <li>head要素：ウェブサイトのタイトルやリンク情報を入れることができます。</li>
+                    <li>title要素：この文章のタイトルを表します。</li>
+                    <li>body要素：ウェブサイトの中身を表す要素です。この中に書いた要素がページ上に表示されます。</li>
+                    <li>h1要素：見出しを表します。数字を大きくするにつれて見出しの大きさが小さくなります。</li>
                   </ul>
                 </section>
               </div>

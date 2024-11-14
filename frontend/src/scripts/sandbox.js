@@ -119,6 +119,14 @@ const ws = Blockly.inject(blocklyDiv, {
 
 const getErrorId = document.getElementById("errorMessage");
 
+
+const runIcon = document.getElementById('run-icon');
+const runSwitchButton = document.getElementById('run-switch-button');
+const states = ['play', 'stop', 'continuous'];
+let state = 'play';
+let playClicked = false;
+
+
 // This function resets the code and output divs, shows the
 // generated code from the workspace, and evals the code.
 // In a real application, you probably shouldn't use `eval`.
@@ -155,13 +163,16 @@ const runCode = () => {
   const scriptCode = match ? match[1] : '';
   
   // スクリプトを動的に評価してエラーがあれば表示
-  try {
-    eval(scriptCode);
-    getErrorId.textContent = "何もエラーは起こってません"
-    getErrorId.classList = "safe"
-  }  catch (e) {
-    getErrorId.textContent = e.name + " " +e.message 
-    getErrorId.classList = "errorOccured"
+  if (state==="stop" || playClicked){
+    playClicked = false;
+    try {
+      eval(scriptCode);
+      getErrorId.textContent = "何もエラーは起こってません"
+      getErrorId.classList = "safe"
+    }  catch (e) {
+      getErrorId.textContent = e.name + " " +e.message 
+      getErrorId.classList = "errorOccured"
+    }
   }
 
 };
@@ -314,120 +325,154 @@ document.getElementById("code-button").onclick = () => {
   const getButtonID = document.getElementById("code-button");
   getCodeID.classList.toggle("afterClicked");
   getCodeID.classList.toggle("beforeClicked");
-  if (getButtonID.textContent === "コードを表示する"){
+  if (getButtonID.textContent === "コードを表示"){
     getButtonID.textContent = "コードを隠す";
   } else {
-    getButtonID.textContent = "コードを表示する";
+    getButtonID.textContent = "コードを表示";
   }
 }
 
-// ポップアップの表示
+// // ポップアップの表示
 
-const popupId = document.getElementById("popup");
+// const popupId = document.getElementById("popup");
 const popupOuterId = document.getElementById("popup-outer");
-const popupInnerId = document.getElementById("popup-inner");
-const popupCloseId = document.getElementById("popup-close");
+// const popupInnerId = document.getElementById("popup-inner");
+// const popupCloseId = document.getElementById("popup-close");
 const popupForm = document.getElementById('popup-form');
 
-popupId.addEventListener('click', e => {
-  if ((e.target.id === popupOuterId.id) || (e.target.id === popupCloseId.id)){
-    popupOuterId.style.display = 'none';
-    popupInnerId.style.display = 'none';
-    popupForm.style.display = 'none';
-  }
+popupOuterId.addEventListener('click', e => {
+  popupOuterId.style.display = 'none';
+  // popupInnerId.style.display = 'none';
+  popupForm.style.display = 'none';
 })
 
-// 現在表示しているポップアップスライドの番号
-let currentSlideIndex = 0;
+// // 現在表示しているポップアップスライドの番号
+// let currentSlideIndex = 0;
 
-// 各ボタンにクリックイベントを追加
-const buttons = document.querySelectorAll('.popup-buttons');
+// // 各ボタンにクリックイベントを追加
+// const buttons = document.querySelectorAll('.popup-buttons');
 
-buttons.forEach((button, index) => {
-    button.addEventListener('click', () => {
-      showPopupSlideContent(index)
-      highlightButton(button);
-    });
-});
+// buttons.forEach((button, index) => {
+//     button.addEventListener('click', () => {
+//       showPopupSlideContent(index)
+//       highlightButton(button);
+//     });
+// });
 
-// スライドを表示する関数
-function showPopupSlideContent(index) {
-    const slides = document.querySelectorAll('.popup-slides');
-    slides.forEach((slide, i) => {
-        slide.style.display = (i === index) ? 'block' : 'none';
-    });
-    currentSlideIndex = index;
-    updateNavigationButtons();
-}
+// // スライドを表示する関数
+// function showPopupSlideContent(index) {
+//     const slides = document.querySelectorAll('.popup-slides');
+//     slides.forEach((slide, i) => {
+//         slide.style.display = (i === index) ? 'block' : 'none';
+//     });
+//     currentSlideIndex = index;
+//     updateNavigationButtons();
+// }
 
-// 選択中のボタンをハイライトする関数
-function highlightButton(selectedButton) {
-  buttons.forEach(button => {
-      button.classList.remove('active'); // すべてのボタンからactiveクラスを削除
-  });
-  selectedButton.classList.add('active'); // 選択されたボタンにactiveクラスを追加
-}
+// // 選択中のボタンをハイライトする関数
+// function highlightButton(selectedButton) {
+//   buttons.forEach(button => {
+//       button.classList.remove('active'); // すべてのボタンからactiveクラスを削除
+//   });
+//   selectedButton.classList.add('active'); // 選択されたボタンにactiveクラスを追加
+// }
 
-// 戻るボタンの機能
-function popupPrevSlide() {
-    if (currentSlideIndex > 0) {
-      const button = document.getElementById(`popup-button-${currentSlideIndex - 1}`)
-      showPopupSlideContent(currentSlideIndex - 1);
-      highlightButton(button);
-    }
-}
+// // 戻るボタンの機能
+// function popupPrevSlide() {
+//     if (currentSlideIndex > 0) {
+//       const button = document.getElementById(`popup-button-${currentSlideIndex - 1}`)
+//       showPopupSlideContent(currentSlideIndex - 1);
+//       highlightButton(button);
+//     }
+// }
 
-// 進むボタンの機能
-function popupNextSlide() {
-    const slides = document.querySelectorAll('.popup-slides');
-    if (currentSlideIndex < slides.length - 1) {
-      const button = document.getElementById(`popup-button-${currentSlideIndex + 1}`)
-      showPopupSlideContent(currentSlideIndex + 1);
-      highlightButton(button);
-    }
-}
+// // 進むボタンの機能
+// function popupNextSlide() {
+//     const slides = document.querySelectorAll('.popup-slides');
+//     if (currentSlideIndex < slides.length - 1) {
+//       const button = document.getElementById(`popup-button-${currentSlideIndex + 1}`)
+//       showPopupSlideContent(currentSlideIndex + 1);
+//       highlightButton(button);
+//     }
+// }
 
-// ナビゲーションボタンの状態を更新する関数
-function updateNavigationButtons() {
-  const prevButton = document.getElementById('popup-prev');
-  const nextButton = document.getElementById('popup-next');
-  const endButton = document.getElementById('popup-end');
+// // ナビゲーションボタンの状態を更新する関数
+// function updateNavigationButtons() {
+//   const prevButton = document.getElementById('popup-prev');
+//   const nextButton = document.getElementById('popup-next');
+//   const endButton = document.getElementById('popup-end');
 
-  // 戻るボタンの無効化
-  prevButton.disabled = (currentSlideIndex === 0);
+//   // 戻るボタンの無効化
+//   prevButton.disabled = (currentSlideIndex === 0);
   
-  // 進むボタンの無効化
-  const slides = document.querySelectorAll('.popup-slides');
-  nextButton.disabled = (currentSlideIndex === slides.length - 1);
-  if (currentSlideIndex === slides.length - 1) {
-    nextButton.style.display = 'none';
-    endButton.style.display = 'block';
+//   // 進むボタンの無効化
+//   const slides = document.querySelectorAll('.popup-slides');
+//   nextButton.disabled = (currentSlideIndex === slides.length - 1);
+//   if (currentSlideIndex === slides.length - 1) {
+//     nextButton.style.display = 'none';
+//     endButton.style.display = 'block';
+//   }
+//   else {
+//     nextButton.style.display = 'block';
+//     endButton.style.display = 'none';
+//   }
+// }
+
+// // 戻るボタン、進むボタン、始めるボタンにイベントリスナーを追加
+// document.getElementById('popup-prev').addEventListener('click', popupPrevSlide);
+// document.getElementById('popup-next').addEventListener('click', popupNextSlide);
+// document.getElementById('popup-end').addEventListener('click', () => {
+//   popupOuterId.style.display = 'none';
+//   popupInnerId.style.display = 'none';
+// });
+
+// // ヘルプボタンでポップアップを表示
+// document.getElementById("header-help").onclick = () => {
+//   popupOuterId.style.display = 'block';
+//   popupInnerId.style.display = 'block';
+//   showPopupSlideContent(0);
+//   highlightButton(buttons[0]);
+// }
+
+// // ポップアップの初期表示
+// showPopupSlideContent(0);
+// highlightButton(buttons[0]); 
+
+// クリックイベントで状態を切り替える
+runIcon.addEventListener('click', () => {
+
+  if(state === 'play') {
+    playClicked = true;
+    runCode();
   }
   else {
-    nextButton.style.display = 'block';
-    endButton.style.display = 'none';
-  }
-}
+    // 現在のクラスを削除
+    runIcon.classList.remove(state);
 
-// 戻るボタン、進むボタン、始めるボタンにイベントリスナーを追加
-document.getElementById('popup-prev').addEventListener('click', popupPrevSlide);
-document.getElementById('popup-next').addEventListener('click', popupNextSlide);
-document.getElementById('popup-end').addEventListener('click', () => {
-  popupOuterId.style.display = 'none';
-  popupInnerId.style.display = 'none';
+    // インデックスを次の状態に変更
+    state = (state==='stop') ? 'continuous' : 'stop';
+
+    // 新しいクラスを追加
+    runIcon.classList.add(state);
+  }
 });
 
-// ヘルプボタンでポップアップを表示
-document.getElementById("header-help").onclick = () => {
-  popupOuterId.style.display = 'block';
-  popupInnerId.style.display = 'block';
-  showPopupSlideContent(0);
-  highlightButton(buttons[0]);
-}
-
-// ポップアップの初期表示
-showPopupSlideContent(0);
-highlightButton(buttons[0]); 
+runSwitchButton.addEventListener('click', () => {
+  
+  if(state === 'play') {
+    runIcon.classList.remove('play');
+    runIcon.classList.add('continuous');
+    state = 'continuous';
+    runSwitchButton.textContent = '常時実行:ON';
+  }
+  else {
+    // 現在のクラスを削除
+    runIcon.classList.remove(state);
+    runIcon.classList.add('play');
+    state = 'play';
+    runSwitchButton.textContent = '常時実行:OFF';
+  }
+});
 
 // ページ読み込み時のレイアウト崩れを防ぐための処理
 window.addEventListener('load', function() {

@@ -18,7 +18,7 @@ body {
   text-align: center;
 }
 
-header {
+/* header {
   margin-bottom: 50px;
   text-align: center;
 }
@@ -31,6 +31,57 @@ header h1 {
 header p {
   font-size: 1.2rem;
   color: #777;
+} */
+
+.header-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  width: 100%;
+  background-color: #a3d3d7;
+  color: rgb(0, 0, 0);
+  z-index: 1000;
+  box-shadow: 0 4px 2px -2px gray;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 20px 0 20px;
+  box-sizing: border-box;
+}
+
+.header-logo {
+  font-size: 24px;
+  /* font-weight: bold; */
+  color: black;
+  text-decoration: none;
+}
+
+nav {
+  display: flex;
+  align-items: center;
+}
+
+.nav-links {
+  display: flex;
+  list-style: none;
+  margin: 0;
+}
+
+.nav-links li {
+  margin-left: 20px;
+}
+
+.nav-links li a {
+  color: black;
+  text-decoration: none;
+  font-size: 16px;
+  transition: color 0.3s;
+  cursor: pointer;
+}
+
+.nav-links li a:hover {
+  color: #91823a;
 }
 
 .group-title {
