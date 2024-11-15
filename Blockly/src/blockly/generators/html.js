@@ -1089,6 +1089,16 @@ websiteGenerator.forBlock["js_appendChild"] = function (block, generator) {
   return code;
 };
 
+websiteGenerator.forBlock["js_removeChild"] = function (block, generator) {
+  const parent = generator.valueToCode(block, "PARENT", Order.ATOMIC);
+  const child = generator.valueToCode(block,"CHILD", Order.ATOMIC);
+  const code =
+    (parent && child)
+      ? `${parent}.removeChild(${child});\n`
+      : "\n";
+  return code;
+};
+
 websiteGenerator.forBlock["js_prompt"] = function (block, generator) {
   const content = generator.valueToCode(block, "CONTENT", Order.ATOMIC);
   const defaultText = generator.valueToCode(block,"DEFAULT", Order.ATOMIC);

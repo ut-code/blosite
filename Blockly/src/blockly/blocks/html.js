@@ -1763,8 +1763,8 @@ export const htmlBlocks = Blockly.common.createBlockDefinitionsFromJsonArray([
     style: "javascript_blocks",
   },
   {
-    type: "js_appendChild",
-    message0: "要素 %1 内の末尾に要素 %2 を追加",
+    type: "js_removeChild",
+    message0: "要素 %1 内の末尾から要素 %2 を削除",
     args0: [
       {
         type: "input_value",
@@ -1859,6 +1859,24 @@ export const htmlBlocks = Blockly.common.createBlockDefinitionsFromJsonArray([
     ],
     previousStatement: null, 
     nextStatement: null,
+    style: "javascript_blocks",
+  },
+  {
+    type: "js_removeChild",
+    message0: "要素 %1 内の末尾に要素 %2 を削除",
+    args0: [
+      {
+        type: "input_value",
+        name: "PARENT",
+      },
+      {
+        type: "input_value",
+        name: "CHILD",
+      }
+    ],
+    previousStatement: null, 
+    nextStatement: null,
+    output: null,
     style: "javascript_blocks",
   },
   {
