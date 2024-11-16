@@ -80,6 +80,15 @@ Blockly.Themes.customStyle = Blockly.Theme.defineTheme('custom_style', {
         'colour': '#1e88e5'
      },
   },
+  'componentStyles': {
+    'toolboxBackgroundColour': '#f0f0f0', // ツールボックス背景色
+    'toolboxForegroundColour': '#000000', // ツールボックス文字色
+    'flyoutBackgroundColour': '#cccccc', // フライアウトの背景色
+    // 'flyoutForegroundColour': '#cccccc', // フライアウトの文字色
+    'flyoutOpacity': 0.8, // フライアウトの透明度 (0.0 ～ 1.0)
+    'scrollbarColour': '#888888', // スクロールバーの色
+    'scrollbarOpacity': 0.6, // スクロールバーの透明度
+  }
 });
 
 // Register the blocks and generator with Blockly
@@ -108,13 +117,14 @@ const ws = Blockly.inject(blocklyDiv, {
   },
   zoom: {
     controls: true, // ズーム可能かどうか
-    wheel: false,   // マウスホイールでズーム可能かどうか
+    wheel: true,   // マウスホイールでズーム可能かどうか
     startScale: 1,  // 初期のズーム倍率
     maxScale: 5,    // 最大ズーム倍率
     minScale: 0.5,  // 最小ズーム倍率
     // scaleSpeed: 1.2, // 1回毎のズーム倍率
   },
   sounds: true, // 音を鳴らすかどうか
+  renderer: 'geras', // レンダラーの指定
 });
 
 const errorMessage = document.getElementById("error-message");

@@ -1,8 +1,15 @@
-body {
+/* body {
   margin: 0;
   max-width: 100%;
   overflow-y: hidden;
   /* font-family: 'Arial', sans-serif; */
+body {
+  font-family: 'Arial', sans-serif;
+  line-height: 1.6;
+  background-color: #f4f4f4;
+  color: #333;
+  margin: auto;
+  overflow-y: hidden;
 }
 
 
@@ -26,7 +33,7 @@ body {
   width: 100%;
   background-color: #ffffff;
   color: rgb(0, 0, 0);
-  z-index: 100;
+  z-index: 80;
   /* box-shadow: 0 4px 2px -2px gray; */
   display: flex;
   justify-content: space-between;
@@ -73,7 +80,7 @@ nav {
 }
 
 .nav-links li a:hover {
-  color: #91823a;
+  color: #725f0c;
 }
 
 /* ハンバーガーメニュー
@@ -153,6 +160,12 @@ code {
   height: 100%;
   min-width: 600px;
   order: 1;
+}
+
+/* ツールボックスにボーダーを追加 */
+.blocklyToolboxDiv {
+  border-right: 1px solid #000000; /* ボーダーの色と太さ */
+  box-sizing: border-box;   /* ボーダーを内側に含める */
 }
 
 #outputPane {
@@ -332,7 +345,7 @@ code {
   height: 100%;
   width: 100%;
   background: rgba(100,100,100,0.5);
-  z-index: 50;
+  z-index: 90;
   opacity: 0.5;
 }
 
@@ -344,6 +357,8 @@ code {
   width: 90%;
   background-color  : rgba(255, 255, 255, 1);
   z-index: 100;
+  border:#000000 1px solid;
+  border-radius: 10px;
 }
 
 #popup-title {
@@ -673,7 +688,7 @@ code {
 /* メニューのコンテナ */
 .menu {
   position: absolute;
-  top: 70px;
+  top: 69px;
   width: 110px;
   right: 0;
   border-radius: 3px;
@@ -684,8 +699,9 @@ code {
   opacity: 0;
   transform: scaleY(0);
   transform-origin: top;
-  transition: opacity 0.4s ease, transform 0.4s ease, visibility 0s 0.4s;
+  transition: opacity 0.2s ease, transform 0.2s ease, visibility 0s 0.2s;
   visibility: hidden;
+  z-index: 25;
 }
 
 .menu li {
