@@ -8,7 +8,8 @@
     <div id="content" style="visibility: hidden;">
       <header>
         <div class="header-container">
-          <a href="#" class="header-logo">Blosite</a>
+          <div class="header-logo">
+            <img id="header-icon" src="<%= require('/src/images/icon.svg') %>">Blosite</div>
           <!-- <sub>by ut.code();</sub> -->
           <nav>
             <ul class="nav-links">
@@ -22,13 +23,12 @@
       <div class="split-view vertical">
         <div id="pageContainer">
           <div id="outputPane">
-            <pre id="generatedCode" class="beforeClicked"><code></code></pre>
             <div id="wstitle"></div>
             <div id="output"></div>
+            <pre id="generatedCode" class="beforeClicked"><code></code></pre>
+            <div id="error-message"></div>
             <!-- <button id="code-button">コードを表示する</button> -->
             <!-- <button id="save-button">保存する</button> -->
-            
-            <div id="errorMessage">何もエラーは起こってません</div>
           </div>
           <div id="blocklyDiv">
             <div id="icon-container">
@@ -41,7 +41,7 @@
               <!-- メニュー -->
               <ul class="menu">
                 <li id="code-button">コードを表示</li>
-                <li id="run-switch-button">常時実行</li>
+                <li id="run-switch-button">常時実行:OFF</li>
                 <li id="save-button">共有する</li>
                 <li>プレビューを全画面で表示</li>
                 <li></li>
@@ -70,17 +70,17 @@
         </div> -->
         <div id="popup-outer" style="display:none;"></div>
         <div id="popup-form">
-          <form id="contentForm">
-            <label for="username">ユーザー名:</label>
+          <form id="content-form">
+            <label for="username">ユーザーの名前:</label>
             <input type="text" id="username" name="username" maxlength="20" required><br><br>
     
-            <label for="contentName">コンテンツ名:</label>
+            <label for="contentName">ウェブサイトの名前:</label>
             <input type="text" id="contentName" name="contentName" maxlength="20" required><br><br>
     
-            <label for="description">コンテンツの説明:</label>
+            <label for="description">ウェブサイトの説明:</label>
             <textarea id="description" name="description" required></textarea><br><br>
     
-            <button type="submit">共有する</button>
+            <button id="submit-button" type="submit">共有する</button>
           </form>
         </div>
       </div>

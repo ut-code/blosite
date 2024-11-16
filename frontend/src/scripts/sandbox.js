@@ -117,7 +117,7 @@ const ws = Blockly.inject(blocklyDiv, {
   sounds: true, // 音を鳴らすかどうか
 });
 
-const getErrorId = document.getElementById("errorMessage");
+const errorMessage = document.getElementById("error-message");
 
 
 const runIcon = document.getElementById('run-icon');
@@ -131,13 +131,14 @@ let playClicked = false;
 // generated code from the workspace, and evals the code.
 // In a real application, you probably shouldn't use `eval`.
 const runCode = () => {
-   // Blocklyからコードを生成
-   let code = websiteGenerator.workspaceToCode(ws);
+  // Blocklyからコードを生成
+  let code = websiteGenerator.workspaceToCode(ws);
+
+  // <html> タグの位置を見つける
+  const htmlTagIndex = code.indexOf('<html>');
+  const closeHtmlTagIndex = code.indexOf('</html>');
   
-   // <html> タグの位置を見つける
-   const htmlTagIndex = code.indexOf('<html>');
-   const closeHtmlTagIndex = code.indexOf('</html>');
-     // <title> タグの位置を見つける
+  // <title> タグの位置を見つける
   const titleTagIndex = code.indexOf('<title>');
   const closeTitleTagIndex = code.indexOf('</title>');
 
@@ -167,11 +168,13 @@ const runCode = () => {
     playClicked = false;
     try {
       eval(scriptCode);
-      getErrorId.textContent = "何もエラーは起こってません"
-      getErrorId.classList = "safe"
+      // getErrorId.textContent = "何もエラーは起こってません"
+      // getErrorId.classList = "safe"
+      errorMessage.style.display = "none";
     }  catch (e) {
-      getErrorId.textContent = e.name + " " +e.message 
-      getErrorId.classList = "errorOccured"
+      errorMessage.style.display = "block";
+      errorMessage.textContent = `エラーが発生しました\n${e.name} ${e.message}`; 
+      // getErrorId.classList = "errorOccured"
     }
   }
 
@@ -323,12 +326,12 @@ function forbidblockconnect(block,blockA,blockB,){
 document.getElementById("code-button").onclick = () => {
   const getCodeID = document.getElementById("generatedCode");
   const getButtonID = document.getElementById("code-button");
-  getCodeID.classList.toggle("afterClicked");
-  getCodeID.classList.toggle("beforeClicked");
   if (getButtonID.textContent === "コードを表示"){
     getButtonID.textContent = "コードを隠す";
+    getCodeID.style.display = "block";
   } else {
     getButtonID.textContent = "コードを表示";
+    getCodeID.style.display = "none";
   }
 }
 
@@ -339,6 +342,7 @@ const popupOuterId = document.getElementById("popup-outer");
 // const popupInnerId = document.getElementById("popup-inner");
 // const popupCloseId = document.getElementById("popup-close");
 const popupForm = document.getElementById('popup-form');
+const hamburgerIcon = document.getElementById('hamburger-icon');
 
 popupOuterId.addEventListener('click', e => {
   popupOuterId.style.display = 'none';
@@ -474,6 +478,10 @@ runSwitchButton.addEventListener('click', () => {
   }
 });
 
+hamburgerIcon.addEventListener('click', () => {
+  hamburgerIcon.classList.toggle('open');
+});
+
 // ページ読み込み時のレイアウト崩れを防ぐための処理
 window.addEventListener('load', function() {
   const content = document.getElementById('content');
@@ -486,7 +494,7 @@ document.getElementById("save-button").onclick = () => {
 
   popupOuterId.style.display = 'block';
   // popupInnerId.style.display = 'block';
-  popupForm.style.display = 'block';
+  popupForm.style.display = 'grid';
 
   // // フォームの送信イベントを設定
   // contentForm.onsubmit = async (e) => {
@@ -530,7 +538,7 @@ const supabaseUrl = 'https://foxfxembozpnvfdwxnog.supabase.co';
 const supabaseKey = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImZveGZ4ZW1ib3pwbnZmZHd4bm9nIiwicm9sZSI6ImFub24iLCJpYXQiOjE3MzAxMTQ0NDMsImV4cCI6MjA0NTY5MDQ0M30.brm2eeigBJv6u1QBcbEl5QAsqsEl1IzYtICuhrlYdDc';
 const supabase = createClient(supabaseUrl, supabaseKey);
 
-document.getElementById('contentForm').addEventListener('submit', async function(event) {
+document.getElementById('content-form').addEventListener('submit', async function(event) {
   event.preventDefault(); // フォームのデフォルトの送信を防ぐ
 
   const formElement = document.getElementById('contentForm'); // フォーム要素を取得
