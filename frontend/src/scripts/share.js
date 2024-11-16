@@ -8,6 +8,7 @@ async function fetchContents() {
         }
         
         const contents = await response.json();
+        document.getElementById('loading-spinner').classList.add('hidden');
         displayContents(contents);
     } catch (error) {
         console.error('エラー:', error);
@@ -66,7 +67,9 @@ function showPopup(content, data) {
 }
 
 // ページが読み込まれたらデータを取得
-window.onload = fetchContents;
+window.onload = () => {
+    fetchContents();
+};
 
 // ページ読み込み時のレイアウト崩れを防ぐための処理
 window.addEventListener('load', function() {

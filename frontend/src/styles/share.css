@@ -96,7 +96,7 @@ h1 {
     background-color: #e0ebfa;
     border-radius: 10px;
     max-height: 3000px;
-    min-height: 300px;
+    min-height: 400px;
 }
 
 @media (min-width: 1350px) {
@@ -130,17 +130,21 @@ h1 {
     margin-right: auto;
 }
 
+.card h2 {
+    font-size: 25px;
+    margin-bottom: 15px;
+}
+
 .card p {
     font-size: 1rem;
     color: #666;
 }
 
-/* .card img {
-    width: 100%;
-    height: 100%;
-    object-fit: fill;
-    border-radius: 10px 10px 0 0;
-} */
+.card img {
+    width: 260px;
+    height: 85%;
+    object-fit: cover;
+}
 
 .card:hover {
     background-color: #f9f9f9;
@@ -148,7 +152,9 @@ h1 {
 }
 
 .description {
+    width: 300px;
     padding: 20px;
+    text-overflow: ellipsis;
 }
 
 .images {
@@ -214,3 +220,29 @@ footer {
     padding: 1em;
     bottom: 0;
 } 
+
+#loading-spinner {
+    position: absolute;
+    left: calc(50% - 25px);
+    top: calc(50% - 25px);
+    width: 50px;
+    height: 50px;
+    border: 5px solid #ccc; /* 背景色 */
+    border-top: 5px solid #333; /* アクティブ部分の色 */
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+}
+  
+@keyframes spin {
+    0% {
+      transform: rotate(0deg);
+    }
+    100% {
+      transform: rotate(360deg);
+    }
+}
+
+#loading-spinner.hidden {
+    display: none;
+}
+  
