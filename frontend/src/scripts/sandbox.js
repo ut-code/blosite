@@ -345,6 +345,19 @@ document.getElementById("code-button").onclick = () => {
   }
 }
 
+// プレビューを表示するボタン
+document.getElementById("preview-button").onclick = () => {
+  // 保存するHTMLの文字列を取得
+  const generatedHTML = document.getElementById("output").innerHTML;
+
+  // localStorageに保存
+  sessionStorage.setItem("previewHTML", generatedHTML);
+  console.log("HTMLを保存しました。");
+
+  // プレビュー画面に遷移
+  window.open('./../preview', '_blank');
+}
+
 // // ポップアップの表示
 
 // const popupId = document.getElementById("popup");

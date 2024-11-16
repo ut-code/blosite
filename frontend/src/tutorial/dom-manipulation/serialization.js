@@ -62,7 +62,7 @@ const xmlDom = Blockly.utils.xml.textToDom(xml);
  */
 export const save = function (workspace) {
   const data = Blockly.serialization.workspaces.save(workspace);
-  window.localStorage?.setItem(storageKey, JSON.stringify(data));
+  window.sessionStorage?.setItem(storageKey, JSON.stringify(data));
 };
 
 /**
@@ -70,7 +70,7 @@ export const save = function (workspace) {
  * @param {Blockly.Workspace} workspace Blockly workspace to load into.
  */
 export const load = function (workspace) {
-  const data = window.localStorage?.getItem(storageKey);
+  const data = window.sessionStorage?.getItem(storageKey);
   if (!data) {
     Blockly.Xml.domToWorkspace(xmlDom, workspace);
     return;
