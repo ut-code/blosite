@@ -18,7 +18,7 @@ export const toolbox = {
   contents: [
     {
       kind: "CATEGORY",
-      name: "HTML Elements",
+      name: "HTML要素",
       categorystyle: "htmlelement_category",
       contents: [
         {
@@ -209,7 +209,7 @@ export const toolbox = {
     },
     {
       kind: "CATEGORY",
-      name: "HTML Attributes",
+      name: "HTML属性",
       categorystyle: "htmlattribute_category",
       contents: [
         {
@@ -340,7 +340,7 @@ export const toolbox = {
     },
     {
       kind: "CATEGORY",
-      name: "CSS",
+      name: "見た目",
       categorystyle: "css_category",
       contents: [
         {
@@ -415,7 +415,7 @@ export const toolbox = {
     },
     {
       kind: "category",
-      name: "JavaScript",
+      name: "制御",
       categorystyle: "javascript_category",
       contents: [
         {
@@ -484,7 +484,7 @@ export const toolbox = {
     },
     {
       kind: "category",
-      name: "Logic",
+      name: "論理",
       categorystyle: "logic_category",
       contents: [
         {
@@ -519,7 +519,7 @@ export const toolbox = {
     },
     {
       kind: "category",
-      name: "Loops",
+      name: "繰り返し",
       categorystyle: "loop_category",
       contents: [
         {
@@ -582,7 +582,7 @@ export const toolbox = {
     },
     {
       kind: "category",
-      name: "Math",
+      name: "数式",
       categorystyle: "math_category",
       contents: [
         {
@@ -788,7 +788,7 @@ export const toolbox = {
     },
     {
       kind: "category",
-      name: "Text",
+      name: "文字",
       categorystyle: "text_category",
       contents: [
         {
@@ -976,7 +976,7 @@ export const toolbox = {
     },
     {
       kind: "category",
-      name: "Lists",
+      name: "リスト",
       categorystyle: "list_category",
       contents: [
         {
@@ -1082,13 +1082,13 @@ export const toolbox = {
     },
     {
       kind: "category",
-      name: "Variables",
+      name: "変数",
       categorystyle: "variable_category",
       custom: "VARIABLE",
     },
     {
       kind: "category",
-      name: "Functions",
+      name: "関数",
       categorystyle: "procedure_category",
       custom: "PROCEDURE",
     },
@@ -1097,7 +1097,7 @@ export const toolbox = {
     },
     {
       kind: "category",
-      name: "template",
+      name: "テンプレート",
       contents: [
         // ul, li
         {

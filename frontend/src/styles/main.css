@@ -1,6 +1,14 @@
-body {
+/* body {
   margin: 0;
   max-width: 100%;
+  overflow-y: hidden;
+  /* font-family: 'Arial', sans-serif; */
+body {
+  font-family: 'Arial', sans-serif;
+  line-height: 1.6;
+  background-color: #f4f4f4;
+  color: #333;
+  margin: auto;
   overflow-y: hidden;
 }
 
@@ -23,21 +31,28 @@ body {
   left: 0;
   right: 0;
   width: 100%;
-  background-color: #248f9b;
-  color: white;
-  z-index: 1000;
-  box-shadow: 0 4px 2px -2px gray;
+  background-color: #ffffff;
+  color: rgb(0, 0, 0);
+  z-index: 80;
+  /* box-shadow: 0 4px 2px -2px gray; */
   display: flex;
   justify-content: space-between;
   align-items: center;
   padding: 0 20px 0 20px;
   box-sizing: border-box;
+  border-bottom:#000000 1px solid;
+}
+
+#header-icon {
+  width: 50px;
+  height: 25px;
+  vertical-align: middle;
 }
 
 .header-logo {
   font-size: 24px;
-  font-weight: bold;
-  color: white;
+  /* font-weight: bold; */
+  color: black;
   text-decoration: none;
 }
 
@@ -57,7 +72,7 @@ nav {
 }
 
 .nav-links li a {
-  color: white;
+  color: black;
   text-decoration: none;
   font-size: 16px;
   transition: color 0.3s;
@@ -65,10 +80,10 @@ nav {
 }
 
 .nav-links li a:hover {
-  color: #f1c40f;
+  color: #725f0c;
 }
 
-/* ハンバーガーメニュー */
+/* ハンバーガーメニュー
 .hamburger {
   display: none;
   flex-direction: column;
@@ -81,7 +96,7 @@ nav {
   background: white;
   margin: 4px 0;
   transition: 0.4s;
-}
+} */
 
 /* レスポンシブ対応 */
 /* @media (max-width: 768px) {
@@ -130,7 +145,8 @@ code {
   display: flex;
   width: 100%;
   max-width: 100%;
-  height: calc(100vh - 37px)
+  height: calc(100vh - 37px);
+  background-color: #ffffff;
 }
 
 /* スクリーンバーの表示に合わせて画面サイズを調整 */
@@ -147,8 +163,15 @@ code {
   order: 1;
 }
 
+/* ツールボックスにボーダーを追加 */
+.blocklyToolboxDiv {
+  border-right: 1px solid #000000; /* ボーダーの色と太さ */
+  box-sizing: border-box;   /* ボーダーを内側に含める */
+}
+
 #outputPane {
   display: flex;
+  position: relative;
   flex-direction: column;
   width: 400px;
   height: 95%;
@@ -160,14 +183,14 @@ code {
 
 #generatedCode {
   background-color: rgb(247, 240, 228);
-  order: 5;
+  /* order: 5; */
   user-select: text;
   cursor: text;
 }
 
 #output {
-  height: 70%;
-  order: 3;
+  height: 90%;
+  /* order: 3; */
   overflow: auto ;
   border: 2px solid #ccc;
   padding: 10px;
@@ -210,34 +233,37 @@ code {
 
 /* ブロックが生成する要素のスタイルここまで */
 
-#code-button {
+/* #code-button {
   position: relative;
   height: 50px;
   width: 150px;
   order: 4;
   margin: 0 auto
-}
+} */
 
-.afterClicked {
+#generatedCode {
+  display: none;
   position: relative;
   height: 160%;
   background-color: rgb(247,240,228);
-  order:  5;
+  /* order:  5; */
 }
 
-.beforeClicked {
+/* .beforeClicked {
   display: none;
-}
+} */ 
+ 
 #wstitle{
   background-color: gainsboro;
   width: fit-content;
-  order: 3;
+  /* order: 3; */
 }
+
 .hidden {
   display:none;
 }
 
-.safe {
+/* .safe {
   display: block;
   order: 6;
   background-color: blue;
@@ -258,6 +284,22 @@ code {
   margin: 20px;
   font-weight: 1000;
   font-size: 20px;
+} */
+
+#error-message {
+  display: none;
+  position: absolute;
+  bottom: 10px;
+  left: 5%;
+  width: 80%;
+  padding: 5%;
+  background-color: rgba(255, 96, 96, 0.9);
+  border: rgb(121, 0, 0) 2px solid;
+  border-radius: 5px;
+  color: black;
+  font-weight: 1000;
+  font-size: 20px;
+  z-index: 30;
 }
 
 /*
@@ -304,18 +346,20 @@ code {
   height: 100%;
   width: 100%;
   background: rgba(100,100,100,0.5);
-  z-index: 5000000;
+  z-index: 90;
   opacity: 0.5;
 }
 
 #popup-inner{
   position:absolute;
-  top: 10%;
-  left: 10%;
-  height: 80%;
-  width: 80%;
+  top: 5%;
+  left: 5%;
+  height: 90%;
+  width: 90%;
   background-color  : rgba(255, 255, 255, 1);
-  z-index: 10000000;
+  z-index: 100;
+  border:#000000 1px solid;
+  border-radius: 10px;
 }
 
 #popup-title {
@@ -449,10 +493,247 @@ code {
   object-fit: contain;
 }
 
+.popup-code {
+  display: inline;
+  color: #444;
+  background-color: #e7edf3;
+  border-radius: 3px;
+  border: solid 1px #d6dde4;
+}
+
 #popup-form {
   display: none;
-  flex-direction: column;
-  margin: 20px;
+  /* grid-template-columns: 100px 200px;
+  gap: 10px; */
+  /* flex-direction: column; */
   background-color: white;
-  width : 80%;
+  z-index: 100;
+  position: absolute;
+  margin-top: 10%;
+  margin-left: 25%;
+  margin-right: 25%;
+  padding: 20px;
+  height: 50%;
+  width: 50%;
+}
+
+#content-form {
+  width: 100%; 
+  height: 100%;
+  display: grid;
+  grid-template-columns: 200px 1fr;
+  /* grid-template-rows: 200px 50px; */
+  gap: 0px;
+  padding: 20px;
+}
+
+#content-form > label {
+  grid-column: 1 / 2;
+  /* grid-row: 1 / 2; */
+}
+
+#content-form > input, #content-form > textarea {
+  grid-column: 2 / 3;
+  /* grid-row: 1 / 2; */
+}
+
+#description {
+  resize: none;
+  height: 50px;  
+}
+
+#submit-button {
+  margin: auto;
+  padding: 10px 15px;
+  background-color: #007BFF;
+  color: white;
+  font-size: 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  grid-column: 1 / 3;
+  /* grid-row: 2 / 3; */
+}
+
+#icon-container {
+  display: flex;
+  background-color: rgba(216, 216, 216, 0.8);
+  top: 50px;
+  right: 440px;
+  padding: 10px;
+  width: 110px;
+  border-radius: 5px;
+  /* opacity: 0.8; */
+  position: absolute;
+  z-index: 30;
+}
+
+@media (max-width: 1032px) {
+  #icon-container {
+    right: auto;
+    left: 460px;
+  }
+}
+
+/* 実行アイコンの基本スタイル */
+
+.run-toggle {
+  display: none;
+}
+
+#run-icon {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background-color: #333;
+  position: relative;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-right: 10px;
+  transition: background-color 0.4s ease;
+}
+
+#run-icon:active {
+  transform: scale(0.9); /* ボタンを少し縮小 */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.5); /* 影を縮小 */
+  background-color: #444; /* 押したときの色 */
+}
+
+/* 各状態のスタイル */
+/* 再生（三角） */
+#run-icon.play::before {
+  content: '';
+  position: absolute;
+  left: 18px;
+  width: 0;
+  height: 0;
+  border-left: 18px solid #fff;
+  border-top: 9px solid transparent;
+  border-bottom: 9px solid transparent;
+}
+
+/* 停止（縦棒2つ） */
+#run-icon.stop::before,
+#run-icon.stop::after {
+  content: '';
+  position: absolute;
+  width: 6px;
+  height: 20px;
+  background-color: #fff;
+}
+#run-icon.stop::before {
+  transform: translateX(-6px);
+}
+#run-icon.stop::after {
+  transform: translateX(6px);
+}
+
+/* 常時実行（三角2つ） */
+#run-icon.continuous::before,
+#run-icon.continuous::after {
+  content: '';
+  position: absolute;
+  left: 18px;
+  width: 0;
+  height: 0;
+  border-left: 14px solid #fff;
+  border-top: 8px solid transparent;
+  border-bottom: 8px solid transparent;
+}
+#run-icon.continuous::before {
+  transform: translateX(-8px);
+}
+#run-icon.continuous::after {
+  transform: translateX(8px);
+}
+
+/* ハンバーガーアイコンのボタンとラベルのスタイル */
+.menu-toggle {
+  display: none;
+}
+
+#hamburger-icon {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background-color: #333;
+  position: relative;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.4s ease;
+}
+
+#hamburger-icon::before,
+#hamburger-icon::after {
+  content: '';
+  position: absolute;
+  width: 25px;
+  height: 3px;
+  background-color: #fff;
+  transition: transform 0.4s ease;
+}
+
+#hamburger-icon::before {
+  transform: translateY(-8px);
+}
+
+#hamburger-icon::after {
+  transform: translateY(8px);
+}
+
+/* メニューのコンテナ */
+.menu {
+  position: absolute;
+  top: 69px;
+  width: 110px;
+  right: 0;
+  border-radius: 3px;
+  background-color: #f1f1f1;
+  list-style: none;
+  padding: 10px;
+  margin: 0;
+  opacity: 0;
+  transform: scaleY(0);
+  transform-origin: top;
+  transition: opacity 0.2s ease, transform 0.2s ease, visibility 0s 0.2s;
+  visibility: hidden;
+  z-index: 25;
+}
+
+.menu li {
+  padding: 3px;
+  color: #000000;
+  text-align: center;
+  cursor: pointer;
+  user-select: none;
+  transition: background 0.3s ease;
+}
+
+.menu li:hover {
+  background-color: #dbdbdb;
+}
+
+/* チェックボックスがチェックされた状態 */
+.menu-toggle:checked + #hamburger-icon {
+  transform: rotate(45deg);
+}
+
+.menu-toggle:checked + #hamburger-icon::before {
+  transform: rotate(0deg) translateY(0);
+}
+
+.menu-toggle:checked + #hamburger-icon::after {
+  transform: rotate(-90deg) translateY(0);
+}
+
+.menu-toggle:checked ~ .menu {
+  opacity: 1;
+  transform: scaleY(1);
+  visibility: visible;
+  transition: opacity 0.4s ease, transform 0.4s ease, visibility 0s 0s;
 }

@@ -8,6 +8,7 @@ const config = {
     sandbox: './src/scripts/sandbox.js',
     tutorial: './src/scripts/tutorial.js',
     share: './src/scripts/share.js',
+    preview: './src/scripts/preview.js',
     main: './src/scripts/main.js',
   },
   output: {
@@ -115,6 +116,11 @@ const config = {
       template: './src/share/index.html',
       filename: 'share/index.html',
       chunks: ['share'],
+    }),
+    new HtmlWebpackPlugin({
+      template: './src/preview/index.html',
+      filename: 'preview/index.html',
+      chunks: ['preview'],
     }),
   ],
 };

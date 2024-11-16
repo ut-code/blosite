@@ -3,8 +3,20 @@
 <head>
     <meta charset="UTF-8">
     <title>コンテンツ一覧</title>
+    <link rel="icon" href="<%= require('/src/images/icon.svg') %>">
 </head>
 <body style="visibility: hidden">
+    <header>
+        <div class="header-container">
+          <a href="#" class="header-logo"><img id="header-icon" src="<%= require('/src/images/icon.svg') %>">Blosite</a>
+          <!-- <sub>by ut.code();</sub> -->
+          <nav>
+            <ul class="nav-links">
+                <li><a href="./..">トップページに戻る</a></li>
+            </ul>
+          </nav>
+        </div>
+    </header>
     <h1>コンテンツ一覧</h1>
     <a href="./.." class="btn">トップページに戻る</a>
     <div id="contents-list"></div>

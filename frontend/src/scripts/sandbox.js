@@ -43,43 +43,52 @@ async function loadModules(page) {
 await loadModules(page);
 
 Blockly.Themes.customStyle = Blockly.Theme.defineTheme('custom_style', {
-   'base': Blockly.Themes.Classic, // 既存のベーステーマを指定
-   'blockStyles' : {
-      'htmlelement_blocks': {
-      'colourPrimary': '#673ab7', // 紫
-      'colourSecondary': '#ab47bc', // 明るい紫
-      'colourTertiary': '#e1bee7' // 薄い紫
-      },
-      'htmlattribute_blocks': {
-          'colourPrimary': '#00796b', // 深い緑
-          'colourSecondary': '#4db6ac', // 明るい緑
-          'colourTertiary': '#b2dfdb' // 薄い緑
-      },
-      'css_blocks': {
-          'colourPrimary': '#ff5722', // オレンジ
-          'colourSecondary': '#ffab40', // 明るいオレンジ
-          'colourTertiary': '#ffe0b2' // 薄いオレンジ
-      },
-      'javascript_blocks': {
-          'colourPrimary': '#2196f3', // 青
-          'colourSecondary': '#64b5f6', // 明るい青
-          'colourTertiary': '#bbdefb' // 薄い青
-      },
-   },
-   'categoryStyles': {
-      'htmlelement_category': {
-         'colour': '#673ab7'
-      },
-      'htmlattribute_category': {
-         'colour': '#00796b'
-      },
-      'css_category': {
-         'colour': '#ff5722'
-      },
-      'javascript_category': {
-         'colour': '#2196f3'
-      },
-   },
+  'base': Blockly.Themes.Classic, // 既存のベーステーマを指定
+  'blockStyles' : {
+     'htmlelement_blocks': {
+       'colourPrimary': '#d8a200', // 暗めで少し明るくした黄色
+       'colourSecondary': '#a67900', // 少し明るめの黄土色
+       'colourTertiary': '#e0b415' // 落ち着いた黄色
+     },
+     'htmlattribute_blocks': {
+       'colourPrimary': '#00796b', // 深い緑
+       'colourSecondary': '#4db6ac', // 明るい緑
+       'colourTertiary': '#b2dfdb' // 薄い緑
+     },
+     'css_blocks': {
+       'colourPrimary': '#f4511e', // やや薄めの暗いオレンジ
+       'colourSecondary': '#ff8e53', // やや薄めの明るいオレンジ
+       'colourTertiary': '#ffd1a3' // 薄めのオレンジ
+     },
+     'javascript_blocks': {
+       'colourPrimary': '#1e88e5', // 少し暗めの青
+       'colourSecondary': '#5aaefb', // 少し暗めの明るい青
+       'colourTertiary': '#aed6fb' // やや薄めの青
+     },
+  },
+  'categoryStyles': {
+     'htmlelement_category': {
+        'colour': '#d8a200'
+     },
+     'htmlattribute_category': {
+        'colour': '#00796b'
+     },
+     'css_category': {
+        'colour': '#f4511e'
+     },
+     'javascript_category': {
+        'colour': '#1e88e5'
+     },
+  },
+  'componentStyles': {
+    'toolboxBackgroundColour': '#f0f0f0', // ツールボックス背景色
+    'toolboxForegroundColour': '#000000', // ツールボックス文字色
+    'flyoutBackgroundColour': '#cccccc', // フライアウトの背景色
+    // 'flyoutForegroundColour': '#cccccc', // フライアウトの文字色
+    'flyoutOpacity': 0.8, // フライアウトの透明度 (0.0 ～ 1.0)
+    'scrollbarColour': '#888888', // スクロールバーの色
+    'scrollbarOpacity': 0.6, // スクロールバーの透明度
+  }
 });
 
 // Register the blocks and generator with Blockly
@@ -108,28 +117,38 @@ const ws = Blockly.inject(blocklyDiv, {
   },
   zoom: {
     controls: true, // ズーム可能かどうか
-    wheel: false,   // マウスホイールでズーム可能かどうか
+    wheel: true,   // マウスホイールでズーム可能かどうか
     startScale: 1,  // 初期のズーム倍率
     maxScale: 5,    // 最大ズーム倍率
     minScale: 0.5,  // 最小ズーム倍率
     // scaleSpeed: 1.2, // 1回毎のズーム倍率
   },
   sounds: true, // 音を鳴らすかどうか
+  renderer: 'geras', // レンダラーの指定
 });
 
-const getErrorId = document.getElementById("errorMessage");
+const errorMessage = document.getElementById("error-message");
+
+
+const runIcon = document.getElementById('run-icon');
+const runSwitchButton = document.getElementById('run-switch-button');
+const states = ['play', 'stop', 'continuous'];
+let state = 'play';
+let playClicked = false;
+
 
 // This function resets the code and output divs, shows the
 // generated code from the workspace, and evals the code.
 // In a real application, you probably shouldn't use `eval`.
 const runCode = () => {
-   // Blocklyからコードを生成
-   let code = websiteGenerator.workspaceToCode(ws);
+  // Blocklyからコードを生成
+  let code = websiteGenerator.workspaceToCode(ws);
+
+  // <html> タグの位置を見つける
+  const htmlTagIndex = code.indexOf('<html>');
+  const closeHtmlTagIndex = code.indexOf('</html>');
   
-   // <html> タグの位置を見つける
-   const htmlTagIndex = code.indexOf('<html>');
-   const closeHtmlTagIndex = code.indexOf('</html>');
-     // <title> タグの位置を見つける
+  // <title> タグの位置を見つける
   const titleTagIndex = code.indexOf('<title>');
   const closeTitleTagIndex = code.indexOf('</title>');
 
@@ -155,13 +174,18 @@ const runCode = () => {
   const scriptCode = match ? match[1] : '';
   
   // スクリプトを動的に評価してエラーがあれば表示
-  try {
-    eval(scriptCode);
-    getErrorId.textContent = "何もエラーは起こってません"
-    getErrorId.classList = "safe"
-  }  catch (e) {
-    getErrorId.textContent = e.name + " " +e.message 
-    getErrorId.classList = "errorOccured"
+  if (state==="stop" || playClicked){
+    playClicked = false;
+    try {
+      eval(scriptCode);
+      // getErrorId.textContent = "何もエラーは起こってません"
+      // getErrorId.classList = "safe"
+      errorMessage.style.display = "none";
+    }  catch (e) {
+      errorMessage.style.display = "block";
+      errorMessage.textContent = `エラーが発生しました\n${e.name} ${e.message}`; 
+      // getErrorId.classList = "errorOccured"
+    }
   }
 
 };
@@ -312,120 +336,174 @@ function forbidblockconnect(block,blockA,blockB,){
 document.getElementById("code-button").onclick = () => {
   const getCodeID = document.getElementById("generatedCode");
   const getButtonID = document.getElementById("code-button");
-  getCodeID.classList.toggle("afterClicked");
-  getCodeID.classList.toggle("beforeClicked");
-  if (getButtonID.textContent === "コードを表示する"){
+  if (getButtonID.textContent === "コードを表示"){
     getButtonID.textContent = "コードを隠す";
+    getCodeID.style.display = "block";
   } else {
-    getButtonID.textContent = "コードを表示する";
+    getButtonID.textContent = "コードを表示";
+    getCodeID.style.display = "none";
   }
 }
 
-// ポップアップの表示
+// プレビューを表示するボタン
+document.getElementById("preview-button").onclick = () => {
+  // 保存するHTMLの文字列を取得
+  const generatedHTML = document.getElementById("output").innerHTML;
 
-const popupId = document.getElementById("popup");
+  // localStorageに保存
+  sessionStorage.setItem("previewHTML", generatedHTML);
+  console.log("HTMLを保存しました。");
+
+  // プレビュー画面に遷移
+  window.open('./../preview', '_blank');
+}
+
+// // ポップアップの表示
+
+// const popupId = document.getElementById("popup");
 const popupOuterId = document.getElementById("popup-outer");
-const popupInnerId = document.getElementById("popup-inner");
-const popupCloseId = document.getElementById("popup-close");
+// const popupInnerId = document.getElementById("popup-inner");
+// const popupCloseId = document.getElementById("popup-close");
+const popupForm = document.getElementById('popup-form');
+const hamburgerIcon = document.getElementById('hamburger-icon');
 
-popupId.addEventListener('click', e => {
-  if ((e.target.id === popupOuterId.id) || (e.target.id === popupCloseId.id)){
-    popupOuterId.style.display = 'none';
-    popupInnerId.style.display = 'none';
-  }
+popupOuterId.addEventListener('click', e => {
+  popupOuterId.style.display = 'none';
+  // popupInnerId.style.display = 'none';
+  popupForm.style.display = 'none';
 })
 
-// 現在表示しているポップアップスライドの番号
-let currentSlideIndex = 0;
+// // 現在表示しているポップアップスライドの番号
+// let currentSlideIndex = 0;
 
-// 各ボタンにクリックイベントを追加
-const buttons = document.querySelectorAll('.popup-buttons');
+// // 各ボタンにクリックイベントを追加
+// const buttons = document.querySelectorAll('.popup-buttons');
 
-buttons.forEach((button, index) => {
-    button.addEventListener('click', () => {
-      showPopupSlideContent(index)
-      highlightButton(button);
-    });
-});
+// buttons.forEach((button, index) => {
+//     button.addEventListener('click', () => {
+//       showPopupSlideContent(index)
+//       highlightButton(button);
+//     });
+// });
 
-// スライドを表示する関数
-function showPopupSlideContent(index) {
-    const slides = document.querySelectorAll('.popup-slides');
-    slides.forEach((slide, i) => {
-        slide.style.display = (i === index) ? 'block' : 'none';
-    });
-    currentSlideIndex = index;
-    updateNavigationButtons();
-}
+// // スライドを表示する関数
+// function showPopupSlideContent(index) {
+//     const slides = document.querySelectorAll('.popup-slides');
+//     slides.forEach((slide, i) => {
+//         slide.style.display = (i === index) ? 'block' : 'none';
+//     });
+//     currentSlideIndex = index;
+//     updateNavigationButtons();
+// }
 
-// 選択中のボタンをハイライトする関数
-function highlightButton(selectedButton) {
-  buttons.forEach(button => {
-      button.classList.remove('active'); // すべてのボタンからactiveクラスを削除
-  });
-  selectedButton.classList.add('active'); // 選択されたボタンにactiveクラスを追加
-}
+// // 選択中のボタンをハイライトする関数
+// function highlightButton(selectedButton) {
+//   buttons.forEach(button => {
+//       button.classList.remove('active'); // すべてのボタンからactiveクラスを削除
+//   });
+//   selectedButton.classList.add('active'); // 選択されたボタンにactiveクラスを追加
+// }
 
-// 戻るボタンの機能
-function popupPrevSlide() {
-    if (currentSlideIndex > 0) {
-      const button = document.getElementById(`popup-button-${currentSlideIndex - 1}`)
-      showPopupSlideContent(currentSlideIndex - 1);
-      highlightButton(button);
-    }
-}
+// // 戻るボタンの機能
+// function popupPrevSlide() {
+//     if (currentSlideIndex > 0) {
+//       const button = document.getElementById(`popup-button-${currentSlideIndex - 1}`)
+//       showPopupSlideContent(currentSlideIndex - 1);
+//       highlightButton(button);
+//     }
+// }
 
-// 進むボタンの機能
-function popupNextSlide() {
-    const slides = document.querySelectorAll('.popup-slides');
-    if (currentSlideIndex < slides.length - 1) {
-      const button = document.getElementById(`popup-button-${currentSlideIndex + 1}`)
-      showPopupSlideContent(currentSlideIndex + 1);
-      highlightButton(button);
-    }
-}
+// // 進むボタンの機能
+// function popupNextSlide() {
+//     const slides = document.querySelectorAll('.popup-slides');
+//     if (currentSlideIndex < slides.length - 1) {
+//       const button = document.getElementById(`popup-button-${currentSlideIndex + 1}`)
+//       showPopupSlideContent(currentSlideIndex + 1);
+//       highlightButton(button);
+//     }
+// }
 
-// ナビゲーションボタンの状態を更新する関数
-function updateNavigationButtons() {
-  const prevButton = document.getElementById('popup-prev');
-  const nextButton = document.getElementById('popup-next');
-  const endButton = document.getElementById('popup-end');
+// // ナビゲーションボタンの状態を更新する関数
+// function updateNavigationButtons() {
+//   const prevButton = document.getElementById('popup-prev');
+//   const nextButton = document.getElementById('popup-next');
+//   const endButton = document.getElementById('popup-end');
 
-  // 戻るボタンの無効化
-  prevButton.disabled = (currentSlideIndex === 0);
+//   // 戻るボタンの無効化
+//   prevButton.disabled = (currentSlideIndex === 0);
   
-  // 進むボタンの無効化
-  const slides = document.querySelectorAll('.popup-slides');
-  nextButton.disabled = (currentSlideIndex === slides.length - 1);
-  if (currentSlideIndex === slides.length - 1) {
-    nextButton.style.display = 'none';
-    endButton.style.display = 'block';
+//   // 進むボタンの無効化
+//   const slides = document.querySelectorAll('.popup-slides');
+//   nextButton.disabled = (currentSlideIndex === slides.length - 1);
+//   if (currentSlideIndex === slides.length - 1) {
+//     nextButton.style.display = 'none';
+//     endButton.style.display = 'block';
+//   }
+//   else {
+//     nextButton.style.display = 'block';
+//     endButton.style.display = 'none';
+//   }
+// }
+
+// // 戻るボタン、進むボタン、始めるボタンにイベントリスナーを追加
+// document.getElementById('popup-prev').addEventListener('click', popupPrevSlide);
+// document.getElementById('popup-next').addEventListener('click', popupNextSlide);
+// document.getElementById('popup-end').addEventListener('click', () => {
+//   popupOuterId.style.display = 'none';
+//   popupInnerId.style.display = 'none';
+// });
+
+// // ヘルプボタンでポップアップを表示
+// document.getElementById("header-help").onclick = () => {
+//   popupOuterId.style.display = 'block';
+//   popupInnerId.style.display = 'block';
+//   showPopupSlideContent(0);
+//   highlightButton(buttons[0]);
+// }
+
+// // ポップアップの初期表示
+// showPopupSlideContent(0);
+// highlightButton(buttons[0]); 
+
+// クリックイベントで状態を切り替える
+runIcon.addEventListener('click', () => {
+
+  if(state === 'play') {
+    playClicked = true;
+    runCode();
   }
   else {
-    nextButton.style.display = 'block';
-    endButton.style.display = 'none';
-  }
-}
+    // 現在のクラスを削除
+    runIcon.classList.remove(state);
 
-// 戻るボタン、進むボタン、始めるボタンにイベントリスナーを追加
-document.getElementById('popup-prev').addEventListener('click', popupPrevSlide);
-document.getElementById('popup-next').addEventListener('click', popupNextSlide);
-document.getElementById('popup-end').addEventListener('click', () => {
-  popupOuterId.style.display = 'none';
-  popupInnerId.style.display = 'none';
+    // インデックスを次の状態に変更
+    state = (state==='stop') ? 'continuous' : 'stop';
+
+    // 新しいクラスを追加
+    runIcon.classList.add(state);
+  }
 });
 
-// ヘルプボタンでポップアップを表示
-document.getElementById("header-help").onclick = () => {
-  popupOuterId.style.display = 'block';
-  popupInnerId.style.display = 'block';
-  showPopupSlideContent(0);
-  highlightButton(buttons[0]);
-}
+runSwitchButton.addEventListener('click', () => {
+  
+  if(state === 'play') {
+    runIcon.classList.remove('play');
+    runIcon.classList.add('continuous');
+    state = 'continuous';
+    runSwitchButton.textContent = '常時実行:ON';
+  }
+  else {
+    // 現在のクラスを削除
+    runIcon.classList.remove(state);
+    runIcon.classList.add('play');
+    state = 'play';
+    runSwitchButton.textContent = '常時実行:OFF';
+  }
+});
 
-// ポップアップの初期表示
-showPopupSlideContent(0);
-highlightButton(buttons[0]); 
+hamburgerIcon.addEventListener('click', () => {
+  hamburgerIcon.classList.toggle('open');
+});
 
 // ページ読み込み時のレイアウト崩れを防ぐための処理
 window.addEventListener('load', function() {
@@ -439,7 +517,7 @@ document.getElementById("save-button").onclick = () => {
 
   popupOuterId.style.display = 'block';
   // popupInnerId.style.display = 'block';
-  popupForm.style.display = 'block';
+  popupForm.style.display = 'grid';
 
   // // フォームの送信イベントを設定
   // contentForm.onsubmit = async (e) => {
@@ -483,7 +561,7 @@ const supabaseUrl = 'https://foxfxembozpnvfdwxnog.supabase.co';
 const supabaseKey = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImZveGZ4ZW1ib3pwbnZmZHd4bm9nIiwicm9sZSI6ImFub24iLCJpYXQiOjE3MzAxMTQ0NDMsImV4cCI6MjA0NTY5MDQ0M30.brm2eeigBJv6u1QBcbEl5QAsqsEl1IzYtICuhrlYdDc';
 const supabase = createClient(supabaseUrl, supabaseKey);
 
-document.getElementById('contentForm').addEventListener('submit', async function(event) {
+document.getElementById('content-form').addEventListener('submit', async function(event) {
   event.preventDefault(); // フォームのデフォルトの送信を防ぐ
 
   const formElement = document.getElementById('contentForm'); // フォーム要素を取得
@@ -493,7 +571,7 @@ document.getElementById('contentForm').addEventListener('submit', async function
   console.log(formData);
   try {
 
-    const response = await fetch('http://localhost:3000/api/saveContent', {
+    const response = await fetch(`${process.env.API_ENDPOINT}/api/updateContent`, {
       method: 'POST',
       headers: {
           'Accept': 'application/json', // レスポンスの形式を指定
@@ -539,7 +617,7 @@ document.getElementById('contentForm').addEventListener('submit', async function
     const url = `https://foxfxembozpnvfdwxnog.supabase.co/storage/v1/object/public/Blosite_photos/images/content-${contentId}.png`;
     
     // データベースに画像のURLを更新
-    await fetch(`http://localhost:3000/api/updateContent`, {
+    await fetch(`${process.env.API_ENDPOINT}/api/saveContent`, {
         method: 'PUT',
         headers: {
             'Content-Type': 'application/json',

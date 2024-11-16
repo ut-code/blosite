@@ -2,7 +2,7 @@ import '/src/styles/share.css';
 
 async function fetchContents() {
     try {
-        const response = await fetch('http://localhost:3000/api/getContents');
+        const response = await fetch(`${process.env.API_ENDPOINT}/api/getContents`);
         if (!response.ok) {
             throw new Error(`ネットワークエラー: ${response.status}`);
         }
