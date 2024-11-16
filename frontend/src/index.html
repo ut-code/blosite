@@ -1,56 +1,104 @@
 <!DOCTYPE html>
 <html lang="ja">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Blosite</title>
-    <link rel="icon" href="<%= require('/src/images/icon.svg') %>">
-</head>
-<body>
-    <div id="container" style="visibility: hidden;">
-        <header>
-            <div class="header-container">
-              <a href="#" class="header-logo"><img id="header-icon" src="<%= require('/src/images/icon.svg') %>">Blosite</a>
-              <!-- <sub>by ut.code();</sub> -->
-              <!-- <nav>
+    <link rel="icon" href="<%= require('/src/images/icon.svg') %>" />
+  </head>
+  <body>
+    <div id="container" style="visibility: hidden">
+      <header>
+        <div class="header-container">
+          <a href="#" class="header-logo"
+            ><img
+              id="header-icon"
+              src="<%= require('/src/images/icon.svg') %>"
+            />Blosite</a
+          >
+          <!-- <sub>by ut.code();</sub> -->
+          <!-- <nav>
                 <ul class="nav-links">
                     <li><a href="./..">トップページに戻る</a></li>
                 </ul>
               </nav> -->
-            </div>
-        </header>
-        <div class="content">
-            <div class="card" id="about">
-                <h2>Blositeへようこそ!</h2>
-                <p>Blositeでは、直感的に操作しやすいブロックプログラミングでWebページを作ることができます。
-                    プログラミングが初めての方でも気軽に楽しめます！
-                </p>
-                <a href="https://kf75.utcode.net/" class="btn">ut.code(); 駒場祭ウェブサイトに戻る</a>
-            </div>
-            <div class="card">
-                <h2>チュートリアル</h2>
-                <p>Blositeでの操作方法やウェブサイトがどのように作られているかを学ぼう！</p>
-                <a href="./tutorial" class="btn">チュートリアルページへ</a>
-            </div>
-            <div class="card">
-                <h2>サンドボックス</h2>
-                <p>自由にブロックを配置して、自分なりのサイトを作ってみよう！</p>
-                <a href="./sandbox" class="btn">サンドボックスページへ</a>
-            </div>
-            <div class="card">
-                <h2></h2>
-                <p>他の人が作って公開したウェブサイトに触れてみよう！</p>
-                <a href="./share" class="btn">共有ページへ</a>
-            </div>
-            <div class="card">
-                <h2>よくある質問</h2>
-                <p></p>
-                <a href="" class="btn">もっと詳しく</a>
-            </div>
         </div>
-        <footer>
-            <p>ut.code(); 駒場祭プロジェクト</p>
-        </footer>
+      </header>
+      <div class="content">
+        <div class="card" id="about">
+          <div>
+            <h2>Blositeへようこそ!</h2>
+            <p>
+              ここでは、直感的に操作しやすいブロックプログラミングでWebページを作って遊ぶことができます。<br>
+              プログラミングが初めての方でも気軽に楽しめます！
+            </p>
+            <a href="https://kf75.utcode.net/" class="btn"
+              >ut.code(); 駒場祭ウェブサイトに戻る</a
+            >
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-text">
+            <h2>まずはここから</h2>
+            <p>Blositeの遊び方やウェブサイトの作り方を学ぼう！</p>
+            <a href="./tutorial" class="btn">チュートリアル一覧へ</a>
+          </div>
+          <img
+            id="card-img"
+            src="<%= require('/src/images/top_tutorial.png') %>"
+          />
+        </div>
+        <div class="card">
+          <div class="card-text">
+            <h2>ゼロから作ろう</h2>
+            <p>自由にブロックを配置して<br>自分なりのサイトを作ってみよう！</p>
+            <a href="./sandbox" class="btn">サンドボックスページへ</a>
+          </div>
+          <img
+            id="card-img"
+            src="<%= require('/src/images/top_sandbox.png') %>"
+          />
+        </div>
+        <div class="card">
+          <div>
+            <h2>アイデアを求めて</h2>
+            <p>他の人が作って公開したウェブサイトに触れてみよう！</p>
+            <a href="./share" class="btn">共有ページへ</a>
+          </div>
+        </div>
+        <div class="card">
+          <div>
+            <h2>困ったときは</h2>
+            <div>
+                <details>
+                    <summary>作ったサイトはどうやって共有すればいいのですか？</summary>
+                    <p>
+                        サンドボックスページから共有できます。<br>
+                        丸型のアイコンを押すと出てくるメニューにある「共有する」を押して<br>
+                        入力欄を埋めると共有できます！
+                    </p>
+                </details>
+                <details>
+                    <summary>〇〇や△△がよくわからないです...</summary>
+                    <p>
+                        ぜひ現地のスタッフに聞きましょう！<br>
+                        どんな質問でも優しく答えてくれますよ！
+                    </p>
+                </details>
+                <details>
+                    <summary>共有したサイトを削除したいのですが...</summary>
+                    <p>
+                        スタッフにお尋ねください。<br>
+                    </p>
+                </details>
+            </div>
+            <!-- <a href="" class="btn">もっと詳しく</a> -->
+          </div>
+        </div>
+      </div>
+      <footer>
+        <p>ut.code(); 駒場祭プロジェクト</p>
+      </footer>
     </div>
-</body>
+  </body>
 </html>

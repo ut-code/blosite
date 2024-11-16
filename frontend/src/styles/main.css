@@ -145,7 +145,8 @@ code {
   display: flex;
   width: 100%;
   max-width: 100%;
-  height: calc(100vh - 37px)
+  height: calc(100vh - 37px);
+  background-color: #ffffff;
 }
 
 /* スクリーンバーの表示に合わせて画面サイズを調整 */
