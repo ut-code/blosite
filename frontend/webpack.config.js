@@ -1,5 +1,6 @@
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const webpack = require('webpack');
 
 // Base config that applies to either development or production mode.
 const config = {
@@ -121,6 +122,9 @@ const config = {
       template: './src/preview/index.html',
       filename: 'preview/index.html',
       chunks: ['preview'],
+    }),
+    new webpack.EnvironmentPlugin({
+      "API_ENDPOINT": "http://localhost:3000"
     }),
   ],
 };
