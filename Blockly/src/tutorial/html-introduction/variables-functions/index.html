@@ -1,0 +1,134 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>チュートリアル：変数と関数</title>
+  </head>
+  <body>
+    <div id="content" style="visibility: hidden;">
+      <header>
+        <div class="header-container">
+          <a href="#" class="header-logo">Blosite</a>
+          <!-- <sub>by ut.code();</sub> -->
+          <nav>
+            <ul class="nav-links">
+                <li><a href="./..">トップページに戻る</a></li>
+                <li id="header-help"><a>ヘルプ</a></li>
+                <li><a href="#">Q&A</a></li>
+            </ul>
+            <div class="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+          </nav>
+        </div>
+      </header>
+      <div class="split-view vertical">
+        <div id="pageContainer">
+          <div id="outputPane">
+            <pre id="generatedCode" class="beforeClicked"><code></code></pre>
+            <div id="wstitle"></div>
+            <div id="output"></div>
+            <button id="code-button">コードを表示する</button>
+            <div id="errorMessage">何もエラーは起こってません</div>
+          </div>
+          <div id="blocklyDiv"></div>
+        </div>
+        <!--
+        <label for="popupflag1">popup 1</label>
+        <input type="checkbox" class="popup-flag1" id="popupFlag1">
+        <label class="popup-background" for="popupFlag1"></label>
+        <div class="popup">
+          <label class="close-button" for="popupFlag1">×</label>
+          <div class="content">
+            content
+          </div>
+        </div>
+        --->
+        <div id="popup">
+          <div id="popup-outer"></div>
+          <div id="popup-inner">
+            <div id="popup-title">変数と関数</div>
+            <div id="popup-close">×</div>
+            <div id="popup-button-container">
+              <button class="popup-buttons" id="popup-button-0">変数とは</button>
+              <span class="popup-arrow">➡️</span> 
+              <button class="popup-buttons" id="popup-button-1">関数とは</button>
+              <span class="popup-arrow">➡️</span> 
+              <button class="popup-buttons" id="popup-button-2">さまざまな処理</button>
+              <span class="popup-arrow">➡️</span> 
+              <button class="popup-buttons" id="popup-button-3">独自の機能を追加</button>
+            </div>
+            <div id="popup-message">
+              <!-- ここにスライドコンテンツを表示 -->
+              <div class="popup-slides" id="popupSlide-0">
+                <section>
+                  <h3>変数とは</h3>
+                  <p>表に値を入力し、行ごとの総和や平均が出力されるプログラムを作ってみよう！</p>
+                  <h3>詳細</h3>
+                  <p>
+                    ３✕３の表のうち、一行目には「一列目」「二列目」「計算結果」と表示させ、他の行の一、二列目には数字を入力する箇所を、三列目には列ごとの計算結果を表示する場所を作りましょう。<br>
+                    また、行ごとの計算方法を選択できるメニューと、押すと計算結果が表示されるボタンも置きましょう。<br>
+                    <br>
+                    自信のある方は次の説明を見ずに自分で一から作ってみましょう！<br>
+                  </p>
+                </section>
+              </div>
+              <div class="popup-slides" id="popup-slide-1" style="display: none;">
+                <section>
+                  <h3>HTML</h3>
+                  <p>
+                    まずは&lt;table&gt;などを利用して表を作ってみましょう。<br>
+                    その後、&lt;input&gt;を使って値を入力する箇所を、&lt;button&gt;を使って計算を行うボタンを、&lt;select&gt;で計算方法を選べるメニューを作成します。&lt;input&gt;には、type = numberを設定するとよいでしょう。<br>
+                    数値を取得する、計算結果を表示するためにidも設定しておきましょう。<br>
+                  </p>
+                  <h3>CSS</h3>
+                  <p>
+                    つぎはCSSを使って自分の思うままにスタイルを設定してみましょう。&lt;style&gt;タグを使ってその中にCSSを記述します。<br>
+                    &lt;td&gt;や&lt;th&gt;にはborderを、&lt;table&gt;にはborder-collapse: collapseを設定することで、それらしいボーダーが表示されるようになります。<br>
+                    ある程度できたら次に進みましょう。<br>
+                </section>
+              </div>
+              <div class="popup-slides" id="popup-slide-2" style="display: none;">
+                <section>
+                  <h3>値の取得</h3>
+                  <p>
+                    JavaScriptを使って、入力された値の取得、計算、表示を行いましょう。&lt;script&gt;タグを使ってその中にJavaScriptを記述します。<br>
+                    前もって設定しておいたidの要素を取得するには、「id="～"の要素」ブロックを使いましょう。必要であれば、取得した要素を変数にセットしましょう。<br>
+                    &lt;input&gt;に入力された値を読み取るには「要素内の値を取得」ブロックを、&lt;select&gt;の選択には「要素内の文章を取得」を使いましょう。<br>
+                  </p>
+                  <h3>計算</h3>
+                  <p>
+                    取得した値を使って計算を行いましょう。&lt;select&gt;で選択された値によって、計算方法を変えるには、logic内の「もし～実行～」ブロックなどを使って別々の計算をしましょう。<br>
+                    計算をする前に気をつけなければならないことがあります。それは、「要素内の値を取得」で取得した値は文字列として扱われるため、計算を行う際には数値に変換する必要があるということです。「～を～に変換」ブロックを使いましょう。<br>
+                    そうしたら、Math内のブロックで計算をしましょう。必要であれば、計算結果も変数にセットしておきましょう。<br>
+                  <h3>表示</h3>
+                  <p>
+                    最後に、計算結果を表示するようにしましょう。ボタンを押すと結果が表示されるようにするために、「～にイベントクリックが発生したときに～」ブロックを使いましょう。ここで注意点ですが、このブロックの内部で&lt;input&gt;の値を取得するようにしてください。そうしないと、取得されるのがinputに何も入っていない最初の一回だけとなり正常に動作しません。計算処理もこのブロックの中に入れ込みましょう。<br>
+                    表示については、「～を～に代入」ブロックを使って、要素内の値を変更することができます。<br>
+                  </p>
+                </section>
+              </div>
+              <div class="popup-slides" id="popup-slide-3" style="display: none;">
+                <section>
+                  <h3>機能追加</h3>
+                  <p>
+                    ここまでできたら、さらに機能を追加してみましょう。<br>
+                    「こんなのができたらいいな～」、「こんな機能があったら便利だな～」と想像を膨らませ、趣くままに作ってみましょう。<br>
+                    考えられる機能としては例えば、行の追加や削除機能、列の追加や削除機能、セルの色を変える機能などが挙げられます。<br>
+                  </p>
+                </section>
+              </div>
+            </div>
+            <div id="popup-navigation">
+              <button id="popup-prev">戻る</button>
+              <button id="popup-next">進む</button>
+              <button id="popup-end">始める</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
