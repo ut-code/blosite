@@ -117,7 +117,7 @@ const ws = Blockly.inject(blocklyDiv, {
   },
   zoom: {
     controls: true, // ズーム可能かどうか
-    wheel: true,   // マウスホイールでズーム可能かどうか
+    wheel: false,   // マウスホイールでズーム可能かどうか
     startScale: 1,  // 初期のズーム倍率
     maxScale: 5,    // 最大ズーム倍率
     minScale: 0.5,  // 最小ズーム倍率
@@ -128,18 +128,13 @@ const ws = Blockly.inject(blocklyDiv, {
 });
 
 const errorMessage = document.getElementById("error-message");
-
-
 const runIcon = document.getElementById('run-icon');
 const runSwitchButton = document.getElementById('run-switch-button');
-const states = ['play', 'stop', 'continuous'];
+// state は 'play', 'stop', 'continuous'のどれか
 let state = 'play';
 let playClicked = false;
 
 
-// This function resets the code and output divs, shows the
-// generated code from the workspace, and evals the code.
-// In a real application, you probably shouldn't use `eval`.
 const runCode = () => {
   // Blocklyからコードを生成
   let code = websiteGenerator.workspaceToCode(ws);
@@ -158,13 +153,13 @@ const runCode = () => {
     titleContent = code.slice(titleTagIndex + 7, closeTitleTagIndex); // <title> と </title> の間の内容
   }
   titlename.innerText = titleContent;
+
    // <html> タグの内側だけを取得
    code = code.slice(htmlTagIndex, closeHtmlTagIndex + 7); // <html> と </html> を含む
  
    // コードを表示
    codeDiv.innerText = code;
    outputDiv.innerHTML = code;
-  // eval(code);
 
   // 正規表現で <script> タグを取り出す
   const scriptRegex = /<script>([\s\S]*?)<\/script>/;
@@ -178,16 +173,12 @@ const runCode = () => {
     playClicked = false;
     try {
       eval(scriptCode);
-      // getErrorId.textContent = "何もエラーは起こってません"
-      // getErrorId.classList = "safe"
       errorMessage.style.display = "none";
     }  catch (e) {
       errorMessage.style.display = "block";
       errorMessage.textContent = `エラーが発生しました\n${e.name} ${e.message}`; 
-      // getErrorId.classList = "errorOccured"
     }
   }
-
 };
 
 // Load the initial state from storage and run the code.
@@ -350,7 +341,7 @@ document.getElementById("preview-button").onclick = () => {
   // 保存するHTMLの文字列を取得
   const generatedHTML = document.getElementById("output").innerHTML;
 
-  // localStorageに保存
+  // sessionStorageに保存
   sessionStorage.setItem("previewHTML", generatedHTML);
   console.log("HTMLを保存しました。");
 
@@ -490,14 +481,14 @@ runSwitchButton.addEventListener('click', () => {
     runIcon.classList.remove('play');
     runIcon.classList.add('continuous');
     state = 'continuous';
-    runSwitchButton.textContent = '常時実行:ON';
+    runSwitchButton.textContent = 'スクリプトの常時実行:ON';
   }
   else {
     // 現在のクラスを削除
     runIcon.classList.remove(state);
     runIcon.classList.add('play');
     state = 'play';
-    runSwitchButton.textContent = '常時実行:OFF';
+    runSwitchButton.textContent = 'スクリプトの常時実行:OFF';
   }
 });
 
@@ -516,45 +507,8 @@ document.getElementById("save-button").onclick = () => {
   const popupForm = document.getElementById('popup-form');
 
   popupOuterId.style.display = 'block';
-  // popupInnerId.style.display = 'block';
   popupForm.style.display = 'grid';
-
-  // // フォームの送信イベントを設定
-  // contentForm.onsubmit = async (e) => {
-  //   e.preventDefault();
-    
-  //   // フォームデータを取得
-  //   const formData = new FormData(contentForm);
-  //   const contentData = {};
-  //   formData.forEach((value, key) => {
-  //     contentData[key] = value;
-  //   });
-
-  //   // コンテンツを保存
-  //   await saveContent(contentData);
-
-  //   // ポップアップを閉じる
-  //   popupOuterId.style.display = 'none';
-  //   // popupInnerId.style.display = 'none';
-  //   popupForm.style.display = 'none';
-  // };
 }
-
-// async function saveContent(contentData) {
-//   try {
-//     const response = await fetch('/api/saveContent', {
-//       method: 'POST',
-//       headers: {
-//         'Content-Type': 'application/json',
-//       },
-//       body: JSON.stringify(contentData),
-//     });
-//     const data = await response.json();
-//     console.log('Content saved:', data);
-//   } catch (error) {
-//     console.error('Error saving content:', error);
-//   }
-// }
 
 // SupabaseのプロジェクトURLとAPIキーを使用してクライアントを作成
 const supabaseUrl = 'https://foxfxembozpnvfdwxnog.supabase.co';

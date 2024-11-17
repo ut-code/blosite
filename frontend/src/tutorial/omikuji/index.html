@@ -27,16 +27,37 @@
       <div class="split-view vertical">
         <div id="pageContainer">
           <div id="outputPane">
-            <pre id="generatedCode" class="beforeClicked"><code></code></pre>
             <div id="wstitle"></div>
             <div id="output"></div>
-            <button id="code-button">コードを表示する</button>
-            <div id="errorMessage">何もエラーは起こってません</div>
+            <pre id="generatedCode" class="beforeClicked"><code></code></pre>
+            <div id="error-message"></div>
           </div>
-          <div id="blocklyDiv"></div>
+          <div id="blocklyDiv">
+            <div id="icon-container">
+              <input type="checkbox" id="run-toggle" class="run-toggle">
+              <label for="run-toggle" id="run-icon" class="play"></label>
+              
+              <input type="checkbox" id="menu-toggle" class="menu-toggle">
+              <label for="menu-toggle" id="hamburger-icon"></label>
+
+              <!-- メニュー -->
+              <ul class="menu">
+                <li id="code-button">コードを表示</li>
+                <li id="run-switch-button">スクリプトの<br>常時実行:OFF</li>
+                <li id="sandbox-button">サンドボックス<br>で作り続ける</li>
+                <li id="preview-button">プレビューを<br>全画面で表示</li>
+                <li></li>
+              </ul>
+            </div>
+          </div>
         </div>
         <div id="popup">
           <div id="popup-outer"></div>
+          <div id="popup-sandbox">
+            <div id="popup-close">×</div>
+            <p id="popup-sandbox-message"></p>
+            <button id="popup-sandbox-button">進む</button>
+          </div>
           <div id="popup-inner">
             <div id="popup-title">おみくじ</div>
             <div id="popup-close">×</div>
