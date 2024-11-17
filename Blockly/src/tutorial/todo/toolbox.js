@@ -442,8 +442,6 @@ export const toolbox = {
           kind: "block",
           type: "js_createElement",
         },
-
-        /*
         {
           kind: "block",
           type: "js_prompt"
@@ -451,6 +449,11 @@ export const toolbox = {
         {
           kind: "block",
           type: "js_appendChild"
+        },
+        /*
+        {
+          kind: "block",
+          type: "js_removeChlid"
         },
         */
         {
