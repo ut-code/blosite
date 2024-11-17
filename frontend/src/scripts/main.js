@@ -114,6 +114,15 @@ Blockly.Themes.customStyle = Blockly.Theme.defineTheme('custom_style', {
          'colour': '#1e88e5'
       },
    },
+   'componentStyles': {
+    'toolboxBackgroundColour': '#f0f0f0', // ツールボックス背景色
+    'toolboxForegroundColour': '#000000', // ツールボックス文字色
+    'flyoutBackgroundColour': '#cccccc', // フライアウトの背景色
+    // 'flyoutForegroundColour': '#cccccc', // フライアウトの文字色
+    'flyoutOpacity': 0.8, // フライアウトの透明度 (0.0 ～ 1.0)
+    'scrollbarColour': '#888888', // スクロールバーの色
+    'scrollbarOpacity': 0.6, // スクロールバーの透明度
+  }
 });
 
 // Register the blocks and generator with Blockly
@@ -149,21 +158,26 @@ const ws = Blockly.inject(blocklyDiv, {
     // scaleSpeed: 1.2, // 1回毎のズーム倍率
   },
   sounds: true, // 音を鳴らすかどうか
+  renderer: 'geras', // レンダラーの指定
 });
 
-const getErrorId = document.getElementById("errorMessage");
+const errorMessage = document.getElementById("error-message");
+const runIcon = document.getElementById('run-icon');
+const runSwitchButton = document.getElementById('run-switch-button');
+// state は 'play', 'stop', 'continuous'のどれか
+let state = 'play';
+let playClicked = false;
 
-// This function resets the code and output divs, shows the
-// generated code from the workspace, and evals the code.
-// In a real application, you probably shouldn't use `eval`.
+
 const runCode = () => {
-   // Blocklyからコードを生成
-   let code = websiteGenerator.workspaceToCode(ws);
+  // Blocklyからコードを生成
+  let code = websiteGenerator.workspaceToCode(ws);
+
+  // <html> タグの位置を見つける
+  const htmlTagIndex = code.indexOf('<html>');
+  const closeHtmlTagIndex = code.indexOf('</html>');
   
-   // <html> タグの位置を見つける
-   const htmlTagIndex = code.indexOf('<html>');
-   const closeHtmlTagIndex = code.indexOf('</html>');
-     // <title> タグの位置を見つける
+  // <title> タグの位置を見つける
   const titleTagIndex = code.indexOf('<title>');
   const closeTitleTagIndex = code.indexOf('</title>');
 
@@ -173,13 +187,13 @@ const runCode = () => {
     titleContent = code.slice(titleTagIndex + 7, closeTitleTagIndex); // <title> と </title> の間の内容
   }
   titlename.innerText = titleContent;
+
    // <html> タグの内側だけを取得
    code = code.slice(htmlTagIndex, closeHtmlTagIndex + 7); // <html> と </html> を含む
  
    // コードを表示
    codeDiv.innerText = code;
    outputDiv.innerHTML = code;
-  // eval(code);
 
   // 正規表現で <script> タグを取り出す
   const scriptRegex = /<script>([\s\S]*?)<\/script>/;
@@ -189,15 +203,16 @@ const runCode = () => {
   const scriptCode = match ? match[1] : '';
   
   // スクリプトを動的に評価してエラーがあれば表示
-  try {
-    eval(scriptCode);
-    getErrorId.textContent = "何もエラーは起こってません"
-    getErrorId.classList = "safe"
-  }  catch (e) {
-    getErrorId.textContent = e.name + " " +e.message 
-    getErrorId.classList = "errorOccured"
+  if (state==="stop" || playClicked){
+    playClicked = false;
+    try {
+      eval(scriptCode);
+      errorMessage.style.display = "none";
+    }  catch (e) {
+      errorMessage.style.display = "block";
+      errorMessage.textContent = `エラーが発生しました\n${e.name} ${e.message}`; 
+    }
   }
-
 };
 
 // Load the initial state from storage and run the code.
@@ -346,13 +361,26 @@ function forbidblockconnect(block,blockA,blockB,){
 document.getElementById("code-button").onclick = () => {
   const getCodeID = document.getElementById("generatedCode");
   const getButtonID = document.getElementById("code-button");
-  getCodeID.classList.toggle("afterClicked");
-  getCodeID.classList.toggle("beforeClicked");
-  if (getButtonID.textContent === "コードを表示する"){
+  if (getButtonID.textContent === "コードを表示"){
     getButtonID.textContent = "コードを隠す";
+    getCodeID.style.display = "block";
   } else {
-    getButtonID.textContent = "コードを表示する";
+    getButtonID.textContent = "コードを表示";
+    getCodeID.style.display = "none";
   }
+}
+
+// プレビューを表示するボタン
+document.getElementById("preview-button").onclick = () => {
+  // 保存するHTMLの文字列を取得
+  const generatedHTML = document.getElementById("output").innerHTML;
+
+  // sessionStorageに保存
+  sessionStorage.setItem("previewHTML", generatedHTML);
+  console.log("HTMLを保存しました。");
+
+  // プレビュー画面に遷移
+  window.open('./../preview', '_blank');
 }
 
 // ポップアップの表示
@@ -361,11 +389,52 @@ const popupId = document.getElementById("popup");
 const popupOuterId = document.getElementById("popup-outer");
 const popupInnerId = document.getElementById("popup-inner");
 const popupCloseId = document.getElementById("popup-close");
+const popupSandbox = document.getElementById("popup-sandbox");
+const hamburgerIcon = document.getElementById('hamburger-icon');
+
+
+document.getElementById("sandbox-button").onclick = () => {
+  const content = JSON.stringify(Blockly.serialization.workspaces.save(ws));
+  const data = window.localStorage?.getItem("sandboxWorkspace");
+  showPopup(content, data);
+};
+
+function showPopup(content, data) {
+  const popup = document.getElementById('popup-sandbox');
+  const popupSandboxMessage = document.getElementById('popup-sandbox-message');
+  popup.style.display = 'block';
+  popupOuterId.style.display = 'block';
+
+  if (data) {
+      popupSandboxMessage.innerText = 'サンドボックスに移動して作り続けますか？\n注意：サンドボックスに途中のデータがあります。\n上書きしてもよろしいですか？';
+  } else {
+      popupSandboxMessage.innerText = 'サンドボックスに移動して作り続けますか？';
+  }
+
+  // 確認ボタンがクリックされた場合の処理
+  document.getElementById('popup-sandbox-button').onclick = () => {
+      window.localStorage?.setItem("sandboxWorkspace", content);
+      window.location.href = `./../sandbox`;
+  };
+}
+
+document.getElementById("popup-sandbox-button").onclick = () => {
+  popupOuterId.style.display = 'block';
+}
 
 popupId.addEventListener('click', e => {
   if ((e.target.id === popupOuterId.id) || (e.target.id === popupCloseId.id)){
     popupOuterId.style.display = 'none';
     popupInnerId.style.display = 'none';
+    popupSandbox.style.display = 'none';
+  }
+})
+
+popupSandbox.addEventListener('click', e => {
+  if ((e.target.id === popupOuterId.id) || (e.target.id === popupCloseId.id)){
+    popupOuterId.style.display = 'none';
+    popupInnerId.style.display = 'none';
+    popupSandbox.style.display = 'none';
   }
 })
 
@@ -460,6 +529,48 @@ document.getElementById("header-help").onclick = () => {
 // ポップアップの初期表示
 showPopupSlideContent(0);
 highlightButton(buttons[0]); 
+
+// クリックイベントで状態を切り替える
+runIcon.addEventListener('click', () => {
+
+  if(state === 'play') {
+    playClicked = true;
+    runCode();
+  }
+  else {
+    // 現在のクラスを削除
+    runIcon.classList.remove(state);
+
+    // インデックスを次の状態に変更
+    state = (state==='stop') ? 'continuous' : 'stop';
+
+    // 新しいクラスを追加
+    runIcon.classList.add(state);
+  }
+});
+
+runSwitchButton.addEventListener('click', () => {
+  
+  if(state === 'play') {
+    runIcon.classList.remove('play');
+    runIcon.classList.add('continuous');
+    state = 'continuous';
+    runSwitchButton.textContent = 'スクリプトの常時実行:ON';
+  }
+  else {
+    // 現在のクラスを削除
+    runIcon.classList.remove(state);
+    runIcon.classList.add('play');
+    state = 'play';
+    runSwitchButton.textContent = 'スクリプトの常時実行:OFF';
+  }
+});
+
+hamburgerIcon.addEventListener('click', () => {
+  hamburgerIcon.classList.toggle('open');
+});
+
+
 
 // ページ読み込み時のレイアウト崩れを防ぐための処理
 window.addEventListener('load', function() {
