@@ -423,6 +423,10 @@ export const toolbox = {
           type: "js_getElementById",
         },
         {
+          kind:"block",
+          type:"js_appendChild"
+        },
+        {
           kind: "block",
           type: "js_getElementByClassName",
         },
