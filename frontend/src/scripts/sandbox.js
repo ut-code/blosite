@@ -518,7 +518,7 @@ const supabase = createClient(supabaseUrl, supabaseKey);
 document.getElementById('content-form').addEventListener('submit', async function(event) {
   event.preventDefault(); // フォームのデフォルトの送信を防ぐ
 
-  const formElement = document.getElementById('contentForm'); // フォーム要素を取得
+  const formElement = document.getElementById('content-form'); // フォーム要素を取得
   
   const formData = new FormData(formElement);
   const content = JSON.stringify(Blockly.serialization.workspaces.save(ws)); // ブロックの配置を取得
