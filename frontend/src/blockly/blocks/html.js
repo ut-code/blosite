@@ -1750,6 +1750,19 @@ export const htmlBlocks = Blockly.common.createBlockDefinitionsFromJsonArray([
     style: "javascript_blocks",
   },
   {
+    type: "js_value",
+    message0: "要素 %1 の値",
+    args0: [
+      {
+        type: "input_value",
+        name: "VALUE",
+      }
+    ],
+    previousStatement: null,
+    nextStatement: null,
+    style: "javascript_blocks",
+  },
+  {
     type: "js_alert",
     message0: "アラート%1",
     args0: [
@@ -1769,7 +1782,7 @@ export const htmlBlocks = Blockly.common.createBlockDefinitionsFromJsonArray([
       {
         type: "input_value",
         name: "VALUE",
-      }
+      },
     ],
     output: null,
     style: "javascript_blocks",
@@ -1782,6 +1795,22 @@ export const htmlBlocks = Blockly.common.createBlockDefinitionsFromJsonArray([
         type: "input_value",
         name: "VALUE",
       }
+    ],
+    output: null,
+    style: "javascript_blocks",
+  },
+  {
+    type: "js_prompt",
+    message0: "プロンプト %1 初期値 %2",
+    args0: [
+      {
+        type: "input_value",
+        name: "CONTENT",
+      },
+      {
+        type: "input_value",
+        name: "DEFAULT",
+      },
     ],
     output: null,
     style: "javascript_blocks",
@@ -1813,6 +1842,24 @@ export const htmlBlocks = Blockly.common.createBlockDefinitionsFromJsonArray([
     ],
     previousStatement: null, 
     nextStatement: null,
+    style: "javascript_blocks",
+  },
+  {
+    type: "js_removeChild",
+    message0: "要素 %1 内の末尾に要素 %2 を削除",
+    args0: [
+      {
+        type: "input_value",
+        name: "PARENT",
+      },
+      {
+        type: "input_value",
+        name: "CHILD",
+      }
+    ],
+    previousStatement: null, 
+    nextStatement: null,
+    output: null,
     style: "javascript_blocks",
   },
   {
