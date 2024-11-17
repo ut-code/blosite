@@ -36,6 +36,9 @@ async function loadModules(page) {
       toolboxModule = await import('/src/tutorial/html-introduction/toolbox.js');
       serializationModule = await import('/src/tutorial/html-introduction/serialization.js');
       break;
+    case '/tutorial/html-introduction/variables-functions':
+      toolboxModule = await import('/src/tutorial/html-introduction/variables-functions/toolbox.js');
+      serializationModule = await import('/src/tutorial/html-introduction/variables-functions/serialization.js')
     default:
       throw new Error('Unknown page');
   }
