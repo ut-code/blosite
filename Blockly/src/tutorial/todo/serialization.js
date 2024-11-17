@@ -14,27 +14,27 @@ const xml = `
 <xml xmlns="http://www.w3.org/1999/xhtml">
   <block type="html_html-head-body" x="20" y="20">
     <statement name="HEAD">
-      <block type="html_title">
-        <field name="CONTENT">Sample</field>
-      </block>
     </statement>
     <statement name="BODY">
-      <block type="html_ul">
-        <statement name="CONTENT">
-          <block type="html_li">
-            <field name="CONTENT">Item 1</field>
+      <block type="html_input">
+        <value name="ATTRIBUTE"></value>
+        <next>
+          <block type="html_button">
+            <value name="ATTRIBUTE"></value>
+            <statement name="CONTENT">追加</statement>
             <next>
-              <block type="html_li">
-                <field name="CONTENT">Item 2</field>
+              <block type="html_ul">
+                <statement name="CONTENT"></statement>
                 <next>
-                  <block type="html_li">
-                    <field name="CONTENT">Item 3</field>
+                  <block type="html_script">
+                    <value name="ATTRIBUTE"></value>
+                    <statement name="CONTENT"></statement>
                   </block>
                 </next>
-              </block>
+              </block>  
             </next>
           </block>
-        </statement>
+        </next>
       </block>
     </statement>
   </block>
