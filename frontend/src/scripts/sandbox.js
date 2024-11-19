@@ -457,7 +457,7 @@ popupOuterId.addEventListener('click', e => {
 // showPopupSlideContent(0);
 // highlightButton(buttons[0]); 
 
-// クリックイベントで状態を切り替える
+// 状態を切り替える
 runIcon.addEventListener('click', () => {
 
   if(state === 'play') {
@@ -468,10 +468,10 @@ runIcon.addEventListener('click', () => {
     // 現在のクラスを削除
     runIcon.classList.remove(state);
 
-    // インデックスを次の状態に変更
+    // 次の状態に変更
     state = (state==='stop') ? 'continuous' : 'stop';
 
-    // 新しいクラスを追加
+    // 新しい状態のクラスを追加
     runIcon.classList.add(state);
   }
 });

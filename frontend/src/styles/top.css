@@ -179,6 +179,7 @@ header p {
 
 #help-menu {
   text-align: left;
+  /* min-width: 100px; */
 }
 
 footer {

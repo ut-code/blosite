@@ -14,7 +14,7 @@ body {
   width: 100%;
   background-color: #ffffff;
   color: rgb(0, 0, 0);
-  z-index: 100;
+  z-index: 1000;
   /* box-shadow: 0 4px 2px -2px gray; */
   display: flex;
   justify-content: space-between;
@@ -218,14 +218,37 @@ h1 {
     cursor: pointer;
 }
 
-#confirmButton {
-    background-color: #4CAF50;
-    color: white;
+#popup-close {
+    position: absolute;
+    top: 0;
+    right: 10px;
+    font-size: 32px;
+    font-weight: 800;
+    cursor: pointer;
+    border-radius: 40%;
+    width: 40px;
+    height: 40px;
 }
 
-#cancelButton {
-    background-color: #f44336;
+#confirm-button {
+    margin: auto;
+    margin-right: 20px;
+    padding: 10px 15px;
+    background-color: #007BFF;
     color: white;
+    font-size: 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+#cancel-button {
+    margin: auto;
+    margin-left: 20px;
+    padding: 10px 15px;
+    font-size: 20px;
+    color: rgb(71, 71, 71);
 }
 
 footer {
