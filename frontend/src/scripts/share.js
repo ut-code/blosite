@@ -24,11 +24,13 @@ function displayContents(contents) {
         contentDiv.className = 'card';
         
         contentDiv.innerHTML = `
-            <div class="description">
+            <div class="content-text">
                 <h2>${content.contentName}</h2>
-                <p>${content.description}</p>
-                <p>投稿者: ${content.username}</p>
-                <p>作成日時: ${new Date(content.createdAt).toLocaleString()}</p>
+                <p class="description">${content.description}</p>
+                <div class="details">
+                <p >投稿者: ${content.username}</p>
+                <p >作成日時: ${new Date(content.createdAt).toLocaleString()}</p>
+                </div>
             </div>
             <img src="${content.photo}" class="images">
         `;

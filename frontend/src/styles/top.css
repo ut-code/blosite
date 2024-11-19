@@ -177,6 +177,10 @@ header p {
   background-color: #e6e6e6;
 }
 
+#help-menu {
+  text-align: left;
+}
+
 footer {
   margin-top: 50px;
   background-color: #70a471;
@@ -185,4 +189,4 @@ footer {
   padding: 1em;
   width: 100%;
   bottom: 0;
-} 
+}
