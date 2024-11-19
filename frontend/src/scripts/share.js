@@ -1,4 +1,21 @@
 import '/src/styles/share.css';
+import DOMPurify from 'dompurify';
+
+function sanitizeInput(input) {
+    // エスケープ処理
+    const escapeHtml = (unsafe) => {
+        return unsafe
+            .replace(/&/g, '&amp;')
+            .replace(/</g, '&lt;')
+            .replace(/>/g, '&gt;')
+            .replace(/"/g, '&quot;')
+            .replace(/'/g, '&#039;');
+    };
+  
+    // エスケープされた文字列をDOMPurifyでさらにサニタイズ
+    const escapedInput = escapeHtml(input);
+    return DOMPurify.sanitize(escapedInput);
+}
 
 async function fetchContents() {
     try {
@@ -25,14 +42,14 @@ function displayContents(contents) {
         
         contentDiv.innerHTML = `
             <div class="content-text">
-                <h2>${content.contentName}</h2>
-                <p class="description">${content.description}</p>
+                <h2>${sanitizeInput(content.contentName)}</h2>
+                <p class="description">${sanitizeInput(content.description)}</p>
                 <div class="details">
-                <p >投稿者: ${content.username}</p>
-                <p >作成日時: ${new Date(content.createdAt).toLocaleString()}</p>
+                    <p>投稿者: ${sanitizeInput(content.username)}</p>
+                    <p>作成日時: ${new Date(content.createdAt).toLocaleString()}</p>
                 </div>
             </div>
-            <img src="${content.photo}" class="images">
+            <img src="${sanitizeInput(content.photo)}" class="images">
         `;
 
         contentDiv.addEventListener('click', () => {
