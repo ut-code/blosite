@@ -921,6 +921,21 @@ websiteGenerator.forBlock["css_padding"] = function (block, generator) {
   const code = value ? `padding:${sanitizedField}; ${value}` : `padding:${sanitizedField}`;
   return [code, Order.ATOMIC];
 };
+websiteGenerator.forBlock["css_text-align"] = function (block, generator) {
+  const field = block.getFieldValue("FIELD");
+  const value = generator.valueToCode(block, "VALUE", Order.ATOMIC);
+  const sanitizedField = sanitizeInput(field);
+  const code = value ? `text-align:${sanitizedField}; ${value}` : `text-align:${sanitizedField}`;
+  return [code, Order.ATOMIC];
+};
+websiteGenerator.forBlock["css_list-style-position"] = function (block, generator) {
+  const field = block.getFieldValue("FIELD");
+  const value = generator.valueToCode(block, "VALUE", Order.ATOMIC);
+  const sanitizedField = sanitizeInput(field);
+  const code = value ? `list-style-position:${sanitizedField}; ${value}` : `list-style-position:${sanitizedField}`;
+  return [code, Order.ATOMIC];
+};
+
 
 websiteGenerator.forBlock["css_border"] = function (block, generator) {
   const field = block.getFieldValue("FIELD");
