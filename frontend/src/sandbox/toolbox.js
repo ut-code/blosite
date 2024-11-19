@@ -452,6 +452,10 @@ export const toolbox = {
         },
         {
           kind: "block",
+          type: "js_removeChild",
+        },
+        {
+          kind: "block",
           type: "js_alert",
           inputs: {
             CONTENT: {
