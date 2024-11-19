@@ -18,7 +18,7 @@ export const toolbox = {
   contents: [
     {
       kind: "CATEGORY",
-      name: "HTML Elements",
+      name: "HTML要素",
       categorystyle: "htmlelement_category",
       contents: [
         {
@@ -53,7 +53,7 @@ export const toolbox = {
     },
     {
       kind: "CATEGORY",
-      name: "HTML Attributes",
+      name: "HTML属性",
       categorystyle: "htmlattribute_category",
       contents: [
         {
@@ -68,11 +68,11 @@ export const toolbox = {
           kind: "block",
           type: "html_style",
         },
-      ]
+      ],
     },
     {
       kind: "CATEGORY",
-      name: "CSS",
+      name: "見た目",
       categorystyle: "css_category",
       contents: [
         {
@@ -115,11 +115,11 @@ export const toolbox = {
           kind: "block",
           type: "css_display",
         },
-      ]
+      ],
     },
     {
       kind: "category",
-      name: "JavaScript",
+      name: "制御",
       categorystyle: "javascript_category",
       contents: [
         {
@@ -175,401 +175,401 @@ export const toolbox = {
     },
     {
       kind: "category",
-      name: "Variables",
+      name: "変数",
       categorystyle: "variable_category",
       custom: "VARIABLE",
     },
     {
       kind: "category",
-      name: "Functions",
+      name: "関数",
       categorystyle: "procedure_category",
       custom: "PROCEDURE",
     },
     {
       kind: "sep", // 間を開ける
     },
-  //   {
-  //     kind: "category",
-  //     name: "template",
-  //     contents: [
-  //       // ul, li
-  //       {
-  //         kind: "block",
-  //         type: "html_ul",
-  //         inputs: {
-  //           CONTENT: {
-  //             block: {
-  //               type: "html_li",
-  //               next: {
-  //                 block: {
-  //                   type: "html_li",
-  //                   next: {
-  //                     block: {
-  //                       type: "html_li",
-  //                     },
-  //                   },
-  //                 },
-  //               },
-  //             },
-  //           },
-  //         },
-  //       },
-  //       // ol, li
-  //       {
-  //         kind: "block",
-  //         type: "html_ol",
-  //         inputs: {
-  //           CONTENT: {
-  //             block: {
-  //               type: "html_li",
-  //               next: {
-  //                 block: {
-  //                   type: "html_li",
-  //                   next: {
-  //                     block: {
-  //                       type: "html_li",
-  //                     },
-  //                   },
-  //                 },
-  //               },
-  //             },
-  //           },
-  //         },
-  //       },
-  //       // table
-  //       {
-  //         "kind": "block",
-  //         "type": "html_table",
-  //         "inputs": {
-  //           "CONTENT": {
-  //             "block": {
-  //               "type": "html_tr",
-  //               "inputs": {
-  //                 "CONTENT": {
-  //                   "block": {
-  //                     "type": "html_td",
-  //                     "next": {
-  //                       "block": {
-  //                         "type": "html_td"
-  //                       }
-  //                     }
-  //                   }
-  //                 }
-  //               },
-  //               "next": {
-  //                 "block": {
-  //                   "type": "html_tr",
-  //                   "inputs": {
-  //                     "CONTENT": {
-  //                       "block": {
-  //                         "type": "html_td",
-  //                         "next": {
-  //                           "block": {
-  //                             "type": "html_td"
-  //                           }
-  //                         }
-  //                       }
-  //                     }
-  //                   }
-  //                 }
-  //               }
-  //             }
-  //           }
-  //         }
-  //       },
-  //       // table with caption, thead, tbody, tfoot
-  //       {
-  //         "kind": "block",
-  //         "type": "html_table",
-  //         "inputs": {
-  //           "CONTENT": {
-  //             "block": {
-  //               "type": "html_caption",
-  //               "fields": {
-  //                 "CONTENT": "Table Caption"
-  //               },
-  //               "next": {
-  //                 "block": {
-  //                   "type": "html_thead",
-  //                   "inputs": {
-  //                     "CONTENT": {
-  //                       "block": {
-  //                         "type": "html_tr",
-  //                         "inputs": {
-  //                           "CONTENT": {
-  //                             "block": {
-  //                               "type": "html_th",
-  //                               "next": {
-  //                                 "block": {
-  //                                   "type": "html_th"
-  //                                 }
-  //                               }
-  //                             }
-  //                           }
-  //                         }
-  //                       }
-  //                     }
-  //                   },
-  //                   "next": {
-  //                     "block": {
-  //                       "type": "html_tbody",
-  //                       "inputs": {
-  //                         "CONTENT": {
-  //                           "block": {
-  //                             "type": "html_tr",
-  //                             "inputs": {
-  //                               "CONTENT": {
-  //                                 "block": {
-  //                                   "type": "html_td",
-  //                                   "next": {
-  //                                     "block": {
-  //                                       "type": "html_td"
-  //                                     }
-  //                                   }
-  //                                 }
-  //                               }
-  //                             }
-  //                           },
-  //                           "next": {
-  //                             "block": {
-  //                               "type": "html_tr",
-  //                               "inputs": {
-  //                                 "CONTENT": {
-  //                                   "block": {
-  //                                     "type": "html_td",
-  //                                     "next": {
-  //                                       "block": {
-  //                                         "type": "html_td"
-  //                                       }
-  //                                     }
-  //                                   }
-  //                                 }
-  //                               }
-  //                             }
-  //                           }
-  //                         }
-  //                       },
-  //                       "next": {
-  //                         "block": {
-  //                           "type": "html_tfoot",
-  //                           "inputs": {
-  //                             "CONTENT": {
-  //                               "block": {
-  //                                 "type": "html_tr",
-  //                                 "inputs": {
-  //                                   "CONTENT": {
-  //                                     "block": {
-  //                                       "type": "html_td",
-  //                                       "next": {
-  //                                         "block": {
-  //                                           "type": "html_td"
-  //                                         }
-  //                                       }
-  //                                     }
-  //                                   }
-  //                                 }
-  //                               }
-  //                             }
-  //                           }
-  //                         }
-  //                       }
-  //                     }
-  //                   }
-  //                 }
-  //               }
-  //             }
-  //           }
-  //         }
-  //       },
-  //       // select
-  //       {
-  //         "kind": "block",
-  //         "type": "html_select",
-  //         "inputs": {
-  //           "CONTENT": {
-  //             "block": {
-  //               "type": "html_optgroup",
-  //               "inputs": {
-  //                 "CONTENT": {
-  //                   "block": {
-  //                     "type": "html_option",
-  //                     "fields": {
-  //                       "CONTENT": "Apple",
-  //                     },
-  //                     "next": {
-  //                       "block": {
-  //                         "type": "html_option",
-  //                         "fields": {
-  //                           "CONTENT": "Banana",
-  //                         },
-  //                         "next": {
-  //                           "block": {
-  //                             "type": "html_option",
-  //                             "fields": {
-  //                               "CONTENT": "Cherry",
-  //                             }
-  //                           }
-  //                         }
-  //                       }
-  //                     }
-  //                   }
-  //                 }
-  //               },
-  //               "next": {
-  //                 "block": {
-  //                   "type": "html_optgroup",
-  //                   "inputs": {
-  //                     "CONTENT": {
-  //                       "block": {
-  //                         "type": "html_option",
-  //                         "fields": {
-  //                           "CONTENT": "Carrot",
-  //                         },
-  //                         "next": {
-  //                           "block": {
-  //                             "type": "html_option",
-  //                             "fields": {
-  //                               "CONTENT": "Broccoli",
-  //                             },
-  //                             "next": {
-  //                               "block": {
-  //                                 "type": "html_option",
-  //                                 "fields": {
-  //                                   "CONTENT": "Spinach",
-  //                                 }
-  //                               }
-  //                             }
-  //                           }
-  //                         }
-  //                       }
-  //                     }
-  //                   }
-  //                 }
-  //               }
-  //             }
-  //           }
-  //         }
-  //       },
-  //       // form
-  //       {
-  //         "kind": "block",
-  //         "type": "html_form",
-  //         "inputs": {
-  //           "CONTENT": {
-  //             "block": {
-  //               "type": "html_input",
-  //               "inputs": {
-  //                 "ATTRIBUTE": {
-  //                   "block": {
-  //                     "type": "html_type",
-  //                     "fields": {
-  //                       "FIELD": "date"
-  //                     }
-  //                   }
-  //                 },
-  //               },
-  //               "next": {
-  //                 "block": {
-  //                   "type": "html_input",
-  //                   "inputs": {
-  //                     "ATTRIBUTE": {
-  //                       "block": {
-  //                         "type": "html_type",
-  //                         "fields": {
-  //                           "FIELD": "checkbox"
-  //                         }
-  //                       }
-  //                     },
-  //                   },
-  //                   "next": {
-  //                     "block": {
-  //                       "type": "html_button",
-  //                       "inputs": {
-  //                         "CONTENT": {
-  //                           "block": {
-  //                             "type": "html_text",
-  //                             "fields": {
-  //                               "TEXT": "Submit"
-  //                             }
-  //                           }
-  //                         }
-  //                       }
-  //                     },
-  //                   }
-  //                 }
-  //               }
-  //             }
-  //           }
-  //         }
-  //       },
-  //       // footer
-  //       {
-  //         "kind": "block",
-  //         "type": "html_footer",
-  //         "inputs": {
-  //           "CONTENT": {
-  //             "block": {
-  //               "type": "html_p",
-  //               "inputs": {
-  //                 "CONTENT": {
-  //                   "block": {
-  //                     "type": "html_text" ,
-  //                     "fields": {
-  //                       "TEXT": "© 2024 Example.com"
-  //                     }
-  //                   }
-  //                 }
-  //               },
-  //               "next": {
-  //                 "block": {
-  //                   "type": "html_a",
-  //                   "inputs": {
-  //                     "CONTENT": {
-  //                       "block": {
-  //                         "type": "html_text" ,
-  //                         "fields": {
-  //                           "TEXT": "Privacy Policy"
-  //                         }
-  //                       }
-  //                     },
-  //                     "ATTRIBUTE": {
-  //                       "block": {
-  //                         "type": "html_href" ,
-  //                         "fields": {
-  //                           "FIELD": "https://example.com"
-  //                         }
-  //                       }
-  //                     }
-  //                   },
-  //                 }
-  //               }
-  //             }
-  //           }
-  //         }
-  //       },
-  //       {
-  //         "kind": "block",
-  //         "type": "html_blockquote",
-  //         "inputs": {
-  //           "CONTENT": {
-  //             "block": {
-  //               "type": "html_text",
-  //               "fields": {
-  //                 "TEXT": "This is a blockquote."
-  //               },
-  //               "next": {
-  //                 "block": {
-  //                   "type": "html_cite",
-  //                   "fields": {
-  //                     "CONTENT": "Source: Example"
-  //                   }
-  //                 }
-  //               }
-  //             }
-  //           },
-  //         },
-  //       },
-  //     ],
-  //   }
-    ],
+    //   {
+    //     kind: "category",
+    //     name: "テンプレート",
+    //     contents: [
+    //       // ul, li
+    //       {
+    //         kind: "block",
+    //         type: "html_ul",
+    //         inputs: {
+    //           CONTENT: {
+    //             block: {
+    //               type: "html_li",
+    //               next: {
+    //                 block: {
+    //                   type: "html_li",
+    //                   next: {
+    //                     block: {
+    //                       type: "html_li",
+    //                     },
+    //                   },
+    //                 },
+    //               },
+    //             },
+    //           },
+    //         },
+    //       },
+    //       // ol, li
+    //       {
+    //         kind: "block",
+    //         type: "html_ol",
+    //         inputs: {
+    //           CONTENT: {
+    //             block: {
+    //               type: "html_li",
+    //               next: {
+    //                 block: {
+    //                   type: "html_li",
+    //                   next: {
+    //                     block: {
+    //                       type: "html_li",
+    //                     },
+    //                   },
+    //                 },
+    //               },
+    //             },
+    //           },
+    //         },
+    //       },
+    //       // table
+    //       {
+    //         "kind": "block",
+    //         "type": "html_table",
+    //         "inputs": {
+    //           "CONTENT": {
+    //             "block": {
+    //               "type": "html_tr",
+    //               "inputs": {
+    //                 "CONTENT": {
+    //                   "block": {
+    //                     "type": "html_td",
+    //                     "next": {
+    //                       "block": {
+    //                         "type": "html_td"
+    //                       }
+    //                     }
+    //                   }
+    //                 }
+    //               },
+    //               "next": {
+    //                 "block": {
+    //                   "type": "html_tr",
+    //                   "inputs": {
+    //                     "CONTENT": {
+    //                       "block": {
+    //                         "type": "html_td",
+    //                         "next": {
+    //                           "block": {
+    //                             "type": "html_td"
+    //                           }
+    //                         }
+    //                       }
+    //                     }
+    //                   }
+    //                 }
+    //               }
+    //             }
+    //           }
+    //         }
+    //       },
+    //       // table with caption, thead, tbody, tfoot
+    //       {
+    //         "kind": "block",
+    //         "type": "html_table",
+    //         "inputs": {
+    //           "CONTENT": {
+    //             "block": {
+    //               "type": "html_caption",
+    //               "fields": {
+    //                 "CONTENT": "Table Caption"
+    //               },
+    //               "next": {
+    //                 "block": {
+    //                   "type": "html_thead",
+    //                   "inputs": {
+    //                     "CONTENT": {
+    //                       "block": {
+    //                         "type": "html_tr",
+    //                         "inputs": {
+    //                           "CONTENT": {
+    //                             "block": {
+    //                               "type": "html_th",
+    //                               "next": {
+    //                                 "block": {
+    //                                   "type": "html_th"
+    //                                 }
+    //                               }
+    //                             }
+    //                           }
+    //                         }
+    //                       }
+    //                     }
+    //                   },
+    //                   "next": {
+    //                     "block": {
+    //                       "type": "html_tbody",
+    //                       "inputs": {
+    //                         "CONTENT": {
+    //                           "block": {
+    //                             "type": "html_tr",
+    //                             "inputs": {
+    //                               "CONTENT": {
+    //                                 "block": {
+    //                                   "type": "html_td",
+    //                                   "next": {
+    //                                     "block": {
+    //                                       "type": "html_td"
+    //                                     }
+    //                                   }
+    //                                 }
+    //                               }
+    //                             }
+    //                           },
+    //                           "next": {
+    //                             "block": {
+    //                               "type": "html_tr",
+    //                               "inputs": {
+    //                                 "CONTENT": {
+    //                                   "block": {
+    //                                     "type": "html_td",
+    //                                     "next": {
+    //                                       "block": {
+    //                                         "type": "html_td"
+    //                                       }
+    //                                     }
+    //                                   }
+    //                                 }
+    //                               }
+    //                             }
+    //                           }
+    //                         }
+    //                       },
+    //                       "next": {
+    //                         "block": {
+    //                           "type": "html_tfoot",
+    //                           "inputs": {
+    //                             "CONTENT": {
+    //                               "block": {
+    //                                 "type": "html_tr",
+    //                                 "inputs": {
+    //                                   "CONTENT": {
+    //                                     "block": {
+    //                                       "type": "html_td",
+    //                                       "next": {
+    //                                         "block": {
+    //                                           "type": "html_td"
+    //                                         }
+    //                                       }
+    //                                     }
+    //                                   }
+    //                                 }
+    //                               }
+    //                             }
+    //                           }
+    //                         }
+    //                       }
+    //                     }
+    //                   }
+    //                 }
+    //               }
+    //             }
+    //           }
+    //         }
+    //       },
+    //       // select
+    //       {
+    //         "kind": "block",
+    //         "type": "html_select",
+    //         "inputs": {
+    //           "CONTENT": {
+    //             "block": {
+    //               "type": "html_optgroup",
+    //               "inputs": {
+    //                 "CONTENT": {
+    //                   "block": {
+    //                     "type": "html_option",
+    //                     "fields": {
+    //                       "CONTENT": "Apple",
+    //                     },
+    //                     "next": {
+    //                       "block": {
+    //                         "type": "html_option",
+    //                         "fields": {
+    //                           "CONTENT": "Banana",
+    //                         },
+    //                         "next": {
+    //                           "block": {
+    //                             "type": "html_option",
+    //                             "fields": {
+    //                               "CONTENT": "Cherry",
+    //                             }
+    //                           }
+    //                         }
+    //                       }
+    //                     }
+    //                   }
+    //                 }
+    //               },
+    //               "next": {
+    //                 "block": {
+    //                   "type": "html_optgroup",
+    //                   "inputs": {
+    //                     "CONTENT": {
+    //                       "block": {
+    //                         "type": "html_option",
+    //                         "fields": {
+    //                           "CONTENT": "Carrot",
+    //                         },
+    //                         "next": {
+    //                           "block": {
+    //                             "type": "html_option",
+    //                             "fields": {
+    //                               "CONTENT": "Broccoli",
+    //                             },
+    //                             "next": {
+    //                               "block": {
+    //                                 "type": "html_option",
+    //                                 "fields": {
+    //                                   "CONTENT": "Spinach",
+    //                                 }
+    //                               }
+    //                             }
+    //                           }
+    //                         }
+    //                       }
+    //                     }
+    //                   }
+    //                 }
+    //               }
+    //             }
+    //           }
+    //         }
+    //       },
+    //       // form
+    //       {
+    //         "kind": "block",
+    //         "type": "html_form",
+    //         "inputs": {
+    //           "CONTENT": {
+    //             "block": {
+    //               "type": "html_input",
+    //               "inputs": {
+    //                 "ATTRIBUTE": {
+    //                   "block": {
+    //                     "type": "html_type",
+    //                     "fields": {
+    //                       "FIELD": "date"
+    //                     }
+    //                   }
+    //                 },
+    //               },
+    //               "next": {
+    //                 "block": {
+    //                   "type": "html_input",
+    //                   "inputs": {
+    //                     "ATTRIBUTE": {
+    //                       "block": {
+    //                         "type": "html_type",
+    //                         "fields": {
+    //                           "FIELD": "checkbox"
+    //                         }
+    //                       }
+    //                     },
+    //                   },
+    //                   "next": {
+    //                     "block": {
+    //                       "type": "html_button",
+    //                       "inputs": {
+    //                         "CONTENT": {
+    //                           "block": {
+    //                             "type": "html_text",
+    //                             "fields": {
+    //                               "TEXT": "Submit"
+    //                             }
+    //                           }
+    //                         }
+    //                       }
+    //                     },
+    //                   }
+    //                 }
+    //               }
+    //             }
+    //           }
+    //         }
+    //       },
+    //       // footer
+    //       {
+    //         "kind": "block",
+    //         "type": "html_footer",
+    //         "inputs": {
+    //           "CONTENT": {
+    //             "block": {
+    //               "type": "html_p",
+    //               "inputs": {
+    //                 "CONTENT": {
+    //                   "block": {
+    //                     "type": "html_text" ,
+    //                     "fields": {
+    //                       "TEXT": "© 2024 Example.com"
+    //                     }
+    //                   }
+    //                 }
+    //               },
+    //               "next": {
+    //                 "block": {
+    //                   "type": "html_a",
+    //                   "inputs": {
+    //                     "CONTENT": {
+    //                       "block": {
+    //                         "type": "html_text" ,
+    //                         "fields": {
+    //                           "TEXT": "Privacy Policy"
+    //                         }
+    //                       }
+    //                     },
+    //                     "ATTRIBUTE": {
+    //                       "block": {
+    //                         "type": "html_href" ,
+    //                         "fields": {
+    //                           "FIELD": "https://example.com"
+    //                         }
+    //                       }
+    //                     }
+    //                   },
+    //                 }
+    //               }
+    //             }
+    //           }
+    //         }
+    //       },
+    //       {
+    //         "kind": "block",
+    //         "type": "html_blockquote",
+    //         "inputs": {
+    //           "CONTENT": {
+    //             "block": {
+    //               "type": "html_text",
+    //               "fields": {
+    //                 "TEXT": "This is a blockquote."
+    //               },
+    //               "next": {
+    //                 "block": {
+    //                   "type": "html_cite",
+    //                   "fields": {
+    //                     "CONTENT": "Source: Example"
+    //                   }
+    //                 }
+    //               }
+    //             }
+    //           },
+    //         },
+    //       },
+    //     ],
+    //   }
+  ],
 };

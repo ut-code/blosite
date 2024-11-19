@@ -14,7 +14,7 @@ body {
   width: 100%;
   background-color: #ffffff;
   color: rgb(0, 0, 0);
-  z-index: 100;
+  z-index: 1000;
   /* box-shadow: 0 4px 2px -2px gray; */
   display: flex;
   justify-content: space-between;
@@ -116,28 +116,26 @@ h1 {
 
 .card {
     display: flex;
+    position: relative;
     background-color: #fff;
     border-radius: 10px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     width: 600px;
     height: 300px;
     text-align: left;
-    color: #6875c0;
     text-decoration: none;
     transition: background-color 0.3s ease;
     overflow: hidden;
     margin-left: auto;
     margin-right: auto;
+    z-index: 1;
 }
 
 .card h2 {
-    font-size: 25px;
+    font-size: 18px;
     margin-bottom: 15px;
-}
-
-.card p {
-    font-size: 1rem;
-    color: #666;
+    max-height: 70px;
+    color: #6875c0;
 }
 
 .card img {
@@ -147,14 +145,32 @@ h1 {
 }
 
 .card:hover {
-    background-color: #f9f9f9;
+    background-color: #f3f3f3;
     z-index: 100;
 }
 
-.description {
+.content-text {
     width: 300px;
     padding: 20px;
+    color: #666;
+}
+
+.description {
+    overflow-y: auto;
+    overflow-x: hidden;
     text-overflow: ellipsis;
+    max-height: 100px;
+}
+
+.details {
+    display: block;
+    position: absolute;
+    bottom: 7px;
+    align-items: center;
+    font-size: 12px;
+    max-height: 100px;
+    text-overflow: ellipsis;
+    overflow: hidden;
 }
 
 .images {
@@ -202,14 +218,37 @@ h1 {
     cursor: pointer;
 }
 
-#confirmButton {
-    background-color: #4CAF50;
-    color: white;
+#popup-close {
+    position: absolute;
+    top: 0;
+    right: 10px;
+    font-size: 32px;
+    font-weight: 800;
+    cursor: pointer;
+    border-radius: 40%;
+    width: 40px;
+    height: 40px;
 }
 
-#cancelButton {
-    background-color: #f44336;
+#confirm-button {
+    margin: auto;
+    margin-right: 20px;
+    padding: 10px 15px;
+    background-color: #007BFF;
     color: white;
+    font-size: 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+#cancel-button {
+    margin: auto;
+    margin-left: 20px;
+    padding: 10px 15px;
+    font-size: 20px;
+    color: rgb(71, 71, 71);
 }
 
 footer {
@@ -220,6 +259,10 @@ footer {
     padding: 1em;
     bottom: 0;
 } 
+
+footer p {
+    margin: 0;
+}
 
 #loading-spinner {
     position: absolute;

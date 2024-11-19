@@ -555,14 +555,14 @@ runSwitchButton.addEventListener('click', () => {
     runIcon.classList.remove('play');
     runIcon.classList.add('continuous');
     state = 'continuous';
-    runSwitchButton.textContent = 'スクリプトの常時実行:ON';
+    runSwitchButton.innerHTML = 'スクリプトの<br>常時実行:ON';
   }
   else {
     // 現在のクラスを削除
     runIcon.classList.remove(state);
     runIcon.classList.add('play');
     state = 'play';
-    runSwitchButton.textContent = 'スクリプトの常時実行:OFF';
+    runSwitchButton.innerHTML = 'スクリプトの<br>常時実行:OFF';
   }
 });
 

@@ -5,6 +5,7 @@
  */
 
 import * as Blockly from 'blockly';
+import '@blockly/toolbox-search';
 import {htmlBlocks} from '/src/blockly/blocks/html';
 import {websiteGenerator} from '/src/blockly/generators/html';
 import customMsg from '/src/blockly/custom_msg';
@@ -456,7 +457,7 @@ popupOuterId.addEventListener('click', e => {
 // showPopupSlideContent(0);
 // highlightButton(buttons[0]); 
 
-// クリックイベントで状態を切り替える
+// 状態を切り替える
 runIcon.addEventListener('click', () => {
 
   if(state === 'play') {
@@ -467,10 +468,10 @@ runIcon.addEventListener('click', () => {
     // 現在のクラスを削除
     runIcon.classList.remove(state);
 
-    // インデックスを次の状態に変更
+    // 次の状態に変更
     state = (state==='stop') ? 'continuous' : 'stop';
 
-    // 新しいクラスを追加
+    // 新しい状態のクラスを追加
     runIcon.classList.add(state);
   }
 });
@@ -525,7 +526,7 @@ document.getElementById('content-form').addEventListener('submit', async functio
   console.log(formData);
   try {
 
-    const response = await fetch(`${process.env.API_ENDPOINT}/api/updateContent`, {
+    const response = await fetch(`${process.env.API_ENDPOINT}/api/saveContent`, {
       method: 'POST',
       headers: {
           'Accept': 'application/json', // レスポンスの形式を指定
@@ -571,7 +572,7 @@ document.getElementById('content-form').addEventListener('submit', async functio
     const url = `https://foxfxembozpnvfdwxnog.supabase.co/storage/v1/object/public/Blosite_photos/images/content-${contentId}.png`;
     
     // データベースに画像のURLを更新
-    await fetch(`${process.env.API_ENDPOINT}/api/saveContent`, {
+    await fetch(`${process.env.API_ENDPOINT}/api/updateContent`, {
         method: 'PUT',
         headers: {
             'Content-Type': 'application/json',

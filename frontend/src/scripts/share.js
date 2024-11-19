@@ -24,11 +24,13 @@ function displayContents(contents) {
         contentDiv.className = 'card';
         
         contentDiv.innerHTML = `
-            <div class="description">
+            <div class="content-text">
                 <h2>${content.contentName}</h2>
-                <p>${content.description}</p>
-                <p>投稿者: ${content.username}</p>
-                <p>作成日時: ${new Date(content.createdAt).toLocaleString()}</p>
+                <p class="description">${content.description}</p>
+                <div class="details">
+                <p >投稿者: ${content.username}</p>
+                <p >作成日時: ${new Date(content.createdAt).toLocaleString()}</p>
+                </div>
             </div>
             <img src="${content.photo}" class="images">
         `;
@@ -46,25 +48,34 @@ function showPopup(content, data) {
     const popup = document.getElementById('popup');
     const popupMessage = document.getElementById('popup-message');
 
-    if (data) {
-        popupMessage.innerText = 'サンドボックスに移動してもよろしいですか？\n注意：サンドボックスに途中のデータがあります。上書きしてもよろしいですか？';
+    console.log(data);
+    console.log(Object.keys(data).length);
+
+    // SandboxにlocalStorageにデータがあるかどうか
+    if (data && (Object.keys(data).length > 2)) {
+        popupMessage.innerText = 'サンドボックスに移動して作り続けよう！\n\n注意：サンドボックスに作りかけのデータがあります。\nこの途中のデータは上書きされます。';
     } else {
-        popupMessage.innerText = 'サンドボックスに移動してもよろしいですか？';
+        popupMessage.innerText = 'サンドボックスに移動して作り続けよう！';
     }
 
     popup.classList.remove('hidden');
 
     // 確認ボタンがクリックされた場合の処理
-    document.getElementById('confirmButton').onclick = () => {
+    document.getElementById('confirm-button').onclick = () => {
         window.localStorage?.setItem("sandboxWorkspace", content);
         window.location.href = `./../sandbox`;
     };
-
-    // キャンセルボタンがクリックされた場合の処理
-    document.getElementById('cancelButton').onclick = () => {
-        popup.classList.add('hidden');
-    };
 }
+
+const popup = document.getElementById('popup');
+const cancelButton = document.getElementById('cancel-button');
+
+// ポップアップ外とキャンセルをクリックした場合の処理
+popup.onclick = (event) => {
+    if (event.target === popup || event.target === cancelButton) {
+        popup.classList.add('hidden');
+    }
+};
 
 // ページが読み込まれたらデータを取得
 window.onload = () => {

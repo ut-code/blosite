@@ -18,7 +18,7 @@ export const toolbox = {
   contents: [
     {
       kind: "CATEGORY",
-      name: "HTML Elements",
+      name: "HTML要素",
       categorystyle: "htmlelement_category",
       contents: [
         {
@@ -38,8 +38,8 @@ export const toolbox = {
           type: "html_ul",
         },
         {
-          kind: 'block',
-          type: 'html_li'
+          kind: "block",
+          type: "html_li",
         },
       ],
     },
