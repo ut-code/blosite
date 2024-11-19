@@ -78,7 +78,7 @@ websiteGenerator.forBlock["html_text"] = function (block, generator) {
 
   // 下のブロックが存在する場合、そのtypeを取得
   let nextType = null;
-  if (nextBlock) {  
+  if (nextBlock) {
     nextType = nextBlock.type;
   }
 
@@ -93,7 +93,6 @@ websiteGenerator.forBlock["html_title"] = function (block, generator) {
   const content = block.getFieldValue("CONTENT");
   const code = `<title>${content}</title>\n`;
   const indentedCode = generator.prefixLines(code, generator.INDENT);
-  console.log(generator.INDENT);
   return indentedCode;
 };
 
@@ -1069,12 +1068,20 @@ websiteGenerator.forBlock["js_textContent"] = function (block, generator) {
   const code = value ? `${value}.textContent` : "";
   return [code, Order.ATOMIC];
 };
-
 websiteGenerator.forBlock["js_value"] = function (block, generator) {
   const value = generator.valueToCode(block, "VALUE", Order.ATOMIC);
   const code = value ? `${value}.value` : "";
   return [code, Order.ATOMIC];
 };
+/*
+websiteGenerator.forBlock["js_textContent"] = function (block, generator) {
+  const variable = generator.valueToCode(block, "VALUE", Order.ATOMIC);
+  //const sanitizedText = sanitizeInput(text);
+  const code = (variable) ? `${variable}.textContent` : "\n";
+  //const indentedCode = generator.prefixLines(code, generator.INDENT);
+  return code;
+};
+*/
 
 websiteGenerator.forBlock["js_createElement"] = function (block, generator) {
   const tagName = block.getFieldValue("TAG");
@@ -1098,6 +1105,16 @@ websiteGenerator.forBlock["js_appendChild"] = function (block, generator) {
   const code =
     (parent && child)
       ? `${parent}.appendChild(${child});\n`
+      : "\n";
+  return code;
+};
+
+websiteGenerator.forBlock["js_removeChild"] = function (block, generator) {
+  const parent = generator.valueToCode(block, "PARENT", Order.ATOMIC);
+  const child = generator.valueToCode(block,"CHILD", Order.ATOMIC);
+  const code =
+    (parent && child)
+      ? `${parent}.removeChild(${child});\n`
       : "\n";
   return code;
 };
