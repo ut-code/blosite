@@ -65,11 +65,9 @@ function showPopup(content, data) {
     const popup = document.getElementById('popup');
     const popupMessage = document.getElementById('popup-message');
 
-    console.log(data);
-    console.log(Object.keys(data).length);
-
     // SandboxにlocalStorageにデータがあるかどうか
-    if (data && (Object.keys(data).length > 2)) {
+    // データが空のときは{}(2文字)
+    if (data && (data.length > 2)) {
         popupMessage.innerText = 'サンドボックスに移動して作り続けよう！\n\n注意：サンドボックスに作りかけのデータがあります。\nこの途中のデータは上書きされます。';
     } else {
         popupMessage.innerText = 'サンドボックスに移動して作り続けよう！';

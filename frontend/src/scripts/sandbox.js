@@ -542,7 +542,6 @@ document.getElementById('content-form').addEventListener('submit', async functio
   
   const formData = new FormData(formElement);
   const content = JSON.stringify(Blockly.serialization.workspaces.save(ws)); // ブロックの配置を取得
-  console.log(formData);
 
   loadingSpinner.style.display = 'block'; // ローディングスピナーを表示
   loadingOverlay.style.display = 'block'; // ローディングオーバーレイを表示

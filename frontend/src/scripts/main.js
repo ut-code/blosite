@@ -414,10 +414,10 @@ function showPopup(content, data) {
   popup.style.display = 'block';
   popupOuterId.style.display = 'block';
 
-  if (data) {
-      popupSandboxMessage.innerText = 'サンドボックスに移動して作り続けますか？\n注意：サンドボックスに途中のデータがあります。\n上書きしてもよろしいですか？';
+  if (data && (data.length > 2)) {
+      popupSandboxMessage.innerText = 'サンドボックスに移動して作り続けよう！\n\n注意：サンドボックスに途中のデータがあります。\n途中のデータは上書きされます。';
   } else {
-      popupSandboxMessage.innerText = 'サンドボックスに移動して作り続けますか？';
+      popupSandboxMessage.innerText = 'サンドボックスに移動して作り続けよう！';
   }
 
   // 確認ボタンがクリックされた場合の処理
