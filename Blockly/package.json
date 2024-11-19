@@ -25,8 +25,11 @@
     "webpack-dev-server": "^4.11.1"
   },
   "dependencies": {
+    "@blockly/field-colour": "^5.0.9",
     "blockly": "^11.1.1",
     "dompurify": "^3.1.6",
-    "ejs": "^3.1.10"
+    "ejs": "^3.1.10",
+    "npm": "^10.9.0",
+    "start": "^5.1.0"
   }
 }

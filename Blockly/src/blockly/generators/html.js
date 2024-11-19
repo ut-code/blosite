@@ -858,6 +858,13 @@ websiteGenerator.forBlock["html_width"] = function (block, generator) {
   const code = value ? `width="${sanitizedField}" ${value}` : `width="${sanitizedField}"`;
   return [code, Order.ATOMIC];
 };
+websiteGenerator.forBlock["html_height"] = function (block, generator) {
+  const field = block.getFieldValue("FIELD");
+  const value = generator.valueToCode(block, "VALUE", Order.ATOMIC);
+  const sanitizedField = sanitizeInput(field);
+  const code = value ? `height="${sanitizedField}" ${value}` : `height="${sanitizedField}"`;
+  return [code, Order.ATOMIC];
+};
 
 websiteGenerator.forBlock["html_wrap"] = function (block, generator) {
   const field = block.getFieldValue("FIELD");
@@ -871,7 +878,7 @@ websiteGenerator.forBlock["css_color"] = function (block, generator) {
   const field = block.getFieldValue("FIELD");
   const value = generator.valueToCode(block, "VALUE", Order.ATOMIC);
   const sanitizedField = sanitizeInput(field);
-  const code = value ? `color:${sanitizedField}; ${value}` : `color:${sanitixedField}`;
+  const code = value ? `color:${sanitizedField}; ${value}` : `color:${sanitizedField}`;
   return [code, Order.ATOMIC];
 };
 
@@ -899,6 +906,14 @@ websiteGenerator.forBlock["css_line-weight"] = function (block, generator) {
   return [code, Order.ATOMIC];
 };
 
+websiteGenerator.forBlock["css_line-height"] = function (block, generator) {
+  const field = block.getFieldValue("FIELD");
+  const value = generator.valueToCode(block, "VALUE", Order.ATOMIC);
+  const sanitizedField = sanitizeInput(field);
+  const code = value ? `line-height:${sanitizedField}; ${value}` : `line-height:${sanitizedField}`;
+  return [code, Order.ATOMIC];
+};
+
 websiteGenerator.forBlock["css_background-color"] = function (block, generator) {
   const field = block.getFieldValue("FIELD");
   const value = generator.valueToCode(block, "VALUE", Order.ATOMIC);
@@ -922,6 +937,21 @@ websiteGenerator.forBlock["css_padding"] = function (block, generator) {
   const code = value ? `padding:${sanitizedField}; ${value}` : `padding:${sanitizedField}`;
   return [code, Order.ATOMIC];
 };
+websiteGenerator.forBlock["css_text-align"] = function (block, generator) {
+  const field = block.getFieldValue("FIELD");
+  const value = generator.valueToCode(block, "VALUE", Order.ATOMIC);
+  const sanitizedField = sanitizeInput(field);
+  const code = value ? `text-align:${sanitizedField}; ${value}` : `text-align:${sanitizedField}`;
+  return [code, Order.ATOMIC];
+};
+websiteGenerator.forBlock["css_list-style-position"] = function (block, generator) {
+  const field = block.getFieldValue("FIELD");
+  const value = generator.valueToCode(block, "VALUE", Order.ATOMIC);
+  const sanitizedField = sanitizeInput(field);
+  const code = value ? `list-style-position:${sanitizedField}; ${value}` : `list-style-position:${sanitizedField}`;
+  return [code, Order.ATOMIC];
+};
+
 
 websiteGenerator.forBlock["css_border"] = function (block, generator) {
   const field = block.getFieldValue("FIELD");
