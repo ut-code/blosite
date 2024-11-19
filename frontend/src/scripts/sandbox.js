@@ -5,6 +5,7 @@
  */
 
 import * as Blockly from 'blockly';
+import '@blockly/toolbox-search';
 import {htmlBlocks} from '/src/blockly/blocks/html';
 import {websiteGenerator} from '/src/blockly/generators/html';
 import customMsg from '/src/blockly/custom_msg';

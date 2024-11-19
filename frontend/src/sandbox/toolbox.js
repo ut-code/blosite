@@ -1477,6 +1477,11 @@ export const toolbox = {
           },
         },
       ],
+    },
+    {
+      'kind': 'search',
+      'name': 'Search',
+      'contents': [],
     }
   ],
 };
