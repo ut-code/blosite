@@ -373,6 +373,14 @@ export const toolbox = {
         },
         {
           kind: "block",
+          type: "css_text-align"
+        },
+        {
+          kind: "block",
+          type: "css_list-style-position"
+        },
+        {
+          kind: "block",
           type: "css_border",
         },
         {
