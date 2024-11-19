@@ -28,6 +28,7 @@
     "@blockly/toolbox-search": "^2.0.9",
     "@supabase/supabase-js": "^2.46.1",
     "blockly": "^11.1.1",
+    "canvas-confetti": "^1.9.3",
     "dompurify": "^3.1.6",
     "html2canvas": "^1.4.1"
   }

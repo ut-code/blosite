@@ -391,8 +391,17 @@ const popupInnerId = document.getElementById("popup-inner");
 const popupCloseId = document.getElementById("popup-close");
 const popupSandbox = document.getElementById("popup-sandbox");
 const hamburgerIcon = document.getElementById('hamburger-icon');
+let bodyScrollWidth = document.body.scrollWidth;
 
+// ポップアップの背景の幅を調整
+popupOuterId.style.width = `${bodyScrollWidth}px`;
+// resize時にも調整
+window.addEventListener('resize', () => {
+  bodyScrollWidth = document.body.scrollWidth;
+  popupOuterId.style.width = `${bodyScrollWidth}px`;
+});
 
+// サンドボックスに移動するボタン
 document.getElementById("sandbox-button").onclick = () => {
   const content = JSON.stringify(Blockly.serialization.workspaces.save(ws));
   const data = window.localStorage?.getItem("sandboxWorkspace");

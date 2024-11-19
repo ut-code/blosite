@@ -769,3 +769,56 @@ code {
   visibility: visible;
   transition: opacity 0.4s ease, transform 0.4s ease, visibility 0s 0s;
 }
+
+#loading-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5); /* 半透明の背景 */
+  z-index: 999; /* 他の要素よりも前面に表示 */
+  display: none; /* 初期状態は非表示 */
+}
+
+#loading-spinner {
+  display: none;
+  position: absolute;
+  left: calc(50% - 25px);
+  top: calc(50% - 25px);
+  width: 50px;
+  height: 50px;
+  border: 5px solid #ccc; /* 背景色 */
+  border-top: 5px solid #333; /* アクティブ部分の色 */
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+  /* background-color: rgba(0, 0, 0, 0.5); */
+  z-index: 1000;
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+#success-message {
+  display: none;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  padding: 20px 40px;
+  background: rgba(0, 128, 0, 0.9); /* 濃い緑色 */
+  color: white;
+  font-size: 20px;
+  font-weight: bold;
+  border-radius: 8px;
+  text-align: center;
+  z-index: 1000;
+  pointer-events: none; /* クリック無効化 */
+  transition: opacity 0.3s ease-in-out;
+}

@@ -1860,7 +1860,6 @@ export const htmlBlocks = Blockly.common.createBlockDefinitionsFromJsonArray([
     ],
     previousStatement: null, 
     nextStatement: null,
-    output: null,
     style: "javascript_blocks",
   },
   {
