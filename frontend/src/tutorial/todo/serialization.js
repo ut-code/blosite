@@ -7,7 +7,7 @@
 import * as Blockly from 'blockly/core';
 
 // キャッシュの保存先を決定
-const storageKey = 'webGeneratorWorkspace';
+const storageKey = 'tutorialTodoWorkspace';
 
 // 初期状態のブロックをXMLで定義
 const xml = `
@@ -21,7 +21,11 @@ const xml = `
         <next>
           <block type="html_button">
             <value name="ATTRIBUTE"></value>
-            <statement name="CONTENT">追加</statement>
+            <statement name="CONTENT">
+              <block type="html_text">
+                <field name="TEXT">追加</field>
+              </block>
+            </statement>
             <next>
               <block type="html_ul">
                 <statement name="CONTENT"></statement>
