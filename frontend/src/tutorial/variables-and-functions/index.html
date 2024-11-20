@@ -59,68 +59,90 @@
             <div id="popup-title">いろいろなHTML要素</div>
             <div id="popup-close">×</div>
             <div id="popup-button-container">
-              <button class="popup-buttons" id="popup-button-0">目標</button>
+              <button class="popup-buttons" id="popup-button-0">変数とは</button>
               <span class="popup-arrow">➡️</span> 
-              <button class="popup-buttons" id="popup-button-1">HTML要素の詳細</button>
+              <button class="popup-buttons" id="popup-button-1">変数を使ってみよう</button>
               <span class="popup-arrow">➡️</span> 
-              <button class="popup-buttons" id="popup-button-2">HTML属性とは</button>
+              <button class="popup-buttons" id="popup-button-2">関数とは</button>
               <span class="popup-arrow">➡️</span> 
-              <button class="popup-buttons" id="popup-button-3">完成</button>
+              <button class="popup-buttons" id="popup-button-3">関数も使ってみよう</button>
             </div>
             <div id="popup-message">
               <!-- ここにスライドコンテンツを表示 -->
               <div class="popup-slides" id="popupSlide-0" style="display: flex">
                 <section class="silde-text-with-images">
-                  <h3>目標</h3>
+                  <h3>変数</h3>
                   <p>
-                    様々なHTML要素を使って、右の写真のようなサイトを作ってみよう！
+                    変数とは数字や文字、True、Falseといった値を収納できる名前付きの箱です。
                   </p>
-                  <h3>詳細</h3>
                   <p>
-                    すでに設置されているブロックを利用して、テキストボックスや文章を変更しましょう。<br>
-                    もし最初からやり直したいときは、すべてのブロックを削除して、ページを再読み込みしてください。
+                    変数を使うメリットとして、
                   </p>
+                  <ul>
+                    <li>繰り返し使う値を簡単に呼び出せる</li>
+                    <li>見た目が綺麗になる</li>
+                    <li>値の変更が変数を使っている全ての要素に反映される</li>
+                  </ul>
+                  <p>の３つが挙げられます。</p>
+                  <p>
+                    複雑なコードになると何度も同じ操作をしたり、操作を組み合わせて値を出したりすることがあります。
+                    変数は操作によって出た値も入れることができるので、変数を用いるとかなりシンプルになります。
+                  </p> 
                 </section>
-                <img src="<%= require('/src/images/various-html-elements_0.png') %>" alt="Sample Image" class="slide-images">
+                <img src ="<%= require('/src/images/variables_and_functions_1.jpg')%>"alt="Description of image" class="slide-images"></img>
               </div>
               <div class="popup-slides" id="popup-slide-1" style="display: flex;">
                 <section class="silde-text-with-images">
-                  <h3>HTML要素の種類</h3>
+                  <h3>変数を使ってみよう</h3>
+                  <p></p>
                   <p>
-                    HTML要素には、特別な機能や見た目を持つものや、表示に関係なく要素の意味づけや整理をするために使われるものがあります。<br>
-                    ここでは試しに右の写真のように作ってみましょう。<br>
-                    一般に、文章は段落を意味する<code>&lt;p&gt;</code>要素の中に書きます。また、下付き文字は<code>&lt;sub&gt;</code>要素を使って作成できます。<br>
-
+                    変数のカテゴリから試しに apple banana lemon という名前の変数を作り、
+                    その中に値段としての数を入れてみましょう。<br>
+                    次に total という変数を作り値段を全て合計してみましょう。<br>
+                    下の代入に total を入れて実行すると右に合計金額が出ます。<br>
+                    また、変数内の値段を変えて実行すると表示される値段も変えることができます。
                   </p>
                 </section>
-                <img src="<%= require('/src/images/various-html-elements_1.png') %>" alt="Sample Image" class="slide-images">
+                <img src="<%= require('/src/images/variables_and_functions_2.png') %>" alt="Sample Image" class="slide-images">
               </div>
               <div class="popup-slides" id="popup-slide-2" style="display: flex;">
                 <section class="silde-text-with-images">
-                  <h3>HTML属性</h3>
+                  <h3>関数とは</h3>
                   <p>
-                    HTML属性とは、HTML要素に付けることができる追加情報のことです。HTML属性のカテゴリーを開いてどんなものがあるか見てみましょう。<br>
-                    HTML属性は右のように要素に対して組み付けることができます。ここでは<code>&lt;input&gt;</code>要素の<code>type</code>属性について詳しく見てみましょう。<br>
-                    type="text"（デフォルトの設定）だと文字の入力欄、type="number"だと数字の入力欄、type="checkbox"だとチェックボックスになります。<br>
-                    また、HTML属性は１つの要素に複数個つけることができます。例えば、placeholder属性を付け加えると、入力欄に何を入力すればいいかヒントを表示することができます。style要素では、見た目を自在に返納することができます！（詳しくは次のチュートリアルでやりましょう）<br>
+                    関数とはなにかの処理といった文をを一つにまとめられるものです。<br>
+                    関数には<strong>関数内でのみ</strong>使える変数、<strong>引数</strong>というものが存在します。<br>
+                    引数は関数内では変数として機能します。<br>
+                    引数のある関数を使うときは引数の値を事前に入れる必要があります。<br>
+                    (注:関数の中では引数以外の変数も使えます。)<br>
+                    また、関数には<strong>戻り値</strong>というものがあります。<br>
+                    戻り値は関数内の処理によって出た値を返すものです。
                   </p>
                 </section>
+                <img src="<%= require('/src/images/variables_and_functions_3.png') %>" alt="Sample Image" class="slide-images">
               </div>
               <div class="popup-slides" id="popup-slide-3" style="display: flex;">
                 <section class="silde-text-with-images">
-                  <h3>機能追加</h3>
+                  <h3>関数を使ってみよう</h3>
                   <p>
-                    では、残りの部分を完成させましょう！
-                    右の写真を参考に、HTML要素を使ってサイトを完成させてください。<br>
+                    では、今回は2つの数の足し算が出てくるような関数を作りましょう。<br>
+                    apple,banana,lemonのブロックを一旦消してしまいましょう。<br>
                   </p>
-                  <h3>ヒント</h3>
-                  <ol>
-                    <li>キーの表示は<code>&lt;kbd&gt;</code>を使いましょう。</li>
-                    <li>チェックボックスは<code>&lt;input&gt;</code>の属性にtype="checkbox"を設定しましょう。</li>
-                    <li><code>&lt;div&gt;</code>の属性にstyle="flex"を指定すると、その<code>&lt;div&gt;</code>の中にある要素を横方向に並べることができます。</li>
-                  </ol>
+                  <h3>関数の設定</h3>
+                  <p>
+                    関数フォルダの2番目のブロックを持ってきて、左上の歯車を押しましょう。<br>
+                    すると、右のようにふきだしが出てくるので入力に左のブロックを2つ入れましょう。これが引数となります。<br>
+                    次に「返す」のところに数式フォルダから+のブロックを、変数フォルダからx,yのブロックを持って右のように置きましょう。<br>
+                    これで関数の設定は完了です。関数はブロックを組み合わせることなく動きます。
+                  </p>
+                  <h3>関数の呼び出し</h3>
+                  <p>
+                    設定が終わると変数フォルダに関数名と引数のいれるところがあるブロックができています。<br>
+                    さっき消さなかったtotalのところにこれをセットしてみましょう。<br>
+                    数式フォルダからx,yに数のブロックを入れて実行してみましょう。<br>
+                    右側には答えが表示されているはずです！
+                  </p>
                 </section>
-                <img src="<%= require('/src/images/various-html-elements_0.png') %>" alt="Sample Image" class="slide-images">
+                <img src="<%= require('/src/images/variables_and_functions_4.png') %>" alt="Sample Image" class="slide-images">
               </div>
             </div>
             <div id="popup-navigation">
