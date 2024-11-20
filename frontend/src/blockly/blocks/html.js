@@ -1,8 +1,8 @@
 import * as Blockly from "blockly";
-import { FieldColour } from '@blockly/field-colour';
-
+import { registerFieldColour } from '@blockly/field-colour';
+registerFieldColour();
 // フィールドを登録
-Blockly.fieldRegistry.register('field_colour', FieldColour);
+
 
 
 // ブロックの見た目などを定義
@@ -541,7 +541,7 @@ export const htmlBlocks = Blockly.common.createBlockDefinitionsFromJsonArray([
     previousStatement: null,
     nextStatement: null,
     style: "htmlelement_blocks",
-    tooltip: "表の一連の行(<tr>要素)をまとめて、列の脚部であることを表す。列の集計行として使われる。",
+    tooltip: "表の一連の行(<tr>要素)をまとめて、列の脚部であることを表す。列の集計行として主に使われる。",
   },
   {
     type: "html_tr",
@@ -990,7 +990,7 @@ export const htmlBlocks = Blockly.common.createBlockDefinitionsFromJsonArray([
     ],
     output: null,
     style: "htmlattribute_blocks",
-    tooltip: "<textarea>要素の1行に表示する文字数を指定する。なにも入力されなければ２０となる",
+    tooltip: "<textarea>要素の1行に表示する文字数を指定する。なにも入力されなければ20となる",
   },
   {
     type: "html_rows",
@@ -1384,9 +1384,25 @@ export const htmlBlocks = Blockly.common.createBlockDefinitionsFromJsonArray([
     message0: "color: %1 %2",
     args0: [
       {
-        type: "field_input",
-        name: "FIELD",
-        text: "#000000",
+        type: 'field_colour',
+        name: 'FIELD',
+        colour:'#000000',
+        colourOptions: [
+          '#000000', '#696969', '#808080', '#a9a9a9', '#c0c0c0', '#d3d3d3', '#ffffff', // 黒・グレー・白
+          '#ff0000', '#ff4500', '#ff6347', '#ff8c00', '#ffa500', '#ffd700', '#ffff00', // 赤・オレンジ・黄色
+          '#006400', '#008000', '#32cd32', '#7fff00', '#adff2f', '#00ff00', '#00ff7f', // 緑系
+          '#000080', '#0000cd', '#0000ff', '#1e90ff', '#00bfff', '#00ced1', '#00ffff', // 青系
+          '#800080', '#9400d3', '#8a2be2', '#ba55d3', '#ff69b4', '#ff1493', '#ff00ff'  // 紫系
+      ],
+      colourTitles: [
+          'Black', 'Dim Gray', 'Gray', 'Light Gray', 'Silver', 'Light Silver', 'White', // 黒・グレー・白
+          'Red', 'Orange Red', 'Tomato', 'Dark Orange', 'Orange', 'Gold', 'Yellow', // 赤・オレンジ・黄色
+          'Dark Green', 'Green', 'Lime Green', 'Lime', 'Yellow Green', 'Green Yellow', 'Spring Green', // 緑系
+          'Navy', 'Medium Blue', 'Blue', 'Dodger Blue', 'Deep Sky Blue', 'Dark Turquoise', 'Cyan', // 青系
+          'Indigo', 'Purple', 'Blue Violet', 'Medium Slate Blue', 'Orchid', 'Deep Pink', 'Magenta' // 紫系
+      ],
+      columns: 7 // 列数
+      
       },
       {
         type: "input_value",
@@ -1395,7 +1411,7 @@ export const htmlBlocks = Blockly.common.createBlockDefinitionsFromJsonArray([
     ],
     output: null,
     style: "css_blocks",
-    tooltip: "文字の色を色コードまたは英語で指定\n入力例：red, #ffffff",
+    tooltip: "色をカラーパレットで設定",
   },
   
   {
@@ -1458,19 +1474,33 @@ export const htmlBlocks = Blockly.common.createBlockDefinitionsFromJsonArray([
     message0: "background-color: %1 %2",
     args0: [
       {
-        type: "field_input",
-        name: "FIELD",
-        text: "#ffffff",
+        type: 'field_colour',
+        name: 'FIELD',
+        colourOptions: [
+          '#000000', '#696969', '#808080', '#a9a9a9', '#c0c0c0', '#d3d3d3', '#ffffff', // 黒・グレー・白
+          '#ff0000', '#ff4500', '#ff6347', '#ff8c00', '#ffa500', '#ffd700', '#ffff00', // 赤・オレンジ・黄色
+          '#006400', '#008000', '#32cd32', '#7fff00', '#adff2f', '#00ff00', '#00ff7f', // 緑系
+          '#000080', '#0000cd', '#0000ff', '#1e90ff', '#00bfff', '#00ced1', '#00ffff', // 青系
+          '#800080', '#9400d3', '#8a2be2', '#ba55d3', '#ff69b4', '#ff1493', '#ff00ff'  // 紫系
+      ],
+      colourTitles: [
+          'Black', 'Dim Gray', 'Gray', 'Light Gray', 'Silver', 'Light Silver', 'White', // 黒・グレー・白
+          'Red', 'Orange Red', 'Tomato', 'Dark Orange', 'Orange', 'Gold', 'Yellow', // 赤・オレンジ・黄色
+          'Dark Green', 'Green', 'Lime Green', 'Lime', 'Yellow Green', 'Green Yellow', 'Spring Green', // 緑系
+          'Navy', 'Medium Blue', 'Blue', 'Dodger Blue', 'Deep Sky Blue', 'Dark Turquoise', 'Cyan', // 青系
+          'Indigo', 'Purple', 'Blue Violet', 'Medium Slate Blue', 'Orchid', 'Deep Pink', 'Magenta' // 紫系
+      ],
+      columns: 7 // 列数
+      
       },
       {
         type: "input_value",
         name: "VALUE",
-        tooltip: "文字の色を色コードまたは英語で指定\n入力例：red, #ffffff",
       },
     ],
     output: null,
     style: "css_blocks",
-    tooltip: "背景の色を色コードまたは英語で指定。",
+    tooltip: "背景色の色をカラーパレットで設定",
   },
   {
     type: "css_margin",
@@ -1831,7 +1861,6 @@ export const htmlBlocks = Blockly.common.createBlockDefinitionsFromJsonArray([
       {
         type: "field_input",
         name: "TAG",
-        tooltip: "指定した要素名の要素を取得",
       },
     ],
     output: null,
@@ -1909,7 +1938,7 @@ export const htmlBlocks = Blockly.common.createBlockDefinitionsFromJsonArray([
     previousStatement: null,
     nextStatement: null,
     style: "javascript_blocks",
-    tooltip: "指定した要素に特定の操作が生じたらステートメントを実施"
+    tooltip: "指定した要素に特定の操作が生じたらステートメントを実行"
   },
   {
     type: "js_alert",

@@ -334,6 +334,10 @@ export const toolbox = {
         },
         {
           kind: "block",
+          type: "html_height"
+        },
+        {
+          kind: "block",
           type: "html_wrap",
         },
       ]
@@ -418,6 +422,10 @@ export const toolbox = {
         {
           kind: "block",
           type: "css_table-layout",
+        },
+        {
+          kind: "block",
+          type: "css_font-family",
         },
       ]
     },
