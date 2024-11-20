@@ -2,13 +2,15 @@
 <html>
   <head>
     <meta charset="utf-8" />
-    <title>チュートリアル：HTMLについて知ろう</title>
+    <title>HTMLについて知ろう</title>
+    <link rel="icon" href="<%= require('/src/images/icon.svg') %>">
   </head>
   <body>
     <div id="content" style="visibility: hidden;">
       <header>
         <div class="header-container">
-          <a href="#" class="header-logo">Blosite</a>
+          <div class="header-logo">
+            <img id="header-icon" src="<%= require('/src/images/icon.svg') %>">Blosite</div>
           <!-- <sub>by ut.code();</sub> -->
           <nav>
             <ul class="nav-links">
@@ -71,13 +73,13 @@
                 <section>
                   <h2>HTMLについて</h2>
                   <p>
-                    &emsp;<b>HTML</b>(HyperText Markup Language)は普段皆さんが使っているウェブサイトの構造を書き表すための言語のひとつです。右の画像のようにHTMLは入れ子構造で書かれます。
+                    <b>HTML</b>(HyperText Markup Language)は普段みなさんが使っているウェブサイトの構造を書き表すための言語のひとつです。右の画像のようにHTMLは入れ子構造で書かれます。
                   </p>               
                   <h2>HTML要素</h2>
                   <p class="text">
-                    &emsp;HTMLでは、タグを使うことで文章に意味を持たせることができます。<br>
-                    &emsp;タグとは<code class="popup-code">&lt;</code>と<code class="popup-code">&gt;</code>で囲まれた英数字のまとまりで、<code class="popup-code">&lt;tag&gt;内容&lt;/tag&gt;</code>のように書かれた場合<code class="popup-code">&lt;tag&gt;</code>を開始タグ、<code class="popup-code">&lt;/tag&gt;</code>を終了タグと呼びます。そしてこの開始タグから終了タグまでをまとめて<b>要素</b>と呼びます。<br>
-                    &emsp;また、開始タグと終了タグの間にはテキストや別の要素を入れることができます。
+                    HTMLでは、タグを使うことで文章に意味を持たせることができます。<br>
+                    タグとは<code class="popup-code">&lt;</code>と<code class="popup-code">&gt;</code>で囲まれた英数字のまとまりで、<code class="popup-code">&lt;tag&gt;内容&lt;/tag&gt;</code>のように書かれた場合<code class="popup-code">&lt;tag&gt;</code>を開始タグ、<code class="popup-code">&lt;/tag&gt;</code>を終了タグと呼びます。そしてこの開始タグから終了タグまでをまとめて<b>要素</b>と呼びます。<br>
+                    また、開始タグと終了タグの間にはテキストや別の要素を入れることができます。
                   </p>
                 </section>
                 <img src ="<%= require('/src/images/htmlbasic.png')%>"alt="Description of image" class="slide-images"></img> 
@@ -86,7 +88,7 @@
                 <section>
                   <h2>要素の変更</h2>
                   <p>
-                    &emsp;まずは実際に要素の中身を書き換えてみましょう。このポップアップを一度閉じてHello World!と書かれている部分を好きなように書き換えてみましょう。<br>
+                    まずは実際に要素の中身を書き換えてみましょう。このポップアップを一度閉じ、Hello World! と書かれている部分を好きなように書き換えてみましょう。<br>
                     文章の書き換えに応じて、右側のプレビューも変わることを確認してください。<br>
                     書き換えることに成功したら右上のヘルプをクリックしてもう一度この画面に戻ってきてください。
                   </p>
@@ -104,21 +106,23 @@
                 <section>
                   <h2>持ち物リストを作ろう</h2>
                 <p>
-                  &emsp;ではさっそく下の画像のような持ち物リストを作ってみましょう。今回使用するブロックは&lt;h&gt;で囲まれたブロック、&lt;”&gt;で囲まれたブロック、&lt;ul&gt;で囲まれたブロックと
-                  &lt;li&gt;で囲まれたブロックです。左上のHTML要素の部分をクリックするとブロックが出てきます。&lt;ul&gt;で表されるulタグは箇条書きを使う際に用いられるタグです。そして&lt;li&gt;
-                  で表されるliタグはlist&nbsp;itemの略でulタグの中に入れることにより箇条書きで表示させる要素を入れることができます。まずはヒントを見ないでやってみましょう。わからなくなったらヒントを見てみましょう。
+                  ではさっそく下の画像のような持ち物リストを作ってみましょう。<br>
+                  今回使用するのは、<code class="popup-code">&lt;h&gt;</code>で囲まれたブロック、<code class="popup-code"> ”</code>で囲まれたブロック、<code class="popup-code">&lt;ul&gt;</code>で囲まれたブロックと<code class="popup-code">&lt;li&gt;</code>で囲まれたブロックです。左上のHTML要素の部分をクリックするとブロックが出てきます。<br>
+                  <code class="popup-code">&lt;ul&gt;</code>で表されるul要素は箇条書きで表示させたいときに使われます。そして<code class="popup-code">&lt;li&gt;</code>で表されるli要素はlist itemの略で、ul要素の中に入れることで、li要素に書かれた文字を箇条書きで表示させることができます。<br>
+                  まずはヒントを見ないでやってみましょう。わからなくなったらヒントを見てみましょう。
                 </p>
-                <img src ="<%= require('/src/images/motimono.png')%>"alt="Description of image" ></img>
                 </section>
+                <img src ="<%= require('/src/images/motimono.png')%>"alt="Description of image" class="slide-images"></img>
               </div>
               <div class="popup-slides" id="popup-slide-3" style="display: none;">
                 <section>
                 <h2>ヒント</h2>
                 <p>
-                  &lt;h1&gt;ブロックの中には&lt;"&gt;で囲まれたテキストブロックのみを入れます。&lt;ul&gt;ブロックはh1ブロックの下において&lt;li&gt;ブロックは下のようにulブロックの中に入れます。
+                  <code class="popup-code">&lt;h1&gt;</code>ブロックの中には<code class="popup-code"> ”</code>で囲まれたテキストブロックのみを入れます。<br>
+                  <code class="popup-code">&lt;ul&gt;</code>ブロックは<code class="popup-code">&lt;h1&gt;</code>ブロックの下にくっつけて、<code class="popup-code">&lt;li&gt;</code>ブロックは右の写真のように<code class="popup-code">&lt;ul&gt;</code>ブロックの中に入れます。
                 </p>
-                <img src ="<%= require('/src/images/kuttukekata.png')%>"alt="Description of image" ></img>
                 </section>
+                <img src ="<%= require('/src/images/kuttukekata.png')%>"alt="Description of image" class="slide-images"></img>
               </div>
             </div>
             <div id="popup-navigation">
