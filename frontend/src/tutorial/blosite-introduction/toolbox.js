@@ -424,7 +424,7 @@ export const toolbox = {
         },
         {
           kind: "block",
-          type: "js_getElementByClassName",
+          type: "js_getElementsByClassName",
         },
         {
           kind: "block",
@@ -1090,6 +1090,7 @@ export const toolbox = {
     {
       kind: "category",
       name: "テンプレート",
+      categorystyle: "template_category",
       contents: [
         // ul, li
         {

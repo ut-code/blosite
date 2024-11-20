@@ -1656,8 +1656,8 @@ export const htmlBlocks = Blockly.common.createBlockDefinitionsFromJsonArray([
     style: "javascript_blocks",
   },
   {
-    type: "js_getElementByClassName",
-    message0: 'class="%1"の要素',
+    type: "js_getElementsByClassName",
+    message0: 'class="%1"の要素達',
     args0: [
       {
         type: "field_input",
@@ -1757,7 +1757,7 @@ export const htmlBlocks = Blockly.common.createBlockDefinitionsFromJsonArray([
       {
         type: "input_value",
         name: "VALUE",
-      }
+      },
     ],
     previousStatement: null,
     nextStatement: null,
@@ -1847,7 +1847,7 @@ export const htmlBlocks = Blockly.common.createBlockDefinitionsFromJsonArray([
   },
   {
     type: "js_removeChild",
-    message0: "要素 %1 内の末尾に要素 %2 を削除",
+    message0: "要素 %1 内の末尾の要素 %2 を削除",
     args0: [
       {
         type: "input_value",
@@ -1856,9 +1856,9 @@ export const htmlBlocks = Blockly.common.createBlockDefinitionsFromJsonArray([
       {
         type: "input_value",
         name: "CHILD",
-      }
+      },
     ],
-    previousStatement: null, 
+    previousStatement: null,
     nextStatement: null,
     style: "javascript_blocks",
   },
@@ -1975,5 +1975,5 @@ Blockly.Blocks["html_hn"] = {
 
     // ドロップダウンの値に応じてラベルを変更
     labelField.setValue(`</h${selectedOption}>`);
-  }
+  },
 };

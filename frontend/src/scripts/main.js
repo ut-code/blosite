@@ -17,7 +17,6 @@ let toolbox, save, load, storageKey;
 // 現在のページに応じてファイルを読み込む
 async function loadModules(page) {
   let toolboxModule, serializationModule;
-  console.log(page);
 
   switch(page) {
     case '/sandbox':
@@ -112,6 +111,9 @@ Blockly.Themes.customStyle = Blockly.Theme.defineTheme('custom_style', {
       },
       'javascript_category': {
          'colour': '#1e88e5'
+      },
+      'template_category': {
+          'colour': '#800080'
       },
    },
    'componentStyles': {
