@@ -18,7 +18,7 @@ export const toolbox = {
   contents: [
     {
       kind: "CATEGORY",
-      name: "HTML Elements",
+      name: "HTML要素",
       categorystyle: "htmlelement_category",
       contents: [
         {
@@ -209,7 +209,7 @@ export const toolbox = {
     },
     {
       kind: "CATEGORY",
-      name: "HTML Attributes",
+      name: "HTML属性",
       categorystyle: "htmlattribute_category",
       contents: [
         {
