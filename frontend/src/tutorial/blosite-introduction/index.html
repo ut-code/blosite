@@ -13,9 +13,8 @@
           <!-- <sub>by ut.code();</sub> -->
           <nav>
             <ul class="nav-links">
-                <li><a href="./..">トップページに戻る</a></li>
+                <li><a href="/tutorial">チュートリアル一覧へ</a></li>
                 <li id="header-help"><a>ヘルプ</a></li>
-                <li><a href="#">Q&A</a></li>
             </ul>
           </nav>
         </div>
@@ -56,71 +55,68 @@
             <button id="popup-sandbox-button">進む</button>
           </div>
           <div id="popup-inner">
-            <div id="popup-title">いろいろなHTML要素</div>
+            <div id="popup-title">Blositeって？</div>
             <div id="popup-close">×</div>
             <div id="popup-button-container">
-              <button class="popup-buttons" id="popup-button-0">目標</button>
+              <button class="popup-buttons" id="popup-button-0">ようこそ</button>
               <span class="popup-arrow">➡️</span> 
-              <button class="popup-buttons" id="popup-button-1">HTML要素の詳細</button>
+              <button class="popup-buttons" id="popup-button-1">ブロック</button>
               <span class="popup-arrow">➡️</span> 
-              <button class="popup-buttons" id="popup-button-2">HTML属性とは</button>
+              <button class="popup-buttons" id="popup-button-2">メニュー</button>
               <span class="popup-arrow">➡️</span> 
-              <button class="popup-buttons" id="popup-button-3">完成</button>
+              <button class="popup-buttons" id="popup-button-3">プレビュー</button>
             </div>
             <div id="popup-message">
               <!-- ここにスライドコンテンツを表示 -->
               <div class="popup-slides" id="popupSlide-0" style="display: flex">
                 <section class="silde-text-with-images">
-                  <h3>目標</h3>
+                  <h3>Blositeへようこそ！</h3>
                   <p>
-                    様々なHTML要素を使って、右の写真のようなサイトを作ってみよう！
-                  </p>
-                  <h3>詳細</h3>
-                  <p>
-                    すでに設置されているブロックを利用して、テキストボックスや文章を変更しましょう。<br>
-                    もし最初からやり直したいときは、すべてのブロックを削除して、ページを再読み込みしてください。
+                    このサイトでは、直感的にブロックを組み合わせることで、ウェブサイトを作るための基本的な技術（HTML, CSS, JavaScript）について学びつつ、自分の思うようにサイトを作り、他の人が遊べるように公開することができます！<br>
+                    この文章が書かれているポップアップは、右上の「ヘルプ」からいつでも開くことができますよ！<br><br>
+                    では、次のスライドに移動しましょう。上のボタンか右下の「進む」を押してください！
                   </p>
                 </section>
-                <img src="<%= require('/src/images/various-html-elements_0.png') %>" alt="Sample Image" class="slide-images">
+                <img src="<%= require('/src/images/blosite-introduction_0.png') %>" alt="Sample Image" class="slide-images">
               </div>
               <div class="popup-slides" id="popup-slide-1" style="display: flex;">
                 <section class="silde-text-with-images">
-                  <h3>HTML要素の種類</h3>
                   <p>
-                    HTML要素には、特別な機能や見た目を持つものや、表示に関係なく要素の意味づけや整理をするために使われるものがあります。<br>
-                    ここでは試しに右の写真のように作ってみましょう。<br>
-                    一般に、文章は段落を意味する<code>&lt;p&gt;</code>要素の中に書きます。また、下付き文字は<code>&lt;sub&gt;</code>要素を使って作成できます。<br>
-
+                    移動できましたね！<br>
+                    このブロックはホールドして自由に配置できます。また、左側のメニューを選択するとパネルが開いて、ブロックを取り出すことができます。<br>
+                    テンプレートには、すでに組み合わさったブロックがいくつかあります。<br>
+                    ブロックにマウスポインターをかざすと説明文が出てくるので、ぜひ活用してください！<br>
                   </p>
                 </section>
-                <img src="<%= require('/src/images/various-html-elements_1.png') %>" alt="Sample Image" class="slide-images">
+                <img src="<%= require('/src/images/blosite-introduction_0.png') %>" alt="Sample Image" class="slide-images">
               </div>
               <div class="popup-slides" id="popup-slide-2" style="display: flex;">
                 <section class="silde-text-with-images">
-                  <h3>HTML属性</h3>
                   <p>
-                    HTML属性とは、HTML要素に付けることができる追加情報のことです。HTML属性のカテゴリーを開いてどんなものがあるか見てみましょう。<br>
-                    HTML属性は右のように要素に対して組み付けることができます。ここでは<code>&lt;input&gt;</code>要素の<code>type</code>属性について詳しく見てみましょう。<br>
-                    type="text"（デフォルトの設定）だと文字の入力欄、type="number"だと数字の入力欄、type="checkbox"だとチェックボックスになります。<br>
-                    また、HTML属性は１つの要素に複数個つけることができます。例えば、placeholder属性を付け加えると、入力欄に何を入力すればいいかヒントを表示することができます。style要素では、見た目を自在に返納することができます！（詳しくは次のチュートリアルでやりましょう）<br>
+                    右側の丸いアイコンを押すとメニューが開かれます。機能は以下のとおりです。<br>
+                    <ul>
+                      <li>コードを表示：実際のHTMLのコードを見ることができます。興味があれば左のブロックと見比べてみてください！</li>
+                      <li>スクリプトの常時実行：OFFのときはボタンを押すたびに<code class="popup-code">&lt;script&gt;</code>が実行され、ONだと右側のボタンのアイコンが切り替わり、常時実行の状態だとブロックを動かすたびに<code class="popup-code">&lt;script&gt;</code>が実行されます。</li>
+                      <li>サンドボックスで作り続ける：チュートリアルの内容から外れて作り続けたいときに押しましょう！サンドボックスでは作ったサイトを公開することができます。</li>
+                      <li>プレビューを全画面で表示：右側のプレビューを別のタブで全画面で見ることができます。このサイトはHTMLの言語でプログラムしたのと実質的に同じです。</li>
+                    </ul>
                   </p>
                 </section>
+                <img src="<%= require('/src/images/blosite-introduction_0.png') %>" alt="Sample Image" class="slide-images" style="max-height: 350px;">
               </div>
               <div class="popup-slides" id="popup-slide-3" style="display: flex;">
                 <section class="silde-text-with-images">
-                  <h3>機能追加</h3>
                   <p>
-                    では、残りの部分を完成させましょう！
-                    右の写真を参考に、HTML要素を使ってサイトを完成させてください。<br>
+                    右には作ったサイトのプレビューが表示されます。丸型の実行アイコンを押してから、「押してください」と書かれたボタンを押してみましょう！<br>
+
+                    余裕のある方は、真ん中のブロックを自由に動かしたり、テキストを変えたりしてみて、右側のプレビューがどう変わるのか見てみましょう！<br>
+
+                    ブロックの意味していることがわからなくても大丈夫です！これからのチュートリアルを通じて、基本的な内容について学んでいきましょう！<br>
+
+                    何かわからないことがあれば、スタッフに聞きましょう！
                   </p>
-                  <h3>ヒント</h3>
-                  <ol>
-                    <li>キーの表示は<code>&lt;kbd&gt;</code>を使いましょう。</li>
-                    <li>チェックボックスは<code>&lt;input&gt;</code>の属性にtype="checkbox"を設定しましょう。</li>
-                    <li><code>&lt;div&gt;</code>の属性にstyle="flex"を指定すると、その<code>&lt;div&gt;</code>の中にある要素を横方向に並べることができます。</li>
-                  </ol>
                 </section>
-                <img src="<%= require('/src/images/various-html-elements_0.png') %>" alt="Sample Image" class="slide-images">
+                <img src="<%= require('/src/images/blosite-introduction_3.png') %>" alt="Sample Image" class="slide-images" style="max-height: 350px;">
               </div>
             </div>
             <div id="popup-navigation">

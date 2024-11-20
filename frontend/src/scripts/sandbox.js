@@ -11,6 +11,7 @@ import {websiteGenerator} from '/src/blockly/generators/html';
 import customMsg from '/src/blockly/custom_msg';
 import html2canvas from 'html2canvas';
 import { createClient } from '@supabase/supabase-js';
+import confetti from 'canvas-confetti';
 import '/src/styles/main.css';
 
 // 現在のページを取得
@@ -358,6 +359,20 @@ const popupOuterId = document.getElementById("popup-outer");
 // const popupCloseId = document.getElementById("popup-close");
 const popupForm = document.getElementById('popup-form');
 const hamburgerIcon = document.getElementById('hamburger-icon');
+const loadingSpinner = document.getElementById('loading-spinner');
+const loadingOverlay = document.getElementById('loading-overlay');
+const successMessage = document.getElementById('success-message');
+let bodyScrollWidth = document.body.scrollWidth;
+
+// ポップアップの背景の幅を調整
+popupOuterId.style.width = `${bodyScrollWidth}px`;
+loadingOverlay.style.width = `${bodyScrollWidth}px`;
+// resize時にも調整
+window.addEventListener('resize', () => {
+  bodyScrollWidth = document.body.scrollWidth;
+  popupOuterId.style.width = `${bodyScrollWidth}px`;
+  loadingOverlay.style.width = `${bodyScrollWidth}px`;
+});
 
 popupOuterId.addEventListener('click', e => {
   popupOuterId.style.display = 'none';
@@ -493,6 +508,7 @@ runSwitchButton.addEventListener('click', () => {
   }
 });
 
+// ハンバーガーアイコンを開く
 hamburgerIcon.addEventListener('click', () => {
   hamburgerIcon.classList.toggle('open');
 });
@@ -503,7 +519,9 @@ window.addEventListener('load', function() {
   content.style.visibility = 'visible';
 });
 
+// 共有するボタン
 document.getElementById("save-button").onclick = () => {
+  
   // ポップアップを表示して入力を求める
   const popupForm = document.getElementById('popup-form');
 
@@ -516,6 +534,7 @@ const supabaseUrl = 'https://foxfxembozpnvfdwxnog.supabase.co';
 const supabaseKey = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImZveGZ4ZW1ib3pwbnZmZHd4bm9nIiwicm9sZSI6ImFub24iLCJpYXQiOjE3MzAxMTQ0NDMsImV4cCI6MjA0NTY5MDQ0M30.brm2eeigBJv6u1QBcbEl5QAsqsEl1IzYtICuhrlYdDc';
 const supabase = createClient(supabaseUrl, supabaseKey);
 
+// 共有フォームの送信
 document.getElementById('content-form').addEventListener('submit', async function(event) {
   event.preventDefault(); // フォームのデフォルトの送信を防ぐ
 
@@ -523,7 +542,10 @@ document.getElementById('content-form').addEventListener('submit', async functio
   
   const formData = new FormData(formElement);
   const content = JSON.stringify(Blockly.serialization.workspaces.save(ws)); // ブロックの配置を取得
-  console.log(formData);
+
+  loadingSpinner.style.display = 'block'; // ローディングスピナーを表示
+  loadingOverlay.style.display = 'block'; // ローディングオーバーレイを表示
+  
   try {
 
     const response = await fetch(`${process.env.API_ENDPOINT}/api/saveContent`, {
@@ -550,7 +572,7 @@ document.getElementById('content-form').addEventListener('submit', async functio
 
     const result = await response.json();
     const contentId = result.id;
-    console.log('コンテンツの保存に成功しました:', result);
+    console.log('写真以外のコンテンツの保存に成功しました:', result);
 
     // html2canvasを使用して出力されたHTMLをキャプチャ
     const canvas = await html2canvas(document.getElementById('output'));
@@ -564,7 +586,7 @@ document.getElementById('content-form').addEventListener('submit', async functio
     });
 
     if (error) {
-        console.error('Error uploading image:', error);
+        console.error('画像の送信に失敗しました:', error);
         return;
     }
 
@@ -588,8 +610,31 @@ document.getElementById('content-form').addEventListener('submit', async functio
     // 成功した場合の処理（例: フォームをクリアする）
     formElement.reset();
 
+    // すべて非表示にする
+    loadingSpinner.style.display = 'none';
+    loadingOverlay.style.display = 'none';
+    popupOuterId.style.display = 'none';
+    popupForm.style.display = 'none';
+
+    // 紙吹雪を降らせる
+    confetti({
+      particleCount: 100,
+      spread: 90,
+      origin: { y: 0.6 }
+    });
+
+    successMessage.style.display = 'block'; // 送信成功メッセージを表示
+    setTimeout(() => {
+      successMessage.style.display = 'none'; // 送信成功メッセージを非表示
+    }, 3000);
+
   } catch (error) {
-      console.error('エラー:', error);
+      console.error('送信中エラー:', error);
+
+      alert('送信に失敗しました。');
+
+      loadingSpinner.style.display = 'none'; // ローディングスピナーを非表示
+      loadingOverlay.style.display = 'none'; // ローディングオーバーレイを非表示
   }
   
 });

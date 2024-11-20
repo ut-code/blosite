@@ -95,7 +95,7 @@ h1 {
     width: 600px;
     background-color: #e0ebfa;
     border-radius: 10px;
-    max-height: 3000px;
+    /* max-height: 3000px; */
     min-height: 400px;
 }
 

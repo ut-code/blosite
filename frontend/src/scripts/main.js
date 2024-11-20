@@ -17,7 +17,6 @@ let toolbox, save, load, storageKey;
 // 現在のページに応じてファイルを読み込む
 async function loadModules(page) {
   let toolboxModule, serializationModule;
-  console.log(page);
 
   switch(page) {
     case '/sandbox':
@@ -112,6 +111,9 @@ Blockly.Themes.customStyle = Blockly.Theme.defineTheme('custom_style', {
       },
       'javascript_category': {
          'colour': '#1e88e5'
+      },
+      'template_category': {
+          'colour': '#800080'
       },
    },
    'componentStyles': {
@@ -391,8 +393,17 @@ const popupInnerId = document.getElementById("popup-inner");
 const popupCloseId = document.getElementById("popup-close");
 const popupSandbox = document.getElementById("popup-sandbox");
 const hamburgerIcon = document.getElementById('hamburger-icon');
+let bodyScrollWidth = document.body.scrollWidth;
 
+// ポップアップの背景の幅を調整
+popupOuterId.style.width = `${bodyScrollWidth}px`;
+// resize時にも調整
+window.addEventListener('resize', () => {
+  bodyScrollWidth = document.body.scrollWidth;
+  popupOuterId.style.width = `${bodyScrollWidth}px`;
+});
 
+// サンドボックスに移動するボタン
 document.getElementById("sandbox-button").onclick = () => {
   const content = JSON.stringify(Blockly.serialization.workspaces.save(ws));
   const data = window.localStorage?.getItem("sandboxWorkspace");
@@ -405,10 +416,10 @@ function showPopup(content, data) {
   popup.style.display = 'block';
   popupOuterId.style.display = 'block';
 
-  if (data) {
-      popupSandboxMessage.innerText = 'サンドボックスに移動して作り続けますか？\n注意：サンドボックスに途中のデータがあります。\n上書きしてもよろしいですか？';
+  if (data && (data.length > 2)) {
+      popupSandboxMessage.innerText = 'サンドボックスに移動して作り続けよう！\n\n注意：サンドボックスに途中のデータがあります。\n途中のデータは上書きされます。';
   } else {
-      popupSandboxMessage.innerText = 'サンドボックスに移動して作り続けますか？';
+      popupSandboxMessage.innerText = 'サンドボックスに移動して作り続けよう！';
   }
 
   // 確認ボタンがクリックされた場合の処理

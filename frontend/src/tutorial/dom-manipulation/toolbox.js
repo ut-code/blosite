@@ -128,7 +128,7 @@ export const toolbox = {
         },
         {
           kind: "block",
-          type: "js_getElementByClassName",
+          type: "js_getElementsByClassName",
         },
         {
           kind: "block",

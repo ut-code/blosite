@@ -2,7 +2,7 @@
 <html>
   <head>
     <meta charset="utf-8" />
-    <title>いろいろなHTML要素</title>
+    <title>CSSについて知ろう</title>
     <link rel="icon" href="<%= require('/src/images/icon.svg') %>">
   </head>
   <body>
@@ -56,71 +56,61 @@
             <button id="popup-sandbox-button">進む</button>
           </div>
           <div id="popup-inner">
-            <div id="popup-title">いろいろなHTML要素</div>
+            <div id="popup-title">CSSについて知ろう</div>
             <div id="popup-close">×</div>
             <div id="popup-button-container">
-              <button class="popup-buttons" id="popup-button-0">目標</button>
+              <button class="popup-buttons" id="popup-button-0">CSSとは</button>
               <span class="popup-arrow">➡️</span> 
-              <button class="popup-buttons" id="popup-button-1">HTML要素の詳細</button>
+              <button class="popup-buttons" id="popup-button-1">実際にやってみよう</button>
               <span class="popup-arrow">➡️</span> 
-              <button class="popup-buttons" id="popup-button-2">HTML属性とは</button>
+              <button class="popup-buttons" id="popup-button-2">様々なCSSを同時に使ってみよう</button>
               <span class="popup-arrow">➡️</span> 
-              <button class="popup-buttons" id="popup-button-3">完成</button>
+              <button class="popup-buttons" id="popup-button-3">ヒント</button>
             </div>
             <div id="popup-message">
               <!-- ここにスライドコンテンツを表示 -->
               <div class="popup-slides" id="popupSlide-0" style="display: flex">
                 <section class="silde-text-with-images">
-                  <h3>目標</h3>
+                  <h3>CSS</h3>
                   <p>
-                    様々なHTML要素を使って、右の写真のようなサイトを作ってみよう！
-                  </p>
-                  <h3>詳細</h3>
-                  <p>
-                    すでに設置されているブロックを利用して、テキストボックスや文章を変更しましょう。<br>
-                    もし最初からやり直したいときは、すべてのブロックを削除して、ページを再読み込みしてください。
+                  &emsp;今まではhtmlとは何かについて学びました。htmlがウェブサイトの構造を表す言語だったのに対してCSSはウェブサイトの見た目を<br>
+                  表す言語です。blositeではstyle属性をhtml要素に加えることでCSSを記述して見た目を変更することができます。style属性を追加する<br>
+                  には左上のHTMLAttributesの中に入っているstyleと書かれたブロックを使います。
                   </p>
                 </section>
-                <img src="<%= require('/src/images/various-html-elements_0.png') %>" alt="Sample Image" class="slide-images">
               </div>
               <div class="popup-slides" id="popup-slide-1" style="display: flex;">
                 <section class="silde-text-with-images">
-                  <h3>HTML要素の種類</h3>
+                  <h3>styleブロックの使い方</h3>
                   <p>
-                    HTML要素には、特別な機能や見た目を持つものや、表示に関係なく要素の意味づけや整理をするために使われるものがあります。<br>
-                    ここでは試しに右の写真のように作ってみましょう。<br>
-                    一般に、文章は段落を意味する<code>&lt;p&gt;</code>要素の中に書きます。また、下付き文字は<code>&lt;sub&gt;</code>要素を使って作成できます。<br>
-
+                    &emsp;styleブロックの中には歯車が入っています。その歯車をクリックすると右の画像のように項目がでてきます。項目と書かれたブロックをドラッグすることで接続する部分の数を変更することができます。
+                  </p>
+                  <h2>色を変えてみよう</h2>
+                  <p>
+                    &emsp;まずは実際に文字の色を変えてみましょう。HTMLを知ろうのところで作成した遠足の持ち物リス<br>
+                    トがあるのでその文字の色を変えてみましょう。
+                    文字の色を変えるにはstyleブロックにCSSカテゴリーに含まれているcolorブロックを使います。色は色コードを入力するか色の名前を英語で入力することで変更することができます。
                   </p>
                 </section>
-                <img src="<%= require('/src/images/various-html-elements_1.png') %>" alt="Sample Image" class="slide-images">
+                <img src ="<%= require('/src/images/styleblock.gif')%>"alt="Sample Image" class="slide-images">
               </div>
               <div class="popup-slides" id="popup-slide-2" style="display: flex;">
                 <section class="silde-text-with-images">
-                  <h3>HTML属性</h3>
+                  <h3>下の画像のようなものを作ってみよう</h3>
                   <p>
-                    HTML属性とは、HTML要素に付けることができる追加情報のことです。HTML属性のカテゴリーを開いてどんなものがあるか見てみましょう。<br>
-                    HTML属性は右のように要素に対して組み付けることができます。ここでは<code>&lt;input&gt;</code>要素の<code>type</code>属性について詳しく見てみましょう。<br>
-                    type="text"（デフォルトの設定）だと文字の入力欄、type="number"だと数字の入力欄、type="checkbox"だとチェックボックスになります。<br>
-                    また、HTML属性は１つの要素に複数個つけることができます。例えば、placeholder属性を付け加えると、入力欄に何を入力すればいいかヒントを表示することができます。style要素では、見た目を自在に返納することができます！（詳しくは次のチュートリアルでやりましょう）<br>
-                  </p>
+                    &emsp;先ほどは文字の色だけを変更してもらいましたがCSSでできるのは文字の色の変更だけではありません。今度は背景の色と文字の配置を変えてみましょう。
+                    右の画像と同じものを作ってみましょう。
+                    </p>
                 </section>
+                <img src ="<%= require('/src/images/cssexample.png')%>"alt="Sample Image" class="slide-images">
               </div>
               <div class="popup-slides" id="popup-slide-3" style="display: flex;">
                 <section class="silde-text-with-images">
-                  <h3>機能追加</h3>
-                  <p>
-                    では、残りの部分を完成させましょう！
-                    右の写真を参考に、HTML要素を使ってサイトを完成させてください。<br>
-                  </p>
                   <h3>ヒント</h3>
-                  <ol>
-                    <li>キーの表示は<code>&lt;kbd&gt;</code>を使いましょう。</li>
-                    <li>チェックボックスは<code>&lt;input&gt;</code>の属性にtype="checkbox"を設定しましょう。</li>
-                    <li><code>&lt;div&gt;</code>の属性にstyle="flex"を指定すると、その<code>&lt;div&gt;</code>の中にある要素を横方向に並べることができます。</li>
-                  </ol>
+                  <p>
+                    &emsp;背景の色を変えるにはbackground-colorブロックを使いましょう。色の指定の仕方はcolorブロックと同じです。文字の位置の変え方はいくつかの方法がありますが、今回はtext-alignブロックを使ってみましょう。text-alignブロックは特定の値しか入れることができないので注意してください。
+                  </p>
                 </section>
-                <img src="<%= require('/src/images/various-html-elements_0.png') %>" alt="Sample Image" class="slide-images">
               </div>
             </div>
             <div id="popup-navigation">
