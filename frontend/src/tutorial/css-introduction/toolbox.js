@@ -428,7 +428,6 @@ export const toolbox = {
         // ul, li
         {
           kind: "block",
-          type: "html_ul",
           inputs: {
             CONTENT: {
               block: {

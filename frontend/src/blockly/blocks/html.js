@@ -1842,8 +1842,8 @@ export const htmlBlocks = Blockly.common.createBlockDefinitionsFromJsonArray([
     tooltip: "指定したid名の要素を取得"
   },
   {
-    type: "js_getElementByClassName",
-    message0: 'class="%1"の要素',
+    type: "js_getElementsByClassName",
+    message0: 'class="%1"の要素達',
     args0: [
       {
         type: "field_input",
@@ -2004,12 +2004,30 @@ export const htmlBlocks = Blockly.common.createBlockDefinitionsFromJsonArray([
       {
         type: "input_value",
         name: "CHILD",
-      }
+      },
     ],
-    previousStatement: null, 
+    previousStatement: null,
     nextStatement: null,
     style: "javascript_blocks",
     tooltip: "一つ目に指定した要素内の末尾に要素を追加"
+  },
+  {
+    type: "js_removeChild",
+    message0: "要素 %1 内の末尾の要素 %2 を削除",
+    args0: [
+      {
+        type: "input_value",
+        name: "PARENT",
+      },
+      {
+        type: "input_value",
+        name: "CHILD",
+      },
+    ],
+    previousStatement: null,
+    nextStatement: null,
+    style: "javascript_blocks",
+    tooltip: "一つ目に指定した要素内の末尾の要素を削除"
   },
   {
     type: "js_prompt",

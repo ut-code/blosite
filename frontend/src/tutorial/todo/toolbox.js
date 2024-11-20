@@ -424,7 +424,7 @@ export const toolbox = {
         },
         {
           kind: "block",
-          type: "js_getElementByClassName",
+          type: "js_getElementsByClassName",
         },
         {
           kind: "block",
@@ -448,11 +448,11 @@ export const toolbox = {
         },
         {
           kind: "block",
-          type: "js_prompt"
+          type: "js_prompt",
         },
         {
           kind: "block",
-          type: "js_appendChild"
+          type: "js_appendChild",
         },
         /*
         {

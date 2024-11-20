@@ -24,12 +24,12 @@ import { Order } from "blockly/javascript";
 function sanitizeInput(input) {
   // エスケープ処理
   const escapeHtml = (unsafe) => {
-      return unsafe
-          .replace(/&/g, '&amp;')
-          .replace(/</g, '&lt;')
-          .replace(/>/g, '&gt;')
-          .replace(/"/g, '&quot;')
-          .replace(/'/g, '&#039;');
+    return unsafe
+      .replace(/&/g, "&amp;")
+      .replace(/</g, "&lt;")
+      .replace(/>/g, "&gt;")
+      .replace(/"/g, "&quot;")
+      .replace(/'/g, "&#039;");
   };
 
   // エスケープされた文字列をDOMPurifyでさらにサニタイズ
@@ -38,7 +38,20 @@ function sanitizeInput(input) {
 }
 
 // 後続したときに\nがいらないブロックのリスト
-const noLineBreakBlockList = ["html_strong", "html_i", "html_b", "html_u", "html_del", "html_ins", "html_small", "html_sub", "html_sup", "html_em", "html_kbd", "html_var"];
+const noLineBreakBlockList = [
+  "html_strong",
+  "html_i",
+  "html_b",
+  "html_u",
+  "html_del",
+  "html_ins",
+  "html_small",
+  "html_sub",
+  "html_sup",
+  "html_em",
+  "html_kbd",
+  "html_var",
+];
 
 // 前方のブロックを見て判断
 function isAfterNoLineBreakBlock(block, code) {
@@ -83,9 +96,14 @@ websiteGenerator.forBlock["html_text"] = function (block, generator) {
   }
 
   // 前のブロックがhtml_textの場合は改行を追加
-  const code = (nextType == "html_text") ? `${sanitizedContent}<br />` : `${sanitizedContent}`;
+  const code =
+    nextType == "html_text"
+      ? `${sanitizedContent}<br />`
+      : `${sanitizedContent}`;
   const linedCode = isBeforeNoLineBreakBlock(block, code) ? code : code + "\n";
-  const indentedCode = isAfterNoLineBreakBlock(block) ? generator.prefixLines(linedCode, generator.INDENT) : linedCode;
+  const indentedCode = isAfterNoLineBreakBlock(block)
+    ? generator.prefixLines(linedCode, generator.INDENT)
+    : linedCode;
   return indentedCode;
 };
 
@@ -127,9 +145,7 @@ websiteGenerator.forBlock["html_p"] = function (block, generator) {
   const content = generator.statementToCode(block, "CONTENT");
   const attribute = generator.valueToCode(block, "ATTRIBUTE", Order.ATOMIC);
   const startTag = attribute ? `<p ${attribute}>` : `<p>`;
-  const code = content
-    ? `${startTag}\n${content}</p>\n`
-    : `${startTag}</p>\n`;
+  const code = content ? `${startTag}\n${content}</p>\n` : `${startTag}</p>\n`;
   const indentedCode = generator.prefixLines(code, generator.INDENT);
   return indentedCode;
 };
@@ -138,9 +154,7 @@ websiteGenerator.forBlock["html_a"] = function (block, generator) {
   const content = generator.statementToCode(block, "CONTENT");
   const attribute = generator.valueToCode(block, "ATTRIBUTE", Order.ATOMIC);
   const startTag = attribute ? `<a ${attribute}>` : `<a>`;
-  const code = content
-    ? `${startTag}\n${content}</a>\n`
-    : `${startTag}</a>\n`;
+  const code = content ? `${startTag}\n${content}</a>\n` : `${startTag}</a>\n`;
   const indentedCode = generator.prefixLines(code, generator.INDENT);
   return indentedCode;
 };
@@ -246,11 +260,13 @@ websiteGenerator.forBlock["html_em"] = function (block, generator) {
   return indentedCode;
 };
 
-websiteGenerator.forBlock['html_strong'] = function(block, generator) {
+websiteGenerator.forBlock["html_strong"] = function (block, generator) {
   const content = block.getFieldValue("CONTENT");
-  const attribute = generator.valueToCode(block, 'ATTRIBUTE', Order.ATOMIC);
+  const attribute = generator.valueToCode(block, "ATTRIBUTE", Order.ATOMIC);
   const startTag = attribute ? `<strong ${attribute}>` : `<strong>`;
-  const code = content ? `${startTag}\n${content}\n</strong>\n` : `${startTag}</strong>\n`;
+  const code = content
+    ? `${startTag}\n${content}\n</strong>\n`
+    : `${startTag}</strong>\n`;
   const indentedCode = generator.prefixLines(code, generator.INDENT);
   return indentedCode;
 };
@@ -306,13 +322,15 @@ websiteGenerator.forBlock["html_li"] = function (block, generator) {
   return indentedCode;
 };
 
-websiteGenerator.forBlock['html_ol'] = function(block, generator) {
-    const content = generator.statementToCode(block, 'CONTENT');
-    const attribute = generator.valueToCode(block, 'ATTRIBUTE', Order.ATOMIC);
-    const startTag = attribute ? `<ol ${attribute}>` : `<ol>`;
-    const code = content ? `${startTag}\n${content}</ol>\n` : `${startTag}</ol>\n`;
-    const indentedCode = generator.prefixLines(code, generator.INDENT);
-    return indentedCode;
+websiteGenerator.forBlock["html_ol"] = function (block, generator) {
+  const content = generator.statementToCode(block, "CONTENT");
+  const attribute = generator.valueToCode(block, "ATTRIBUTE", Order.ATOMIC);
+  const startTag = attribute ? `<ol ${attribute}>` : `<ol>`;
+  const code = content
+    ? `${startTag}\n${content}</ol>\n`
+    : `${startTag}</ol>\n`;
+  const indentedCode = generator.prefixLines(code, generator.INDENT);
+  return indentedCode;
 };
 
 websiteGenerator.forBlock["html_cite"] = function (block, generator) {
@@ -532,7 +550,9 @@ websiteGenerator.forBlock["html_id"] = function (block, generator) {
   const field = block.getFieldValue("FIELD");
   const value = generator.valueToCode(block, "VALUE", Order.ATOMIC);
   const sanitizedField = sanitizeInput(field);
-  const code = value ? `id="${sanitizedField}" ${value}` : `id="${sanitizedField}"`;
+  const code = value
+    ? `id="${sanitizedField}" ${value}`
+    : `id="${sanitizedField}"`;
   return [code, Order.ATOMIC]; // valueは配列で返す
 };
 
@@ -540,7 +560,9 @@ websiteGenerator.forBlock["html_class"] = function (block, generator) {
   const field = block.getFieldValue("FIELD");
   const value = generator.valueToCode(block, "VALUE", Order.ATOMIC);
   const sanitizedField = sanitizeInput(field);
-  const code = value ? `class="${sanitizedField}" ${value}` : `class="${sanitizedField}"`;
+  const code = value
+    ? `class="${sanitizedField}" ${value}`
+    : `class="${sanitizedField}"`;
   return [code, Order.ATOMIC]; // valueは配列で返す
 };
 
@@ -551,7 +573,9 @@ websiteGenerator.forBlock["html_style"] = function (block, generator) {
       generator.valueToCode(block, "ADD" + i, Order.ATOMIC) || "null";
     elements.push(element);
   }
-  let code = block.itemCount_ ? 'style="' + elements.join("; ") + ';"' : 'style=""';
+  let code = block.itemCount_
+    ? 'style="' + elements.join("; ") + ';"'
+    : 'style=""';
   return [code, Order.ATOMIC];
 };
 
@@ -654,7 +678,9 @@ websiteGenerator.forBlock["html_spellcheck"] = function (block, generator) {
   const field = block.getFieldValue("FIELD");
   const value = generator.valueToCode(block, "VALUE", Order.ATOMIC);
   const sanitizedField = sanitizeInput(field);
-  const code = value ? `spellcheck="${sanitizedField}" ${value}` : `spellcheck="${sanitizedField}"`;
+  const code = value
+    ? `spellcheck="${sanitizedField}" ${value}`
+    : `spellcheck="${sanitizedField}"`;
   return [code, Order.ATOMIC];
 };
 
@@ -662,7 +688,9 @@ websiteGenerator.forBlock["html_autocapitalize"] = function (block, generator) {
   const field = block.getFieldValue("FIELD");
   const value = generator.valueToCode(block, "VALUE", Order.ATOMIC);
   const sanitizedField = sanitizeInput(field);
-  const code = value ? `autocapitalize="${sanitizedField}" ${value}` : `autocapitalize="${sanitizedField}"`;
+  const code = value
+    ? `autocapitalize="${sanitizedField}" ${value}`
+    : `autocapitalize="${sanitizedField}"`;
   return [code, Order.ATOMIC];
 };
 
@@ -670,7 +698,9 @@ websiteGenerator.forBlock["html_title_attr"] = function (block, generator) {
   const field = block.getFieldValue("FIELD");
   const value = generator.valueToCode(block, "VALUE", Order.ATOMIC);
   const sanitizedField = sanitizeInput(field);
-  const code = value ? `title="${sanitizedField}" ${value}` : `title="${sanitizedField}"`;
+  const code = value
+    ? `title="${sanitizedField}" ${value}`
+    : `title="${sanitizedField}"`;
   return [code, Order.ATOMIC];
 };
 
@@ -684,7 +714,9 @@ websiteGenerator.forBlock["html_cols"] = function (block, generator) {
   const field = block.getFieldValue("FIELD");
   const value = generator.valueToCode(block, "VALUE", Order.ATOMIC);
   const sanitizedField = sanitizeInput(field);
-  const code = value ? `cols="${sanitizedField}" ${value}` : `cols="${sanitizedField}"`;
+  const code = value
+    ? `cols="${sanitizedField}" ${value}`
+    : `cols="${sanitizedField}"`;
   return [code, Order.ATOMIC];
 };
 
@@ -692,15 +724,22 @@ websiteGenerator.forBlock["html_rows"] = function (block, generator) {
   const field = block.getFieldValue("FIELD");
   const value = generator.valueToCode(block, "VALUE", Order.ATOMIC);
   const sanitizedField = sanitizeInput(field);
-  const code = value ? `rows="${sanitizedField}" ${value}` : `rows="${sanitizedField}"`;
+  const code = value
+    ? `rows="${sanitizedField}" ${value}`
+    : `rows="${sanitizedField}"`;
   return [code, Order.ATOMIC];
 };
 
-websiteGenerator.forBlock["html_contenteditable"] = function (block, generator) {
+websiteGenerator.forBlock["html_contenteditable"] = function (
+  block,
+  generator
+) {
   const field = block.getFieldValue("FIELD");
   const value = generator.valueToCode(block, "VALUE", Order.ATOMIC);
   const sanitizedField = sanitizeInput(field);
-  const code = value ? `contenteditable="${sanitizedField}" ${value}` : `contenteditable="${sanitizedField}"`;
+  const code = value
+    ? `contenteditable="${sanitizedField}" ${value}`
+    : `contenteditable="${sanitizedField}"`;
   return [code, Order.ATOMIC];
 };
 
@@ -710,11 +749,12 @@ websiteGenerator.forBlock["html_disabled"] = function (block, generator) {
   return [code, Order.ATOMIC];
 };
 
-
-websiteGenerator.forBlock['html_font-size'] = function(block, generator) {
-  const field = block.getFieldValue('FIELD');
-  const value = generator.valueToCode(block, 'VALUE', Order.ATOMIC);
-  const code = value ? `style= "font-size:${field}px;" ${value}` : `style="font-size:${field}px;"`;
+websiteGenerator.forBlock["html_font-size"] = function (block, generator) {
+  const field = block.getFieldValue("FIELD");
+  const value = generator.valueToCode(block, "VALUE", Order.ATOMIC);
+  const code = value
+    ? `style= "font-size:${field}px;" ${value}`
+    : `style="font-size:${field}px;"`;
   return [code, Order.ATOMIC];
 };
 
@@ -722,7 +762,9 @@ websiteGenerator.forBlock["html_href"] = function (block, generator) {
   const field = block.getFieldValue("FIELD");
   const value = generator.valueToCode(block, "VALUE", Order.ATOMIC);
   const sanitizedField = sanitizeInput(field);
-  const code = value ? `href="${sanitizedField}" ${value}` : `href="${sanitizedField}"`;
+  const code = value
+    ? `href="${sanitizedField}" ${value}`
+    : `href="${sanitizedField}"`;
   return [code, Order.ATOMIC];
 };
 
@@ -730,7 +772,9 @@ websiteGenerator.forBlock["html_label"] = function (block, generator) {
   const field = block.getFieldValue("FIELD");
   const value = generator.valueToCode(block, "VALUE", Order.ATOMIC);
   const sanitizedField = sanitizeInput(field);
-  const code = value ? `label="${sanitizedField}" ${value}` : `label="${sanitizedField}"`;
+  const code = value
+    ? `label="${sanitizedField}" ${value}`
+    : `label="${sanitizedField}"`;
   return [code, Order.ATOMIC];
 };
 
@@ -738,7 +782,9 @@ websiteGenerator.forBlock["html_max"] = function (block, generator) {
   const field = block.getFieldValue("FIELD");
   const value = generator.valueToCode(block, "VALUE", Order.ATOMIC);
   const sanitizedField = sanitizeInput(field);
-  const code = value ? `max="${sanitizedField}" ${value}` : `max="${sanitizedField}"`;
+  const code = value
+    ? `max="${sanitizedField}" ${value}`
+    : `max="${sanitizedField}"`;
   return [code, Order.ATOMIC];
 };
 
@@ -746,7 +792,9 @@ websiteGenerator.forBlock["html_min"] = function (block, generator) {
   const field = block.getFieldValue("FIELD");
   const value = generator.valueToCode(block, "VALUE", Order.ATOMIC);
   const sanitizedField = sanitizeInput(field);
-  const code = value ? `min="${sanitizedField}" ${value}` : `min="${sanitizedField}"`;
+  const code = value
+    ? `min="${sanitizedField}" ${value}`
+    : `min="${sanitizedField}"`;
   return [code, Order.ATOMIC];
 };
 
@@ -754,7 +802,9 @@ websiteGenerator.forBlock["html_maxlength"] = function (block, generator) {
   const field = block.getFieldValue("FIELD");
   const value = generator.valueToCode(block, "VALUE", Order.ATOMIC);
   const sanitizedField = sanitizeInput(field);
-  const code = value ? `maxlength="${sanitizedField}" ${value}` : `maxlength="${sanitizedField}"`;
+  const code = value
+    ? `maxlength="${sanitizedField}" ${value}`
+    : `maxlength="${sanitizedField}"`;
   return [code, Order.ATOMIC];
 };
 
@@ -762,7 +812,9 @@ websiteGenerator.forBlock["html_minlength"] = function (block, generator) {
   const field = block.getFieldValue("FIELD");
   const value = generator.valueToCode(block, "VALUE", Order.ATOMIC);
   const sanitizedField = sanitizeInput(field);
-  const code = value ? `minlength="${sanitizedField}" ${value}` : `minlength="${sanitizedField}"`;
+  const code = value
+    ? `minlength="${sanitizedField}" ${value}`
+    : `minlength="${sanitizedField}"`;
   return [code, Order.ATOMIC];
 };
 
@@ -770,7 +822,9 @@ websiteGenerator.forBlock["html_pattern"] = function (block, generator) {
   const field = block.getFieldValue("FIELD");
   const value = generator.valueToCode(block, "VALUE", Order.ATOMIC);
   const sanitizedField = sanitizeInput(field);
-  const code = value ? `pattern="${sanitizedField}" ${value}` : `pattern="${sanitizedField}"`;
+  const code = value
+    ? `pattern="${sanitizedField}" ${value}`
+    : `pattern="${sanitizedField}"`;
   return [code, Order.ATOMIC];
 };
 
@@ -778,7 +832,9 @@ websiteGenerator.forBlock["html_placeholder"] = function (block, generator) {
   const field = block.getFieldValue("FIELD");
   const value = generator.valueToCode(block, "VALUE", Order.ATOMIC);
   const sanitizedField = sanitizeInput(field);
-  const code = value ? `placeholder="${sanitizedField}" ${value}` : `placeholder="${sanitizedField}"`;
+  const code = value
+    ? `placeholder="${sanitizedField}" ${value}`
+    : `placeholder="${sanitizedField}"`;
   return [code, Order.ATOMIC];
 };
 
@@ -798,7 +854,9 @@ websiteGenerator.forBlock["html_size"] = function (block, generator) {
   const field = block.getFieldValue("FIELD");
   const value = generator.valueToCode(block, "VALUE", Order.ATOMIC);
   const sanitizedField = sanitizeInput(field);
-  const code = value ? `size="${sanitizedField}" ${value}` : `size="${sanitizedField}"`;
+  const code = value
+    ? `size="${sanitizedField}" ${value}`
+    : `size="${sanitizedField}"`;
   return [code, Order.ATOMIC];
 };
 
@@ -806,7 +864,9 @@ websiteGenerator.forBlock["html_src"] = function (block, generator) {
   const field = block.getFieldValue("FIELD");
   const value = generator.valueToCode(block, "VALUE", Order.ATOMIC);
   const sanitizedField = sanitizeInput(field);
-  const code = value ? `src="${sanitizedField}" ${value}` : `src="${sanitizedField}"`;
+  const code = value
+    ? `src="${sanitizedField}" ${value}`
+    : `src="${sanitizedField}"`;
   return [code, Order.ATOMIC];
 };
 
@@ -814,7 +874,9 @@ websiteGenerator.forBlock["html_step"] = function (block, generator) {
   const field = block.getFieldValue("FIELD");
   const value = generator.valueToCode(block, "VALUE", Order.ATOMIC);
   const sanitizedField = sanitizeInput(field);
-  const code = value ? `step="${sanitizedField}" ${value}` : `step="${sanitizedField}"`;
+  const code = value
+    ? `step="${sanitizedField}" ${value}`
+    : `step="${sanitizedField}"`;
   return [code, Order.ATOMIC];
 };
 
@@ -822,7 +884,9 @@ websiteGenerator.forBlock["html_start"] = function (block, generator) {
   const field = block.getFieldValue("FIELD");
   const value = generator.valueToCode(block, "VALUE", Order.ATOMIC);
   const sanitizedField = sanitizeInput(field);
-  const code = value ? `start="${sanitizedField}" ${value}` : `start="${sanitizedField}"`;
+  const code = value
+    ? `start="${sanitizedField}" ${value}`
+    : `start="${sanitizedField}"`;
   return [code, Order.ATOMIC];
 };
 
@@ -830,7 +894,9 @@ websiteGenerator.forBlock["html_tabindex"] = function (block, generator) {
   const field = block.getFieldValue("FIELD");
   const value = generator.valueToCode(block, "VALUE", Order.ATOMIC);
   const sanitizedField = sanitizeInput(field);
-  const code = value ? `tabindex="${sanitizedField}" ${value}` : `tabindex="${sanitizedField}"`;
+  const code = value
+    ? `tabindex="${sanitizedField}" ${value}`
+    : `tabindex="${sanitizedField}"`;
   return [code, Order.ATOMIC];
 };
 
@@ -838,7 +904,9 @@ websiteGenerator.forBlock["html_type"] = function (block, generator) {
   const field = block.getFieldValue("FIELD");
   const value = generator.valueToCode(block, "VALUE", Order.ATOMIC);
   const sanitizedField = sanitizeInput(field);
-  const code = value ? `type="${sanitizedField}" ${value}` : `type="${sanitizedField}"`;
+  const code = value
+    ? `type="${sanitizedField}" ${value}`
+    : `type="${sanitizedField}"`;
   return [code, Order.ATOMIC];
 };
 
@@ -846,7 +914,9 @@ websiteGenerator.forBlock["html_value"] = function (block, generator) {
   const field = block.getFieldValue("FIELD");
   const value = generator.valueToCode(block, "VALUE", Order.ATOMIC);
   const sanitizedField = sanitizeInput(field);
-  const code = value ? `value="${sanitizedField}" ${value}` : `value="${sanitizedField}"`;
+  const code = value
+    ? `value="${sanitizedField}" ${value}`
+    : `value="${sanitizedField}"`;
   return [code, Order.ATOMIC];
 };
 
@@ -854,7 +924,9 @@ websiteGenerator.forBlock["html_width"] = function (block, generator) {
   const field = block.getFieldValue("FIELD");
   const value = generator.valueToCode(block, "VALUE", Order.ATOMIC);
   const sanitizedField = sanitizeInput(field);
-  const code = value ? `width="${sanitizedField}" ${value}` : `width="${sanitizedField}"`;
+  const code = value
+    ? `width="${sanitizedField}" ${value}`
+    : `width="${sanitizedField}"`;
   return [code, Order.ATOMIC];
 };
 
@@ -862,7 +934,9 @@ websiteGenerator.forBlock["html_wrap"] = function (block, generator) {
   const field = block.getFieldValue("FIELD");
   const value = generator.valueToCode(block, "VALUE", Order.ATOMIC);
   const sanitizedField = sanitizeInput(field);
-  const code = value ? `wrap="${sanitizedField}" ${value}` : `wrap="${sanitizedField}"`;
+  const code = value
+    ? `wrap="${sanitizedField}" ${value}`
+    : `wrap="${sanitizedField}"`;
   return [code, Order.ATOMIC];
 };
 
@@ -870,7 +944,9 @@ websiteGenerator.forBlock["css_color"] = function (block, generator) {
   const field = block.getFieldValue("FIELD");
   const value = generator.valueToCode(block, "VALUE", Order.ATOMIC);
   const sanitizedField = sanitizeInput(field);
-  const code = value ? `color:${sanitizedField}; ${value}` : `color:${sanitizedField}`;
+  const code = value
+    ? `color:${sanitizedField}; ${value}`
+    : `color:${sanitizedField}`;
   return [code, Order.ATOMIC];
 };
 
@@ -878,7 +954,9 @@ websiteGenerator.forBlock["css_font-size"] = function (block, generator) {
   const field = block.getFieldValue("FIELD");
   const value = generator.valueToCode(block, "VALUE", Order.ATOMIC);
   const sanitizedField = sanitizeInput(field);
-  const code = value ? `font-size:${sanitizedField}; ${value}` : `font-size:${sanitizedField}`;
+  const code = value
+    ? `font-size:${sanitizedField}; ${value}`
+    : `font-size:${sanitizedField}`;
   return [code, Order.ATOMIC];
 };
 
@@ -886,7 +964,9 @@ websiteGenerator.forBlock["css_font-weight"] = function (block, generator) {
   const field = block.getFieldValue("FIELD");
   const value = generator.valueToCode(block, "VALUE", Order.ATOMIC);
   const sanitizedField = sanitizeInput(field);
-  const code = value ? `font-weight:${sanitizedField}; ${value}` : `font-weight:${sanitizedField}`;
+  const code = value
+    ? `font-weight:${sanitizedField}; ${value}`
+    : `font-weight:${sanitizedField}`;
   return [code, Order.ATOMIC];
 };
 
@@ -894,15 +974,22 @@ websiteGenerator.forBlock["css_line-weight"] = function (block, generator) {
   const field = block.getFieldValue("FIELD");
   const value = generator.valueToCode(block, "VALUE", Order.ATOMIC);
   const sanitizedField = sanitizeInput(field);
-  const code = value ? `line-weight:${sanitizedField}; ${value}` : `line-weight:${sanitizedField}`;
+  const code = value
+    ? `line-weight:${sanitizedField}; ${value}`
+    : `line-weight:${sanitizedField}`;
   return [code, Order.ATOMIC];
 };
 
-websiteGenerator.forBlock["css_background-color"] = function (block, generator) {
+websiteGenerator.forBlock["css_background-color"] = function (
+  block,
+  generator
+) {
   const field = block.getFieldValue("FIELD");
   const value = generator.valueToCode(block, "VALUE", Order.ATOMIC);
   const sanitizedField = sanitizeInput(field);
-  const code = value ? `background-color:${sanitizedField}; ${value}` : `background-color:${sanitizedField}`;
+  const code = value
+    ? `background-color:${sanitizedField}; ${value}`
+    : `background-color:${sanitizedField}`;
   return [code, Order.ATOMIC];
 };
 
@@ -910,7 +997,9 @@ websiteGenerator.forBlock["css_margin"] = function (block, generator) {
   const field = block.getFieldValue("FIELD");
   const value = generator.valueToCode(block, "VALUE", Order.ATOMIC);
   const sanitizedField = sanitizeInput(field);
-  const code = value ? `margin:${sanitizedField}; ${value}` : `margin:${sanitizedField}`;
+  const code = value
+    ? `margin:${sanitizedField}; ${value}`
+    : `margin:${sanitizedField}`;
   return [code, Order.ATOMIC];
 };
 
@@ -918,7 +1007,9 @@ websiteGenerator.forBlock["css_padding"] = function (block, generator) {
   const field = block.getFieldValue("FIELD");
   const value = generator.valueToCode(block, "VALUE", Order.ATOMIC);
   const sanitizedField = sanitizeInput(field);
-  const code = value ? `padding:${sanitizedField}; ${value}` : `padding:${sanitizedField}`;
+  const code = value
+    ? `padding:${sanitizedField}; ${value}`
+    : `padding:${sanitizedField}`;
   return [code, Order.ATOMIC];
 };
 websiteGenerator.forBlock["css_text-align"] = function (block, generator) {
@@ -941,7 +1032,9 @@ websiteGenerator.forBlock["css_border"] = function (block, generator) {
   const field = block.getFieldValue("FIELD");
   const value = generator.valueToCode(block, "VALUE", Order.ATOMIC);
   const sanitizedField = sanitizeInput(field);
-  const code = value ? `border:${sanitizedField}; ${value}` : `border:${sanitizedField}`;
+  const code = value
+    ? `border:${sanitizedField}; ${value}`
+    : `border:${sanitizedField}`;
   return [code, Order.ATOMIC];
 };
 
@@ -949,7 +1042,9 @@ websiteGenerator.forBlock["css_border-radius"] = function (block, generator) {
   const field = block.getFieldValue("FIELD");
   const value = generator.valueToCode(block, "VALUE", Order.ATOMIC);
   const sanitizedField = sanitizeInput(field);
-  const code = value ? `border-radius:${sanitizedField}; ${value}` : `border-radius:${sanitizedField}`;
+  const code = value
+    ? `border-radius:${sanitizedField}; ${value}`
+    : `border-radius:${sanitizedField}`;
   return [code, Order.ATOMIC];
 };
 
@@ -957,7 +1052,9 @@ websiteGenerator.forBlock["css_border-collapse"] = function (block, generator) {
   const field = block.getFieldValue("FIELD");
   const value = generator.valueToCode(block, "VALUE", Order.ATOMIC);
   const sanitizedField = sanitizeInput(field);
-  const code = value ? `border-collapse:${sanitizedField}; ${value}` : `border-collapse:${sanitizedField}`;
+  const code = value
+    ? `border-collapse:${sanitizedField}; ${value}`
+    : `border-collapse:${sanitizedField}`;
   return [code, Order.ATOMIC];
 };
 
@@ -965,7 +1062,9 @@ websiteGenerator.forBlock["css_display"] = function (block, generator) {
   const field = block.getFieldValue("FIELD");
   const value = generator.valueToCode(block, "VALUE", Order.ATOMIC);
   const sanitizedField = sanitizeInput(field);
-  const code = value ? `display:${sanitizedField}; ${value}` : `display:${sanitizedField}`;
+  const code = value
+    ? `display:${sanitizedField}; ${value}`
+    : `display:${sanitizedField}`;
   return [code, Order.ATOMIC];
 };
 
@@ -973,7 +1072,9 @@ websiteGenerator.forBlock["css_position"] = function (block, generator) {
   const field = block.getFieldValue("FIELD");
   const value = generator.valueToCode(block, "VALUE", Order.ATOMIC);
   const sanitizedField = sanitizeInput(field);
-  const code = value ? `position:${sanitizedField}; ${value}` : `position:${sanitizedField}`;
+  const code = value
+    ? `position:${sanitizedField}; ${value}`
+    : `position:${sanitizedField}`;
   return [code, Order.ATOMIC];
 };
 
@@ -981,7 +1082,9 @@ websiteGenerator.forBlock["css_top"] = function (block, generator) {
   const field = block.getFieldValue("FIELD");
   const value = generator.valueToCode(block, "VALUE", Order.ATOMIC);
   const sanitizedField = sanitizeInput(field);
-  const code = value ? `top:${sanitizedField}; ${value}` : `top:${sanitizedField}`;
+  const code = value
+    ? `top:${sanitizedField}; ${value}`
+    : `top:${sanitizedField}`;
   return [code, Order.ATOMIC];
 };
 
@@ -989,7 +1092,9 @@ websiteGenerator.forBlock["css_table-layout"] = function (block, generator) {
   const field = block.getFieldValue("FIELD");
   const value = generator.valueToCode(block, "VALUE", Order.ATOMIC);
   const sanitizedField = sanitizeInput(field);
-  const code = value ? `table-layout:${sanitizedField}; ${value}` : `table-layout:${sanitizedField}`;
+  const code = value
+    ? `table-layout:${sanitizedField}; ${value}`
+    : `table-layout:${sanitizedField}`;
   return [code, Order.ATOMIC];
 };
 
@@ -997,7 +1102,9 @@ websiteGenerator.forBlock["css_left"] = function (block, generator) {
   const field = block.getFieldValue("FIELD");
   const value = generator.valueToCode(block, "VALUE", Order.ATOMIC);
   const sanitizedField = sanitizeInput(field);
-  const code = value ? `left:${sanitizedField}; ${value}` : `left:${sanitizedField}`;
+  const code = value
+    ? `left:${sanitizedField}; ${value}`
+    : `left:${sanitizedField}`;
   return [code, Order.ATOMIC];
 };
 
@@ -1005,7 +1112,9 @@ websiteGenerator.forBlock["css_right"] = function (block, generator) {
   const field = block.getFieldValue("FIELD");
   const value = generator.valueToCode(block, "VALUE", Order.ATOMIC);
   const sanitizedField = sanitizeInput(field);
-  const code = value ? `right:${sanitizedField}; ${value}` : `right:${sanitizedField}`;
+  const code = value
+    ? `right:${sanitizedField}; ${value}`
+    : `right:${sanitizedField}`;
   return [code, Order.ATOMIC];
 };
 
@@ -1013,7 +1122,9 @@ websiteGenerator.forBlock["css_bottom"] = function (block, generator) {
   const field = block.getFieldValue("FIELD");
   const value = generator.valueToCode(block, "VALUE", Order.ATOMIC);
   const sanitizedField = sanitizeInput(field);
-  const code = value ? `bottom:${sanitizedField}; ${value}` : `bottom:${sanitizedField}`;
+  const code = value
+    ? `bottom:${sanitizedField}; ${value}`
+    : `bottom:${sanitizedField}`;
   return [code, Order.ATOMIC];
 };
 
@@ -1033,30 +1144,31 @@ websiteGenerator.forBlock["css_bottom"] = function (block, generator) {
 websiteGenerator.forBlock["js_getElementById"] = function (block, generator) {
   const id = block.getFieldValue("ID");
   const sanitizedId = sanitizeInput(id);
-  const code =
-    sanitizedId
-      ? `document.getElementById("${sanitizedId}")`
-      : "";
+  const code = sanitizedId ? `document.getElementById("${sanitizedId}")` : "";
   return [code, Order.ATOMIC];
 };
 
-websiteGenerator.forBlock["js_getElementByClassName"] = function (block, generator) {
+websiteGenerator.forBlock["js_getElementsByClassName"] = function (
+  block,
+  generator
+) {
   const className = block.getFieldValue("CLASS");
   const sanitizedClassName = sanitizeInput(className);
-  const code =
-    sanitizedClassName
-      ? `document.getElementById("${sanitizedClassName}")`
-      : "";
+  const code = sanitizedClassName
+    ? `document.getElementsByClassName("${sanitizedClassName}")`
+    : "";
   return [code, Order.ATOMIC];
 };
 
-websiteGenerator.forBlock["js_getElementByTagName"] = function (block, generator) {
+websiteGenerator.forBlock["js_getElementByTagName"] = function (
+  block,
+  generator
+) {
   const tagName = block.getFieldValue("TAG");
   const sanitizedtagName = sanitizeInput(tagName);
-  const code =
-    sanitizedtagName
-      ? `document.getElementById("${sanitizedtagName}")`
-      : "";
+  const code = sanitizedtagName
+    ? `document.getElementById("${sanitizedtagName}")`
+    : "";
   return [code, Order.ATOMIC];
 };
 
@@ -1074,7 +1186,9 @@ websiteGenerator.forBlock["js_addEventListener"] = function (block, generator) {
   const id = generator.valueToCode(block, "ID", Order.ATOMIC);
   const event = block.getFieldValue("EVENT");
   const content = generator.statementToCode(block, "CONTENT");
-  const code = id ? `${id}.addEventListener("${event}", () => {\n${content}});\n` : "\n";
+  const code = id
+    ? `${id}.addEventListener("${event}", () => {\n${content}});\n`
+    : "\n";
   return code;
 };
 
@@ -1101,10 +1215,9 @@ websiteGenerator.forBlock["js_textContent"] = function (block, generator) {
 websiteGenerator.forBlock["js_createElement"] = function (block, generator) {
   const tagName = block.getFieldValue("TAG");
   const sanitizedtagName = sanitizeInput(tagName);
-  const code =
-    sanitizedtagName
-      ? `document.createElement("${sanitizedtagName}")`
-      : "";
+  const code = sanitizedtagName
+    ? `document.createElement("${sanitizedtagName}")`
+    : "";
   return [code, Order.ATOMIC];
 };
 
@@ -1116,42 +1229,33 @@ websiteGenerator.forBlock["js_alert"] = function (block, generator) {
 
 websiteGenerator.forBlock["js_appendChild"] = function (block, generator) {
   const parent = generator.valueToCode(block, "PARENT", Order.ATOMIC);
-  const child = generator.valueToCode(block,"CHILD", Order.ATOMIC);
-  const code =
-    (parent && child)
-      ? `${parent}.appendChild(${child});\n`
-      : "\n";
+  const child = generator.valueToCode(block, "CHILD", Order.ATOMIC);
+  const code = parent && child ? `${parent}.appendChild(${child});\n` : "\n";
   return code;
 };
 
 websiteGenerator.forBlock["js_removeChild"] = function (block, generator) {
   const parent = generator.valueToCode(block, "PARENT", Order.ATOMIC);
-  const child = generator.valueToCode(block,"CHILD", Order.ATOMIC);
-  const code =
-    (parent && child)
-      ? `${parent}.removeChild(${child});\n`
-      : "\n";
+  const child = generator.valueToCode(block, "CHILD", Order.ATOMIC);
+  const code = parent && child ? `${parent}.removeChild(${child});\n` : "\n";
   return code;
 };
 
 websiteGenerator.forBlock["js_prompt"] = function (block, generator) {
   const content = generator.valueToCode(block, "CONTENT", Order.ATOMIC);
-  const defaultText = generator.valueToCode(block,"DEFAULT", Order.ATOMIC);
+  const defaultText = generator.valueToCode(block, "DEFAULT", Order.ATOMIC);
   if (content && defaultText) {
     const code = `prompt(${content}, ${defaultText});\n`;
     return code;
   }
-  const code =
-    content
-      ? `prompt(${content});`
-      : "";
+  const code = content ? `prompt(${content});` : "";
   return [code, Order.ATOMIC];
 };
 
 websiteGenerator.forBlock["js_setter"] = function (block, generator) {
   const variable = generator.valueToCode(block, "VARIABLE", Order.ATOMIC);
   const content = generator.valueToCode(block, "CONTENT", Order.ATOMIC);
-  const code = (variable && content) ? `${variable} = ${content};\n` : "\n";
+  const code = variable && content ? `${variable} = ${content};\n` : "\n";
   return code;
 };
 
