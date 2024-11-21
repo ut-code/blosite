@@ -37,35 +37,35 @@ function sanitizeInput(input) {
   return DOMPurify.sanitize(escapedInput);
 }
 
-// 後続したときに\nがいらないブロックのリスト
-const noLineBreakBlockList = [
-  "html_strong",
-  "html_i",
-  "html_b",
-  "html_u",
-  "html_del",
-  "html_ins",
-  "html_small",
-  "html_sub",
-  "html_sup",
-  "html_em",
-  "html_kbd",
-  "html_var",
-];
+// // 後続したときに\nがいらないブロックのリスト
+// const noLineBreakBlockList = [
+//   "html_strong",
+//   "html_i",
+//   "html_b",
+//   "html_u",
+//   "html_del",
+//   "html_ins",
+//   "html_small",
+//   "html_sub",
+//   "html_sup",
+//   "html_em",
+//   "html_kbd",
+//   "html_var",
+// ];
 
-// 前方のブロックを見て判断
-function isAfterNoLineBreakBlock(block, code) {
-  const previousBlock = block.getPreviousBlock();
-  const previousType = previousBlock ? previousBlock.type : null;
-  return noLineBreakBlockList.includes(previousType);
-}
+// // 前方のブロックを見て判断
+// function isAfterNoLineBreakBlock(block, code) {
+//   const previousBlock = block.getPreviousBlock();
+//   const previousType = previousBlock ? previousBlock.type : null;
+//   return noLineBreakBlockList.includes(previousType);
+// }
 
-// 後続のブロックを見て判断
-function isBeforeNoLineBreakBlock(block, code) {
-  const nextBlock = block.getNextBlock();
-  const nextType = nextBlock ? nextBlock.type : null;
-  return noLineBreakBlockList.includes(nextType);
-}
+// // 後続のブロックを見て判断
+// function isBeforeNoLineBreakBlock(block, code) {
+//   const nextBlock = block.getNextBlock();
+//   const nextType = nextBlock ? nextBlock.type : null;
+//   return noLineBreakBlockList.includes(nextType);
+// }
 
 // ブロックの生成するコードを定義
 websiteGenerator.forBlock["html_html-head-body"] = function (block, generator) {
@@ -98,12 +98,9 @@ websiteGenerator.forBlock["html_text"] = function (block, generator) {
   // 前のブロックがhtml_textの場合は改行を追加
   const code =
     nextType == "html_text"
-      ? `${sanitizedContent}<br />`
-      : `${sanitizedContent}`;
-  const linedCode = isBeforeNoLineBreakBlock(block, code) ? code : code + "\n";
-  const indentedCode = isAfterNoLineBreakBlock(block)
-    ? generator.prefixLines(linedCode, generator.INDENT)
-    : linedCode;
+      ? `${sanitizedContent}<br />\n`
+      : `${sanitizedContent}\n`;
+  const indentedCode = generator.prefixLines(code, generator.INDENT)
   return indentedCode;
 };
 

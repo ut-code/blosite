@@ -31,6 +31,7 @@
     "blockly": "^11.1.1",
     "canvas-confetti": "^1.9.3",
     "dompurify": "^3.1.6",
+    "escodegen": "^2.1.0",
     "html2canvas": "^1.4.1"
   }
 }
