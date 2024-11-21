@@ -462,6 +462,20 @@ export const toolbox = {
         */
         {
           kind: "block",
+          type: "js_getElementStyle",
+          inputs: {
+            CONTENT: {
+              shadow: {
+                type: "css_color",
+                fields: {
+                  TEXT: "rgba(0, 0, 0, 0.1)",
+                },
+              },
+            },
+          }
+        },
+        {
+          kind: "block",
           type: "js_alert",
           inputs: {
             CONTENT: {
