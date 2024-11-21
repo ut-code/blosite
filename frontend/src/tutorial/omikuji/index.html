@@ -64,44 +64,40 @@
             <div id="popup-button-container">
               <button class="popup-buttons" id="popup-button-0">目標</button>
               <span class="popup-arrow">➡️</span> 
-              <button class="popup-buttons" id="popup-button-1">ボタンの作成</button>
+              <button class="popup-buttons" id="popup-button-1">DOM操作</button>
               <span class="popup-arrow">➡️</span> 
-              <button class="popup-buttons" id="popup-button-2">scriptを作ろう</button>
+              <button class="popup-buttons" id="popup-button-2">条件分岐</button>
               <span class="popup-arrow">➡️</span> 
               <button class="popup-buttons" id="popup-button-3">発展・工夫</button>
             </div>
             <div id="popup-message">
               <!-- ここにスライドコンテンツを表示 -->
               <div class="popup-slides" id="popupSlide-0">
-                <section>
+                <section class="silde-with-images">
                   <h3>目標</h3>
-                  <p>ボタンを押すとおみくじの結果が出てくるプログラミングを作成しよう。</p>
+                  <p>右の動画のようにボタンを押すとおみくじの結果が出てくるプログラミングを作成してみよう。</p>
                   <p>次のページからはヒントなので自信のある人はヒントを見ないでやってみよう！</p>
-                  <h3>例</h3>
-                  <img src ="<%= require('/src/images/omikujirei.gif')%>"alt="Description of image" width="400" height="240"></img>
                 </section>
+                <img src ="<%= require('/src/images/omikujirei.gif')%>"alt="Sample Image" class="slide-images" >
               </div>
               <div class="popup-slides" id="popup-slide-1" style="display: none;">
                 <section>
-                  <h3>ボタン</h3>
+                  <h3>ボタンと表示する場所の作成</h3>
                   <p>
-                    &emsp;まずはボタンを作ってみましょう。ボタンを作るにはHTML Elementsブロックの中から、&lt;button&gt;で囲まれたブロックを選びましょう。<br>
-                    &emsp;ボタンの中に文字を入れてみましょう、ボタンを作ることができたら結果を表示する場所を作りましょう。結果の中身を後で変えることができるようにidを
-                    つけて要素を取得できるようにしましょう。中身は後でjavascriptを用いて変更するので中身はからでも構いません
+                    &emsp;まずはボタンを作ってボタンにテキストを入力し、id属性を設定しましょう。それができたら&lt;div&gt;を用いて結果を表示する場所を作りましょう。<br>
+                    この&lt;div&gt;要素の中身を書き換えることで結果を表示したいのでこの&lt;div&gt;要素にもidを設定しましょう。
                   </p>
+                  <h3>DOM操作</h3>
+                  <p>
+                    「id="&emsp;"の要素」ブロック、「要素～の文章」ブロック、「～にイベント～が発生したとき」ブロック、「～に～を代入」ブロックを用いて<br>
+                    DOM操作をしましょう。
+                  </p>  
                 </section>
               </div>
               <div class="popup-slides" id="popup-slide-2" style="display: none;">
                 <section>
-                  <h3>Javascript</h3>
+                  <h3>乱数の使い方</h3>
                   <p>
-                    &emsp;javascriptのコードをscriptブロックの中にJavaScriptブロックをいれることで
-                    作りましょう。どんな結果になるのかはおみくじなので運で決まってほしいです。そこで
-                    ここではMathブロックに含まれている、1未満の正の実数をランダムで生成するブロックを
-                    使ってみましょう。この場合0~0.20の数字が生成される確率は20%です。発生した乱数はそのままでは使えないので
-                    変数に保存しましょう。変数はVariablesブロックの変数の作成をクリックすると変数を作ることができます。
-                    次に条件分岐を作りましょう。条件分岐を作るにはLogicブロックの「もし」と書かれているブロックを使ってみましょう。条件分岐と
-                    条件を満たすかどうかによって実行するプログラムを変化させることです。
                   </p>
                 </section>
               </div>
