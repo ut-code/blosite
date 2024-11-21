@@ -15,27 +15,10 @@ const xml = `
   <block type="html_html-head-body" x="20" y="20">
     <statement name="HEAD">
       <block type="html_title">
-        <field name="CONTENT">Sample</field>
+        <field name="CONTENT">おみくじ</field>
       </block>
     </statement>
-    <statement name="BODY">
-      <block type="html_ul">
-        <statement name="CONTENT">
-          <block type="html_li">
-            <field name="CONTENT">Item 1</field>
-            <next>
-              <block type="html_li">
-                <field name="CONTENT">Item 2</field>
-                <next>
-                  <block type="html_li">
-                    <field name="CONTENT">Item 3</field>
-                  </block>
-                </next>
-              </block>
-            </next>
-          </block>
-        </statement>
-      </block>
+    <statement name="BODY">      
     </statement>
   </block>
 </xml>

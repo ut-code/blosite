@@ -1171,6 +1171,23 @@ websiteGenerator.forBlock["js_getElementByTagName"] = function (
     : "";
   return [code, Order.ATOMIC];
 };
+websiteGenerator.forBlock["js_getElementStyle"] = function (block, generator) {
+  const variable = generator.valueToCode(block, "VARIABLE", Order.ATOMIC);
+  const content = generator.valueToCode(block, "CONTENT", Order.ATOMIC);
+  const [propertyName,value] = content.split(':').map(s => s.trim());
+  function toCamelCase(str) {
+    return str
+      .replace(/([-_][a-z])/gi, (match) => match.toUpperCase()
+        .replace('-', '')
+        .replace('_', ''));
+  }
+  const camelCaseProperty = toCamelCase(propertyName);
+  const code = variable 
+    ?  `${variable}.style.${camelCaseProperty} ="${value}";\n`
+    : "\n"; 
+    return code;
+};
+
 
 // websiteGenerator.forBlock["js_addEventListener"] = function (block, generator) {
 //   const id = block.getFieldValue("ID");
