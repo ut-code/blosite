@@ -515,6 +515,15 @@ code {
   width: 60%;
 } */
 
+silde-with-images{
+  display: flex;
+  gap: 20px;
+}
+.slideimages {
+  max-width: 100%; /* 画像のサイズをコンテナ内に収める */
+  height: auto; /* アスペクト比を維持 */
+}
+
 .slide-images {
   margin-left: 10px;
   width: 40%;

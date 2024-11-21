@@ -85,15 +85,16 @@
                       <li>Todoリストを追加、削除するボタンを作る</li>
                     </ul>
                     この３つが挙げられます。<br>
-                    まずリストを作る元となる&lt;ul&gt;タグと、テキストを入れる場所を作る&lt;input&gt;タグを&lt;body&gt;タグに入れてみましょう。
+                    まずリストを作る元となる <code class="popup-code">&lt;ul&gt;</code>タグと、テキストを入れる場所を作る<code class="popup-code">&lt;input&gt;</code>タグを<code class="popup-code">&lt;body&gt;</code>タグに入れてみましょう。
                   </p>
                   <h2>IDでタグ付け</h2>
                   <p>
-                    次に、&lt;ul&gt;と&lt;input&gt;にIDブロックをつけましょう。<br>
+                    次に、<code class="popup-code">&lt;input&gt;</code>、<code class="popup-code">&lt;button&gt;</code>、<code class="popup-code">&lt;ul&gt;</code>にIDブロックをつけましょう。<br>
                     IDをつけることによって、この後行うJavaScriptを用いた作業でこれらのタグに色々な機能をつけることができます。<br>
-                    IDの名前は今回は&lt;ul&gt;にtodo-list、&lt;input&gt;にtodo-inputと入れることにしましょう。
+                    IDの名前は今回は<code class="popup-code">&lt;input&gt;</code>にtodo-input,<code class="popup-code">&lt;button&gt;</code>にadd-button、<code class="popup-code">&lt;ul&gt;</code>にtodo-listと入れることにしましょう。
                   </p>
                 </section>
+                <img src ="<%= require('/src/images/todo_1.png')%>"alt="Description of image" class="slide-images"></img> 
               </div>
               <div class="popup-slides" id="popup-slide-1" style="display: none;">
                 <section>
@@ -101,14 +102,14 @@
                     次に、押すことでTodoリストを追加できるようなボタンを作りましょう。<br>
                     ボタンを押した後に<br>
                     <ul>
-                      <li>&lt;ul&gt;の中に新たな項目&lt;li&gt;を入れる</li>
-                      <li>&lt;input&gt;の中に入れた文章を&lt;li&gt;の中に入れる</li>
+                      <li><code class="popup-code">&lt;ul&gt;</code>の中に新たな項目<code class="popup-code">&lt;li&gt;</code>を入れる</li>
+                      <li><code class="popup-code">&lt;input&gt;</code>の中に入れた文章を<code class="popup-code">&lt;li&gt;</code>の中に入れる</li>
                     </ul>
                     この２つがしたいですね。<br>
                     ここでJavascriptを用いてクリックしたら<br>
                     <ul>
                       <li>要素名liを追加する</li>
-                      <li>追加した要素の内容を&lt;input&gt;の内容に変更する</li>
+                      <li>追加した要素の内容を<code class="popup-code">&lt;input&gt;</code>の内容に変更する</li>
                     </ul>
                     ようにしましょう。
                   </p>
@@ -121,7 +122,7 @@
                     ボタンを押した後に、
                     <ul>
                       <li>要素buttonを追加し、その内容を「削除」に変える</li>
-                      <li>削除ボタンが押された際に&lt;li&gt;タグを消す</li>
+                      <li>削除ボタンが押された際に<code class="popup-code">&lt;li&gt;</code>タグを消す</li>
                     </ul>
                     とすればいいですね。<br>
                   </p>

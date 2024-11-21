@@ -87,21 +87,29 @@
                     <code class="popup-code">style</code>ブロックの中にある歯車をクリックすると、右のように項目がでてきます。項目と書かれたブロックをドラッグすることで接続できる部分の数を変更することができます。<br>
                     使うCSSのブロックの数が増えてきたときは縦並びにまとめると見やすくなるので覚えておきましょう。
                   </p>
-                  <h2>色を変えてみよう</h2>
+                  <h3>色を変えてみよう</h3>
                   <p>
                     それでは実際に文字の色を変えてみましょう。「HTMLについて知ろう」のチュートリアルで作成した遠足の持ち物リストがあるので、その文字の色を変えてみましょう。<br>
-                    文字の色を変えるには<code class="popup-code">style</code>ブロックの中に、「見た目」カテゴリーに含まれている<code class="popup-code">color</code>ブロックを使います。色はカラーパレットから選ぶか、色コードや色の英語名を入力することで変更できます。
+                    文字の色を変えるには<code class="popup-code">style</code>ブロックの中に、「見た目」カテゴリーに含まれている<code class="popup-code">color</code>ブロックをを接続して変更します。色はパレットをクリックすることで選択肢の中から選んで変更できます。変えるにはstyleブロックに見た目フォルダに含まれているcolorブロックを接続して変更します。色はパレットをクリックすることで選択肢の中から選んで変更できます。
                   </p>
                 </section>
-                <img src ="<%= require('/src/images/styleblock.gif')%>"alt="Sample Image" class="slide-images">
+                <video src ="<%= require('/src/images/csstukaikata.mp4')%>" autoplay muted playsinline loop class="slide-images">
               </div>
               <div class="popup-slides" id="popup-slide-2" style="display: flex;">
                 <section class="silde-text-with-images">
-                  <h3>下の画像のようなものを作ってみよう</h3>
+                  <h3>複数のCSSを制御しよう</h3>
                   <p>
-                    先ほどは文字の色だけを変更してもらいましたがCSSでできるのは文字の色の変更だけではありません。今度は背景の色と文字の配置を変えてみましょう。
-                    右の画像と同じものを作ってみましょう。
-                    </p>
+                    先ほどは文字の色だけを変更してもらいましたがCSSでできるのは文字の色の変更だけではありません。今度は背景の色と文字の配置を変えて、右の画像と同じものを作ってみましょう。
+                  </p>
+                  <h3>どんな変更が加えられているか</h3> 
+                  <p style="margin: 0;">
+                    ここでは以下の三つの変更点があります。
+                  <ul style="margin:0;">
+                    <li>「遠足の持ち物」が中央に配置されている。</li>
+                    <li>背景の色が黄色になっている。</li>
+                    <li>持ち物のリストが青色になっている。</li>
+                  </ul>
+                  </p>
                 </section>
                 <img src ="<%= require('/src/images/cssexample.png')%>"alt="Sample Image" class="slide-images">
               </div>
@@ -110,9 +118,11 @@
                   <h3>ヒント</h3>
                   <p>
                     背景の色を変えるには<code class="popup-code">background-color</code>ブロックを使いましょう。色の指定の仕方は<code class="popup-code">color</code>ブロックと同じです。<br>
-                    文字の位置の変え方はいくつかの方法がありますが、今回は<code class="popup-code">text-align</code>ブロックを使ってみましょう。<code class="popup-code">text-align</code>ブロックに入れる文字は、マウスカーソルをかざしたときに出る説明文を参考にしてください。
+                    文字の位置の変え方はいくつかの方法がありますが、今回は<code class="popup-code">text-align</code>ブロックを使ってみましょう。<code class="popup-code">text-align</code>ブロックは特定の値(left,right,center,justfy)しか入力できないので注意してください。<br>
+                    また、マウスカーソルをかざしたときに出る説明文も参考にしてください。
                   </p>
                 </section>
+                <img src ="<%= require('/src/images/csshint.png')%>"alt="Sample Image" class="slide-images">
               </div>
             </div>
             <div id="popup-navigation">
