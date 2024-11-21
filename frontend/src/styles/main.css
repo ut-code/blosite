@@ -186,7 +186,7 @@ code {
 #generatedCode {
   background-color: rgb(247, 240, 228);
   /* order: 5; */
-  user-select: text;
+  user-select: contain;
   cursor: text;
 }
 
