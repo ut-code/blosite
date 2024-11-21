@@ -5,6 +5,9 @@
  */
 
 import * as Blockly from 'blockly';
+import * as acorn from "acorn";
+import * as estraverse from "estraverse";
+import * as escodegen from "escodegen";
 import {htmlBlocks} from '/src/blockly/blocks/html';
 import {websiteGenerator} from '/src/blockly/generators/html';
 import customMsg from '/src/blockly/custom_msg';
@@ -185,17 +188,22 @@ const runCode = () => {
 
   // <title> タグが見つからない場合
   let titleContent = 'no title';
-  if (titleTagIndex >= 0 && closeTitleTagIndex > titleTagIndex) {
+  if (titleTagIndex >= 0 && closeTitleTagIndex > titleTagIndex + 7) {
     titleContent = code.slice(titleTagIndex + 7, closeTitleTagIndex); // <title> と </title> の間の内容
   }
   titlename.innerText = titleContent;
 
-   // <html> タグの内側だけを取得
-   code = code.slice(htmlTagIndex, closeHtmlTagIndex + 7); // <html> と </html> を含む
- 
-   // コードを表示
-   codeDiv.innerText = code;
-   outputDiv.innerHTML = code;
+  // <html> タグの内側だけを取得
+  code = code.slice(htmlTagIndex, closeHtmlTagIndex + 7); // <html> と </html> を含む
+
+  code = processDisplayedCode(code);
+
+  // コードを表示
+  codeDiv.innerText = code;
+
+  code = processExecutedCode(code);
+
+  outputDiv.innerHTML = code;
 
   // 正規表現で <script> タグを取り出す
   const scriptRegex = /<script>([\s\S]*?)<\/script>/;
@@ -216,6 +224,133 @@ const runCode = () => {
     }
   }
 };
+
+
+// 「コードを表示」用のコード
+// 特定のタグ前後の改行や空白を削除
+function processDisplayedCode(inputCode) {
+  // HTML文字列をパースしてDOMに変換
+  const parser = new DOMParser();
+  const doc = parser.parseFromString(inputCode, 'text/html');
+
+  console.log(doc);
+  console.log(doc.documentElement.outerHTML);
+
+  // 特定のタグの前後の改行や空白を削除
+  const tags = ['i', 'b', 'u', 'del', 'ins', 'small', 'sub', 'sup','em'];
+  tags.forEach(tag => {
+      doc.querySelectorAll(tag).forEach(el => {;
+
+          // 前後の兄弟ノードを確認して改行や空白を削除
+          if (
+            el.previousSibling && isNonEmptyTextNode(el.previousSibling) ||
+              (el.previousElementSibling
+                && (el.previousElementSibling.nodeType === Node.ELEMENT_NODE
+                  && tags.includes(el.previousElementSibling.tagName.toLowerCase())))
+          ){
+              el.previousSibling.textContent = el.previousSibling.textContent.replace(/\s+$/, '');
+          }
+          if (
+            el.nextSibling && isNonEmptyTextNode(el.nextSibling) ||
+              (el.nextElementSibling
+                && (el.nextElementSibling.nodeType === Node.ELEMENT_NODE
+                  && tags.includes(el.nextElementSibling.tagName.toLowerCase())))
+          ) {
+              el.nextSibling.textContent = el.nextSibling.textContent.replace(/^\s+/, '');
+          }
+      });
+  });
+
+  // 再整形する
+  return doc.documentElement.outerHTML.replace('<head>', '\n<head>').replace('\n</body>', '</body>').replace('</html>', '\n</html>');
+}
+
+function isNonEmptyTextNode(node) {
+  return (
+      node.nodeType === Node.TEXT_NODE &&
+      node.textContent.trim() !== '' // 空白文字のみではないかを確認
+  );
+}
+
+// プレビューと実行用のコード
+// idとclassに接頭辞を追加
+function processExecutedCode(inputCode) {
+
+  // HTML文字列をパースしてDOMに変換
+  const parser = new DOMParser();
+  const doc = parser.parseFromString(inputCode, 'text/html');
+
+  // idやclassに追加する接頭辞
+  const idPrefix = 'USER_ID_';
+  const classPrefix = 'USER_CLASS_';
+
+  // id属性に接頭辞を追加
+  doc.querySelectorAll('[id]').forEach(el => {
+      el.id = idPrefix + el.id;
+  });
+
+  // class属性に接頭辞を追加
+  doc.querySelectorAll('[class]').forEach(el => {
+      el.classList.forEach(cls => {
+          el.classList.replace(cls, classPrefix + cls);
+      });
+  });
+
+  // <script>内のコードを解析し、id/classの参照を置換
+  doc.querySelectorAll('script').forEach(script => {
+    const originalCode = script.textContent;
+
+    try {
+        // JavaScriptコードをASTに変換
+        const ast = acorn.parse(originalCode, { ecmaVersion: 'latest' });
+
+        // ASTを走査して対象を置換
+        estraverse.traverse(ast, {
+            enter(node) {
+                if (
+                    node.type === 'CallExpression' &&
+                    node.callee.type === 'MemberExpression' &&
+                    node.callee.object.name === 'document'
+                ) {
+                    if (node.callee.property.name === 'getElementById') {
+                        // getElementById
+                        const arg = node.arguments[0];
+                        if (arg.type === 'Literal' && typeof arg.value === 'string') {
+                            arg.value = idPrefix + arg.value;
+                        }
+                    } else if (node.callee.property.name === 'getElementsByClassName') {
+                        // getElementsByClassName
+                        const arg = node.arguments[0];
+                        if (arg.type === 'Literal' && typeof arg.value === 'string') {
+                            arg.value = classPrefix + arg.value;
+                        }
+                    }
+                }
+            },
+        });
+
+        // ASTをコードに戻す（インデントと改行を保持するためにオプションを設定）
+        const modifiedCode = escodegen.generate(ast, {
+          format: { 
+              indent: { style: '    ' }, // インデントのスタイルを設定
+              newline: '\n', // 改行コードの設定
+          }
+        });
+
+        script.textContent = modifiedCode;
+    } catch (e) {
+        console.error('Script parsing failed:', e);
+    }
+  });
+
+  // HTML全体を再整形する
+  const serializer = new XMLSerializer();
+  let formattedHTML = serializer.serializeToString(doc);
+
+  formattedHTML = formattedHTML.replace(/xmlns="http:\/\/www.w3.org\/1999\/xhtml"/g, '');
+
+  return formattedHTML;
+}
 
 // Load the initial state from storage and run the code.
 load(ws);
@@ -374,8 +509,17 @@ document.getElementById("code-button").onclick = () => {
 
 // プレビューを表示するボタン
 document.getElementById("preview-button").onclick = () => {
+  
   // 保存するHTMLの文字列を取得
-  const generatedHTML = document.getElementById("output").innerHTML;
+  // 「コードを表示」に表示されるコードと同一の処理
+  let code = websiteGenerator.workspaceToCode(ws);
+  const htmlTagIndex = code.indexOf('<html>');
+  const closeHtmlTagIndex = code.indexOf('</html>');
+  code = code.slice(htmlTagIndex, closeHtmlTagIndex + 7);
+
+  const generatedHTML = processDisplayedCode(code);
+
+  // const generatedHTML = document.getElementById("output").innerHTML;
 
   // sessionStorageに保存
   sessionStorage.setItem("previewHTML", generatedHTML);
