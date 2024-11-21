@@ -340,7 +340,7 @@ export const toolbox = {
     },
     {
       kind: "CATEGORY",
-      name: "CSS",
+      name: "見た目",
       categorystyle: "css_category",
       contents: [
         {
@@ -421,32 +421,32 @@ export const toolbox = {
         },
       ]
     },
-    {
-      kind: "category",
-      name: "テンプレート",
-      contents: [
-        // ul, li
-        {
-          kind: "block",
-          inputs: {
-            CONTENT: {
-              block: {
-                type: "html_li",
-                next: {
-                  block: {
-                    type: "html_li",
-                    next: {
-                      block: {
-                        type: "html_li",
-                      },
-                    },
-                  },
-                },
-              },
-            },
-          },
-        },
-      ],
-    },
+    // {
+    //   kind: "category",
+    //   name: "テンプレート",
+    //   contents: [
+    //     // ul, li
+    //     {
+    //       kind: "block",
+    //       inputs: {
+    //         CONTENT: {
+    //           block: {
+    //             type: "html_li",
+    //             next: {
+    //               block: {
+    //                 type: "html_li",
+    //                 next: {
+    //                   block: {
+    //                     type: "html_li",
+    //                   },
+    //                 },
+    //               },
+    //             },
+    //           },
+    //         },
+    //       },
+    //     },
+    //   ],
+    // },
   ],
 };

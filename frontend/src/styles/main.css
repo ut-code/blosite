@@ -525,6 +525,7 @@ silde-with-images{
 }
 
 .slide-images {
+  margin-left: 10px;
   width: 40%;
   object-fit: contain;
 }
