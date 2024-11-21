@@ -13,9 +13,8 @@
           <!-- <sub>by ut.code();</sub> -->
           <nav>
             <ul class="nav-links">
-                <li><a href="./..">トップページに戻る</a></li>
+                <li><a href="/tutorial">チュートリアル一覧へ</a></li>
                 <li id="header-help"><a>ヘルプ</a></li>
-                <li><a href="#">Q&A</a></li>
             </ul>
           </nav>
         </div>
@@ -89,12 +88,14 @@
                   <h3>HTML要素の種類</h3>
                   <p>
                     HTML要素には、特別な機能や見た目を持つものや、表示に関係なく要素の意味づけや整理をするために使われるものがあります。<br>
-                    ここでは試しに右の写真のように作ってみましょう。<br>
+                    ここでは試しに、右の写真のようにブロックを組み立てて作ってみましょう。<br>
                     一般に、文章は段落を意味する<code class="popup-code">&lt;p&gt;</code>要素の中に書きます。また、下付き文字は<code class="popup-code">&lt;sub&gt;</code>要素を使って作成できます。<br>
-
                   </p>
                 </section>
-                <img src="<%= require('/src/images/various-html-elements_1.png') %>" alt="Sample Image" class="slide-images">
+                <section style="display:flex; flex-direction: column; width: 40%;">
+                  <img src="<%= require('/src/images/various-html-elements_1_0.png') %>" alt="Sample Image" class="slide-images" style="object-fit: cover; min-width: 300px;">
+                  <img src="<%= require('/src/images/various-html-elements_1_1.png') %>" alt="Sample Image" class="slide-images" style="object-fit: cover; min-width: 300px;">
+                </section>
               </div>
               <div class="popup-slides" id="popup-slide-2" style="display: flex;">
                 <section class="silde-text-with-images">
@@ -105,6 +106,7 @@
                     <code  class="popup-code">type="text"</code>（デフォルトの設定）だと文字の入力欄、<code class="popup-code">type="number"</code>だと数字の入力欄、<code  class="popup-code">type="checkbox"</code>だとチェックボックスになります。<br>
                     また、HTML属性は１つの要素に複数個つけることができます。例えば、<code  class="popup-code">placeholder</code>属性を付け加えると、入力欄に何を入力すればいいかヒントを表示することができます。<code  class="popup-code">style</code>属性では、見た目を自在に変更することができます！（詳しくは次のチュートリアルでやりましょう）<br>
                   </p>
+                  <img src="<%= require('/src/images/various-html-elements_2.png') %>" alt="Sample Image" class="slide-images">
                 </section>
               </div>
               <div class="popup-slides" id="popup-slide-3" style="display: flex;">
