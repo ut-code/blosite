@@ -472,6 +472,10 @@ export const toolbox = {
         },
         {
           kind: "block",
+          type: "js_getElementStyle",
+        },
+        {
+          kind: "block",
           type: "js_alert",
           inputs: {
             CONTENT: {

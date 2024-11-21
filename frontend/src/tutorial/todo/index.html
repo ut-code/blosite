@@ -2,7 +2,8 @@
 <html>
   <head>
     <meta charset="utf-8" />
-    <title>Blockly Sample App</title>
+    <title>Todo</title>
+    <link rel="icon" href="<%= require('/src/images/icon.svg') %>">
   </head>
   <body>
     <div id="content" style="visibility: hidden;">
@@ -12,15 +13,9 @@
           <!-- <sub>by ut.code();</sub> -->
           <nav>
             <ul class="nav-links">
-                <li><a href="./..">トップページに戻る</a></li>
+                <li><a href="/tutorial">チュートリアル一覧へ</a></li>
                 <li id="header-help"><a>ヘルプ</a></li>
-                <li><a href="#">Q&A</a></li>
             </ul>
-            <div class="hamburger">
-                <span></span>
-                <span></span>
-                <span></span>
-            </div>
           </nav>
         </div>
       </header>
@@ -62,18 +57,24 @@
             <div id="popup-title">Todoリストを作ろう</div>
             <div id="popup-close">×</div>
             <div id="popup-button-container">
-              <button class="popup-buttons" id="popup-button-0">todoの内容を入れられるようにする</button>
-              <span class="popup-arrow">➡️</span> 
-              <button class="popup-buttons" id="popup-button-1">Todoリストの追加</button>
-              <span class="popup-arrow">➡️</span> 
-              <button class="popup-buttons" id="popup-button-2">Todoリストの削除</button>
-              <span class="popup-arrow">➡️</span> 
-              <button class="popup-buttons" id="popup-button-3">Todoリストの編集</button>
+              <button class="popup-buttons" id="popup-button-0">目標</button>
+              <span class="popup-arrow">&#x27A1;</span> 
+              <button class="popup-buttons" id="popup-button-1">Todoリストの内容を入れられるようにする</button>
+              <span class="popup-arrow">&#x27A1;</span> 
+              <button class="popup-buttons" id="popup-button-2">Todoリストの追加</button>
+              <span class="popup-arrow">&#x27A1;</span> 
+              <button class="popup-buttons" id="popup-button-3">Todoリストの削除</button>
             </div>
             <div id="popup-message">
               <!-- ここにスライドコンテンツを表示 -->
               <div class="popup-slides" id="popupSlide-0">
                 <section id="popup-slide-content-0">
+                  <p>Todoを追加、削除できるTodoアプリを作ってみましょう！</p>
+                  <p>自信のある方は次の説明を見ずに自分で一から作ってみましょう！</p>
+                </section>
+              </div>
+              <div class="popup-slides" id="popup-slide-1" style="display: none;">
+                <section>
                   <h2>
                     構造
                   </h2>
@@ -96,7 +97,7 @@
                 </section>
                 <img src ="<%= require('/src/images/todo_1.png')%>"alt="Description of image" class="slide-images"></img> 
               </div>
-              <div class="popup-slides" id="popup-slide-1" style="display: none;">
+              <div class="popup-slides" id="popup-slide-2" style="display: none;">
                 <section>
                   <p>
                     次に、押すことでTodoリストを追加できるようなボタンを作りましょう。<br>
@@ -115,7 +116,7 @@
                   </p>
                 </section>
               </div>
-              <div class="popup-slides" id="popup-slide-2" style="display: none;">
+              <div class="popup-slides" id="popup-slide-3" style="display: none;">
                 <section>
                   <p>
                     次に、削除ボタンをTodoリストに追加しましょう。<br>
@@ -126,14 +127,6 @@
                     </ul>
                     とすればいいですね。<br>
                   </p>
-                </section>
-              </div>
-              <div class="popup-slides" id="popup-slide-3" style="display: none;">
-                <section>
-                    <p>
-                      最後に、作ったTodoリストを編集できるようにしましょう。<br>
-                      削除ボタンを作ったときと同様に編集ボタンを作ります。<br>
-                    </p>
                 </section>
               </div>
             </div>
