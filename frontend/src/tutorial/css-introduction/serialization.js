@@ -56,6 +56,7 @@ const xml = `
 
 // XMLを読み込んでブロックを配置
 const xmlDom = Blockly.utils.xml.textToDom(xml);
+
 /**
  * Saves the state of the workspace to browser's local storage.
  * @param {Blockly.Workspace} workspace Blockly workspace to save.
@@ -71,10 +72,18 @@ export const save = function (workspace) {
  */
 export const load = function (workspace) {
   const data = window.sessionStorage?.getItem(storageKey);
-  if (!data) return;
+  if (!data) {
+    Blockly.Xml.domToWorkspace(xmlDom, workspace);
+    return;
+  };
 
   // Don't emit events during loading.
   Blockly.Events.disable();
   Blockly.serialization.workspaces.load(JSON.parse(data), workspace, false);
+
+  if(workspace.getAllBlocks().length === 0) {
+    Blockly.Xml.domToWorkspace(xmlDom, workspace);
+  }
+
   Blockly.Events.enable();
 };

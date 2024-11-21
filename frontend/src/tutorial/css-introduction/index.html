@@ -73,9 +73,9 @@
                 <section class="silde-text-with-images">
                   <h3>CSS</h3>
                   <p>
-                  &emsp;今まではhtmlとは何かについて学びました。htmlがウェブサイトの構造を表す言語だったのに対してCSSはウェブサイトの見た目を<br>
-                  表す言語です。blositeではstyle属性をhtml要素に加えることでCSSを記述して見た目を変更することができます。style属性を追加する<br>
-                  には左上のHTMLAttributesの中に入っているstyleと書かれたブロックを使います。
+                    今まではHTMLとは何かについて学びました。ここでは新たに<b>CSS</b>(Cascading Style Sheets)について学びましょう！<br>
+                    HTMLがウェブサイトの構造を表す言語だったのに対し、CSSはウェブサイトの見た目を表す言語です。Blositeでは<code class="popup-code">style</code>属性をHTML要素に加え、その中にCSSのブロックを組み立てて見た目を変更することができます。<br>
+                    <code class="popup-code">style</code>属性を追加するには左上の「HTML属性」の中に入っている<code class="popup-code">style</code>と書かれたブロックを使います。
                   </p>
                 </section>
               </div>
@@ -83,13 +83,14 @@
                 <section class="silde-text-with-images">
                   <h3>styleブロックの使い方</h3>
                   <p>
-                    &emsp;styleブロックの中には歯車が入っています。その歯車をクリックすると右の画像のように項目がでてきます。項目と書かれたブロックをドラッグすることで接続する部分の数を変更することができます。
+                    CSSのブロックはHTML属性のブロックと同じように横並びにつなげることもできますが、<code class="popup-code">style</code>ブロックは縦並びにCSSのブロックをつなげることができます。<br>
+                    <code class="popup-code">style</code>ブロックの中にある歯車をクリックすると、右のように項目がでてきます。項目と書かれたブロックをドラッグすることで接続できる部分の数を変更することができます。<br>
+                    使うCSSのブロックの数が増えてきたときは縦並びにまとめると見やすくなるので覚えておきましょう。
                   </p>
                   <h2>色を変えてみよう</h2>
                   <p>
-                    &emsp;まずは実際に文字の色を変えてみましょう。HTMLを知ろうのところで作成した遠足の持ち物リス<br>
-                    トがあるのでその文字の色を変えてみましょう。
-                    文字の色を変えるにはstyleブロックにCSSカテゴリーに含まれているcolorブロックを使います。色は色コードを入力するか色の名前を英語で入力することで変更することができます。
+                    それでは実際に文字の色を変えてみましょう。「HTMLについて知ろう」のチュートリアルで作成した遠足の持ち物リストがあるので、その文字の色を変えてみましょう。<br>
+                    文字の色を変えるには<code class="popup-code">style</code>ブロックの中に、「見た目」カテゴリーに含まれている<code class="popup-code">color</code>ブロックを使います。色はカラーパレットから選ぶか、色コードや色の英語名を入力することで変更できます。
                   </p>
                 </section>
                 <img src ="<%= require('/src/images/styleblock.gif')%>"alt="Sample Image" class="slide-images">
@@ -98,7 +99,7 @@
                 <section class="silde-text-with-images">
                   <h3>下の画像のようなものを作ってみよう</h3>
                   <p>
-                    &emsp;先ほどは文字の色だけを変更してもらいましたがCSSでできるのは文字の色の変更だけではありません。今度は背景の色と文字の配置を変えてみましょう。
+                    先ほどは文字の色だけを変更してもらいましたがCSSでできるのは文字の色の変更だけではありません。今度は背景の色と文字の配置を変えてみましょう。
                     右の画像と同じものを作ってみましょう。
                     </p>
                 </section>
@@ -108,7 +109,8 @@
                 <section class="silde-text-with-images">
                   <h3>ヒント</h3>
                   <p>
-                    &emsp;背景の色を変えるにはbackground-colorブロックを使いましょう。色の指定の仕方はcolorブロックと同じです。文字の位置の変え方はいくつかの方法がありますが、今回はtext-alignブロックを使ってみましょう。text-alignブロックは特定の値しか入れることができないので注意してください。
+                    背景の色を変えるには<code class="popup-code">background-color</code>ブロックを使いましょう。色の指定の仕方は<code class="popup-code">color</code>ブロックと同じです。<br>
+                    文字の位置の変え方はいくつかの方法がありますが、今回は<code class="popup-code">text-align</code>ブロックを使ってみましょう。<code class="popup-code">text-align</code>ブロックに入れる文字は、マウスカーソルをかざしたときに出る説明文を参考にしてください。
                   </p>
                 </section>
               </div>
