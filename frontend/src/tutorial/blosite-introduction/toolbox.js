@@ -334,6 +334,10 @@ export const toolbox = {
         },
         {
           kind: "block",
+          type: "html_height"
+        },
+        {
+          kind: "block",
           type: "html_wrap",
         },
       ],
@@ -370,6 +374,14 @@ export const toolbox = {
         {
           kind: "block",
           type: "css_padding",
+        },
+        {
+          kind: "block",
+          type: "css_text-align"
+        },
+        {
+          kind: "block",
+          type: "css_list-style-position"
         },
         {
           kind: "block",
@@ -411,6 +423,10 @@ export const toolbox = {
           kind: "block",
           type: "css_table-layout",
         },
+        {
+          kind: "block",
+          type: "css_font-family",
+        },
       ],
     },
     {
@@ -448,6 +464,14 @@ export const toolbox = {
         },
         {
           kind: "block",
+          type: "js_appendChild",
+        },
+        {
+          kind: "block",
+          type: "js_removeChild",
+        },
+        {
+          kind: "block",
           type: "js_alert",
           inputs: {
             CONTENT: {
@@ -459,6 +483,10 @@ export const toolbox = {
               },
             },
           },
+        },
+        {
+          kind: "block",
+          type: "js_prompt",
         },
         {
           kind: "block",
@@ -1090,7 +1118,6 @@ export const toolbox = {
     {
       kind: "category",
       name: "テンプレート",
-      categorystyle: "template_category",
       contents: [
         // ul, li
         {
@@ -1470,6 +1497,14 @@ export const toolbox = {
           },
         },
       ],
+    },
+    {
+      kind: "sep", // 間を開ける
+    },
+    {
+      kind: "search",
+      name: "検索",
+      contents: [],
     },
   ],
 };
