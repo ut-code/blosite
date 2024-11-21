@@ -427,7 +427,7 @@ export const toolbox = {
           kind: "block",
           type: "css_font-family",
         },
-      ]
+      ],
     },
     {
       kind: "category",
