@@ -1,25 +1,25 @@
-<!doctype html>
+<!DOCTYPE html>
 <html>
   <head>
     <meta charset="utf-8" />
     <title>チュートリアル：おみくじ</title>
   </head>
   <body>
-    <div id="content" style="visibility: hidden;">
+    <div id="content" style="visibility: hidden">
       <header>
         <div class="header-container">
           <a href="#" class="header-logo">Blosite</a>
           <!-- <sub>by ut.code();</sub> -->
           <nav>
             <ul class="nav-links">
-                <li><a href="./..">トップページに戻る</a></li>
-                <li id="header-help"><a>ヘルプ</a></li>
-                <li><a href="#">Q&A</a></li>
+              <li><a href="./..">トップページに戻る</a></li>
+              <li id="header-help"><a>ヘルプ</a></li>
+              <li><a href="#">Q&A</a></li>
             </ul>
             <div class="hamburger">
-                <span></span>
-                <span></span>
-                <span></span>
+              <span></span>
+              <span></span>
+              <span></span>
             </div>
           </nav>
         </div>
@@ -34,18 +34,18 @@
           </div>
           <div id="blocklyDiv">
             <div id="icon-container">
-              <input type="checkbox" id="run-toggle" class="run-toggle">
+              <input type="checkbox" id="run-toggle" class="run-toggle" />
               <label for="run-toggle" id="run-icon" class="play"></label>
-              
-              <input type="checkbox" id="menu-toggle" class="menu-toggle">
+
+              <input type="checkbox" id="menu-toggle" class="menu-toggle" />
               <label for="menu-toggle" id="hamburger-icon"></label>
 
               <!-- メニュー -->
               <ul class="menu">
                 <li id="code-button">コードを表示</li>
-                <li id="run-switch-button">スクリプトの<br>常時実行:OFF</li>
-                <li id="sandbox-button">サンドボックス<br>で作り続ける</li>
-                <li id="preview-button">プレビューを<br>全画面で表示</li>
+                <li id="run-switch-button">スクリプトの<br />常時実行:OFF</li>
+                <li id="sandbox-button">サンドボックス<br />で作り続ける</li>
+                <li id="preview-button">プレビューを<br />全画面で表示</li>
                 <li></li>
               </ul>
             </div>
@@ -63,37 +63,57 @@
             <div id="popup-close">×</div>
             <div id="popup-button-container">
               <button class="popup-buttons" id="popup-button-0">目標</button>
-              <span class="popup-arrow">➡️</span> 
+              <span class="popup-arrow">&#x27A1;</span>
               <button class="popup-buttons" id="popup-button-1">DOM操作</button>
-              <span class="popup-arrow">➡️</span> 
-              <button class="popup-buttons" id="popup-button-2">条件分岐</button>
-              <span class="popup-arrow">➡️</span> 
-              <button class="popup-buttons" id="popup-button-3">発展・工夫</button>
+              <span class="popup-arrow">&#x27A1;</span>
+              <button class="popup-buttons" id="popup-button-2">
+                条件分岐
+              </button>
+              <span class="popup-arrow">&#x27A1;</span>
+              <button class="popup-buttons" id="popup-button-3">
+                発展・工夫
+              </button>
             </div>
             <div id="popup-message">
               <!-- ここにスライドコンテンツを表示 -->
               <div class="popup-slides" id="popupSlide-0">
                 <section class="silde-with-images">
                   <h3>目標</h3>
-                  <p>右の動画のようにボタンを押すとおみくじの結果が出てくるプログラミングを作成してみよう。</p>
-                  <p>次のページからはヒントなので自信のある人はヒントを見ないでやってみよう！</p>
+                  <p>
+                    右の動画のようにボタンを押すとおみくじの結果が出てくるプログラミングを作成してみよう。
+                  </p>
+                  <p>
+                    次のページからはヒントなので自信のある人はヒントを見ないでやってみよう！
+                  </p>
                 </section>
-                <img src ="<%= require('/src/images/omikujirei.gif')%>"alt="Sample Image" class="slide-images" >
+                <img
+                  src="<%= require('/src/images/omikujirei.gif')%>"
+                  alt="Sample Image"
+                  class="slide-images"
+                />
               </div>
-              <div class="popup-slides" id="popup-slide-1" style="display: none;">
+              <div
+                class="popup-slides"
+                id="popup-slide-1"
+                style="display: none"
+              >
                 <section>
                   <h3>ボタンと表示する場所の作成</h3>
                   <p>
-                    &emsp;まずはボタンを作ってボタンのなかにテキストを入力してid属性を設定しましょう。それができたら&lt;div&gt;を用いて結果を表示する場所を作りましょう。<br>
+                    &emsp;まずはボタンを作ってボタンのなかにテキストを入力してid属性を設定しましょう。それができたら&lt;div&gt;を用いて結果を表示する場所を作りましょう。<br />
                     この&lt;div&gt;要素の中身を書き換えることで結果を表示したいのでこの&lt;div&gt;要素にもidを設定しましょう。
                   </p>
                   <h3>DOM操作</h3>
                   <p>
                     「id="&emsp;"の要素」ブロック、「要素～の文章」ブロック、「～にイベント～が発生したとき」ブロック、「～に～を代入」ブロックを用いてDOM操作をしましょう。
-                  </p>  
+                  </p>
                 </section>
               </div>
-              <div class="popup-slides" id="popup-slide-2" style="display: none;">
+              <div
+                class="popup-slides"
+                id="popup-slide-2"
+                style="display: none"
+              >
                 <section>
                   <h3>乱数の作り方</h3>
                   <p>
@@ -105,14 +125,26 @@
                   </p>
                 </section>
               </div>
-              <div class="popup-slides" id="popup-slide-3" style="display: none;">
+              <div
+                class="popup-slides"
+                id="popup-slide-3"
+                style="display: none"
+              >
                 <section>
                   <発展・工夫>
                   <p>
-                   例えばおみくじの結果によって文字の色や大きさが変わるようにしてみたり、おみくじの結果を増やしてみたり、一度に複数の結果を表示したりしてみましょう。
+                    例えばおみくじの結果によって文字の色や大きさが変わるようにしてみたり、おみくじの結果を増やしてみたり、一度に複数の結果を表示したりしてみましょう。
                   </p>
                 </section>
-                <video src ="<%= require('/src/images/omikujihatten.mp4')%>" autoplay muted playsinline loop class="slide-images" style = "margin:0;"></video>
+                <video
+                  src="<%= require('/src/images/omikujihatten.mp4')%>"
+                  autoplay
+                  muted
+                  playsinline
+                  loop
+                  class="slide-images"
+                  style="margin: 0"
+                ></video>
               </div>
             </div>
             <div id="popup-navigation">
