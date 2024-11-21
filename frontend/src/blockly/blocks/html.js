@@ -1867,6 +1867,25 @@ export const htmlBlocks = Blockly.common.createBlockDefinitionsFromJsonArray([
     style: "javascript_blocks",
     tooltip: "指定した要素名の要素を取得"
   },
+  {
+    type: "js_getElementStyle",
+    message0: '%1 のstyle %2を変更 ',
+    args0:[
+      {
+        type: "input_value",
+        name: "VARIABLE",
+      },
+      {
+        type: "input_value",
+        name: "CONTENT",
+      },
+    ],
+    previousStatement: null,
+    nextStatement: null,
+    style: "javascript_blocks",
+    tooltip: "指定した要素のstyleを取得"
+
+  },
   // {
   //   type: "js_addEventListener",
   //   message0: 'id="%1" にイベント %2 が発生したとき %3 %4',
