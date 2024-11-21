@@ -1,27 +1,26 @@
-<!doctype html>
+<!DOCTYPE html>
 <html>
   <head>
     <meta charset="utf-8" />
-    <title>チュートリアル：DOM操作</title>
+    <title>DOM操作</title>
+    <link rel="icon" href="<%= require('/src/images/icon.svg') %>">
   </head>
   <body>
-    <div id="content" style="visibility: hidden;">
+    <div id="content" style="visibility: hidden">
       <header>
         <div class="header-container">
           <div class="header-logo">
-            <img id="header-icon" src="<%= require('/src/images/icon.svg') %>">Blosite</div>
+            <img
+              id="header-icon"
+              src="<%= require('/src/images/icon.svg') %>"
+            />Blosite
+          </div>
           <!-- <sub>by ut.code();</sub> -->
           <nav>
             <ul class="nav-links">
-                <li><a href="./..">トップページに戻る</a></li>
-                <li id="header-help"><a>ヘルプ</a></li>
-                <li><a href="#">Q&A</a></li>
+              <li><a href="/tutorial">チュートリアル一覧へ</a></li>
+              <li id="header-help"><a>ヘルプ</a></li>
             </ul>
-            <div class="hamburger">
-                <span></span>
-                <span></span>
-                <span></span>
-            </div>
           </nav>
         </div>
       </header>
@@ -35,18 +34,18 @@
           </div>
           <div id="blocklyDiv">
             <div id="icon-container">
-              <input type="checkbox" id="run-toggle" class="run-toggle">
+              <input type="checkbox" id="run-toggle" class="run-toggle" />
               <label for="run-toggle" id="run-icon" class="play"></label>
-              
-              <input type="checkbox" id="menu-toggle" class="menu-toggle">
+
+              <input type="checkbox" id="menu-toggle" class="menu-toggle" />
               <label for="menu-toggle" id="hamburger-icon"></label>
 
               <!-- メニュー -->
               <ul class="menu">
                 <li id="code-button">コードを表示</li>
-                <li id="run-switch-button">スクリプトの<br>常時実行:OFF</li>
-                <li id="sandbox-button">サンドボックス<br>で作り続ける</li>
-                <li id="preview-button">プレビューを<br>全画面で表示</li>
+                <li id="run-switch-button">スクリプトの<br />常時実行:OFF</li>
+                <li id="sandbox-button">サンドボックス<br />で作り続ける</li>
+                <li id="preview-button">プレビューを<br />全画面で表示</li>
                 <li></li>
               </ul>
             </div>
@@ -64,76 +63,105 @@
             <div id="popup-close">×</div>
             <div id="popup-button-container">
               <button class="popup-buttons" id="popup-button-0">目標</button>
-              <span class="popup-arrow">➡️</span> 
-              <button class="popup-buttons" id="popup-button-1">要素を取得</button>
-              <span class="popup-arrow">➡️</span> 
-              <button class="popup-buttons" id="popup-button-2">イベント処理</button>
-              <span class="popup-arrow">➡️</span> 
-              <button class="popup-buttons" id="popup-button-3">要素の変更</button>
+              <span class="popup-arrow">&#x27A1;</span>
+              <button class="popup-buttons" id="popup-button-1">
+                要素を取得
+              </button>
+              <span class="popup-arrow">&#x27A1;</span>
+              <button class="popup-buttons" id="popup-button-2">
+                イベント処理
+              </button>
+              <span class="popup-arrow">&#x27A1;</span>
+              <button class="popup-buttons" id="popup-button-3">
+                要素の変更
+              </button>
             </div>
             <div id="popup-message">
               <!-- ここにスライドコンテンツを表示 -->
               <div class="popup-slides" id="popupSlide-0">
                 <section>
                   <h3>目標</h3>
-                  <p>HTMLの要素を制御する方法を学び、右のようにボタンを押したら文字が表示されるサイトを作ろう！</p>
-                  <!-- <h3>詳細</h3>
                   <p>
-                    ３✕３の表のうち、一行目には「一列目」「二列目」「計算結果」と表示させ、他の行の一、二列目には数字を入力する箇所を、三列目には列ごとの計算結果を表示する場所を作りましょう。<br>
-                    また、行ごとの計算方法を選択できるメニューと、押すと計算結果が表示されるボタンも置きましょう。<br>
-                    <br>
-                    自信のある方は次の説明を見ずに自分で一から作ってみましょう！<br>
-                  </p> -->
+                    HTMLの要素を制御する方法を学び、右のようにボタンを押したら文字が表示されるサイトを作ろう！
+                  </p>
                 </section>
-                <video src="<%= require('/src/images/dom-manipulation_0.mp4') %>" controls class="slide-images"></video>
+                <video
+                  src="<%= require('/src/images/dom-manipulation_0.mp4') %>"
+                  controls
+                  class="slide-images"
+                  style="max-height: 350px"
+                ></video>
               </div>
-              <div class="popup-slides" id="popup-slide-1" style="display: none;">
+              <div
+                class="popup-slides"
+                id="popup-slide-1"
+                style="display: none"
+              >
                 <section>
                   <h3>DOM</h3>
                   <p>
-                    <b>DOM</b>(Document Object Model)とは、HTMLの構造を表現したものです。<br>
-                    このDOMを通して、HTML内の要素を取り出したり、その取り出した要素を変更したり、また新たに要素を追加することができます。<br>
-                    DOMの操作はJavascriptで行われます。つまり&lt;script&gt;タグ内にブロックを配置するということです。<br>
+                    <b>DOM</b>(Document Object
+                    Model)とは、HTMLの構造を表現したものです。<br />
+                    このDOMを通して、HTML内の要素を取り出したり、その取り出した要素を変更したり、また新たに要素を追加することができます。<br />
+                    DOMの操作はJavascriptで行われます。つまり<code class="popup-code">&lt;script&gt;</code>要素にDOMを操作するブロックを配置するということです。<br />
                   </p>
                   <h3>要素にアクセス</h3>
                   <p>
-                    では実際に要素を取得してみましょう。ここでは、idを使った方法を紹介します。　右の写真を参考にしてください。<br>
-                    取得したいHTML要素（ここでは&lt;div&gt;）にあらかじめid属性を設定しておきます。そして、&lt;script&gt;タグ内で「id="　"の要素」ブロックを利用します。<br>
-                    ここで注意したいのが、「id="　"の要素」ブロックで取得したものは、単なる文字列ではなく、様々な要素の情報を含んでいるということです。この中から要素内の文章を取り出すために、「要素～の文章」ブロックを使いましょう。<br>
-                    これを「アラート」ブロックにくっつけて、&lt;script&gt;タグ内に入れましょう。&lt;div&gt;の中身が表示されるはずです。<br>
-                    ちなみに、「id="　"の要素」ブロックで取得した要素は、変数にセットすることもできます。必要であればセットしておきましょう。<br>
+                    では実際に要素を取得してみましょう。ここでは、idを使った方法を紹介します。右の写真を参考にしてください。<br />
+                    取得したいHTML要素（ここでは<code class="popup-code">&lt;div&gt;</code>）にあらかじめid属性を設定しておきます。そして、<code class="popup-code">&lt;script&gt;</code>要素で「id="　"の要素」ブロックを利用します。<br />
+                    ここで注意したいのが、「id="　"の要素」ブロックで取得したものは、単なる文字列ではなく、様々な要素の情報を含んでいるということです。この中から要素内の文章を取り出すために、「要素～の文章」ブロックを使いましょう。<br />
+                    これを「アラート」ブロックにくっつけて、<code class="popup-code">&lt;script&gt;</code>要素に入れましょう。<code class="popup-code">&lt;div&gt;</code>の中身が表示されるはずです！<br />
+                    ちなみに、「id="　"の要素」ブロックで取得した要素は、変数にセットすることもできます。必要であればセットしておきましょう。<br />
                   </p>
                 </section>
-                <img src="<%= require('/src/images/dom-manipulation_1.png') %>" class="slide-images">
+                <img
+                  src="<%= require('/src/images/dom-manipulation_1.png') %>"
+                  class="slide-images"
+                  style="max-width: 350px"
+                />
               </div>
-              <div class="popup-slides" id="popup-slide-2" style="display: none;">
+              <div
+                class="popup-slides"
+                id="popup-slide-2"
+                style="display: none"
+              >
                 <section>
                   <h3>イベントの設定</h3>
                   <p>
-                    次は、ボタンを押したときに要素を変更する方法を学びましょう。<br>
-                    「～にイベント～が発生したとき」ブロックを使います。空欄には、取得した要素を入れます。ブロックの中身は、設定した要素に指定したイベントが発生したときに実行されます。<br>
-                    ここでは、ボタンを押したときにアラートを出してみましょう。右の写真を参考にしてください。<br>
-                    まず、要素を取得して空欄に入れます。次に、ブロックの中身にアラートを設置して、&lt;script&gt;タグ内に入れましょう。ボタンを押すとアラートが表示されるはずです。<br>
+                    次は、ボタンを押したときに要素を変更する方法を学びましょう。<br />
+                    「～にイベント～が発生したとき」ブロックを使います。空欄には、取得した要素を入れます。ブロックの中身は、設定した要素に指定したイベントが発生したときに実行されます。<br />
+                    ここでは、ボタンを押したときにアラートを出してみましょう。右の写真を参考にしてください。<br />
+                    まず、要素を取得して空欄に入れます。次に、ブロックの中身にアラートを設置して、<code class="popup-code">&lt;script&gt;</code>要素に入れましょう。ボタンを押すとアラートが表示されるはずです。<br />
                   </p>
                 </section>
-                <img src="<%= require('/src/images/dom-manipulation_2.png') %>" class="slide-images">
+                <img
+                  src="<%= require('/src/images/dom-manipulation_2.png') %>"
+                  class="slide-images"
+                />
               </div>
-              <div class="popup-slides" id="popup-slide-3" style="display: none;">
+              <div
+                class="popup-slides"
+                id="popup-slide-3"
+                style="display: none"
+              >
                 <section>
                   <h3>イベント処理の中身</h3>
                   <p>
-                    それでは、イベント処理の中身を変更してみましょう。<br>
-                    ここでやりたいことは、ボタンを押したときに、要素内の文章を変更することです。<br>
-                    これを行うためには、「～に～を代入」ブロックを使います。左の空欄には、取得した要素の文章を入れます。右の空欄には、ボタンを押したら表示される文章を入れます。<br>
-                    これを「～にイベント～が発生したとき」ブロックにくっつけて、&lt;script&gt;タグ内に入れましょう。ボタンを押すと、要素内の文章が変わるはずです。<br>
+                    それでは、イベント処理の中身を変更してみましょう。<br />
+                    ここでやりたいことは、ボタンを押したときに、要素内の文章を変更することです。<br />
+                    これを行うためには、「～に～を代入」ブロックを使います。左の空欄には、取得した要素の文章を入れます。右の空欄には、ボタンを押したら表示される文章を入れます。<br />
+                    これを「～にイベント～が発生したとき」ブロックにくっつけて、<code class="popup-code">&lt;script&gt;</code>要素に入れましょう。ボタンを押すと、要素内の文章が変わるはずです。<br />
                   </p>
                   <h3>実行</h3>
                   <p>
-                    では、実際にボタンを押してみましょう。ボタンを押すと、要素内の文章が変わるはずです。<br>
-                    これで、HTMLの要素を制御する方法を習得できましたね！<br>
+                    では、実際にボタンを押してみましょう。ボタンを押すと、要素内の文章が変わるはずです。<br />
+                    これで、HTMLの要素を制御する方法を習得できましたね！<br />
                   </p>
                 </section>
-                <img src="<%= require('/src/images/dom-manipulation_3.png') %>" class="slide-images">
+                <img
+                  src="<%= require('/src/images/dom-manipulation_3.png') %>"
+                  class="slide-images"
+                />
               </div>
             </div>
             <div id="popup-navigation">
