@@ -454,12 +454,10 @@ export const toolbox = {
           kind: "block",
           type: "js_appendChild",
         },
-        /*
         {
           kind: "block",
           type: "js_removeChlid"
         },
-        */
         {
           kind: "block",
           type: "js_alert",
