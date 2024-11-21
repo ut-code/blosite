@@ -13,9 +13,8 @@
           <!-- <sub>by ut.code();</sub> -->
           <nav>
             <ul class="nav-links">
-                <li><a href="./..">トップページに戻る</a></li>
+                <li><a href="/tutorial">チュートリアル一覧へ</a></li>
                 <li id="header-help"><a>ヘルプ</a></li>
-                <li><a href="#">Q&A</a></li>
             </ul>
           </nav>
         </div>
@@ -56,7 +55,7 @@
             <button id="popup-sandbox-button">進む</button>
           </div>
           <div id="popup-inner">
-            <div id="popup-title">いろいろなHTML要素</div>
+            <div id="popup-title">繰り返しと条件分岐</div>
             <div id="popup-close">×</div>
             <div id="popup-button-container">
               <button class="popup-buttons" id="popup-button-0">目標</button>
@@ -71,54 +70,47 @@
               <!-- ここにスライドコンテンツを表示 -->
               <div class="popup-slides" id="popupSlide-0" style="display: flex">
                 <section class="silde-text-with-images">
-                  <h3>目標</h3>
+                  <h3>条件分岐</h3>
                   <p>
-                    様々なHTML要素を使って、右の写真のようなサイトを作ってみよう！
-                  </p>
-                  <h3>詳細</h3>
-                  <p>
-                    すでに設置されているブロックを利用して、テキストボックスや文章を変更しましょう。<br>
-                    もし最初からやり直したいときは、すべてのブロックを削除して、ページを再読み込みしてください。
+                    条件分岐文は与えられた条件が満たされる場合と満たさない場合で処理を変えることができます。<br>
+                    条件が満たされるとき、真を意味するTrueという<strong>値</strong>、満たされないときは偽を意味するFalseという<strong>値</strong>を出します。<br>
+                    条件が満たされなかった場合、その中でまた他の条件を設定して処理を分けることもできます。<br>
                   </p>
                 </section>
                 <img src="<%= require('/src/images/various-html-elements_0.png') %>" alt="Sample Image" class="slide-images">
               </div>
               <div class="popup-slides" id="popup-slide-1" style="display: flex;">
                 <section class="silde-text-with-images">
-                  <h3>HTML要素の種類</h3>
+                  <h3>繰り返し</h3>
                   <p>
-                    HTML要素には、特別な機能や見た目を持つものや、表示に関係なく要素の意味づけや整理をするために使われるものがあります。<br>
-                    ここでは試しに右の写真のように作ってみましょう。<br>
-                    一般に、文章は段落を意味する<code>&lt;p&gt;</code>要素の中に書きます。また、下付き文字は<code>&lt;sub&gt;</code>要素を使って作成できます。<br>
-
+                    繰り返し文では与えられた条件が満たされている間文中の処理を繰り返し実行し続けることができます。<br>
+                    条件が満たされているとき繰り返し文は中の処理を実行し、条件が満たされなくなると繰り返し文は処理をやめます。<br>
+                    繰り返しの条件について、繰り返し文の中で引数(4.変数と関数 参照)のように変数を設定して処理の中で値を変化させる、ということもできます。<br>
                   </p>
                 </section>
                 <img src="<%= require('/src/images/various-html-elements_1.png') %>" alt="Sample Image" class="slide-images">
               </div>
               <div class="popup-slides" id="popup-slide-2" style="display: flex;">
                 <section class="silde-text-with-images">
-                  <h3>HTML属性</h3>
                   <p>
-                    HTML属性とは、HTML要素に付けることができる追加情報のことです。HTML属性のカテゴリーを開いてどんなものがあるか見てみましょう。<br>
-                    HTML属性は右のように要素に対して組み付けることができます。ここでは<code>&lt;input&gt;</code>要素の<code>type</code>属性について詳しく見てみましょう。<br>
-                    type="text"（デフォルトの設定）だと文字の入力欄、type="number"だと数字の入力欄、type="checkbox"だとチェックボックスになります。<br>
-                    また、HTML属性は１つの要素に複数個つけることができます。例えば、placeholder属性を付け加えると、入力欄に何を入力すればいいかヒントを表示することができます。style要素では、見た目を自在に返納することができます！（詳しくは次のチュートリアルでやりましょう）<br>
+                    今回は置かれているブロックがどのように動くのか予想してみましょう。<br>
+                    一度このヘルプを閉じて右に何が表示されるのか考えてみましょう。<br>
+                    緑の繰り返し、グレーの条件分岐のブロックに注目して考えてみましょう。<br><br>
+                    (注:iは最初が0で、処理を終えると1増える仕組みです。)
                   </p>
                 </section>
               </div>
-              <div class="popup-slides" id="popup-slide-3" style="display: flex;">
+              <div class="popup-slides" id="popup-slide-3" style="display: flex; align-items: flex-start;">
                 <section class="silde-text-with-images">
-                  <h3>機能追加</h3>
+                  <h3>カウントダウンの仕組み</h3>
                   <p>
-                    では、残りの部分を完成させましょう！
-                    右の写真を参考に、HTML要素を使ってサイトを完成させてください。<br>
+                    このカウントダウンは右のような仕組みになっています。<br>
+                    カウントダウンは数字を減らす必要がありますが、iは0から増えていってしまいます。<br>
+                    そこで、  (カウントダウンの秒数)-(iの数)としてあげれば、繰り返す上でiが1増えていくにつれて表示される秒数は1減っていきます。<br>
+                    秒数が0になるときはiとカウントダウンの数が一致しているときなので、そのときに条件がFalseの方に向かっています。<br>
+                    これでカウントダウンが0になって発射できるわけですね。<br><br>
+                    カウントダウンの中の数字を変えるとその秒数も変えることができるので試してみてください！
                   </p>
-                  <h3>ヒント</h3>
-                  <ol>
-                    <li>キーの表示は<code>&lt;kbd&gt;</code>を使いましょう。</li>
-                    <li>チェックボックスは<code>&lt;input&gt;</code>の属性にtype="checkbox"を設定しましょう。</li>
-                    <li><code>&lt;div&gt;</code>の属性にstyle="flex"を指定すると、その<code>&lt;div&gt;</code>の中にある要素を横方向に並べることができます。</li>
-                  </ol>
                 </section>
                 <img src="<%= require('/src/images/various-html-elements_0.png') %>" alt="Sample Image" class="slide-images">
               </div>
