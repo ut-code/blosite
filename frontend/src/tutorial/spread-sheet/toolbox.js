@@ -1104,6 +1104,7 @@ export const toolbox = {
     {
       kind: "category",
       name: "テンプレート",
+      categorystyle: "template_category",
       contents: [
         // ul, li
         {
@@ -1483,6 +1484,14 @@ export const toolbox = {
           },
         },
       ],
+    },
+    {
+      kind: "sep", // 間を開ける
+    },
+    {
+      kind: "search",
+      name: "検索",
+      contents: [],
     },
   ],
 };

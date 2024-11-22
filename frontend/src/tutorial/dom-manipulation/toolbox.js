@@ -185,9 +185,9 @@ export const toolbox = {
       categorystyle: "procedure_category",
       custom: "PROCEDURE",
     },
-    {
-      kind: "sep", // 間を開ける
-    },
+    // {
+    //   kind: "sep", // 間を開ける
+    // },
     //   {
     //     kind: "category",
     //     name: "テンプレート",

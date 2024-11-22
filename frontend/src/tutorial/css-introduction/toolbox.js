@@ -421,6 +421,14 @@ export const toolbox = {
         },
       ]
     },
+    {
+      kind: "sep", // 間を開ける
+    },
+    {
+      kind: "search",
+      name: "検索",
+      contents: [],
+    },
     // {
     //   kind: "category",
     //   name: "テンプレート",

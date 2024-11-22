@@ -17,6 +17,68 @@ export const toolbox = {
   kind: "categoryToolbox",
   contents: [
     {
+      kind: "CATEGORY",
+      name: "HTML要素",
+      categorystyle: "htmlelement_category",
+      contents: [
+        {
+          kind: "block",
+          type: "html_html-head-body",
+        },
+        {
+          kind: "block",
+          type: "html_comment",
+        },
+        {
+          kind: "block",
+          type: "html_text",
+        },
+        {
+          kind: "block",
+          type: "html_title",
+        },
+        {
+          kind: "block",
+          type: "html_div",
+        },
+
+        {
+          kind: "block",
+          type: "html_script",
+        },
+      ],
+    },
+    {
+      kind: "CATEGORY",
+      name: "HTML属性",
+      categorystyle: "htmlattribute_category",
+      contents: [
+        {
+          kind: "block",
+          type: "html_id",
+        },
+      ],
+    },
+    {
+      kind: "category",
+      name: "制御",
+      categorystyle: "javascript_category",
+      contents: [
+        {
+          kind: "block",
+          type: "js_getElementById",
+        },
+        {
+          kind: "block",
+          type: "js_textContent",
+        },
+        {
+          kind: "block",
+          type: "js_setter",
+        },
+      ],
+    },
+    {
       kind: "category",
       name: "数式",
       categorystyle: "math_category",
@@ -63,9 +125,6 @@ export const toolbox = {
       name: "関数",
       categorystyle: "procedure_category",
       custom: "PROCEDURE",
-    },
-    {
-      kind: "sep", // 間を開ける
     },
   ],
 };

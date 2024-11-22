@@ -5,6 +5,7 @@
  */
 
 import * as Blockly from 'blockly';
+import '@blockly/toolbox-search';
 import * as acorn from "acorn";
 import * as estraverse from "estraverse";
 import * as escodegen from "escodegen";
