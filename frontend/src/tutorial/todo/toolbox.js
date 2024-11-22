@@ -456,7 +456,7 @@ export const toolbox = {
         },
         {
           kind: "block",
-          type: "js_removeChlid"
+          type: "js_removeChild"
         },
         {
           kind: "block",
