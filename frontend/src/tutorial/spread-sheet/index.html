@@ -9,7 +9,8 @@
     <div id="content" style="visibility: hidden">
       <header>
         <div class="header-container">
-          <a href="#" class="header-logo">Blosite</a>
+          <div class="header-logo">
+            <img id="header-icon" src="<%= require('/src/images/icon.svg') %>">Blosite</div>
           <!-- <sub>by ut.code();</sub> -->
           <nav>
             <ul class="nav-links">
@@ -87,6 +88,7 @@
                     自信のある方は次の説明を見ずに自分で一から作ってみましょう！<br />
                   </p>
                 </section>
+                <video src="<%= require('/src/images/spread-sheet_0.mp4') %>" controls style="max-height: 350px;">
               </div>
               <div
                 class="popup-slides"
@@ -97,15 +99,13 @@
                   <h3>HTML</h3>
                   <p>
                     まずは<code class="popup-code">&lt;table&gt;</code>などを利用して表を作ってみましょう。<br />
-                    その後、<code class="popup-code">&lt;input&gt;</code>を使って値を入力する箇所を、<code class="popup-code">&lt;button&gt;</code>を使って計算を行うボタンを、<code class="popup-code">&lt;select&gt;</code>で計算方法を選べるメニューを作成します。<code class="popup-code">&lt;input&gt;</code>には、type
-                    = numberを設定するとよいでしょう。<br />
+                    その後、<code class="popup-code">&lt;input&gt;</code>を使って値を入力する箇所を、<code class="popup-code">&lt;button&gt;</code>を使って計算を行うボタンを、<code class="popup-code">&lt;select&gt;</code>で計算方法を選べるメニューを作成します。<code class="popup-code">&lt;input&gt;</code>には、<code class="popup-code">type = number</code>を設定するとよいでしょう。<br />
                     数値を取得する、計算結果を表示するためにidも設定しておきましょう。<br />
                   </p>
                   <h3>CSS</h3>
                   <p>
-                    つぎはCSSを使って自分の思うままにスタイルを設定してみましょう。<code class="popup-code">&lt;style&gt;タグを使ってその中にCSSを記述します。<br />
-                    <code class="popup-code">&lt;td&gt;</code>や<code class="popup-code">&lt;th&gt;</code>にはborderを、<code class="popup-code">&lt;table&gt;</code>にはborder-collapse:
-                    collapseを設定することで、それらしいボーダーが表示されるようになります。<br />
+                    つぎはCSSを使って自分の思うままにスタイルを設定してみましょう。<code class="popup-code">&lt;style&gt;</code>タグを使ってその中にCSSを記述します。<br />
+                    <code class="popup-code">&lt;td&gt;</code>や<code class="popup-code">&lt;th&gt;</code>には<code class="popup-code">border</code>を、<code class="popup-code">&lt;table&gt;</code>には<code class="popup-code">border-collapse: collapse</code>を設定することで、それらしいボーダーが表示されるようになります。<br />
                     ある程度できたら次に進みましょう。<br />
                   </p>
                 </section>
@@ -118,19 +118,21 @@
                 <section>
                   <h3>値の取得</h3>
                   <p>
-                    JavaScriptを使って、入力された値の取得、計算、表示を行いましょう。<code class="popup-code">&lt;script&gt;</code>タグを使ってその中にJavaScriptを記述します。<br>
-                    前もって設定しておいたidの要素を取得するには、「id="～"の要素」ブロックを使いましょう。必要であれば、取得した要素を変数にセットしましょう。<br>
-                    <code class="popup-code">&lt;input&gt;</code>に入力された値を読み取るには「要素内の値を取得」ブロックを、<code class="popup-code">&lt;select&gt;</code>の選択には「要素内の文章を取得」を使いましょう。<br>
+                    JavaScriptを使って、入力された値の取得、計算、表示を行いましょう。<code class="popup-code">&lt;script&gt;</code>タグを使ってその中にJavaScriptを記述します。<br />
+                    前もって設定しておいたidの要素を取得するには、「id="～"の要素」ブロックを使いましょう。必要であれば、取得した要素を変数にセットしましょう。<br />
+                    <code class="popup-code">&lt;input&gt;</code>に入力された値を読み取るには「要素内の値を取得」ブロックを、<code class="popup-code">&lt;select&gt;</code>の選択には「要素内の文章を取得」を使いましょう。<br />
                   </p>
                   <h3>計算</h3>
                   <p>
-                    取得した値を使って計算を行いましょう。<code class="popup-code">&lt;select&gt;</code>で選択された値によって、計算方法を変えるには、論理フォルダ内の「もし～実行～」ブロックなどを使って別々の計算をしましょう。<br>
-                    計算をする前に気をつけなければならないことがあります。それは、「要素内の値を取得」で取得した値は文字列として扱われるため、計算を行う際には数値に変換する必要があるということです。「～を～に変換」ブロックを使いましょう。<br>
-                    そうしたら、数式フォルダ内のブロックで計算をしましょう。必要であれば、計算結果も変数にセットしておきましょう。<br>
+                    取得した値を使って計算を行いましょう。<code class="popup-code">&lt;select&gt;</code>で選択された値によって、計算方法を変えるには、「論理」カテゴリーの「もし～実行～」ブロックなどを使って別々の計算をしましょう。<br />
+                    計算をする前に気をつけなければならないことがあります。それは、「要素内の値を取得」で取得した値は文字列として扱われるため、計算を行う際には数値に変換する必要があるということです。「～を～に変換」ブロックを使いましょう。<br />
+                    そうしたら、「数式」カテゴリーのブロックで計算をしましょう。必要であれば、計算結果も変数にセットしておきましょう。<br />
+                  </p>
+
                   <h3>表示</h3>
                   <p>
-                    最後に、計算結果を表示するようにしましょう。ボタンを押すと結果が表示されるようにするために、「～にイベントクリックが発生したときに～」ブロックを使いましょう。ここで注意点ですが、このブロックの内部で<code class="popup-code">&lt;input&gt;</code>の値を取得するようにしてください。そうしないと、取得されるのがinputに何も入っていない最初の一回だけとなり正常に動作しません。計算処理もこのブロックの中に入れ込みましょう。<br>
-                    表示については、「～を～に代入」ブロックを使って、要素内の値を変更することができます。<br>
+                    最後に、計算結果を表示するようにしましょう。ボタンを押すと結果が表示されるようにするために、「～にイベントクリックが発生したときに～」ブロックを使いましょう。ここで注意点ですが、このブロックの内部で<code class="popup-code">&lt;input&gt;</code>の値を取得するようにしてください。そうしないと、取得されるのが<code class="popup-code">input</code>に何も入っていない最初の一回だけとなり正常に動作しません。計算処理もこのブロックの中に入れ込みましょう。<br />
+                    表示については、「～を～に代入」ブロックを使って、要素内の値を変更することができます。<br />
                   </p>
                 </section>
               </div>
@@ -144,7 +146,7 @@
                   <p>
                     ここまでできたら、さらに機能を追加してみましょう。<br />
                     「こんなのができたらいいな～」、「こんな機能があったら便利だな～」と想像を膨らませ、趣くままに作ってみましょう。<br />
-                    考えられる機能としては例えば、行の追加や削除機能、列の追加や削除機能、セルの色を変える機能などが挙げられます。<br />
+                    考えられる機能としては例えば、行の追加や削除機能、セルの色を変える機能などが挙げられます。<br />
                   </p>
                 </section>
               </div>
