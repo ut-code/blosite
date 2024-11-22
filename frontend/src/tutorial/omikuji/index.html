@@ -9,7 +9,8 @@
     <div id="content" style="visibility: hidden">
       <header>
         <div class="header-container">
-          <a href="#" class="header-logo">Blosite</a>
+          <div class="header-logo">
+            <img id="header-icon" src="<%= require('/src/images/icon.svg') %>">Blosite</div>
           <!-- <sub>by ut.code();</sub> -->
           <nav>
             <ul class="nav-links">
@@ -95,8 +96,8 @@
                 <section>
                   <h3>ボタンと表示する場所の作成</h3>
                   <p>
-                    &emsp;まずはボタンを作ってボタンのなかにテキストを入力してid属性を設定しましょう。それができたら&lt;div&gt;を用いて結果を表示する場所を作りましょう。<br />
-                    この&lt;div&gt;要素の中身を書き換えることで結果を表示したいのでこの&lt;div&gt;要素にもidを設定しましょう。
+                    &emsp;まずはボタンを作ってボタンのなかにテキストを入力するのと、id属性を設定しましょう。それができたら<code class="popup-code">&lt;div&gt;</code>を用いて結果を表示する場所を作りましょう。<br />
+                    この<code class="popup-code">&lt;div&gt;</code>要素の中身を書き換えることで結果を表示したいのでこの<code class="popup-code">&lt;div&gt;</code>要素にもidを設定しましょう。
                   </p>
                   <h3>DOM操作</h3>
                   <p>

@@ -310,13 +310,7 @@ function processExecutedCode(inputCode) {
     }
   });
 
-  // HTML全体を再整形する
-  const serializer = new XMLSerializer();
-  let formattedHTML = serializer.serializeToString(doc);
-
-  formattedHTML = formattedHTML.replace(/xmlns="http:\/\/www.w3.org\/1999\/xhtml"/g, '');
-
-  return formattedHTML;
+  return doc.documentElement.outerHTML;
 }
 
 // Load the initial state from storage and run the code.
