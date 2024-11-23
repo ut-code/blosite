@@ -199,10 +199,10 @@ code {
 }
 
 /* ブラウザによる不要な余白の削除 */
-#output *{
+/* #output *{
   margin :0;
   padding :0;
-}
+} */
 
 /* styleを指定しない場合にブロックが生成する要素のスタイルを定義 */
 
@@ -236,21 +236,6 @@ code {
 
 #output var {
   font-style: italic; /* 標準がitalic */
-}
-
-/* 余白消すと表示されないので */
-#output ul {
-  display: list-item;
-  list-style-type: disc;
-}
-
-#output ol {
-  list-style:decimal;
-}
-
-#output li {
- display: list-item;
- list-style-type: disc;
 }
 
 /* ブロックが生成する要素のスタイルここまで */
