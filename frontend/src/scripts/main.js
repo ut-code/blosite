@@ -279,6 +279,8 @@ function isNonEmptyTextNode(node) {
 // idとclassに接頭辞を追加
 function processExecutedCode(inputCode) {
 
+  let parseSuccess = true;
+
   // HTML文字列をパースしてDOMに変換
   const parser = new DOMParser();
   const doc = parser.parseFromString(inputCode, 'text/html');
@@ -286,18 +288,6 @@ function processExecutedCode(inputCode) {
   // idやclassに追加する接頭辞
   const idPrefix = 'USER_ID_';
   const classPrefix = 'USER_CLASS_';
-
-  // id属性に接頭辞を追加
-  doc.querySelectorAll('[id]').forEach(el => {
-      el.id = idPrefix + el.id;
-  });
-
-  // class属性に接頭辞を追加
-  doc.querySelectorAll('[class]').forEach(el => {
-      el.classList.forEach(cls => {
-          el.classList.replace(cls, classPrefix + cls);
-      });
-  });
 
   // <script>内のコードを解析し、id/classの参照を置換
   doc.querySelectorAll('script').forEach(script => {
@@ -343,7 +333,25 @@ function processExecutedCode(inputCode) {
         script.textContent = modifiedCode;
     } catch (e) {
         console.error('Script parsing failed:', e);
+        parseSuccess = false;
     }
+  });
+
+  // パースに失敗した場合はそのままのHTMLを返す
+  if (!parseSuccess) {
+    return doc.documentElement.outerHTML;
+  }
+
+  // id属性に接頭辞を追加
+  doc.querySelectorAll('[id]').forEach(el => {
+    el.id = idPrefix + el.id;
+  });
+
+  // class属性に接頭辞を追加
+  doc.querySelectorAll('[class]').forEach(el => {
+      el.classList.forEach(cls => {
+          el.classList.replace(cls, classPrefix + cls);
+      });
   });
 
   console.log("実行コード\n" + doc.documentElement.outerHTML);

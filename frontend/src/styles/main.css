@@ -238,6 +238,21 @@ code {
   font-style: italic; /* 標準がitalic */
 }
 
+/* 余白消すと表示されないので */
+#output ul {
+  display: list-item;
+  list-style-type: disc;
+}
+
+#output ol {
+  list-style:decimal;
+}
+
+#output li {
+ display: list-item;
+ list-style-type: disc;
+}
+
 /* ブロックが生成する要素のスタイルここまで */
 
 /* #code-button {
