@@ -219,6 +219,8 @@ const runCode = () => {
       eval(scriptCode);
       errorMessage.style.display = "none";
     }  catch (e) {
+      console.log(e);
+      console.log(scriptCode);
       errorMessage.style.display = "block";
       errorMessage.textContent = `エラーが発生しました\n${e.name} ${e.message}`; 
     }
@@ -343,13 +345,7 @@ function processExecutedCode(inputCode) {
     }
   });
 
-  // HTML全体を再整形する
-  const serializer = new XMLSerializer();
-  let formattedHTML = serializer.serializeToString(doc);
-
-  formattedHTML = formattedHTML.replace(/xmlns="http:\/\/www.w3.org\/1999\/xhtml"/g, '');
-
-  return formattedHTML;
+  return doc.documentElement.outerHTML;
 }
 
 // Load the initial state from storage and run the code.
