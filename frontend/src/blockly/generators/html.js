@@ -957,6 +957,16 @@ websiteGenerator.forBlock["css_font-size"] = function (block, generator) {
   return [code, Order.ATOMIC];
 };
 
+websiteGenerator.forBlock["css_font-family"] = function (block, generator) {
+  const field = block.getFieldValue("FIELD");
+  const value = generator.valueToCode(block, "VALUE", Order.ATOMIC);
+  const sanitizedField = sanitizeInput(field);
+  const code = value
+    ? `font-family:${sanitizedField}; ${value}`
+    : `font-family:${sanitizedField}`;
+  return [code, Order.ATOMIC];
+};
+
 websiteGenerator.forBlock["css_font-weight"] = function (block, generator) {
   const field = block.getFieldValue("FIELD");
   const value = generator.valueToCode(block, "VALUE", Order.ATOMIC);
