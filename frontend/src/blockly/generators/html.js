@@ -71,7 +71,8 @@ function sanitizeInput(input) {
 websiteGenerator.forBlock["html_html-head-body"] = function (block, generator) {
   const headContent = generator.statementToCode(block, "HEAD");
   const bodyContent = generator.statementToCode(block, "BODY");
-  const attribute = generator.valueToCode(block, "ATTRIBUTE", Order.ATOMIC);
+  // const attribute = generator.valueToCode(block, "ATTRIBUTE", Order.ATOMIC);
+  const attribute = null;
   const startBodyTag = attribute ? `<body ${attribute}>` : `<body>`;
   const code = `<html>\n<head>\n${headContent}</head>\n${startBodyTag}\n${bodyContent}</body>\n</html>\n`;
   return code;
