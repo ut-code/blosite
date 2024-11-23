@@ -25,9 +25,12 @@ export const htmlBlocks = Blockly.common.createBlockDefinitionsFromJsonArray([
       {
         type: "input_dummy",
       },
+      // {
+      //   type: "input_value",
+      //   name: "ATTRIBUTE",
+      // },
       {
-        type: "input_value",
-        name: "ATTRIBUTE",
+        type: "input_dummy",
       },
       {
         type: "input_statement",
@@ -40,6 +43,39 @@ export const htmlBlocks = Blockly.common.createBlockDefinitionsFromJsonArray([
     style: "htmlelement_blocks",
     tooltip:"HTML要素をこの中にいれてウェブサイトを作る。headにはウェブページに\n表示されない要素を、bodyにはウェブページの内容となる要素をいれる。"
   },
+  // {
+  //   type: "html_html-head-body",
+  //   message0:
+  //     "<html> %1 <head> %2 %3 </head> %4 <body> %5 %6 </body> %7 </html>",
+  //   args0: [
+  //     {
+  //       type: "input_dummy",
+  //     },
+  //     {
+  //       type: "input_dummy",
+  //     },
+  //     {
+  //       type: "input_statement",
+  //       name: "HEAD",
+  //     },
+  //     {
+  //       type: "input_dummy",
+  //     },
+  //     {
+  //       type: "input_value",
+  //       name: "ATTRIBUTE",
+  //     },
+  //     {
+  //       type: "input_statement",
+  //       name: "BODY",
+  //     },
+  //     {
+  //       type: "input_dummy",
+  //     },
+  //   ],
+  //   style: "htmlelement_blocks",
+  //   tooltip:"HTML要素をこの中にいれてウェブサイトを作る。headにはウェブページに\n表示されない要素を、bodyにはウェブページの内容となる要素をいれる。"
+  // },
   {
     type: "html_comment",
     message0: "<!-- %1 --->",

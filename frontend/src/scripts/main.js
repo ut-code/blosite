@@ -346,6 +346,8 @@ function processExecutedCode(inputCode) {
     }
   });
 
+  console.log("実行コード\n" + doc.documentElement.outerHTML);
+
   return doc.documentElement.outerHTML;
 }
 
