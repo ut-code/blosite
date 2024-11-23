@@ -1164,7 +1164,7 @@ websiteGenerator.forBlock["js_getElementByTagName"] = function (
   const tagName = block.getFieldValue("TAG");
   const sanitizedtagName = sanitizeInput(tagName);
   const code = sanitizedtagName
-    ? `document.getElementById("${sanitizedtagName}")`
+    ? `document.getElementByTagName("${sanitizedtagName}")`
     : "";
   return [code, Order.ATOMIC];
 };
