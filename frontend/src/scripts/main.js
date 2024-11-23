@@ -236,8 +236,8 @@ function processDisplayedCode(inputCode) {
   const parser = new DOMParser();
   const doc = parser.parseFromString(inputCode, 'text/html');
 
-  console.log(doc);
-  console.log(doc.documentElement.outerHTML);
+  // console.log(doc);
+  // console.log(doc.documentElement.outerHTML);
 
   // 特定のタグの前後の改行や空白を削除
   const tags = ['i', 'b', 'u', 'del', 'ins', 'small', 'sub', 'sup','em'];
@@ -354,7 +354,7 @@ function processExecutedCode(inputCode) {
       });
   });
 
-  console.log("実行コード\n" + doc.documentElement.outerHTML);
+  // console.log("実行コード\n" + doc.documentElement.outerHTML);
 
   return doc.documentElement.outerHTML;
 }
@@ -715,8 +715,8 @@ runSwitchButton.addEventListener('click', () => {
   
   if(state === 'play') {
     runIcon.classList.remove('play');
-    runIcon.classList.add('continuous');
-    state = 'continuous';
+    runIcon.classList.add('stop');
+    state = 'stop';
     runSwitchButton.innerHTML = 'スクリプトの<br>常時実行:ON';
   }
   else {

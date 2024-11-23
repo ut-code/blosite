@@ -635,8 +635,8 @@ runSwitchButton.addEventListener('click', () => {
   
   if(state === 'play') {
     runIcon.classList.remove('play');
-    runIcon.classList.add('continuous');
-    state = 'continuous';
+    runIcon.classList.add('stop');
+    state = 'stop';
     runSwitchButton.innerHTML = 'スクリプトの<br>常時実行:ON';
   }
   else {
