@@ -11,8 +11,6 @@ body {
   margin: auto;
   overflow-y: hidden;
 }
-
-
 /* header {
   position: fixed;
   top: 0;
@@ -195,8 +193,14 @@ code {
   /* order: 3; */
   overflow: auto ;
   border: 2px solid #ccc;
-  padding: 10px;
+  /* padding: 10px; */
   margin-bottom: 10px;
+}
+
+/* ブラウザによる不要な余白の削除 */
+#output *{
+  margin :0;
+  padding :0;
 }
 
 /* styleを指定しない場合にブロックが生成する要素のスタイルを定義 */
