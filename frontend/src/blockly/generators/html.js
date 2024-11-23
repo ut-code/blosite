@@ -977,6 +977,16 @@ websiteGenerator.forBlock["css_line-weight"] = function (block, generator) {
   return [code, Order.ATOMIC];
 };
 
+websiteGenerator.forBlock["css_line-height"] = function (block, generator) {
+  const field = block.getFieldValue("FIELD");
+  const value = generator.valueToCode(block, "VALUE", Order.ATOMIC);
+  const sanitizedField = sanitizeInput(field);
+  const code = value
+    ? `line-height:${sanitizedField}; ${value}`
+    : `line-height:${sanitizedField}`;
+  return [code, Order.ATOMIC];
+};
+
 websiteGenerator.forBlock["css_background-color"] = function (
   block,
   generator
